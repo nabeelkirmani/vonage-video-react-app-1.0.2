@@ -24,7 +24,7 @@ const GoodBye = (): ReactElement => {
   });
   const archives = useArchives({ roomName });
   const header: string = location.state?.header || 'You left the room';
-  const caption: string = location.state?.caption || 'We hope you had fun';
+  const caption: string = location.state?.caption || 'Thank you';
 
   return (
     <div className="bg-white flex h-full w-full justify-between flex-col items-center">

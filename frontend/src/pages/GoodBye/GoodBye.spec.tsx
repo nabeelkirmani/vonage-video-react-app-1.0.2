@@ -24,7 +24,7 @@ describe('GoodBye', () => {
   it('should render', () => {
     render(<GoodBye />, { wrapper: BrowserRouter });
     expect(screen.getByText('You left the room')).toBeVisible();
-    expect(screen.getByText('We hope you had fun')).toBeVisible();
+    expect(screen.getByText('Thank you')).toBeVisible();
     expect(screen.getByText('There are no recordings for this meeting')).toBeVisible();
   });
 

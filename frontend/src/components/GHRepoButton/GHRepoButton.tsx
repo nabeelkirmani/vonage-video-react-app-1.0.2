@@ -1,5 +1,5 @@
 import { IconButton, Link, Tooltip } from '@mui/material';
-import { GitHub as GitHubIcon } from '@mui/icons-material';
+import { MonitorHeart as MonitorHeartIcon } from '@mui/icons-material';
 import { ReactElement } from 'react';
 
 /**
@@ -10,10 +10,10 @@ import { ReactElement } from 'react';
  */
 const GHRepoButton = (): ReactElement => {
   return (
-    <Link href="https://github.com/Vonage/vonage-video-react-app/" target="_blank">
-      <Tooltip title="Visit our GitHub Repo">
+    <Link href="https://www.onasi.care/" target="_blank">
+      <Tooltip title="Visit our website">
         <IconButton color="default">
-          <GitHubIcon />
+          <MonitorHeartIcon />
         </IconButton>
       </Tooltip>
     </Link>

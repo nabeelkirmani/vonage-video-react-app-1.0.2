@@ -41,6 +41,6 @@ test('should render `Return to landing page` and it should navigate to the landi
 
   await landingPageButton.click();
   await expect(
-    page.getByRole('heading', { name: 'Welcome to the Vonage Video React App' })
+    page.getByRole('heading', { name: 'Welcome to the Onasi Telemedicine Demo App' })
   ).toBeVisible();
 });
