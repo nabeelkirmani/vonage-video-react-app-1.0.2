@@ -12,5 +12,8 @@
     "@playwright/test": "^1.46.0",
     "@types/node": "^20.12.7",
     "electron": "latest"
+  },
+  "dependencies": {
+    "playwright": "^1.53.1"
   }
 }
