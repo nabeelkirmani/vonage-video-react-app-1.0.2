@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Room from './pages/MeetingRoom/index';
-import GoodBye from './pages/GoodBye/index';
+import Room from './pages/MeetingRoom';
+import GoodBye from './pages/GoodBye';
 import './index.css';
 import WaitingRoom from './pages/WaitingRoom';
 import SessionProvider from './Context/SessionProvider/session';

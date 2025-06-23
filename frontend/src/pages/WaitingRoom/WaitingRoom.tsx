@@ -1,4 +1,4 @@
-import { useState, useEffect, MouseEvent, ReactElement, TouchEvent } from 'react';
+import { useState, useEffect, MouseEvent, ReactElement, TouchEvent, useCallback } from 'react';
 import usePreviewPublisherContext from '../../hooks/usePreviewPublisherContext';
 import ControlPanel from '../../components/WaitingRoom/ControlPanel';
 import VideoContainer from '../../components/WaitingRoom/VideoContainer';
@@ -52,33 +52,36 @@ const WaitingRoom = (): ReactElement => {
     }
   }, [accessStatus]);
 
-  const handleAudioInputOpen = (
-    event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>
-  ) => {
-    setAnchorEl(event.currentTarget);
-    setOpenAudioInput(true);
-  };
+  const handleAudioInputOpen = useCallback(
+    (event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>) => {
+      setAnchorEl(event.currentTarget);
+      setOpenAudioInput(true);
+    },
+    []
+  );
 
-  const handleVideoInputOpen = (
-    event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>
-  ) => {
-    setAnchorEl(event.currentTarget);
-    setOpenVideoInput(true);
-  };
+  const handleVideoInputOpen = useCallback(
+    (event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>) => {
+      setAnchorEl(event.currentTarget);
+      setOpenVideoInput(true);
+    },
+    []
+  );
 
-  const handleAudioOutputOpen = (
-    event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>
-  ) => {
-    setAnchorEl(event.currentTarget);
-    setOpenAudioOutput(true);
-  };
+  const handleAudioOutputOpen = useCallback(
+    (event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>) => {
+      setAnchorEl(event.currentTarget);
+      setOpenAudioOutput(true);
+    },
+    []
+  );
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setAnchorEl(null);
     setOpenAudioInput(false);
     setOpenAudioOutput(false);
     setOpenVideoInput(false);
-  };
+  }, []);
 
   return (
     <div className="h-full w-full bg-white flex flex-col" data-testid="waitingRoom">

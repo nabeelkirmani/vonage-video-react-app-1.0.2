@@ -16,5 +16,11 @@ import { API_URL } from '../utils/constants';
  */
 
 export default async (roomName: string) => {
-  return axios.get(`${API_URL}/session/${roomName}`);
+  try {
+    const response = await axios.get(`${API_URL}/session/${roomName}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching credentials:', error);
+    throw error;
+  }
 };
