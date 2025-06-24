@@ -82,16 +82,23 @@ const MeetingRoom = (): ReactElement => {
   }, [publishingError, navigate, roomName]);
 
   return (
-    <div data-testid="meetingRoom" className="meetingRoom bg-darkGray-100 w-screen">
-      {isSmallViewPort && <SmallViewportHeader />}
-      <VideoTileCanvas
-        isSharingScreen={isSharingScreen}
-        screensharingPublisher={screensharingPublisher}
-        screenshareVideoElement={screenshareVideoElement}
-        isRightPanelOpen={rightPanelActiveTab !== 'closed'}
-        toggleParticipantList={toggleParticipantList}
-      />
-      <RightPanel activeTab={rightPanelActiveTab} handleClose={closeRightPanel} />
+    <div
+      data-testid="meetingRoom"
+      className="meetingRoom bg-darkGray-100 w-screen grid grid-cols-1 md:grid-cols-12 gap-6"
+    >
+      <div className="md:col-span-9">
+        {isSmallViewPort && <SmallViewportHeader />}
+        <VideoTileCanvas
+          isSharingScreen={isSharingScreen}
+          screensharingPublisher={screensharingPublisher}
+          screenshareVideoElement={screenshareVideoElement}
+          isRightPanelOpen={rightPanelActiveTab !== 'closed'}
+          toggleParticipantList={toggleParticipantList}
+        />
+      </div>
+      <div className="md:col-span-3">
+        <RightPanel activeTab={rightPanelActiveTab} handleClose={closeRightPanel} />
+      </div>
       <EmojisOrigin />
       <Toolbar
         isSharingScreen={isSharingScreen}

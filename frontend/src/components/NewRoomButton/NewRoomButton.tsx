@@ -18,17 +18,10 @@ const NewRoomButton = ({ handleNewRoom }: NewRoomButtonProps): ReactElement => {
   return (
     <Button
       variant="contained"
-      className="h-14 mt-2"
       startIcon={<VideoCall />}
       onClick={handleNewRoom}
       fullWidth
-      sx={{
-        textTransform: 'none',
-        marginBottom: '35px',
-        fontSize: '1rem',
-        justifyContent: 'space-between',
-        width: '18rem',
-      }}
+      className="h-14 mt-2 normal-case mb-[35px] text-base justify-between w-72 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition"
     >
       <div className="text-center w-full flex justify-center items-center">Create room</div>
     </Button>

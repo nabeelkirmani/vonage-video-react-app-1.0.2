@@ -17,7 +17,6 @@ import useRoomName from '../../hooks/useRoomName';
  * @returns {ReactElement} - the goodbye page.
  */
 const GoodBye = (): ReactElement => {
-  const width = window.innerWidth < 800 ? '100%' : '800px';
   const location = useLocation();
   const roomName = useRoomName({
     useLocationState: true,
@@ -27,21 +26,16 @@ const GoodBye = (): ReactElement => {
   const caption: string = location.state?.caption || 'Thank you';
 
   return (
-    <div className="bg-white flex h-full w-full justify-between flex-col items-center">
+    <div className="bg-white flex h-full w-full flex-col items-center">
       <Banner />
-      <div className="h-full">
-        <div
-          className="flex w-[800px] h-full items-center content-center md:justify-center flex-col md:flex-row items-start"
-          style={{
-            width: `${width}`,
-          }}
-        >
-          <div className="max-w-[400px]">
+      <div className="flex flex-grow items-center justify-center w-full">
+        <div className="flex w-full max-w-4xl flex-col items-center p-8 md:flex-row md:items-center md:justify-between">
+          <div className="w-full max-w-md">
             <GoodByeMessage header={header} message={caption} roomName={roomName} />
           </div>
-          <div className="w-full">
-            <div className="ps-12 py-4 h-auto shrink w-full text-left">
-              <h3 className="text-4xl text-black pb-5 w-9/12">Recordings</h3>
+          <div className="mt-8 w-full max-w-md md:mt-0 md:ml-16">
+            <h3 className="text-4xl font-bold text-black">Recordings</h3>
+            <div className="mt-4">
               <ArchiveList archives={archives} />
             </div>
           </div>

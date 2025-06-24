@@ -79,16 +79,12 @@ const VideoTileCanvas = ({
 
   // Height is 100dvh - toolbar height (80px) and header height (80px) - 24px wrapper margin on small viewport device
   // Height is 100dvh - toolbar height (80px) - 24px wrapper margin on desktop
-  const heightClass = isSmallViewPort
-    ? '@apply h-[calc(100dvh_-_184px)]'
-    : '@apply h-[calc(100dvh_-_104px)]';
+  const heightClass = isSmallViewPort ? 'h-[calc(100dvh_-_184px)]' : 'h-[calc(100dvh_-_104px)]';
 
   // Width is 100vw - 360px panel width - 24px panel right margin - 24px wrapper margin
-  const widthClass = isRightPanelOpen
-    ? '@apply w-[calc(100vw_-_392px)]'
-    : '@apply w-[calc(100vw_-_24px)]';
+  const widthClass = isRightPanelOpen ? 'w-[calc(100vw_-_392px)]' : 'w-[calc(100vw_-_24px)]';
   return (
-    <div ref={wrapRef} id="wrapper" className={`m-3 ${widthClass} ${heightClass}`}>
+    <div ref={wrapRef} id="wrapper" className={`m-3 ${widthClass} ${heightClass} aspect-video`}>
       <div id="video-container" className="relative w-full h-full">
         {!connected ? (
           <CircularProgress

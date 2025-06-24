@@ -17,9 +17,9 @@ const GoToLandingPageButton = ({ handleLanding }: GoToLandingPageButtonProps): R
   return (
     <Button
       variant="contained"
-      className="h-12"
-      sx={{ textTransform: 'none', fontSize: '1rem', marginBottom: '16px' }}
+      className="h-12 normal-case text-base mb-4 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition"
       onClick={handleLanding}
+      fullWidth
     >
       Return to landing page
     </Button>

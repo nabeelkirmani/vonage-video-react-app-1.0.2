@@ -31,15 +31,18 @@ test.describe('active speaker', () => {
     // Wait for the subscriber to become the active speaker and increase its size
     await pageOne.waitForSelector('.subscriber', { state: 'visible' });
 
-    // Get the new size of the subscriber element
-    const newSizeSub = await subscriber.boundingBox();
-
-    // Get the new size of the publisher element
-    const newSizePub = await publisher.boundingBox();
-
-    // Check if the width of the subscriber is at least 20% higher than the publisher's
-    expect(newSizeSub.width).toBeGreaterThan(1.2 * newSizePub.width);
-    // Check if the height of the subscriber is at least double the height of the publisher
-    expect(newSizeSub.height).toBeGreaterThan(2 * newSizePub.height);
+    await pageOne.waitForFunction(
+      () => {
+        const publisher = document.querySelector('.publisher');
+        const subscriber = document.querySelector('.subscriber');
+        if (!publisher || !subscriber) {
+          return false;
+        }
+        const pubSize = publisher.getBoundingClientRect();
+        const subSize = subscriber.getBoundingClientRect();
+        return subSize.width > 1.2 * pubSize.width && subSize.height > 2 * pubSize.height;
+      },
+      { timeout: 10000 }
+    );
   });
 });

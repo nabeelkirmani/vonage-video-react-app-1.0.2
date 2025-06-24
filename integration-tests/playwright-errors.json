@@ -1,0 +1,1420 @@
+{
+  "config": {
+    "configFile": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/playwright.config.ts",
+    "rootDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/globalSetup.js",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 8
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-errors.json"
+        }
+      ],
+      [
+        "html",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "Google Chrome",
+        "name": "Google Chrome",
+        "testDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "Google Chrome Fake Devices",
+        "name": "Google Chrome Fake Devices",
+        "testDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "Microsoft Edge",
+        "name": "Microsoft Edge",
+        "testDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "Opera",
+        "name": "Opera",
+        "testDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "Electron",
+        "name": "Electron",
+        "testDir": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.46.0",
+    "workers": 8,
+    "webServer": {
+      "command": "cd .. && yarn start",
+      "url": "http://127.0.0.1:3345",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "activeSpeaker.spec.ts",
+      "file": "activeSpeaker.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "active speaker",
+          "file": "activeSpeaker.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should display the active speaker in a larger tile",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Google Chrome Fake Devices",
+                  "projectName": "Google Chrome Fake Devices",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "timedOut",
+                      "duration": 60071,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/activeSpeaker.spec.ts",
+                            "column": 19,
+                            "line": 19
+                          },
+                          "message": "Error: page.waitForSelector: Test timeout of 60000ms exceeded.\nCall log:\n  \u001b[2m- waiting for locator('.publisher') to be visible\u001b[22m\n\n\n\u001b[0m \u001b[90m 17 |\u001b[39m     \u001b[36mawait\u001b[39m expect(pageOne\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'MicNoneIcon'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m pageOne\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.publisher'\u001b[39m\u001b[33m,\u001b[39m { state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[90m// mute user on the first page\u001b[39m\n \u001b[90m 22 |\u001b[39m     \u001b[36mawait\u001b[39m pageOne\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'MicNoneIcon'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/activeSpeaker.spec.ts:19:19\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Browser console error from page 1: Failed to load resource: the server responded with a status of 500 (Internal Server Error)\n"
+                        },
+                        {
+                          "text": "Browser console error from page 1: Error fetching credentials: Da\n"
+                        },
+                        {
+                          "text": "Browser console warning from page 1: Da\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-23T14:06:09.530Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9932b797df3f493550d2-ccba11fb21aa6ff96108",
+              "file": "activeSpeaker.spec.ts",
+              "line": 8,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "basic-ui.spec.ts",
+      "file": "basic-ui.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "home page loads and has expected title",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "status": "failed",
+                  "duration": 9870,
+                  "error": {
+                    "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('text=Join Session')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Join Session')\u001b[22m\n",
+                    "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('text=Join Session')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Join Session')\u001b[22m\n\n    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/basic-ui.spec.ts:12:51",
+                    "location": {
+                      "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/basic-ui.spec.ts",
+                      "column": 51,
+                      "line": 12
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 10 |\u001b[39m\n \u001b[90m 11 |\u001b[39m   \u001b[90m// Optional: Check for some visible element, like a logo or button\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 12 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Join Session'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 13 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 14 |\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/basic-ui.spec.ts",
+                        "column": 51,
+                        "line": 12
+                      },
+                      "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('text=Join Session')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Join Session')\u001b[22m\n\n\n\u001b[0m \u001b[90m 10 |\u001b[39m\n \u001b[90m 11 |\u001b[39m   \u001b[90m// Optional: Check for some visible element, like a logo or button\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 12 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Join Session'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 13 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 14 |\u001b[39m\u001b[0m\n\n\u001b[2m    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/basic-ui.spec.ts:12:51\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "Browser console debug from page 1: [vite] connecting...\n"
+                    },
+                    {
+                      "text": "Browser console debug from page 1: [vite] connected.\n"
+                    },
+                    {
+                      "text": "Browser console info from page 1: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:06:09.526Z",
+                  "attachments": [],
+                  "errorLocation": {
+                    "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/basic-ui.spec.ts",
+                    "column": 51,
+                    "line": 12
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "42aae976a9f749167392-f0a1c8a1f5847aa36799",
+          "file": "basic-ui.spec.ts",
+          "line": 4,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "chat.spec.ts",
+      "file": "chat.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "chat",
+          "file": "chat.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should send chat messages and show unread number",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Google Chrome Fake Devices",
+                  "projectName": "Google Chrome Fake Devices",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "status": "timedOut",
+                      "duration": 60056,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/chat.spec.ts",
+                            "column": 19,
+                            "line": 30
+                          },
+                          "message": "Error: page.waitForSelector: Test timeout of 60000ms exceeded.\nCall log:\n  \u001b[2m- waiting for locator('.publisher') to be visible\u001b[22m\n\n\n\u001b[0m \u001b[90m 28 |\u001b[39m     \u001b[36mawait\u001b[39m waitAndClickFirefox(pageTwo\u001b[33m,\u001b[39m browserName)\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 30 |\u001b[39m     \u001b[36mawait\u001b[39m pageTwo\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.publisher'\u001b[39m\u001b[33m,\u001b[39m { state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 31 |\u001b[39m     \u001b[36mawait\u001b[39m pageTwo\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.subscriber'\u001b[39m\u001b[33m,\u001b[39m { state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 32 |\u001b[39m\n \u001b[90m 33 |\u001b[39m     \u001b[36mconst\u001b[39m chatToggleButtonOne \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m pageOne\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'chat-toggle-unread-count'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/chat.spec.ts:30:19\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Browser console error from page 1: Failed to load resource: the server responded with a status of 500 (Internal Server Error)\n"
+                        },
+                        {
+                          "text": "Browser console error from page 1: Error fetching credentials: Da\n"
+                        },
+                        {
+                          "text": "Browser console warning from page 1: Da\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-23T14:06:09.551Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-785500db6e86b70b9e31",
+              "file": "chat.spec.ts",
+              "line": 8,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "goodbye.spec.ts",
+      "file": "goodbye.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "should render `Reenter` button when exiting a room and it should return user to the room",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "status": "passed",
+                  "duration": 2922,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Browser console error from page 1: Failed to load resource: the server responded with a status of 500 (Internal Server Error)\n"
+                    },
+                    {
+                      "text": "Browser console error from page 1: Error fetching credentials: Da\n"
+                    },
+                    {
+                      "text": "Browser console warning from page 1: Da\n"
+                    },
+                    {
+                      "text": "Browser console error from page 1: Failed to load resource: the server responded with a status of 404 (Not Found)\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:06:09.518Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fdf4a797ef6b0e25b12e-36463ca7c27615714b3d",
+          "file": "goodbye.spec.ts",
+          "line": 5,
+          "column": 5
+        },
+        {
+          "title": "should not render `Reenter` button when navigating directly to goodbye",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "status": "passed",
+                  "duration": 2213,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:06:09.517Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fdf4a797ef6b0e25b12e-e8845b36dc9e5692c996",
+          "file": "goodbye.spec.ts",
+          "line": 25,
+          "column": 5
+        },
+        {
+          "title": "should render `Return to landing page` and it should navigate to the landing page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "status": "passed",
+                  "duration": 2534,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:06:09.531Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fdf4a797ef6b0e25b12e-c5ab39b19f0b75dc92ac",
+          "file": "goodbye.spec.ts",
+          "line": 33,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "landing.spec.ts",
+      "file": "landing.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "should navigate to waiting room then publish in room via Enter room name textbox",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "status": "timedOut",
+                  "duration": 60056,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/landing.spec.ts",
+                        "column": 14,
+                        "line": 27
+                      },
+                      "message": "Error: page.waitForSelector: Test timeout of 60000ms exceeded.\nCall log:\n  \u001b[2m- waiting for locator('.publisher') to be visible\u001b[22m\n\n\n\u001b[0m \u001b[90m 25 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[32m`${baseURL}room/some-room`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 26 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.publisher'\u001b[39m\u001b[33m,\u001b[39m { state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m\n \u001b[90m 30 |\u001b[39m test(\u001b[32m'should navigate to waiting room then publish in room via Create room button'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({\u001b[0m\n\n\u001b[2m    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/landing.spec.ts:27:14\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:06:09.507Z",
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4e5b49d369fd48ca0656-9fc641a138cee6e3ef4e",
+          "file": "landing.spec.ts",
+          "line": 8,
+          "column": 5
+        },
+        {
+          "title": "should navigate to waiting room then publish in room via Create room button",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "status": "timedOut",
+                  "duration": 60057,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/landing.spec.ts",
+                        "column": 14,
+                        "line": 47
+                      },
+                      "message": "Error: page.waitForSelector: Test timeout of 60000ms exceeded.\nCall log:\n  \u001b[2m- waiting for locator('.publisher') to be visible\u001b[22m\n\n\n\u001b[0m \u001b[90m 45 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39murl())\u001b[33m.\u001b[39mtoContain(\u001b[32m'room/'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 46 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 47 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.publisher'\u001b[39m\u001b[33m,\u001b[39m { state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 48 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 49 |\u001b[39m\n \u001b[90m 50 |\u001b[39m test(\u001b[32m'GitHub Logo Redirect to Vera GitHub URL in New Tab'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page\u001b[33m,\u001b[39m context }) \u001b[33m=>\u001b[39m {\u001b[0m\n\n\u001b[2m    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/landing.spec.ts:47:14\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "Browser console error from page 1: Failed to load resource: the server responded with a status of 500 (Internal Server Error)\n"
+                    },
+                    {
+                      "text": "Browser console error from page 1: Error fetching credentials: Da\n"
+                    },
+                    {
+                      "text": "Browser console warning from page 1: Da\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:06:09.531Z",
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4e5b49d369fd48ca0656-32ff8fae218b40560bbc",
+          "file": "landing.spec.ts",
+          "line": 30,
+          "column": 5
+        },
+        {
+          "title": "GitHub Logo Redirect to Vera GitHub URL in New Tab",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "status": "timedOut",
+                  "duration": 60064,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/landing.spec.ts",
+                        "column": 65,
+                        "line": 53
+                      },
+                      "message": "Error: locator.click: Test timeout of 60000ms exceeded.\nCall log:\n  \u001b[2m- waiting for getByRole('button', { name: 'Visit our GitHub Repo' })\u001b[22m\n\n\n\u001b[0m \u001b[90m 51 |\u001b[39m   \u001b[36mconst\u001b[39m [newPage] \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m.\u001b[39mall([\n \u001b[90m 52 |\u001b[39m     context\u001b[33m.\u001b[39mwaitForEvent(\u001b[32m'page'\u001b[39m)\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 53 |\u001b[39m     page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Visit our GitHub Repo'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m,\u001b[39m \u001b[90m// Opens a new tab\u001b[39m\n \u001b[90m    |\u001b[39m                                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 54 |\u001b[39m   ])\u001b[33m;\u001b[39m\n \u001b[90m 55 |\u001b[39m   \u001b[36mawait\u001b[39m newPage\u001b[33m.\u001b[39mwaitForLoadState()\u001b[33m;\u001b[39m\n \u001b[90m 56 |\u001b[39m   \u001b[36mawait\u001b[39m expect(newPage)\u001b[33m.\u001b[39mtoHaveURL(\u001b[32m'https://github.com/Vonage/vonage-video-react-app/'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/landing.spec.ts:53:65\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:06:13.045Z",
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4e5b49d369fd48ca0656-3f67e575f8a6a8a06073",
+          "file": "landing.spec.ts",
+          "line": 50,
+          "column": 5
+        },
+        {
+          "title": "User should be able to navigate to the next page using enter key",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "status": "failed",
+                  "duration": 6594,
+                  "error": {
+                    "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator(':root')\nExpected string: \u001b[32m\"http://127.0.0.1:3345/\u001b[7mwaiting-room/some-room\u001b[27m\"\u001b[39m\nReceived string: \u001b[31m\"http://127.0.0.1:3345/\u001b[7m?\u001b[27m\"\u001b[39m\nCall log:\n  \u001b[2m- expect.toHaveURL with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator(':root')\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n",
+                    "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator(':root')\nExpected string: \u001b[32m\"http://127.0.0.1:3345/\u001b[7mwaiting-room/some-room\u001b[27m\"\u001b[39m\nReceived string: \u001b[31m\"http://127.0.0.1:3345/\u001b[7m?\u001b[27m\"\u001b[39m\nCall log:\n  \u001b[2m- expect.toHaveURL with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator(':root')\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\n    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/landing.spec.ts:64:22",
+                    "location": {
+                      "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/landing.spec.ts",
+                      "column": 22,
+                      "line": 64
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 62 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mkeyboard\u001b[33m.\u001b[39mpress(\u001b[32m'Enter'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 63 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 64 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[32m`${baseURL}waiting-room/some-room`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 65 |\u001b[39m\n \u001b[90m 66 |\u001b[39m   \u001b[90m// This is needed for the DeviceAccessAlert to hide\u001b[39m\n \u001b[90m 67 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'[role=\"dialog\"]'\u001b[39m\u001b[33m,\u001b[39m { state\u001b[33m:\u001b[39m \u001b[32m'hidden'\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/landing.spec.ts",
+                        "column": 22,
+                        "line": 64
+                      },
+                      "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator(':root')\nExpected string: \u001b[32m\"http://127.0.0.1:3345/\u001b[7mwaiting-room/some-room\u001b[27m\"\u001b[39m\nReceived string: \u001b[31m\"http://127.0.0.1:3345/\u001b[7m?\u001b[27m\"\u001b[39m\nCall log:\n  \u001b[2m- expect.toHaveURL with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator(':root')\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\u001b[2m  -   locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m  -   unexpected value \"http://127.0.0.1:3345/?\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 62 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mkeyboard\u001b[33m.\u001b[39mpress(\u001b[32m'Enter'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 63 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 64 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[32m`${baseURL}waiting-room/some-room`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 65 |\u001b[39m\n \u001b[90m 66 |\u001b[39m   \u001b[90m// This is needed for the DeviceAccessAlert to hide\u001b[39m\n \u001b[90m 67 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'[role=\"dialog\"]'\u001b[39m\u001b[33m,\u001b[39m { state\u001b[33m:\u001b[39m \u001b[32m'hidden'\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/landing.spec.ts:64:22\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:06:13.301Z",
+                  "attachments": [],
+                  "errorLocation": {
+                    "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/landing.spec.ts",
+                    "column": 22,
+                    "line": 64
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4e5b49d369fd48ca0656-5c27aadd0495e3908840",
+          "file": "landing.spec.ts",
+          "line": 59,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "multiparty.spec.ts",
+      "file": "multiparty.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "should redirect to the waiting room if not bypassed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "status": "passed",
+                  "duration": 1365,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:06:13.687Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8a16fb774c025ed7887a-1f8eba62fadd5de7fbbc",
+          "file": "multiparty.spec.ts",
+          "line": 6,
+          "column": 5
+        },
+        {
+          "title": "should publish and subscribe with 3 participants",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "status": "timedOut",
+                  "duration": 60088,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/multiparty.spec.ts",
+                        "column": 19,
+                        "line": 37
+                      },
+                      "message": "Error: page.waitForSelector: Test timeout of 60000ms exceeded.\nCall log:\n  \u001b[2m- waiting for locator('.publisher') to be visible\u001b[22m\n\n\n\u001b[0m \u001b[90m 35 |\u001b[39m   \u001b[36mawait\u001b[39m waitAndClickFirefox(pageThree\u001b[33m,\u001b[39m browserName)\u001b[33m;\u001b[39m\n \u001b[90m 36 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m   \u001b[36mawait\u001b[39m pageThree\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.publisher'\u001b[39m\u001b[33m,\u001b[39m { state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m   \u001b[36mawait\u001b[39m pageThree\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.subscriber'\u001b[39m\u001b[33m,\u001b[39m { state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m expect\u001b[0m\n\n\u001b[2m    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/multiparty.spec.ts:37:19\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "Browser console error from page 1: Failed to load resource: the server responded with a status of 500 (Internal Server Error)\n"
+                    },
+                    {
+                      "text": "Browser console error from page 1: Error fetching credentials: Da\n"
+                    },
+                    {
+                      "text": "Browser console warning from page 1: Da\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:06:15.085Z",
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8a16fb774c025ed7887a-8245f0947ab563b3e966",
+          "file": "multiparty.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "should display username on publisher and subscribers",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "status": "timedOut",
+                  "duration": 60049,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/multiparty.spec.ts",
+                        "column": 17,
+                        "line": 63
+                      },
+                      "message": "Error: page.waitForSelector: Test timeout of 60000ms exceeded.\nCall log:\n  \u001b[2m- waiting for locator('.publisher') to be visible\u001b[22m\n\n\n\u001b[0m \u001b[90m 61 |\u001b[39m   \u001b[36mawait\u001b[39m waitAndClickFirefox(pageOne\u001b[33m,\u001b[39m browserName)\u001b[33m;\u001b[39m\n \u001b[90m 62 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 63 |\u001b[39m   \u001b[36mawait\u001b[39m pageOne\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.publisher'\u001b[39m\u001b[33m,\u001b[39m { state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 64 |\u001b[39m\n \u001b[90m 65 |\u001b[39m   \u001b[36mawait\u001b[39m pageOne\n \u001b[90m 66 |\u001b[39m     \u001b[33m.\u001b[39mgetByTestId(\u001b[32m'publisher-container'\u001b[39m)\u001b[0m\n\n\u001b[2m    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/multiparty.spec.ts:63:17\u001b[22m"
+                    }
+                  ],
+                  "stderr": [
+                    {
+                      "text": "Browser uncaught error from page 1: \"Maximum call stack size exceeded\" - RangeError: Maximum call stack size exceeded\n    at tg (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1:1)\n    at j5 (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1:1)\n    at q (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1839:27599)\n    at q (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1839:27605)\n    at q (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1839:27605)\n    at q (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1839:27605)\n    at q (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1839:27605)\n    at q (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1839:27605)\n    at q (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1839:27605)\n    at q (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1839:27605)\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:06:20.651Z",
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8a16fb774c025ed7887a-9327fddb7b634c306f31",
+          "file": "multiparty.spec.ts",
+          "line": 50,
+          "column": 5
+        },
+        {
+          "title": "should display initials on publisher and subscribers",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "status": "timedOut",
+                  "duration": 60028,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/multiparty.spec.ts",
+                        "column": 17,
+                        "line": 97
+                      },
+                      "message": "Error: page.waitForSelector: Test timeout of 60000ms exceeded.\nCall log:\n  \u001b[2m- waiting for locator('.publisher') to be visible\u001b[22m\n\n\n\u001b[0m \u001b[90m  95 |\u001b[39m   \u001b[36mawait\u001b[39m waitAndClickFirefox(pageOne\u001b[33m,\u001b[39m browserName)\u001b[33m;\u001b[39m\n \u001b[90m  96 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  97 |\u001b[39m   \u001b[36mawait\u001b[39m pageOne\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.publisher'\u001b[39m\u001b[33m,\u001b[39m { state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  98 |\u001b[39m\n \u001b[90m  99 |\u001b[39m   \u001b[36mawait\u001b[39m pageOne\u001b[33m.\u001b[39mgetByText(\u001b[35m/SO/\u001b[39m)\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 100 |\u001b[39m   \u001b[36mawait\u001b[39m expect(\u001b[36mawait\u001b[39m pageOne\u001b[33m.\u001b[39mgetByText(\u001b[35m/SO/\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/multiparty.spec.ts:97:17\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "Browser console error from page 1: Failed to load resource: the server responded with a status of 500 (Internal Server Error)\n"
+                    },
+                    {
+                      "text": "Browser console error from page 1: Error fetching credentials: Da\n"
+                    },
+                    {
+                      "text": "Browser console warning from page 1: Da\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:06:21.229Z",
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8a16fb774c025ed7887a-67d04b0dcaa7ead144b5",
+          "file": "multiparty.spec.ts",
+          "line": 83,
+          "column": 5
+        }
+      ],
+      "suites": [
+        {
+          "title": "display name for screenshare",
+          "file": "multiparty.spec.ts",
+          "line": 118,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should display username on screenshare publisher and subscribers",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Google Chrome Fake Devices",
+                  "projectName": "Google Chrome Fake Devices",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "status": "timedOut",
+                      "duration": 60050,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/multiparty.spec.ts",
+                            "column": 19,
+                            "line": 141
+                          },
+                          "message": "Error: page.waitForSelector: Test timeout of 60000ms exceeded.\nCall log:\n  \u001b[2m- waiting for locator('.publisher') to be visible\u001b[22m\n\n\n\u001b[0m \u001b[90m 139 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 140 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 141 |\u001b[39m     \u001b[36mawait\u001b[39m pageOne\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.publisher'\u001b[39m\u001b[33m,\u001b[39m { state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 142 |\u001b[39m     \u001b[36mawait\u001b[39m pageTwo\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.subscriber'\u001b[39m\u001b[33m,\u001b[39m { state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 143 |\u001b[39m     \u001b[36mconst\u001b[39m screenshareButton \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m pageOne\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'ScreenShareIcon'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 144 |\u001b[39m     \u001b[36mawait\u001b[39m screenshareButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/multiparty.spec.ts:141:19\u001b[22m"
+                        }
+                      ],
+
+                      "stderr": [
+                        {
+                          "text": "Browser uncaught error from page 1: \"Maximum call stack size exceeded\" - RangeError: Maximum call stack size exceeded\n    at tg (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1:1)\n    at j5 (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1:1)\n    at q (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1839:27599)\n    at q (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1839:27605)\n    at q (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1839:27605)\n    at q (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1839:27605)\n    at q (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1839:27605)\n    at q (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1839:27605)\n    at q (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1839:27605)\n    at q (http://127.0.0.1:3345/assets/index-BvtCcXcg.js:1839:27605)\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2025-06-23T14:07:11.387Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "8a16fb774c025ed7887a-80d76a01f42785da8479",
+              "file": "multiparty.spec.ts",
+              "line": 123,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "reportIssue.spec.ts",
+      "file": "reportIssue.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "FeedbackForm Component",
+          "file": "reportIssue.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "renders the form fields correctly",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Skipping tests if report issues are disabled"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "Google Chrome Fake Devices",
+                  "projectName": "Google Chrome Fake Devices",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-23T14:07:10.909Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "22c4e53938ebc9a88dc1-666e057d4c670ba10c1e",
+              "file": "reportIssue.spec.ts",
+              "line": 14,
+              "column": 7
+            },
+            {
+              "title": "shows validation error messages when fields are empty",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Skipping tests if report issues are disabled"
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "Google Chrome Fake Devices",
+                  "projectName": "Google Chrome Fake Devices",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-23T14:07:10.909Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "22c4e53938ebc9a88dc1-2273983ecc84fa55749f",
+              "file": "reportIssue.spec.ts",
+              "line": 38,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "visualComparisons.spec.ts",
+      "file": "visualComparisons.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Landing page UI test",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "status": "failed",
+                  "duration": 3490,
+                  "error": {
+                    "message": "Error: \u001b[31mScreenshot comparison failed:\u001b[39m\n\n  43279 pixels (ratio 0.04 of all image pixels) are different.\n\nExpected: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts-snapshots/Landing-page-UI-test-1-Google-Chrome-Fake-Devices-linux.png\u001b[39m\nReceived: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Landing-page-UI-test-Google-Chrome-Fake-Devices/Landing-page-UI-test-1-actual.png\u001b[39m\n    Diff: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Landing-page-UI-test-Google-Chrome-Fake-Devices/Landing-page-UI-test-1-diff.png\u001b[39m\n\nCall log:\n  \u001b[2m- expect.toHaveScreenshot with timeout 5000ms\u001b[22m\n\u001b[2m  -   verifying given screenshot expectation\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - 43279 pixels (ratio 0.04 of all image pixels) are different.\u001b[22m\n\u001b[2m  - waiting 100ms before taking screenshot\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - captured a stable screenshot\u001b[22m\n\u001b[2m  - 43279 pixels (ratio 0.04 of all image pixels) are different.\u001b[22m\n",
+                    "stack": "Error: \u001b[31mScreenshot comparison failed:\u001b[39m\n\n  43279 pixels (ratio 0.04 of all image pixels) are different.\n\nExpected: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts-snapshots/Landing-page-UI-test-1-Google-Chrome-Fake-Devices-linux.png\u001b[39m\nReceived: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Landing-page-UI-test-Google-Chrome-Fake-Devices/Landing-page-UI-test-1-actual.png\u001b[39m\n    Diff: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Landing-page-UI-test-Google-Chrome-Fake-Devices/Landing-page-UI-test-1-diff.png\u001b[39m\n\nCall log:\n  \u001b[2m- expect.toHaveScreenshot with timeout 5000ms\u001b[22m\n\u001b[2m  -   verifying given screenshot expectation\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - 43279 pixels (ratio 0.04 of all image pixels) are different.\u001b[22m\n\u001b[2m  - waiting 100ms before taking screenshot\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - captured a stable screenshot\u001b[22m\n\u001b[2m  - 43279 pixels (ratio 0.04 of all image pixels) are different.\u001b[22m\n\n    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts:12:22",
+                    "location": {
+                      "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts",
+                      "column": 22,
+                      "line": 12
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 10 |\u001b[39m test(\u001b[32m'Landing page UI test'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 11 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(baseURL)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 12 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveScreenshot({})\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 13 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 14 |\u001b[39m\n \u001b[90m 15 |\u001b[39m test(\u001b[32m'Waiting page UI test'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page\u001b[33m,\u001b[39m isMobile }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts",
+                        "column": 22,
+                        "line": 12
+                      },
+                      "message": "Error: \u001b[31mScreenshot comparison failed:\u001b[39m\n\n  43279 pixels (ratio 0.04 of all image pixels) are different.\n\nExpected: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts-snapshots/Landing-page-UI-test-1-Google-Chrome-Fake-Devices-linux.png\u001b[39m\nReceived: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Landing-page-UI-test-Google-Chrome-Fake-Devices/Landing-page-UI-test-1-actual.png\u001b[39m\n    Diff: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Landing-page-UI-test-Google-Chrome-Fake-Devices/Landing-page-UI-test-1-diff.png\u001b[39m\n\nCall log:\n  \u001b[2m- expect.toHaveScreenshot with timeout 5000ms\u001b[22m\n\u001b[2m  -   verifying given screenshot expectation\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - 43279 pixels (ratio 0.04 of all image pixels) are different.\u001b[22m\n\u001b[2m  - waiting 100ms before taking screenshot\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - captured a stable screenshot\u001b[22m\n\u001b[2m  - 43279 pixels (ratio 0.04 of all image pixels) are different.\u001b[22m\n\n\n\u001b[0m \u001b[90m 10 |\u001b[39m test(\u001b[32m'Landing page UI test'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 11 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(baseURL)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 12 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveScreenshot({})\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 13 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 14 |\u001b[39m\n \u001b[90m 15 |\u001b[39m test(\u001b[32m'Waiting page UI test'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page\u001b[33m,\u001b[39m isMobile }) \u001b[33m=>\u001b[39m {\u001b[0m\n\n\u001b[2m    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts:12:22\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:07:11.376Z",
+                  "attachments": [
+                    {
+                      "name": "Landing-page-UI-test-1-expected.png",
+                      "contentType": "image/png",
+                      "path": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts-snapshots/Landing-page-UI-test-1-Google-Chrome-Fake-Devices-linux.png"
+                    },
+                    {
+                      "name": "Landing-page-UI-test-1-actual.png",
+                      "contentType": "image/png",
+                      "path": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Landing-page-UI-test-Google-Chrome-Fake-Devices/Landing-page-UI-test-1-actual.png"
+                    },
+                    {
+                      "name": "Landing-page-UI-test-1-diff.png",
+                      "contentType": "image/png",
+                      "path": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Landing-page-UI-test-Google-Chrome-Fake-Devices/Landing-page-UI-test-1-diff.png"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts",
+                    "column": 22,
+                    "line": 12
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e24c1760e27abadfebbf-f2b5a91ee4f00736d18c",
+          "file": "visualComparisons.spec.ts",
+          "line": 10,
+          "column": 5
+        },
+        {
+          "title": "Waiting page UI test",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "status": "failed",
+                  "duration": 3080,
+                  "error": {
+                    "message": "Error: \u001b[31mScreenshot comparison failed:\u001b[39m\n\n  24442 pixels (ratio 0.02 of all image pixels) are different.\n\nExpected: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts-snapshots/Waiting-page-UI-test-1-Google-Chrome-Fake-Devices-linux.png\u001b[39m\nReceived: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Waiting-page-UI-test-Google-Chrome-Fake-Devices/Waiting-page-UI-test-1-actual.png\u001b[39m\n    Diff: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Waiting-page-UI-test-Google-Chrome-Fake-Devices/Waiting-page-UI-test-1-diff.png\u001b[39m\n\nCall log:\n  \u001b[2m- expect.toHaveScreenshot with timeout 5000ms\u001b[22m\n\u001b[2m  -   verifying given screenshot expectation\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - 24442 pixels (ratio 0.02 of all image pixels) are different.\u001b[22m\n\u001b[2m  - waiting 100ms before taking screenshot\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - captured a stable screenshot\u001b[22m\n\u001b[2m  - 24442 pixels (ratio 0.02 of all image pixels) are different.\u001b[22m\n",
+                    "stack": "Error: \u001b[31mScreenshot comparison failed:\u001b[39m\n\n  24442 pixels (ratio 0.02 of all image pixels) are different.\n\nExpected: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts-snapshots/Waiting-page-UI-test-1-Google-Chrome-Fake-Devices-linux.png\u001b[39m\nReceived: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Waiting-page-UI-test-Google-Chrome-Fake-Devices/Waiting-page-UI-test-1-actual.png\u001b[39m\n    Diff: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Waiting-page-UI-test-Google-Chrome-Fake-Devices/Waiting-page-UI-test-1-diff.png\u001b[39m\n\nCall log:\n  \u001b[2m- expect.toHaveScreenshot with timeout 5000ms\u001b[22m\n\u001b[2m  -   verifying given screenshot expectation\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - 24442 pixels (ratio 0.02 of all image pixels) are different.\u001b[22m\n\u001b[2m  - waiting 100ms before taking screenshot\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - captured a stable screenshot\u001b[22m\n\u001b[2m  - 24442 pixels (ratio 0.02 of all image pixels) are different.\u001b[22m\n\n    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts:20:22",
+                    "location": {
+                      "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts",
+                      "column": 22,
+                      "line": 20
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 18 |\u001b[39m     test\u001b[33m.\u001b[39mskip()\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m   }\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 20 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveScreenshot({\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 21 |\u001b[39m     mask\u001b[33m:\u001b[39m [page\u001b[33m.\u001b[39mlocator(\u001b[32m'.video__element'\u001b[39m)]\u001b[33m,\u001b[39m\n \u001b[90m 22 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 23 |\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts",
+                        "column": 22,
+                        "line": 20
+                      },
+                      "message": "Error: \u001b[31mScreenshot comparison failed:\u001b[39m\n\n  24442 pixels (ratio 0.02 of all image pixels) are different.\n\nExpected: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts-snapshots/Waiting-page-UI-test-1-Google-Chrome-Fake-Devices-linux.png\u001b[39m\nReceived: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Waiting-page-UI-test-Google-Chrome-Fake-Devices/Waiting-page-UI-test-1-actual.png\u001b[39m\n    Diff: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Waiting-page-UI-test-Google-Chrome-Fake-Devices/Waiting-page-UI-test-1-diff.png\u001b[39m\n\nCall log:\n  \u001b[2m- expect.toHaveScreenshot with timeout 5000ms\u001b[22m\n\u001b[2m  -   verifying given screenshot expectation\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - 24442 pixels (ratio 0.02 of all image pixels) are different.\u001b[22m\n\u001b[2m  - waiting 100ms before taking screenshot\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - captured a stable screenshot\u001b[22m\n\u001b[2m  - 24442 pixels (ratio 0.02 of all image pixels) are different.\u001b[22m\n\n\n\u001b[0m \u001b[90m 18 |\u001b[39m     test\u001b[33m.\u001b[39mskip()\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m   }\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 20 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveScreenshot({\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 21 |\u001b[39m     mask\u001b[33m:\u001b[39m [page\u001b[33m.\u001b[39mlocator(\u001b[32m'.video__element'\u001b[39m)]\u001b[33m,\u001b[39m\n \u001b[90m 22 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 23 |\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts:20:22\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:07:11.374Z",
+                  "attachments": [
+                    {
+                      "name": "Waiting-page-UI-test-1-expected.png",
+                      "contentType": "image/png",
+                      "path": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts-snapshots/Waiting-page-UI-test-1-Google-Chrome-Fake-Devices-linux.png"
+                    },
+                    {
+                      "name": "Waiting-page-UI-test-1-actual.png",
+                      "contentType": "image/png",
+                      "path": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Waiting-page-UI-test-Google-Chrome-Fake-Devices/Waiting-page-UI-test-1-actual.png"
+                    },
+                    {
+                      "name": "Waiting-page-UI-test-1-diff.png",
+                      "contentType": "image/png",
+                      "path": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Waiting-page-UI-test-Google-Chrome-Fake-Devices/Waiting-page-UI-test-1-diff.png"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts",
+                    "column": 22,
+                    "line": 20
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e24c1760e27abadfebbf-f5266eb3439c6704a738",
+          "file": "visualComparisons.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "Unsupported browser page UI test",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "status": "failed",
+                  "duration": 3379,
+                  "error": {
+                    "message": "Error: \u001b[31mScreenshot comparison failed:\u001b[39m\n\n  12654 pixels (ratio 0.02 of all image pixels) are different.\n\nExpected: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts-snapshots/Unsupported-browser-page-UI-test-1-Google-Chrome-Fake-Devices-linux.png\u001b[39m\nReceived: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Unsupported-browser-page-UI-test-Google-Chrome-Fake-Devices/Unsupported-browser-page-UI-test-1-actual.png\u001b[39m\n    Diff: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Unsupported-browser-page-UI-test-Google-Chrome-Fake-Devices/Unsupported-browser-page-UI-test-1-diff.png\u001b[39m\n\nCall log:\n  \u001b[2m- expect.toHaveScreenshot with timeout 5000ms\u001b[22m\n\u001b[2m  -   verifying given screenshot expectation\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - 12654 pixels (ratio 0.02 of all image pixels) are different.\u001b[22m\n\u001b[2m  - waiting 100ms before taking screenshot\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - captured a stable screenshot\u001b[22m\n\u001b[2m  - 12654 pixels (ratio 0.02 of all image pixels) are different.\u001b[22m\n",
+                    "stack": "Error: \u001b[31mScreenshot comparison failed:\u001b[39m\n\n  12654 pixels (ratio 0.02 of all image pixels) are different.\n\nExpected: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts-snapshots/Unsupported-browser-page-UI-test-1-Google-Chrome-Fake-Devices-linux.png\u001b[39m\nReceived: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Unsupported-browser-page-UI-test-Google-Chrome-Fake-Devices/Unsupported-browser-page-UI-test-1-actual.png\u001b[39m\n    Diff: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Unsupported-browser-page-UI-test-Google-Chrome-Fake-Devices/Unsupported-browser-page-UI-test-1-diff.png\u001b[39m\n\nCall log:\n  \u001b[2m- expect.toHaveScreenshot with timeout 5000ms\u001b[22m\n\u001b[2m  -   verifying given screenshot expectation\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - 12654 pixels (ratio 0.02 of all image pixels) are different.\u001b[22m\n\u001b[2m  - waiting 100ms before taking screenshot\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - captured a stable screenshot\u001b[22m\n\u001b[2m  - 12654 pixels (ratio 0.02 of all image pixels) are different.\u001b[22m\n\n    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts:27:22",
+                    "location": {
+                      "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts",
+                      "column": 22,
+                      "line": 27
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 25 |\u001b[39m test(\u001b[32m'Unsupported browser page UI test'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 26 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m`${baseURL}unsupported-browser`\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveScreenshot({})\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts",
+                        "column": 22,
+                        "line": 27
+                      },
+                      "message": "Error: \u001b[31mScreenshot comparison failed:\u001b[39m\n\n  12654 pixels (ratio 0.02 of all image pixels) are different.\n\nExpected: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts-snapshots/Unsupported-browser-page-UI-test-1-Google-Chrome-Fake-Devices-linux.png\u001b[39m\nReceived: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Unsupported-browser-page-UI-test-Google-Chrome-Fake-Devices/Unsupported-browser-page-UI-test-1-actual.png\u001b[39m\n    Diff: \u001b[33m/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Unsupported-browser-page-UI-test-Google-Chrome-Fake-Devices/Unsupported-browser-page-UI-test-1-diff.png\u001b[39m\n\nCall log:\n  \u001b[2m- expect.toHaveScreenshot with timeout 5000ms\u001b[22m\n\u001b[2m  -   verifying given screenshot expectation\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - 12654 pixels (ratio 0.02 of all image pixels) are different.\u001b[22m\n\u001b[2m  - waiting 100ms before taking screenshot\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  -   disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - captured a stable screenshot\u001b[22m\n\u001b[2m  - 12654 pixels (ratio 0.02 of all image pixels) are different.\u001b[22m\n\n\n\u001b[0m \u001b[90m 25 |\u001b[39m test(\u001b[32m'Unsupported browser page UI test'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 26 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m`${baseURL}unsupported-browser`\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveScreenshot({})\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m\u001b[0m\n\n\u001b[2m    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts:27:22\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:07:11.448Z",
+                  "attachments": [
+                    {
+                      "name": "Unsupported-browser-page-UI-test-1-expected.png",
+                      "contentType": "image/png",
+                      "path": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts-snapshots/Unsupported-browser-page-UI-test-1-Google-Chrome-Fake-Devices-linux.png"
+                    },
+                    {
+                      "name": "Unsupported-browser-page-UI-test-1-actual.png",
+                      "contentType": "image/png",
+                      "path": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Unsupported-browser-page-UI-test-Google-Chrome-Fake-Devices/Unsupported-browser-page-UI-test-1-actual.png"
+                    },
+                    {
+                      "name": "Unsupported-browser-page-UI-test-1-diff.png",
+                      "contentType": "image/png",
+                      "path": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/test-results/visualComparisons-Unsupported-browser-page-UI-test-Google-Chrome-Fake-Devices/Unsupported-browser-page-UI-test-1-diff.png"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/visualComparisons.spec.ts",
+                    "column": 22,
+                    "line": 27
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e24c1760e27abadfebbf-062c4fd29fda513edb04",
+          "file": "visualComparisons.spec.ts",
+          "line": 25,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "waitingRoom.spec.ts",
+      "file": "waitingRoom.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "The buttons in the meeting room should match those in the waiting room with enabled buttons",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 14,
+                  "status": "timedOut",
+                  "duration": 60027,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/waitingRoom.spec.ts",
+                        "column": 14,
+                        "line": 26
+                      },
+                      "message": "Error: page.waitForSelector: Test timeout of 60000ms exceeded.\nCall log:\n  \u001b[2m- waiting for locator('.publisher') to be visible\u001b[22m\n\n\n\u001b[0m \u001b[90m 24 |\u001b[39m\n \u001b[90m 25 |\u001b[39m   expect(page\u001b[33m.\u001b[39murl())\u001b[33m.\u001b[39mtoContain(\u001b[32m'room/test-room'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.publisher'\u001b[39m\u001b[33m,\u001b[39m { state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 27 |\u001b[39m\n \u001b[90m 28 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'MicNoneIcon'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'VideocamIcon'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/waitingRoom.spec.ts:26:14\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:07:14.587Z",
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a1cca57308663325fe35-a749e4bfa25c007d529e",
+          "file": "waitingRoom.spec.ts",
+          "line": 9,
+          "column": 5
+        },
+        {
+          "title": "The buttons in the meeting room should match those in the waiting room with disabled buttons",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Google Chrome Fake Devices",
+              "projectName": "Google Chrome Fake Devices",
+              "results": [
+                {
+                  "workerIndex": 15,
+                  "status": "timedOut",
+                  "duration": 60022,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/waitingRoom.spec.ts",
+                        "column": 14,
+                        "line": 64
+                      },
+                      "message": "Error: page.waitForSelector: Test timeout of 60000ms exceeded.\nCall log:\n  \u001b[2m- waiting for locator('.publisher') to be visible\u001b[22m\n\n\n\u001b[0m \u001b[90m 62 |\u001b[39m\n \u001b[90m 63 |\u001b[39m   expect(page\u001b[33m.\u001b[39murl())\u001b[33m.\u001b[39mtoContain(\u001b[32m'room/test-room'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 64 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForSelector(\u001b[32m'.publisher'\u001b[39m\u001b[33m,\u001b[39m { state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 65 |\u001b[39m\n \u001b[90m 66 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'VideocamOffIcon'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 67 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m'MicOffToolbar'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\n\u001b[2m    at /home/nabeel/vonage-video-react-app-1.0.2/integration-tests/tests/waitingRoom.spec.ts:64:14\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-06-23T14:07:17.763Z",
+                  "attachments": []
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a1cca57308663325fe35-631cf021306c9981003a",
+          "file": "waitingRoom.spec.ts",
+          "line": 44,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-06-23T14:06:08.899Z",
+    "duration": 129218.82699999999,
+    "expected": 4,
+    "skipped": 2,
+    "unexpected": 16,
+    "flaky": 0
+  }
+}

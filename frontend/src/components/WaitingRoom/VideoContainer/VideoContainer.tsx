@@ -60,10 +60,9 @@ const VideoContainer = ({ username }: VideoContainerProps): ReactElement => {
 
   return (
     <div
-      className="relative max-w-full w-[584px] bg-black sm:h-[328px] flex flex-col items-center justify-center md:rounded-xl"
+      className="relative max-w-full w-[584px] bg-black sm:h-[328px] flex flex-col items-center justify-center md:rounded-xl mask-gradient"
       // this was added because overflow: hidden causes issues with rendering
       // see https://stackoverflow.com/questions/77748631/element-rounded-corners-leaking-out-to-front-when-using-overflow-hidden
-      style={{ WebkitMask: 'linear-gradient(#000 0 0)' }}
     >
       <div ref={containerRef} />
       <VignetteEffect />

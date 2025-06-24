@@ -1,7 +1,5 @@
-import { TextField, Button, InputAdornment } from '@mui/material';
 import React, { Dispatch, MouseEvent, ReactElement, SetStateAction, useState } from 'react';
 import { PersonOutline } from '@mui/icons-material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import useUserContext from '../../../hooks/useUserContext';
 import { UserType } from '../../../Context/user';
@@ -12,24 +10,6 @@ export type UserNameInputProps = {
   username: string;
   setUsername: Dispatch<SetStateAction<string>>;
 };
-
-declare module '@mui/material/styles' {
-  interface Palette {
-    blue: Palette['primary'];
-  }
-
-  interface PaletteOptions {
-    blue?: PaletteOptions['primary'];
-  }
-}
-
-const theme = createTheme({
-  palette: {
-    blue: {
-      main: 'rgba(26,115,232,.9)',
-    },
-  },
-});
 
 /**
  * UsernameInput Component
@@ -91,64 +71,46 @@ const UsernameInput = ({ username, setUsername }: UserNameInputProps): ReactElem
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <form className="flex flex-col justify-center items-left md:max-w-[480px] w-full px-6 md:relative md:top-[-48px]">
-        <div className="flex items-center flex-col justify-end mt-4">
-          <div className="leading-8 mb-2 font-sans text-[28px]">Prepare to join:</div>
-          <div className="flex py-2 decoration-solid text-l flex-col content-end md:max-w-[480px] w-full">
-            <p className="truncate">{roomName}</p>
-          </div>
-          <div className="leading-8 mt-6 font-sans text-[24px]">What is your name?</div>
-          <div className="w-full flex flex-wrap items-center justify-center mb-5">
-            <TextField
-              size="small"
-              margin="dense"
-              placeholder="Enter your name"
-              onChange={onChangeParticipantName}
-              sx={{
-                display: 'flex',
-                width: '100%',
-                maxWidth: '212px',
-                marginTop: '20px',
-                paddingLeft: '0px',
-              }}
-              required
-              id="user-name"
-              name="Name"
-              error={isUserNameInvalid}
-              autoComplete="Name"
-              autoFocus
-              value={username}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <PersonOutline />
-                  </InputAdornment>
-                ),
-                inputProps: { maxLength: 60 },
-              }}
-            />
-          </div>
-          <Button
-            onClick={handleJoinClick}
-            variant="contained"
-            color="primary"
-            sx={{
-              width: '117px',
-              borderRadius: '24px',
-              color: 'white',
-              textTransform: 'none',
-              fontSize: '14px',
-              height: '48px',
-            }}
-            disabled={!username}
-            type="submit"
-          >
-            Join
-          </Button>
+    <form className="flex flex-col justify-center items-left md:max-w-[480px] w-full px-6 md:relative md:top-[-48px]">
+      <div className="flex items-center flex-col justify-end mt-4">
+        <div className="leading-8 mb-2 font-sans text-[28px]">Prepare to join:</div>
+        <div className="flex py-2 decoration-solid text-l flex-col content-end md:max-w-[480px] w-full">
+          <p className="truncate">{roomName}</p>
         </div>
-      </form>
-    </ThemeProvider>
+        <div className="leading-8 mt-6 font-sans text-[24px]">What is your name?</div>
+        <div className="w-full flex flex-wrap items-center justify-center mb-5">
+          <div className="relative w-full max-w-xs">
+            <label htmlFor="user-name">
+              <span className="sr-only">Enter your name</span>
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <PersonOutline className="text-gray-400" />
+              </div>
+              <input
+                id="user-name"
+                type="text"
+                className="w-full h-12 pl-10 pr-2 rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 peer"
+                placeholder="Enter your name"
+                value={username}
+                onChange={onChangeParticipantName}
+                maxLength={60}
+                required
+              />
+            </label>
+            {isUserNameInvalid && (
+              <p className="mt-2 text-sm text-red-600">Please enter your name.</p>
+            )}
+          </div>
+        </div>
+        <button
+          onClick={handleJoinClick}
+          className="w-28 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white normal-case text-sm transition disabled:opacity-50"
+          disabled={!username}
+          type="submit"
+        >
+          Join
+        </button>
+      </div>
+    </form>
   );
 };
 

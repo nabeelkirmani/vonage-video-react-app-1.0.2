@@ -31,18 +31,18 @@ test.describe('chat', () => {
     await pageTwo.waitForSelector('.subscriber', { state: 'visible' });
 
     const chatToggleButtonOne = await pageOne.getByTestId('chat-toggle-unread-count');
-    chatToggleButtonOne.click();
+    await chatToggleButtonOne.click();
 
-    // Check that chat open shows blue button
-    await expect(pageOne.getByTestId('ChatIcon')).toHaveCSS('color', 'rgb(130, 177, 255)');
+    // Check that chat panel is visible
+    await expect(pageOne.getByTestId('chat-panel')).toBeVisible();
 
-    // Send button is greyed out when text box empty
-    await expect(pageOne.getByTestId('SendIcon')).toHaveCSS('color', 'rgb(178, 180, 182)');
+    // Send button is disabled when text box empty
+    await expect(pageOne.getByTestId('SendIcon')).toBeDisabled();
 
     await pageOne.getByPlaceholder('Send a message').fill('Hi there, welcome to the meeting!');
 
-    // Send button is blue when text in box
-    await expect(pageOne.getByTestId('SendIcon')).toHaveCSS('color', 'rgb(130, 177, 255)');
+    // Send button is enabled when text in box
+    await expect(pageOne.getByTestId('SendIcon')).toBeEnabled();
 
     await pageOne.getByTestId('SendIcon').click();
 

@@ -85,16 +85,18 @@ export type ArchiveListProps = {
 const ArchiveList = ({ archives }: ArchiveListProps): ReactElement => {
   if (archives === 'error') {
     return (
-      <>
-        <WarningOutlinedIcon color="warning" />
-        <h3 className="text-large text-slate-500">
-          There was an error loading recordings for this meeting
-        </h3>
-      </>
+      <div className="flex items-center rounded-md bg-red-50 p-4">
+        <WarningOutlinedIcon className="text-red-500" />
+        <p className="ml-4 text-red-700">There was an error loading recordings for this meeting.</p>
+      </div>
     );
   }
   if (!archives.length) {
-    return <h3 className="text-large text-slate-500">There are no recordings for this meeting</h3>;
+    return (
+      <div className="flex items-center rounded-md bg-gray-50 p-4">
+        <p className="text-gray-500">No recordings were found for this meeting.</p>
+      </div>
+    );
   }
   return (
     <div className="md:max-h-[480px] md:overflow-y-auto ">

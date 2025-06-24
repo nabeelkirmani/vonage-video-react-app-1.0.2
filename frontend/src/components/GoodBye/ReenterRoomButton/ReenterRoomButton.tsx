@@ -23,13 +23,7 @@ const ReenterRoomButton = ({
     roomName && (
       <Button
         variant="outlined"
-        className="h-12"
-        sx={{
-          textTransform: 'none',
-          fontSize: '1rem',
-          marginRight: '8px',
-          marginBottom: '16px',
-        }}
+        className="h-12 normal-case text-base mr-2 mb-4 py-2 px-4 rounded-lg transition"
         onClick={handleReenter}
       >
         Re-enter

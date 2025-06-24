@@ -1,5 +1,4 @@
 import { SetStateAction, Dispatch, ReactElement, ChangeEvent } from 'react';
-import { InputAdornment, TextField } from '@mui/material';
 import { Keyboard } from '@mui/icons-material';
 import isValidRoomName from '../../utils/isValidRoomName';
 
@@ -45,23 +44,26 @@ const RoomNameInput = ({
     }
   };
   return (
-    <TextField
-      id="room-name"
-      className="w-52 h-12 pr-2"
-      placeholder="Enter room name"
-      value={roomName}
-      onChange={handleChange}
-      error={hasError}
-      helperText={hasError ? 'No spaces or special characters allowed' : ''}
-      InputProps={{
-        inputProps: { maxLength: 60 },
-        startAdornment: (
-          <InputAdornment position="start">
-            <Keyboard />
-          </InputAdornment>
-        ),
-      }}
-    />
+    <div className="relative w-52">
+      <label htmlFor="room-name">
+        <span className="sr-only">Enter room name</span>
+        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <Keyboard className="text-gray-400" />
+        </div>
+        <input
+          id="room-name"
+          type="text"
+          className="w-full h-14 pl-10 pr-2 rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 peer"
+          placeholder="Enter room name"
+          value={roomName}
+          onChange={handleChange}
+          maxLength={60}
+        />
+      </label>
+      {hasError && (
+        <p className="mt-2 text-sm text-red-600">No spaces or special characters allowed</p>
+      )}
+    </div>
   );
 };
 

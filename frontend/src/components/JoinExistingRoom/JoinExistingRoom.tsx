@@ -13,15 +13,18 @@ const JoinExistingRoom = (): ReactElement => {
   const [hasError, setHasError] = useState(false);
 
   return (
-    <form className="flex-row w-72 mt-[35px]">
-      <RoomNameInput
-        setRoomName={setRoomName}
-        roomName={roomName}
-        hasError={hasError}
-        setHasError={setHasError}
-      />
-
-      <JoinButton roomName={roomName} isDisabled={hasError} />
+    <form className="flex items-center w-full max-w-sm mt-8">
+      <div className="flex-grow">
+        <RoomNameInput
+          setRoomName={setRoomName}
+          roomName={roomName}
+          hasError={hasError}
+          setHasError={setHasError}
+        />
+      </div>
+      <div className="ml-4">
+        <JoinButton roomName={roomName} isDisabled={hasError} />
+      </div>
     </form>
   );
 };

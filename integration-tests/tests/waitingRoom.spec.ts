@@ -3,7 +3,7 @@ import { test, baseURL } from '../fixtures/testWithLogging';
 
 test.beforeEach(async ({ page }) => {
   await page.goto(`${baseURL}waiting-room/test-room`);
-  await page.waitForTimeout(1000);
+  await page.waitForURL(`${baseURL}waiting-room/test-room`);
 });
 
 test('The buttons in the meeting room should match those in the waiting room with enabled buttons', async ({
@@ -20,10 +20,11 @@ test('The buttons in the meeting room should match those in the waiting room wit
     await expect(page.getByTestId('blurIcon')).toBeVisible();
   }
   await page.getByPlaceholder('Enter your name').fill('some-user');
-  await page.getByRole('button', { name: 'Join' }).click({ force: true });
+  await expect(page.getByRole('button', { name: 'Join' })).toBeEnabled();
+  await page.getByRole('button', { name: 'Join' }).click();
 
-  expect(page.url()).toContain('room/test-room');
-  await page.waitForSelector('.publisher', { state: 'visible' });
+  await page.waitForURL(`${baseURL}room/test-room`);
+  await expect(page.locator('.publisher')).toBeVisible({ timeout: 15000 });
 
   await expect(page.getByTestId('MicNoneIcon')).toBeVisible();
   await expect(page.getByTestId('VideocamIcon')).toBeVisible();
@@ -58,10 +59,11 @@ test('The buttons in the meeting room should match those in the waiting room wit
     await expect(page.getByTestId('BlurOffIcon')).toBeVisible();
   }
   await page.getByPlaceholder('Enter your name').fill('some user');
-  await page.getByRole('button', { name: 'Join' }).click({ force: true });
+  await expect(page.getByRole('button', { name: 'Join' })).toBeEnabled();
+  await page.getByRole('button', { name: 'Join' }).click();
 
-  expect(page.url()).toContain('room/test-room');
-  await page.waitForSelector('.publisher', { state: 'visible' });
+  await page.waitForURL(`${baseURL}room/test-room`);
+  await expect(page.locator('.publisher')).toBeVisible({ timeout: 15000 });
 
   await expect(page.getByTestId('VideocamOffIcon')).toBeVisible();
   await expect(page.getByTestId('MicOffToolbar')).toBeVisible();

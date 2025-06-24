@@ -1,8 +1,5 @@
+Onasi
 Opentok
-Vonage
-screensharing
-reconnections
-Videocam
+VONAGE
+vonage
 issuetype
-Autolinker
-NOSONAR

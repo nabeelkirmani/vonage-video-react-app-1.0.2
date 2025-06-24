@@ -22,11 +22,9 @@ const RoomJoinContainer = (): ReactElement => {
   };
 
   return (
-    <div className="md:pe-12 flex flex-1 flex-col flex-start justify-start items-center md:justify-center w-10/12 max-w-xl mt-6 md:mt-0">
+    <div className="flex flex-col items-center justify-center w-full max-w-md p-8">
       <NewRoomButton handleNewRoom={handleNewRoom} />
-
       <JoinContainerSeparator />
-
       <JoinExistingRoom />
     </div>
   );

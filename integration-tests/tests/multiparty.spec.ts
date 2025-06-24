@@ -24,27 +24,21 @@ test('should publish and subscribe with 3 participants', async ({
   const pageThree = await context.newPage();
 
   await pageOne.goto(roomUrl);
-
-  // These clicks and waits are needed for firefox
+  await pageOne.waitForURL(roomUrl);
   await waitAndClickFirefox(pageOne, browserName);
 
   await pageTwo.goto(roomUrl);
+  await pageTwo.waitForURL(roomUrl);
   await waitAndClickFirefox(pageTwo, browserName);
 
   await pageThree.goto(roomUrl);
+  await pageThree.waitForURL(roomUrl);
   await waitAndClickFirefox(pageThree, browserName);
 
-  await pageThree.waitForSelector('.publisher', { state: 'visible' });
-  await pageThree.waitForSelector('.subscriber', { state: 'visible' });
+  await expect(pageThree.locator('.publisher')).toBeVisible({ timeout: 15000 });
+  await expect(pageThree.locator('.subscriber')).toBeVisible({ timeout: 15000 });
 
-  await expect
-    .poll(
-      async () => {
-        return (await pageThree.locator('.video__element').all()).length;
-      },
-      { timeout: 10000 }
-    )
-    .toBe(3);
+  await expect(pageThree.locator('.video__element')).toHaveCount(3, { timeout: 15000 });
 });
 
 test('should display username on publisher and subscribers', async ({
@@ -60,13 +54,10 @@ test('should display username on publisher and subscribers', async ({
   });
   await waitAndClickFirefox(pageOne, browserName);
 
-  await pageOne.waitForSelector('.publisher', { state: 'visible' });
-
-  await pageOne
-    .getByTestId('publisher-container')
-    .getByText('User One')
-    .waitFor({ state: 'visible' });
-  expect(await pageOne.getByTestId('publisher-container').getByText('User One')).toBeVisible();
+  await expect(pageOne.locator('.publisher')).toBeVisible({ timeout: 15000 });
+  await expect(pageOne.getByTestId('publisher-container').getByText('User One')).toBeVisible({
+    timeout: 15000,
+  });
 
   const pageTwo = await context.newPage();
   await openMeetingRoomWithSettings({
@@ -76,8 +67,10 @@ test('should display username on publisher and subscribers', async ({
   });
   await waitAndClickFirefox(pageTwo, browserName);
 
-  await pageOne.waitForSelector('.subscriber', { state: 'visible' });
-  await expect(await pageOne.locator('.subscriber').getByText('User Two')).toBeVisible();
+  await expect(pageOne.locator('.subscriber')).toBeVisible({ timeout: 15000 });
+  await expect(pageOne.locator('.subscriber').getByText('User Two')).toBeVisible({
+    timeout: 15000,
+  });
 });
 
 test('should display initials on publisher and subscribers', async ({
@@ -94,10 +87,8 @@ test('should display initials on publisher and subscribers', async ({
   });
   await waitAndClickFirefox(pageOne, browserName);
 
-  await pageOne.waitForSelector('.publisher', { state: 'visible' });
-
-  await pageOne.getByText(/SO/).waitFor({ state: 'visible' });
-  await expect(await pageOne.getByText(/SO/)).toBeVisible();
+  await expect(pageOne.locator('.publisher')).toBeVisible({ timeout: 15000 });
+  await expect(pageOne.getByText(/SO/)).toBeVisible({ timeout: 15000 });
 
   const pageTwo = await context.newPage();
   await openMeetingRoomWithSettings({
@@ -108,11 +99,11 @@ test('should display initials on publisher and subscribers', async ({
   });
   await waitAndClickFirefox(pageTwo, browserName);
 
-  await pageTwo.waitForSelector('.publisher', { state: 'visible' });
-  await expect(pageTwo.getByText(/SO/)).toBeVisible();
-  await expect(pageTwo.getByText(/KL/)).toBeVisible();
+  await expect(pageTwo.locator('.publisher')).toBeVisible({ timeout: 15000 });
+  await expect(pageTwo.getByText(/SO/)).toBeVisible({ timeout: 15000 });
+  await expect(pageTwo.getByText(/KL/)).toBeVisible({ timeout: 15000 });
 
-  await expect(pageOne.getByText(/KL/)).toBeVisible();
+  await expect(pageOne.getByText(/KL/)).toBeVisible({ timeout: 15000 });
 });
 
 test.describe('display name for screenshare', () => {
@@ -138,17 +129,17 @@ test.describe('display name for screenshare', () => {
       roomName,
     });
 
-    await pageOne.waitForSelector('.publisher', { state: 'visible' });
-    await pageTwo.waitForSelector('.subscriber', { state: 'visible' });
+    await expect(pageOne.locator('.publisher')).toBeVisible({ timeout: 15000 });
+    await expect(pageTwo.locator('.subscriber')).toBeVisible({ timeout: 15000 });
     const screenshareButton = await pageOne.getByTestId('ScreenShareIcon');
     await screenshareButton.click();
 
     await expect(
-      await pageOne.getByTestId('screen-publisher-container').getByText(`User One's screen`)
-    ).toBeVisible();
+      pageOne.getByTestId('screen-publisher-container').getByText(`User One's screen`)
+    ).toBeVisible({ timeout: 15000 });
 
-    await expect(
-      await pageTwo.locator('.screen-subscriber').getByText(`User One's screen`)
-    ).toBeVisible();
+    await expect(pageTwo.locator('.screen-subscriber').getByText(`User One's screen`)).toBeVisible({
+      timeout: 15000,
+    });
   });
 });

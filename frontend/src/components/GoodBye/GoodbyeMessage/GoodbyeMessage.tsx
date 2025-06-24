@@ -26,11 +26,12 @@ const GoodByeMessage = ({ header, message, roomName }: GoodByeMessageProps): Rea
   };
   return (
     <div className="ps-12 py-4 h-auto w-full shrink text-left">
-      <h2 className="text-5xl text-black pb-5 w-9/12">{header}</h2>
-      <h3 className="text-large text-slate-500 min-[400px]:w-[400px] pr-12">{message}</h3>
-      <div className="flex flex-row mt-6 items-center pr-0">
+      <h2 className="text-5xl text-black pb-5 w-9/12 text-center">{header}</h2>
+      <h3 className="text-large text-slate-500 min-[400px]:w-[400px] pr-12 text-center">
+        {message}
+      </h3>
+      <div className="flex flex-row mt-4 items-center justify-center space-x-4">
         <ReenterRoomButton handleReenter={handleReenter} roomName={roomName} />
-
         <GoToLandingPageButton handleLanding={handleLanding} />
       </div>
     </div>
