@@ -394,7 +394,7 @@ const SessionProvider = ({ children }: SessionProviderProps): ReactElement => {
   const joinRoom = useCallback(async (roomName: string) => {
     fetchCredentials(roomName)
       .then((credentials) => {
-        connect(credentials.data);
+        connect(credentials);
       })
       .catch(console.warn);
     // eslint-disable-next-line react-hooks/exhaustive-deps
