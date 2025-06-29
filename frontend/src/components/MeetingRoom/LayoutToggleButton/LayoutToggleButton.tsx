@@ -1,10 +1,10 @@
-import ViewSidebarIcon from '@mui/icons-material/ViewSidebar';
-import Tooltip from '@mui/material/Tooltip';
-import WindowIcon from '@mui/icons-material/Window';
-import { ReactElement } from 'react';
-import useSessionContext from '../../../hooks/useSessionContext';
-import displayOnDesktop from '../../../utils/displayOnDesktop';
-import ToolbarButton from '../ToolbarButton';
+import ViewSidebarIcon from "@mui/icons-material/ViewSidebar";
+import Tooltip from "@mui/material/Tooltip";
+import WindowIcon from "@mui/icons-material/Window";
+import { ReactElement } from "react";
+import useSessionContext from "../../../hooks/useSessionContext";
+import displayOnDesktop from "../../../utils/displayOnDesktop";
+import ToolbarButton from "../ToolbarButton";
 
 type LayoutToggleButtonProps = {
   isScreenSharePresent: boolean;
@@ -17,22 +17,24 @@ type LayoutToggleButtonProps = {
  * @param {boolean} isScreenSharePresent - Indicates whether there is a screenshare currently in the session.
  * @returns {ReactElement} The LayoutToggleButton component.
  */
-const LayoutToggleButton = ({ isScreenSharePresent }: LayoutToggleButtonProps): ReactElement => {
+const LayoutToggleButton = ({
+  isScreenSharePresent,
+}: LayoutToggleButtonProps): ReactElement => {
   const { layoutMode, setLayoutMode } = useSessionContext();
-  const isGrid = layoutMode === 'grid';
+  const isGrid = layoutMode === "grid";
 
   const handleClick = () => {
     if (isScreenSharePresent) {
       return;
     }
-    setLayoutMode((prev) => (prev === 'grid' ? 'active-speaker' : 'grid'));
+    setLayoutMode((prev) => (prev === "grid" ? "active-speaker" : "grid"));
   };
 
   const getTooltipTitle = () => {
     if (isScreenSharePresent) {
-      return 'Cannot switch layout while screen share is active';
+      return "Cannot switch layout while screen share is active";
     }
-    return isGrid ? 'Switch to Active Speaker layout' : 'Switch to Grid layout';
+    return isGrid ? "Switch to Active Speaker layout" : "Switch to Grid layout";
   };
 
   return (
@@ -40,7 +42,7 @@ const LayoutToggleButton = ({ isScreenSharePresent }: LayoutToggleButtonProps): 
       <Tooltip
         title={getTooltipTitle()}
         sx={{
-          maxWidth: '800px',
+          maxWidth: "800px",
         }}
         aria-label="video layout"
       >
@@ -48,13 +50,21 @@ const LayoutToggleButton = ({ isScreenSharePresent }: LayoutToggleButtonProps): 
           onClick={handleClick}
           icon={
             !isGrid ? (
-              <ViewSidebarIcon className={isScreenSharePresent ? 'text-gray-500' : 'text-white'} />
+              <ViewSidebarIcon
+                className={
+                  isScreenSharePresent ? "text-gray-500" : "text-white"
+                }
+              />
             ) : (
-              <WindowIcon className={isScreenSharePresent ? 'text-gray-500' : 'text-white'} />
+              <WindowIcon
+                className={
+                  isScreenSharePresent ? "text-gray-500" : "text-white"
+                }
+              />
             )
           }
           sx={{
-            cursor: isScreenSharePresent ? 'not-allowed' : 'pointer',
+            cursor: isScreenSharePresent ? "not-allowed" : "pointer",
           }}
         />
       </Tooltip>

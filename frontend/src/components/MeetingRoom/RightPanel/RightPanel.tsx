@@ -1,10 +1,10 @@
-import { ReactElement } from 'react';
-import ParticipantList from '../ParticipantList/ParticipantList';
-import Chat from '../Chat';
-import ReportIssue from '../ReportIssue';
-import type { RightPanelActiveTab } from '../../../hooks/useRightPanel';
+import { ReactElement } from "react";
+import ParticipantList from "../ParticipantList/ParticipantList";
+import Chat from "../Chat";
+import ReportIssue from "../ReportIssue";
+import type { RightPanelActiveTab } from "../../../hooks/useRightPanel";
 
-const height = '@apply h-[calc(100vh_-_96px)]';
+const height = "@apply h-[calc(100vh_-_96px)]";
 
 export type RightPanelProps = {
   handleClose: () => void;
@@ -20,16 +20,25 @@ export type RightPanelProps = {
  *   @property {() => void} handleClose - click handler to close the panel
  * @returns {ReactElement} RightPanel Component
  */
-const RightPanel = ({ activeTab, handleClose }: RightPanelProps): ReactElement => {
+const RightPanel = ({
+  activeTab,
+  handleClose,
+}: RightPanelProps): ReactElement => {
   return (
     <div
       data-testid="right-panel"
-      className={`${height} w-[360px] bg-white absolute mt-4 mr-4 rounded top-0 overflow-hidden transition-[right] ${activeTab === 'closed' ? 'right-[-380px] hidden' : 'right-0'}`}
+      className={`${height} w-[360px] bg-white absolute mt-4 mr-4 rounded top-0 overflow-hidden transition-[right] ${activeTab === "closed" ? "right-[-380px] hidden" : "right-0"}`}
     >
       <div>
-        <ParticipantList handleClose={handleClose} isOpen={activeTab === 'participant-list'} />
-        <Chat handleClose={handleClose} isOpen={activeTab === 'chat'} />
-        <ReportIssue handleClose={handleClose} isOpen={activeTab === 'issues'} />
+        <ParticipantList
+          handleClose={handleClose}
+          isOpen={activeTab === "participant-list"}
+        />
+        <Chat handleClose={handleClose} isOpen={activeTab === "chat"} />
+        <ReportIssue
+          handleClose={handleClose}
+          isOpen={activeTab === "issues"}
+        />
       </div>
     </div>
   );

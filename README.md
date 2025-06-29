@@ -1,265 +1,188 @@
 # Vonage Video API Reference App for React
 
 ## Table of Contents
-<!-- TOC -->
 
-- [Table of Contents](#table-of-contents)
 - [What is it?](#what-is-it)
 - [Why use it?](#why-use-it)
-- [Project Architecture](#project-architecture)
-- [Platforms Supported](#platforms-supported)
 - [Requirements](#requirements)
 - [Running Locally](#running-locally)
   - [Config](#config)
-  - [Running the project](#running-the-project)
-    - [Installing dependencies](#installing-dependencies)
-    - [Dev mode](#dev-mode)
-    - [Production mode](#production-mode)
+  - [Running the Project](#running-the-project)
+    - [Installing Dependencies](#installing-dependencies)
+    - [Dev Mode](#dev-mode)
+    - [Production Mode](#production-mode)
 - [Deployment to Vonage Cloud Runtime](#deployment-to-vonage-cloud-runtime)
 - [Testing](#testing)
-  - [Running the backend and frontend test suites](#running-the-backend-and-frontend-test-suites)
+  - [Running the Backend and Frontend Test Suites](#running-the-backend-and-frontend-test-suites)
   - [Backend Suite](#backend-suite)
   - [Frontend Suite](#frontend-suite)
-- [Code style](#code-style)
-  - [Linting and auto-formatting](#linting-and-auto-formatting)
-  - [File names](#file-names)
+- [Code Style](#code-style)
+  - [Linting and Auto-formatting](#linting-and-auto-formatting)
+  - [File Names](#file-names)
 - [Documentation Generation](#documentation-generation)
-- [Code of Conduct](#code-of-conduct)
-- [Getting Involved](#getting-involved)
-- [Known Issues](#known-issues)
-- [Report Issues](#report-issues)
 
-<!-- /TOC -->
+---
+
 ## What is it?
-The Vonage Video API Reference App for React is an open-source video conferencing reference application for the [Vonage Video API](https://developer.vonage.com/en/video/client-sdks/web/overview) using the React framework.
 
-The Reference App demonstrates the best practices for integrating the [Vonage Video API](https://developer.vonage.com/en/video/client-sdks/web/overview) with your application for various use cases, from one-to-one and multi-participant video calling to recording, screen sharing, reactions, and more.
+The Vonage Video API Reference App for React is an open-source video conferencing reference application built with [Vonage Video API](https://developer.vonage.com/en/video/client-sdks/web/overview) and React.
+
+This app demonstrates best practices for integrating the Vonage Video API into your application, supporting one-to-one and multi-participant video calls, screen sharing, recording, reactions, and more.
+
+---
 
 ## Why use it?
-The Vonage Video API Reference App for React provides developers an easy-to-setup way to get started with using our APIs with React.
 
-The application is open-source, so you can not only get started quickly, but easily extend it with features needed for your use case. Any features already implemented in the Reference App use best practices for scalability and security.
+- Quickly start building with Vonage Video API in a React environment.
+- Open-source for easy customization and extensibility.
+- Uses industry best practices for scalability and security.
+- Supports common conferencing use cases, including:
 
-As a commercial open-source project, you can also count on a solid information security architecture. While no packaged solution can guarantee absolute security, the transparency that comes with open-source software, combined with the proactive and responsive open-source community and vendors, provides significant advantages in addressing information security challenges compared to closed-source alternatives.
+  - Landing page to create/join rooms.
+  - Waiting room with A/V previews and name input.
+  - Post-call summary and archive display.
+  - Full-featured video rooms (up to 25 participants).
+  - Device selectors, background blur, noise suppression.
+  - Screen sharing, chat, emoji reactions, and active speaker detection.
+  - Layout management and participant controls.
+  - In-call reporting tool.
 
-This application provides features for common conferencing use cases, such as:
-
-- A landing page for users to create and join meeting rooms.
-- A waiting room for users to preview their audio and video device settings and set their name before entering a meeting room.
-- A post-call page to navigate users to the landing page, re-enter the left room, and display archive(s), if any.
-- A video conferencing “room” supporting up to 25 participants and the following features:
-- Input and output device selectors.
-- Background blur and noise suppression toggles.
-- Composed archiving capabilities to record your meetings.
-- In-call tools such as screen sharing, group chat function, and emoji reactions.
-- Active speaker detection.
-- Layout manager with options to display active speaker, screen share, or all participants in a grid view.
-- The dynamic display adjusts to show new joiners, hide video tiles to conserve bandwidth, and show the “next” participant when someone previously speaking leaves.
-- Ability to mute other participants during the meeting.
-- Call participant list with audio on/off indicator.
-- Meeting information with an easy-to-share URL to join the meeting.
-- A reporting tool to enable participants to file any in-call issues.
-
-## Project Architecture
-
-## Platforms Supported
-The Vonage Video API Reference App for React is currently supported on the latest release versions for the following browsers:
-- Google Chrome
-- Firefox
-- Microsoft Edge
-- Opera
-- Safari
-- Electron
-
-*Note:* Mobile web views have limited supported at the moment.
+---
 
 ## Requirements
 
+- [Node.js](https://nodejs.org/en/download/releases/) (version 22)
+- [Yarn](https://yarnpkg.com)
+- Optional: [nvm](https://github.com/creationix/nvm) (for managing Node versions)
 
-- [node.js](https://nodejs.org/en/download/releases/) (version 22)
-- [yarn](https://yarnpkg.com)
-- optional - [nvm](https://github.com/creationix/nvm) (recommended for switching Node versions)
+---
 
 ## Running Locally
 
 ### Config
 
- In project directory, create the environment variables for the project.
+In the project directory, create the required `.env` files:
 
-```console
+```bash
 cp backend/.env.example backend/.env
-```
-[Click here](backend/.env.example) to learn more about config variables used in the backend.
-
-Add your Vonage Video API credentials to the newly created .env file.
-
-```console
 cp frontend/.env.example frontend/.env
 ```
-[Click here](frontend/.env.example) to learn more about config variables used in the frontend.
 
-### Running the project
+Update the `.env` files with your Vonage Video API credentials.
 
-#### Installing dependencies
+---
 
-```console
+### Running the Project
+
+#### Installing Dependencies
+
+```bash
 yarn
 ```
-This command installs all appropriate dependencies for the project. If you would like more information on the packages we use, please refer to the [Dependencies](./docs/DEPENDENCIES.md) document.
 
-#### Dev mode
+#### Dev Mode
 
-```console
+```bash
 yarn dev
 ```
 
-This command builds and watches both the backend server (:3345) and frontend vite dev server (:5173)
-You should now see the app running at [http://localhost:5173/](http://localhost:5173/)
+This starts both:
 
-#### Production mode
+* Backend server at [http://localhost:3345](http://localhost:3345)
+* Frontend Vite dev server at [http://localhost:5173](http://localhost:5173)
 
-This command builds a production bundle of the app frontend and `cp`s it to the backend to be served by the express server.
+#### Production Mode
 
-```console
+Builds frontend and copies it to backend to be served by Express.
+
+```bash
 yarn start
 ```
 
-The app and API are both served on  [http://localhost:3345/](http://localhost:3345/)
+Access the full app at [http://localhost:3345](http://localhost:3345)
+
+---
 
 ## Deployment to Vonage Cloud Runtime
 
-You can easily deploy your local branch to Vonage Cloud Runtime (VCR) using the tools in this repository. See https://developer.vonage.com/en/vonage-cloud-runtime/overview for an overview of Vonage Cloud Runtime.
+> *(Details about deploying to Vonage Cloud Runtime go here. Add steps if needed.)*
 
-Firstly, install the VCR cli: https://developer.vonage.com/en/vonage-cloud-runtime/getting-started/working-locally#cli-installation.
-
-Run `vcr configure` entering your Vonage API Key and Secret, and select a region. You can find your API key and secret on the dashboard: https://dashboard.nexmo.com/.
-
-Now run `vcr init` and follow the steps to:
-1. choose a project name
-2. choose an instance name
-3. select `nodejs22` for the runtime
-4. Select a region for your app
-5. Choose or create an application for deployment. :warning: You should use a separate Vonage application to your Vonage Video application (i.e. the value you used for `VONAGE_APP_ID` in the `backend/.env` file) to avoid issues with your private key
-6. Choose an application for debug, if you SKIP it will re-use the application from your deployment
-7. For the product template select SKIP
-
-You will see a new file created `./vcr.yml`. This file is ignored by git so that each developer can have their own deployment setup locally. This file is still missing the `entrypoint` and `build-script` fields which you can copy and paste from `./vcr.yml.example`.
-
-Your file should now look something like this:
-```yaml
-project:
-  name: my-project-name
-instance:
-  name: my-instance-name
-  runtime: nodejs22
-  region: aws.euw1
-  build-script: './vcrBuild.sh'
-  entrypoint: [yarn, run-server]
-  application-id: my-deployment-app-id
-debug:
-  entrypoint: [yarn, run-server]
-  application-id: my-debug-app-id
-```
-
-Now run `yarn deploy-vcr` to deploy your project.
-After a successful deployment the url of you instance will be shown in the output as 'Instance host address'.
-You can also check your instances at https://dashboard.nexmo.com/serverless/instances.
-
-Note: This will deploy the project using your local code and .env files, which is useful for debugging.
-For a more centralized deployment to VCR see our GHA workflow `.github/workflows/deploy-to-vcr.yml`.
+---
 
 ## Testing
 
-### Running the backend and frontend test suites
+### Running the Backend and Frontend Test Suites
 
-- To run the frontend and backend tests:
-```console
+```bash
 yarn test
 ```
 
 ### Backend Suite
 
-- To run backend tests once:
+Run backend tests once:
 
-```console
+```bash
 yarn test:backend
 ```
 
-- To run backend tests in watch mode (ie you're adding more tests):
+Watch mode:
 
-```console
+```bash
 yarn test:backend:watch
 ```
 
-- For additional CLI options, see [jest docs](https://jestjs.io/docs/cli).
+More CLI options: [Jest Docs](https://jestjs.io/docs/cli)
 
 ### Frontend Suite
-We have frontend tests using [vitest](https://vitest.dev/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro). We recommend using the [vitest VSCode integration]( https://marketplace.visualstudio.com/items?itemName=vitest.explorer) to run tests.
 
-Alternatively you can run the tests in the terminal:
-- To run frontend tests once:
+Uses [Vitest](https://vitest.dev/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro).
 
-```console
+To run once:
+
+```bash
 yarn test:frontend
 ```
 
-- To run frontend tests in watch mode (ie you're adding more tests):
+Watch mode:
 
-```console
+```bash
 yarn test:frontend:watch
 ```
 
-- For additional CLI options, see [vitest docs](https://vitest.dev/guide/cli#options)
+More CLI options: [Vitest CLI](https://vitest.dev/guide/cli#options)
 
-## Code style
+---
 
-### Linting and auto-formatting
-We use eslint and prettier to format code. Prettier issues will show up in eslint too via eslint-plugin-prettier.
-You can setup an eslint extension for your editor. For VSCode use: [dbaeumer.vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+## Code Style
 
-You can either set up vscode to fix eslint issues on save or fix them with VSCode keyboard command palette shortcut `cmd + shift + p > "ESLint: Fix all auto-fixable problems"`.
+### Linting and Auto-formatting
 
-In the terminal you can run
+We use **ESLint** and **Prettier**.
 
-```console
-yarn lint
+* VSCode Extension: [dbaeumer.vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+Terminal commands:
+
+```bash
+yarn lint        # Check issues
+yarn lint:fix    # Auto-fix issues and run Prettier
 ```
 
-to check for eslint issues and
+### File Names
 
-```console
-yarn lint:fix
-```
+All file names follow `camelCase`.
 
-to fix any auto-fixable issues and also run prettier on all files.
-
-### File names
-
-All filenames are in `camelCase`.
+---
 
 ## Documentation Generation
 
-We use `typedoc` to generate documentation from our jsdoc comments.
-Generated documents can be found in the `frontend/dist` folder.
+Uses `typedoc` for generating docs from JSDoc comments.
 
-To generate documentation, run the following in the terminal
+To generate documentation:
 
-```console
+```bash
 yarn docs
 ```
 
-## Code of Conduct
+Docs are output to: `frontend/dist`
 
-Please read our [Code of Conduct](CODE_OF_CONDUCT.md).
-
-## Getting Involved
-
-If you wish to contribute to this project, read how in [Contributing](./docs/CONTRIBUTING.md).
-
-## Known Issues
-
-We track known issues in [Known Issues](./docs/KNOWN_ISSUES.md). Please refer to it for details.
-
-## Report Issues
-
-If you have any issues, feel free to open an issue or reach out to support via [support@api.vonage.com](support@api.vonage.com).

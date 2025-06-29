@@ -1,4 +1,4 @@
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation } from "react-router-dom";
 
 export type UseRoomNameProps = {
   useLocationState?: boolean;
@@ -10,7 +10,9 @@ export type UseRoomNameProps = {
  *  @property {boolean} useLocationState - the boolean that if set to true, uses location.state instead of URL params
  * @returns {string} the lowercase room name.
  */
-const useRoomName = ({ useLocationState = false }: UseRoomNameProps = {}): string => {
+const useRoomName = ({
+  useLocationState = false,
+}: UseRoomNameProps = {}): string => {
   let roomName;
   const params = useParams();
   const location = useLocation();
@@ -23,7 +25,7 @@ const useRoomName = ({ useLocationState = false }: UseRoomNameProps = {}): strin
     // this is the default behavior of this hook
     roomName = params.roomName;
   }
-  const lowerCaseRoomName = roomName?.toLowerCase() || '';
+  const lowerCaseRoomName = roomName?.toLowerCase() || "";
 
   return lowerCaseRoomName;
 };

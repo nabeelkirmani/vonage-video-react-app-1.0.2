@@ -1,3 +1,3 @@
-import ScreenSharingButton from './ScreenSharingButton';
+import ScreenSharingButton from "./ScreenSharingButton";
 
 export default ScreenSharingButton;

@@ -1,8 +1,10 @@
-import { Button } from '@mui/material';
-import { MouseEvent, ReactElement, TouchEvent } from 'react';
+import { Button } from "@mui/material";
+import { MouseEvent, ReactElement, TouchEvent } from "react";
 
 export type ReenterRoomButtonProps = {
-  handleReenter: (event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>) => void;
+  handleReenter: (
+    event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>,
+  ) => void;
   roomName: string;
 };
 

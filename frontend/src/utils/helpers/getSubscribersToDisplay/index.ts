@@ -1,3 +1,3 @@
-import getSubscribersToDisplay from './getSubscribersToDisplay';
+import getSubscribersToDisplay from "./getSubscribersToDisplay";
 
 export default getSubscribersToDisplay;

@@ -1,10 +1,10 @@
-import { useRef } from 'react';
-import { Box, Element } from 'opentok-layout-js';
-import LayoutManager from '../utils/layoutManager';
+import { useRef } from "react";
+import { Box, Element } from "opentok-layout-js";
+import LayoutManager from "../utils/layoutManager";
 
 export type GetLayout = (
   containerDimensions: { height: number; width: number },
-  boxes: Element[]
+  boxes: Element[],
 ) => Box[];
 
 /**

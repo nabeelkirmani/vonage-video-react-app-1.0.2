@@ -1,5 +1,5 @@
 const getInitialFromName = (name: string): string => {
-  return name.split('')[0].toUpperCase();
+  return name.split("")[0].toUpperCase();
 };
 
 /**
@@ -10,10 +10,10 @@ const getInitialFromName = (name: string): string => {
 export default (username: string): string => {
   // Matches any names, including hyphenated names.
   const names = username.match(/(\w+(-\w+)?)/gm);
-  let lastInitial = '';
+  let lastInitial = "";
 
   if (!names) {
-    return '';
+    return "";
   }
 
   const firstInitial = getInitialFromName(names[0]);

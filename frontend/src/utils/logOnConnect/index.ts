@@ -1,3 +1,3 @@
-import logOnConnect from './logOnConnect';
+import logOnConnect from "./logOnConnect";
 
 export default logOnConnect;

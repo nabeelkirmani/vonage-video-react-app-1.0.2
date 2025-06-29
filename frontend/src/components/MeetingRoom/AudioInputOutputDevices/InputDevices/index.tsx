@@ -1,3 +1,3 @@
-import InputDevices from './InputDevices';
+import InputDevices from "./InputDevices";
 
 export default InputDevices;

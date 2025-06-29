@@ -1,3 +1,3 @@
-import CameraToggleButton from './CameraToggleButton';
+import CameraToggleButton from "./CameraToggleButton";
 
 export default CameraToggleButton;

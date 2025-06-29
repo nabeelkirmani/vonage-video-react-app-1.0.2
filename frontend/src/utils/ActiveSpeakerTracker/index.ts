@@ -1,3 +1,3 @@
-import ActiveSpeakerTracker from './activeSpeakerTracker';
+import ActiveSpeakerTracker from "./activeSpeakerTracker";
 
 export default ActiveSpeakerTracker;

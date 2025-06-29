@@ -1,3 +1,3 @@
-import NewRoomButton from './NewRoomButton';
+import NewRoomButton from "./NewRoomButton";
 
 export default NewRoomButton;

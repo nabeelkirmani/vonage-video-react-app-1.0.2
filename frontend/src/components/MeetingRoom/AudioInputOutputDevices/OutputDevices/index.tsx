@@ -1,3 +1,3 @@
-import OutputDevices from './OutputDevices';
+import OutputDevices from "./OutputDevices";
 
 export default OutputDevices;

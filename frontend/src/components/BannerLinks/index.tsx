@@ -1,3 +1,3 @@
-import BannerLinks from './BannerLinks';
+import BannerLinks from "./BannerLinks";
 
 export default BannerLinks;

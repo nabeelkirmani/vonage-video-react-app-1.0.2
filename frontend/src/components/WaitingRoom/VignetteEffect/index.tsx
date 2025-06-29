@@ -1,3 +1,3 @@
-import VignetteEffect from './VignetteEffect';
+import VignetteEffect from "./VignetteEffect";
 
 export default VignetteEffect;

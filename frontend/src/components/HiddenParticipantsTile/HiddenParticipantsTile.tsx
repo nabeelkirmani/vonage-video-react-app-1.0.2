@@ -1,9 +1,9 @@
-import { ReactElement, useState } from 'react';
-import { AvatarGroup } from '@mui/material';
-import { Box } from 'opentok-layout-js';
-import { SubscriberWrapper } from '../../types/session';
-import AvatarInitials from '../AvatarInitials';
-import getBoxStyle from '../../utils/helpers/getBoxStyle';
+import { ReactElement, useState } from "react";
+import { AvatarGroup } from "@mui/material";
+import { Box } from "opentok-layout-js";
+import { SubscriberWrapper } from "../../types/session";
+import AvatarInitials from "../AvatarInitials";
+import getBoxStyle from "../../utils/helpers/getBoxStyle";
 
 export type HiddenParticipantsTileProps = {
   box: Box;
@@ -43,11 +43,11 @@ const HiddenParticipantsTile = ({
         total={hiddenSubscribers.length}
         className="border-none"
         sx={{
-          '& .MuiAvatar-root': {
-            borderColor: isHovered ? 'rgb(76,80,82)' : 'rgb(60, 64, 67)',
-            transitionProperty: 'border-color',
-            transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
-            transitionDuration: '150ms',
+          "& .MuiAvatar-root": {
+            borderColor: isHovered ? "rgb(76,80,82)" : "rgb(60, 64, 67)",
+            transitionProperty: "border-color",
+            transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+            transitionDuration: "150ms",
             height: `${diameter}px`,
             width: `${diameter}px`,
             fontSize: `${diameter / 3}pt`,
@@ -55,10 +55,18 @@ const HiddenParticipantsTile = ({
         }}
       >
         {hiddenSubscribers.slice(0, 2).map((wrapper) => {
-          const { initials, streamId, name } = wrapper?.subscriber?.stream ?? {};
-          const sx = { position: 'relative' };
+          const { initials, streamId, name } =
+            wrapper?.subscriber?.stream ?? {};
+          const sx = { position: "relative" };
 
-          return <AvatarInitials key={streamId} initials={initials} username={name} sx={sx} />;
+          return (
+            <AvatarInitials
+              key={streamId}
+              initials={initials}
+              username={name}
+              sx={sx}
+            />
+          );
         })}
       </AvatarGroup>
     </button>

@@ -1,24 +1,27 @@
-import { Mock, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { act, renderHook, waitFor } from '@testing-library/react';
-import { Publisher } from '@vonage/client-sdk-video';
-import EventEmitter from 'events';
+import { Mock, afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { act, renderHook, waitFor } from "@testing-library/react";
+import { Publisher } from "@vonage/client-sdk-video";
+import EventEmitter from "events";
 
-import { PublisherContextType } from '../../Context/PublisherProvider';
-import useAudioLevels from '../useAudioLevels';
-import usePublisherContext from '../usePublisherContext';
+import { PublisherContextType } from "../../Context/PublisherProvider";
+import useAudioLevels from "../useAudioLevels";
+import usePublisherContext from "../usePublisherContext";
 
-vi.mock('../usePublisherContext.tsx');
+vi.mock("../usePublisherContext.tsx");
 
-const mockUsePublisherContext = usePublisherContext as Mock<[], PublisherContextType>;
+const mockUsePublisherContext = usePublisherContext as Mock<
+  [],
+  PublisherContextType
+>;
 
-describe('usePublisherAudioLevels', () => {
+describe("usePublisherAudioLevels", () => {
   let advanceDateNow: (ms: number) => void;
   let mockPublisher: EventEmitter;
 
   beforeEach(() => {
     let now = Date.now();
 
-    const dateNowSpy = vi.spyOn(global.Date, 'now').mockReturnValue(now);
+    const dateNowSpy = vi.spyOn(global.Date, "now").mockReturnValue(now);
     advanceDateNow = (ms) => {
       now += ms;
       dateNowSpy.mockReturnValue(now);
@@ -36,17 +39,17 @@ describe('usePublisherAudioLevels', () => {
     vi.restoreAllMocks();
   });
 
-  it('should set the audioLevel correctly', async () => {
+  it("should set the audioLevel correctly", async () => {
     const { result } = renderHook(() => useAudioLevels());
     // initially the audio level is set to 0 in the hook state
     expect(result.current).toBe(0);
 
     act(() => {
-      mockPublisher.emit('audioLevelUpdated', { audioLevel: 0.11 });
+      mockPublisher.emit("audioLevelUpdated", { audioLevel: 0.11 });
     });
     advanceDateNow(50);
     act(() => {
-      mockPublisher.emit('audioLevelUpdated', { audioLevel: 0.11 });
+      mockPublisher.emit("audioLevelUpdated", { audioLevel: 0.11 });
     });
 
     // audio level should now not be 0 given we've received audio level events
@@ -54,22 +57,22 @@ describe('usePublisherAudioLevels', () => {
 
     advanceDateNow(51);
     act(() => {
-      mockPublisher.emit('audioLevelUpdated', { audioLevel: 0.11 });
+      mockPublisher.emit("audioLevelUpdated", { audioLevel: 0.11 });
     });
 
     await waitFor(() => expect(result.current).toBeGreaterThan(0));
   });
 
-  it('should throttle audio level updates', async () => {
+  it("should throttle audio level updates", async () => {
     const { result } = renderHook(() => useAudioLevels());
     expect(result.current).toBe(0);
 
     act(() => {
-      mockPublisher.emit('audioLevelUpdated', { audioLevel: 0.11 });
+      mockPublisher.emit("audioLevelUpdated", { audioLevel: 0.11 });
     });
     advanceDateNow(50);
     act(() => {
-      mockPublisher.emit('audioLevelUpdated', { audioLevel: 0.12 });
+      mockPublisher.emit("audioLevelUpdated", { audioLevel: 0.12 });
     });
 
     await waitFor(() => expect(result.current).toBeGreaterThan(0));
@@ -79,7 +82,7 @@ describe('usePublisherAudioLevels', () => {
 
     advanceDateNow(20);
     act(() => {
-      mockPublisher.emit('audioLevelUpdated', { audioLevel: 0.13 });
+      mockPublisher.emit("audioLevelUpdated", { audioLevel: 0.13 });
     });
 
     // Since it's throttled, the level should not have changed yet
@@ -87,7 +90,7 @@ describe('usePublisherAudioLevels', () => {
 
     advanceDateNow(100);
     act(() => {
-      mockPublisher.emit('audioLevelUpdated', { audioLevel: 0.14 });
+      mockPublisher.emit("audioLevelUpdated", { audioLevel: 0.14 });
     });
 
     await waitFor(() => expect(result.current).toBeGreaterThan(initialLevel));

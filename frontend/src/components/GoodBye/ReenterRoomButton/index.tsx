@@ -1,3 +1,3 @@
-import ReenterRoomButton from './ReenterRoomButton';
+import ReenterRoomButton from "./ReenterRoomButton";
 
 export default ReenterRoomButton;

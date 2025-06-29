@@ -1,7 +1,7 @@
-import { Dimensions } from '@vonage/client-sdk-video';
-import { throttle } from 'lodash';
-import ResizeObserverPolyfill from 'resize-observer-polyfill';
-import { MutableRefObject, useEffect, useRef, useState } from 'react';
+import { Dimensions } from "@vonage/client-sdk-video";
+import { throttle } from "lodash";
+import ResizeObserverPolyfill from "resize-observer-polyfill";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 
 export type UseElementDimensionsProps = {
   elementRef: MutableRefObject<HTMLElement | null>;
@@ -13,8 +13,13 @@ export type UseElementDimensionsProps = {
  *  @property {MutableRefObject<HTMLElement | null>} elementRef - HTMLElement ref object
  * @returns {Dimensions} - element dimensions
  */
-const useElementDimensions = ({ elementRef }: UseElementDimensionsProps): Dimensions => {
-  const [elementDimensions, setElementDimensions] = useState<Dimensions>({ width: 0, height: 0 });
+const useElementDimensions = ({
+  elementRef,
+}: UseElementDimensionsProps): Dimensions => {
+  const [elementDimensions, setElementDimensions] = useState<Dimensions>({
+    width: 0,
+    height: 0,
+  });
   const resizeObserver = useRef<ResizeObserver | undefined>();
 
   useEffect(() => {

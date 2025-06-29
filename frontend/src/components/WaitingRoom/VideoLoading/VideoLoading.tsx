@@ -1,5 +1,5 @@
-import CircularProgress from '@mui/material/CircularProgress';
-import { ReactElement } from 'react';
+import CircularProgress from "@mui/material/CircularProgress";
+import { ReactElement } from "react";
 
 /**
  * VideoLoading Component
@@ -15,7 +15,7 @@ const VideoLoading = (): ReactElement => {
     >
       <CircularProgress
         sx={{
-          position: 'relative',
+          position: "relative",
           zIndex: 10,
         }}
         data-testid="CircularProgress"

@@ -1,4 +1,4 @@
-import Autolinker from 'autolinker';
+import Autolinker from "autolinker";
 
 /**
  * This helper function takes in a message, and returns an array containing string groups to concatenate back into a message.
@@ -25,7 +25,9 @@ const linkGroupsParser = (message: string): string[][] => {
   const onlyStrings = allMatches
     // Remove undefined captures so we have an array of strings or an empty array
     .map((matchArray) =>
-      matchArray.filter((match) => typeof match === 'string').filter((match) => match.length)
+      matchArray
+        .filter((match) => typeof match === "string")
+        .filter((match) => match.length),
     )
     // Removes empty arrays
     .filter((stringArrays) => stringArrays.length);

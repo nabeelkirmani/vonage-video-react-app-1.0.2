@@ -1,14 +1,14 @@
-import { Alert, AlertTitle, Stack } from '@mui/material';
-import { ReactElement, useState } from 'react';
+import { Alert, AlertTitle, Stack } from "@mui/material";
+import { ReactElement, useState } from "react";
 
 export type ConnectionAlertProps = {
   title: string;
   message: string;
   closable?: boolean;
-  severity: 'warning' | 'error';
+  severity: "warning" | "error";
 };
 
-const maxWidth = '@apply max-w-[calc(100vw_-_8px)]';
+const maxWidth = "@apply max-w-[calc(100vw_-_8px)]";
 /**
  * ConnectionAlert Component
  * An MUI Alert to display the title and message for connection issues.

@@ -1,3 +1,3 @@
-import EmojiGrid from './EmojiGrid';
+import EmojiGrid from "./EmojiGrid";
 
 export default EmojiGrid;

@@ -1,6 +1,6 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import SpeakingDetector from './speakingDetector';
-import { waitForEvent } from '../async';
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import SpeakingDetector from "./speakingDetector";
+import { waitForEvent } from "../async";
 
 const mockGetUserMedia = vi.fn(() =>
   Promise.resolve({
@@ -9,7 +9,7 @@ const mockGetUserMedia = vi.fn(() =>
         stop: vi.fn(),
       },
     ]),
-  })
+  }),
 );
 
 const mockCreateMediaStreamSource = vi.fn(() => ({
@@ -31,7 +31,7 @@ const mockAudioContext = vi.fn().mockImplementation(() => ({
 }));
 
 beforeEach(() => {
-  Object.defineProperty(navigator, 'mediaDevices', {
+  Object.defineProperty(navigator, "mediaDevices", {
     writable: true,
     value: {
       getUserMedia: mockGetUserMedia,
@@ -42,29 +42,29 @@ beforeEach(() => {
   vi.clearAllMocks();
 });
 
-describe('SpeakingDetector', () => {
+describe("SpeakingDetector", () => {
   let now = Date.now();
-  const dateNowSpy = vi.spyOn(global.Date, 'now').mockReturnValue(now);
+  const dateNowSpy = vi.spyOn(global.Date, "now").mockReturnValue(now);
   const advanceDateNow = (ms: number) => {
     now += ms;
     dateNowSpy.mockReturnValue(now);
   };
-  it('should detect speaking while muted and turn off the notification 3 seconds later', async () => {
+  it("should detect speaking while muted and turn off the notification 3 seconds later", async () => {
     const speakingDetector = new SpeakingDetector({
-      selectedMicrophoneId: '132322',
+      selectedMicrophoneId: "132322",
     });
     speakingDetector.turnSpeakingDetectorOn();
     const isSpeakingDetectorSpy = vi.fn();
     const isSpeakingDetectorOffSpy = vi.fn();
     const waitForIsSpeakingWhileMuted = waitForEvent(
       speakingDetector,
-      'isSpeakingWhileMuted',
-      isSpeakingDetectorSpy
+      "isSpeakingWhileMuted",
+      isSpeakingDetectorSpy,
     );
     const waitForIsSpeakingWhileMutedOff = waitForEvent(
       speakingDetector,
-      'isSpeakingWhileMutedOff',
-      isSpeakingDetectorOffSpy
+      "isSpeakingWhileMutedOff",
+      isSpeakingDetectorOffSpy,
     );
 
     await waitForIsSpeakingWhileMuted;

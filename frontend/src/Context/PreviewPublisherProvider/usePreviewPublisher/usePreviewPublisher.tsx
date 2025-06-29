@@ -1,14 +1,17 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
-import { Publisher, Event, initPublisher } from '@vonage/client-sdk-video';
-import setMediaDevices from '../../../utils/mediaDeviceUtils';
-import useDevices from '../../../hooks/useDevices';
-import usePermissions from '../../../hooks/usePermissions';
-import useUserContext from '../../../hooks/useUserContext';
-import { DEVICE_ACCESS_STATUS } from '../../../utils/constants';
-import { UserType } from '../../user';
-import { AccessDeniedEvent } from '../../PublisherProvider/usePublisher/usePublisher';
+import { useState, useRef, useCallback, useEffect } from "react";
+import { Publisher, Event, initPublisher } from "@vonage/client-sdk-video";
+import setMediaDevices from "../../../utils/mediaDeviceUtils";
+import useDevices from "../../../hooks/useDevices";
+import usePermissions from "../../../hooks/usePermissions";
+import useUserContext from "../../../hooks/useUserContext";
+import { DEVICE_ACCESS_STATUS } from "../../../utils/constants";
+import { UserType } from "../../user";
+import { AccessDeniedEvent } from "../../PublisherProvider/usePublisher/usePublisher";
 
-type PublisherVideoElementCreatedEvent = Event<'videoElementCreated', Publisher> & {
+type PublisherVideoElementCreatedEvent = Event<
+  "videoElementCreated",
+  Publisher
+> & {
   element: HTMLVideoElement | HTMLObjectElement;
 };
 
@@ -59,12 +62,21 @@ const usePreviewPublisher = (): PreviewPublisherContextType => {
   const [localBlur, setLocalBlur] = useState(false);
   const [isVideoEnabled, setIsVideoEnabled] = useState(true);
   const [isAudioEnabled, setIsAudioEnabled] = useState(true);
-  const [localVideoSource, setLocalVideoSource] = useState<string | undefined>(undefined);
-  const [localAudioSource, setLocalAudioSource] = useState<string | undefined>(undefined);
+  const [localVideoSource, setLocalVideoSource] = useState<string | undefined>(
+    undefined,
+  );
+  const [localAudioSource, setLocalAudioSource] = useState<string | undefined>(
+    undefined,
+  );
 
   /* This sets the default devices in use so that the user knows what devices they are using */
   useEffect(() => {
-    setMediaDevices(publisherRef, allMediaDevices, setLocalAudioSource, setLocalVideoSource);
+    setMediaDevices(
+      publisherRef,
+      allMediaDevices,
+      setLocalAudioSource,
+      setLocalVideoSource,
+    );
   }, [allMediaDevices]);
 
   const handleDestroyed = () => {
@@ -83,8 +95,8 @@ const usePreviewPublisher = (): PreviewPublisherContextType => {
       publisherRef.current.clearVideoFilter();
     } else {
       publisherRef.current.applyVideoFilter({
-        type: 'backgroundBlur',
-        blurStrength: 'high',
+        type: "backgroundBlur",
+        blurStrength: "high",
       });
     }
     setLocalBlur(!localBlur);
@@ -120,7 +132,7 @@ const usePreviewPublisher = (): PreviewPublisherContextType => {
         }));
       }
     },
-    [setUser]
+    [setUser],
   );
 
   /**
@@ -144,7 +156,7 @@ const usePreviewPublisher = (): PreviewPublisherContextType => {
         }));
       }
     },
-    [setUser]
+    [setUser],
   );
 
   /**
@@ -155,28 +167,33 @@ const usePreviewPublisher = (): PreviewPublisherContextType => {
    */
   const handleAccessDenied = useCallback(
     async (event: AccessDeniedEvent) => {
-      const deviceDeniedAccess = event.message?.startsWith('Microphone') ? 'microphone' : 'camera';
+      const deviceDeniedAccess = event.message?.startsWith("Microphone")
+        ? "microphone"
+        : "camera";
 
       setAccessStatus(DEVICE_ACCESS_STATUS.REJECTED);
 
       try {
         const permissionStatus = await window.navigator.permissions.query({
-          // @ts-expect-error The camera and microphone permissions are supported on all major browsers.
           name: deviceDeniedAccess,
         });
         permissionStatus.onchange = () => {
-          if (permissionStatus.state === 'granted') {
+          if (permissionStatus.state === "granted") {
             setAccessStatus(DEVICE_ACCESS_STATUS.ACCESS_CHANGED);
           }
         };
       } catch (error) {
-        console.error(`Failed to query device permission for ${deviceDeniedAccess}: ${error}`);
+        console.error(
+          `Failed to query device permission for ${deviceDeniedAccess}: ${error}`,
+        );
       }
     },
-    [setAccessStatus]
+    [setAccessStatus],
   );
 
-  const handleVideoElementCreated = (event: PublisherVideoElementCreatedEvent) => {
+  const handleVideoElementCreated = (
+    event: PublisherVideoElementCreatedEvent,
+  ) => {
     setPublisherVideoElement(event.element);
     setIsPublishing(true);
   };
@@ -192,18 +209,26 @@ const usePreviewPublisher = (): PreviewPublisherContextType => {
       if (!publisher) {
         return;
       }
-      publisher.on('destroyed', handleDestroyed);
-      publisher.on('accessDenied', handleAccessDenied);
-      publisher.on('videoElementCreated', handleVideoElementCreated);
-      publisher.on('audioLevelUpdated', ({ audioLevel }: { audioLevel: number }) => {
-        calculateAudioLevel(audioLevel);
-      });
-      publisher.on('accessAllowed', () => {
+      publisher.on("destroyed", handleDestroyed);
+      publisher.on("accessDenied", handleAccessDenied);
+      publisher.on("videoElementCreated", handleVideoElementCreated);
+      publisher.on(
+        "audioLevelUpdated",
+        ({ audioLevel }: { audioLevel: number }) => {
+          calculateAudioLevel(audioLevel);
+        },
+      );
+      publisher.on("accessAllowed", () => {
         setAccessStatus(DEVICE_ACCESS_STATUS.ACCEPTED);
         getAllMediaDevices();
       });
     },
-    [calculateAudioLevel, getAllMediaDevices, handleAccessDenied, setAccessStatus]
+    [
+      calculateAudioLevel,
+      getAllMediaDevices,
+      handleAccessDenied,
+      setAccessStatus,
+    ],
   );
 
   const initLocalPublisher = useCallback(() => {
@@ -213,15 +238,15 @@ const usePreviewPublisher = (): PreviewPublisherContextType => {
 
     publisherRef.current = initPublisher(
       undefined,
-      { insertDefaultUI: false, resolution: '1280x720' },
+      { insertDefaultUI: false, resolution: "1280x720" },
       (err: unknown) => {
         if (err instanceof Error) {
           publisherRef.current = null;
-          if (err.name === 'OT_USER_MEDIA_ACCESS_DENIED') {
-            console.error('initPublisher error: ', err);
+          if (err.name === "OT_USER_MEDIA_ACCESS_DENIED") {
+            console.error("initPublisher error: ", err);
           }
         }
-      }
+      },
     );
     addPublisherListeners(publisherRef.current);
   }, [addPublisherListeners]);
@@ -231,7 +256,7 @@ const usePreviewPublisher = (): PreviewPublisherContextType => {
       publisherRef.current.destroy();
       publisherRef.current = null;
     } else {
-      console.warn('pub not destroyed');
+      console.warn("pub not destroyed");
     }
   }, []);
 

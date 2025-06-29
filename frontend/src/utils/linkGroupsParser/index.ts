@@ -1,3 +1,3 @@
-import linkGroupsParser from './linkGroupsParser';
+import linkGroupsParser from "./linkGroupsParser";
 
 export default linkGroupsParser;

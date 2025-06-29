@@ -1,7 +1,7 @@
 name: Bug Report
 description: File a bug report.
-title: '[Bug]: '
-labels: ['bug', 'triage']
+title: "[Bug]: "
+labels: ["bug", "triage"]
 body:
   - type: checkboxes
     id: known-issue
@@ -17,7 +17,7 @@ body:
     attributes:
       label: Describe the bug
       description: Please include relevant screenshots
-      value: 'A wild bug appeared!'
+      value: "A wild bug appeared!"
     validations:
       required: true
 
@@ -25,7 +25,7 @@ body:
     id: expected-behavior
     attributes:
       label: Describe the expected behavior
-      value: 'I would expect...'
+      value: "I would expect..."
     validations:
       required: true
 
@@ -33,7 +33,7 @@ body:
     id: to-reproduce
     attributes:
       label: Include steps to reproduce
-      value: 'Steps to reproduce:'
+      value: "Steps to reproduce:"
     validations:
       required: true
 

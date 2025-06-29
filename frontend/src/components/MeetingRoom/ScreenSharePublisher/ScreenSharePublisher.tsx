@@ -1,8 +1,8 @@
-import { ReactElement, useEffect, useRef } from 'react';
-import { Box } from 'opentok-layout-js';
-import { Publisher } from '@vonage/client-sdk-video';
-import VideoTile from '../VideoTile';
-import ScreenShareNameDisplay from '../../ScreenShareNameDisplay';
+import { ReactElement, useEffect, useRef } from "react";
+import { Box } from "opentok-layout-js";
+import { Publisher } from "@vonage/client-sdk-video";
+import VideoTile from "../VideoTile";
+import ScreenShareNameDisplay from "../../ScreenShareNameDisplay";
 
 export type ScreenSharePublisherProps = {
   box: Box | undefined;
@@ -27,11 +27,11 @@ const ScreenSharePublisher = ({
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (element && containerRef.current) {
-      element.classList.add('w-full', 'absolute', 'rounded-xl', 'object-cover');
+      element.classList.add("w-full", "absolute", "rounded-xl", "object-cover");
       containerRef.current.appendChild(element);
     }
   }, [element]);
-  const streamName = publisher?.stream?.name ?? '';
+  const streamName = publisher?.stream?.name ?? "";
   return (
     box && (
       <VideoTile

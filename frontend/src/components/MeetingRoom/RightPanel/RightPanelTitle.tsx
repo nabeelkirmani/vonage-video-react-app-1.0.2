@@ -1,6 +1,6 @@
-import { Close } from '@mui/icons-material';
-import { IconButton } from '@mui/material';
-import { ReactElement } from 'react';
+import { Close } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
+import { ReactElement } from "react";
 
 export type RightPanelTitleProps = {
   handleClose: () => void;
@@ -16,11 +16,20 @@ export type RightPanelTitleProps = {
  *  }
  * @returns {ReactElement} - RightPanelTitle component
  */
-const RightPanelTitle = ({ handleClose, title }: RightPanelTitleProps): ReactElement => {
+const RightPanelTitle = ({
+  handleClose,
+  title,
+}: RightPanelTitleProps): ReactElement => {
   return (
     <div className="h-[64px] flex flex-row items-center justify-between pl-6 w-inherit">
-      <span className="font-normal text-lg text-darkGray tracking-normal">{title}</span>
-      <IconButton onClick={handleClose} size="large" sx={{ color: 'rgb(95, 99, 104)' }}>
+      <span className="font-normal text-lg text-darkGray tracking-normal">
+        {title}
+      </span>
+      <IconButton
+        onClick={handleClose}
+        size="large"
+        sx={{ color: "rgb(95, 99, 104)" }}
+      >
         <Close />
       </IconButton>
     </div>

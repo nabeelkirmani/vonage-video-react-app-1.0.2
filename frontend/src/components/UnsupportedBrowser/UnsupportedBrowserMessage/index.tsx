@@ -1,3 +1,3 @@
-import UnsupportedBrowserMessage from './UnsupportedBrowserMessage';
+import UnsupportedBrowserMessage from "./UnsupportedBrowserMessage";
 
 export default UnsupportedBrowserMessage;

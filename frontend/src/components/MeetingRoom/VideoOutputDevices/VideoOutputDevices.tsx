@@ -1,15 +1,15 @@
-import { ReactElement, RefObject } from 'react';
-import { ClickAwayListener } from '@mui/material';
-import { hasMediaProcessorSupport } from '@vonage/client-sdk-video';
-import Grow from '@mui/material/Grow';
-import { useTheme } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-import Popper from '@mui/material/Popper';
-import { PopperChildrenProps } from '@mui/base';
-import VideoDevices from './VideoDevices';
-import VideoDevicesOptions from './VideoDevicesOptions';
-import displayOnDesktop from '../../../utils/displayOnDesktop';
-import DropdownSeparator from '../DropdownSeparator';
+import { ReactElement, RefObject } from "react";
+import { ClickAwayListener } from "@mui/material";
+import { hasMediaProcessorSupport } from "@vonage/client-sdk-video";
+import Grow from "@mui/material/Grow";
+import { useTheme } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
+import Popper from "@mui/material/Popper";
+import { PopperChildrenProps } from "@mui/base";
+import VideoDevices from "./VideoDevices";
+import VideoDevicesOptions from "./VideoDevicesOptions";
+import displayOnDesktop from "../../../utils/displayOnDesktop";
+import DropdownSeparator from "../DropdownSeparator";
 
 export type VideoOutputDevicesProps = {
   handleToggle: () => void;
@@ -38,7 +38,7 @@ const VideoOutputDevices = ({
   handleClose,
 }: VideoOutputDevicesProps): ReactElement => {
   const theme = useTheme();
-  const customLightBlueColor = 'rgb(138, 180, 248)';
+  const customLightBlueColor = "rgb(138, 180, 248)";
 
   return (
     <Popper
@@ -52,28 +52,29 @@ const VideoOutputDevices = ({
         <Grow
           {...TransitionProps}
           style={{
-            transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
+            transformOrigin:
+              placement === "bottom" ? "center top" : "center bottom",
           }}
         >
           <div className="font-normal text-left">
             <ClickAwayListener onClickAway={handleClose}>
               <Paper
                 sx={{
-                  backgroundColor: 'rgb(32, 33, 36)',
-                  color: '#fff',
+                  backgroundColor: "rgb(32, 33, 36)",
+                  color: "#fff",
                   padding: { xs: 1, sm: 2 }, // responsive padding
                   borderRadius: 2,
                   zIndex: 1,
-                  transform: 'translateY(-5%) translateX(-15%)', // default transform
+                  transform: "translateY(-5%) translateX(-15%)", // default transform
                   [theme.breakpoints.down(741)]: {
-                    transform: 'translateY(-5%) translateX(-40%)',
+                    transform: "translateY(-5%) translateX(-40%)",
                   },
                   [theme.breakpoints.down(450)]: {
-                    transform: 'translateY(-5%) translateX(-5%)',
+                    transform: "translateY(-5%) translateX(-5%)",
                   },
-                  width: { xs: '90vw', sm: '100%' }, // responsive width
+                  width: { xs: "90vw", sm: "100%" }, // responsive width
                   maxWidth: 400, // max width for larger screens
-                  position: 'relative', // ensures the transform is applied correctly
+                  position: "relative", // ensures the transform is applied correctly
                 }}
               >
                 <VideoDevices
@@ -84,7 +85,9 @@ const VideoOutputDevices = ({
                 {hasMediaProcessorSupport() && displayOnDesktop() && (
                   <>
                     <DropdownSeparator />
-                    <VideoDevicesOptions customLightBlueColor={customLightBlueColor} />
+                    <VideoDevicesOptions
+                      customLightBlueColor={customLightBlueColor}
+                    />
                   </>
                 )}
               </Paper>

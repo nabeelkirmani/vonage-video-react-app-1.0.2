@@ -1,3 +1,3 @@
-import displayOnDesktop from './displayOnDesktop';
+import displayOnDesktop from "./displayOnDesktop";
 
 export default displayOnDesktop;

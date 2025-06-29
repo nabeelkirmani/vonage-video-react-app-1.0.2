@@ -1,11 +1,11 @@
-import dotenv from 'dotenv';
-import path from 'path';
-import { Config, FeedbackConfig } from '../types/config';
+import dotenv from "dotenv";
+import path from "path";
+import { Config, FeedbackConfig } from "../types/config";
 
-dotenv.config({ path: path.resolve(process.cwd(), '.env') });
+dotenv.config({ path: path.resolve(process.cwd(), ".env") });
 
 const loadConfig = (): Config => {
-  const provider = process.env.VIDEO_SERVICE_PROVIDER ?? '';
+  const provider = process.env.VIDEO_SERVICE_PROVIDER ?? "";
 
   const feedbackConfig: FeedbackConfig = {
     url: process.env.JIRA_URL,
@@ -16,37 +16,37 @@ const loadConfig = (): Config => {
     epicLink: process.env.JIRA_EPIC_LINK,
     epicUrl: process.env.JIRA_EPIC_URL,
   };
-  if (provider === 'vonage') {
-    const applicationId = process.env.VONAGE_APP_ID ?? '';
-    const privateKey = process.env.VONAGE_PRIVATE_KEY ?? '';
+  if (provider === "vonage") {
+    const applicationId = process.env.VONAGE_APP_ID ?? "";
+    const privateKey = process.env.VONAGE_PRIVATE_KEY ?? "";
 
     if (!applicationId || !privateKey) {
-      throw new Error('Missing config values for Vonage');
+      throw new Error("Missing config values for Vonage");
     }
 
     return {
       ...feedbackConfig,
       applicationId,
       privateKey,
-      provider: 'vonage',
+      provider: "vonage",
     };
   }
-  if (provider === 'opentok') {
-    const apiKey = process.env.OT_API_KEY ?? '';
-    const apiSecret = process.env.OT_API_SECRET ?? '';
+  if (provider === "opentok") {
+    const apiKey = process.env.OT_API_KEY ?? "";
+    const apiSecret = process.env.OT_API_SECRET ?? "";
 
     if (!apiKey || !apiSecret) {
-      throw new Error('Missing config values for OpenTok');
+      throw new Error("Missing config values for OpenTok");
     }
 
     return {
       ...feedbackConfig,
       apiKey,
       apiSecret,
-      provider: 'opentok',
+      provider: "opentok",
     };
   }
-  throw new Error('Unknown video service provider');
+  throw new Error("Unknown video service provider");
 };
 
 export default loadConfig;

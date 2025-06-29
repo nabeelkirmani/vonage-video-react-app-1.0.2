@@ -1,3 +1,3 @@
-import VideoTileCanvas from './VideoTileCanvas';
+import VideoTileCanvas from "./VideoTileCanvas";
 
 export default VideoTileCanvas;

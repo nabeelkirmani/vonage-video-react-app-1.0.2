@@ -1,11 +1,11 @@
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import { Stream } from '@vonage/client-sdk-video';
-import { ReactElement } from 'react';
-import useSessionContext from '../../../hooks/useSessionContext';
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import { Stream } from "@vonage/client-sdk-video";
+import { ReactElement } from "react";
+import useSessionContext from "../../../hooks/useSessionContext";
 
 type MutingDialogTexts = {
   contents: string;
@@ -29,12 +29,16 @@ export type MutingDialogProps = {
  *  @property {Stream} stream - The stream that can potentially be muted.
  * @returns {ReactElement} - The MutingDialog component.
  */
-const MutingDialog = ({ isOpen, setIsOpen, stream }: MutingDialogProps): ReactElement => {
+const MutingDialog = ({
+  isOpen,
+  setIsOpen,
+  stream,
+}: MutingDialogProps): ReactElement => {
   const { forceMute } = useSessionContext();
   const muteParticipantText: MutingDialogTexts = {
     contents: `Mute ${stream?.name} for everyone in the call? Only ${stream?.name} can unmute themselves.`,
-    primaryActionText: 'Mute',
-    secondaryActionText: 'Cancel',
+    primaryActionText: "Mute",
+    secondaryActionText: "Cancel",
   };
 
   const handleClose = () => {
@@ -61,7 +65,9 @@ const MutingDialog = ({ isOpen, setIsOpen, stream }: MutingDialogProps): ReactEl
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>{muteParticipantText.secondaryActionText}</Button>
+        <Button onClick={handleClose}>
+          {muteParticipantText.secondaryActionText}
+        </Button>
         <Button onClick={handleActionClick} autoFocus>
           {muteParticipantText.primaryActionText}
         </Button>

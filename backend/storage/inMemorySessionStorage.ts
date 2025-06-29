@@ -1,4 +1,4 @@
-import { SessionStorage } from './sessionStorage';
+import { SessionStorage } from "./sessionStorage";
 
 class InMemorySessionStorage implements SessionStorage {
   sessions: { [key: string]: string } = {};

@@ -1,5 +1,5 @@
-import { IconButton, SxProps } from '@mui/material';
-import { ForwardedRef, forwardRef, ReactElement } from 'react';
+import { IconButton, SxProps } from "@mui/material";
+import { ForwardedRef, forwardRef, ReactElement } from "react";
 
 export type VideoContainerButtonProps = {
   onClick: () => void;
@@ -19,24 +19,26 @@ export type VideoContainerButtonProps = {
  *  @property {boolean} isEnabled - Whether the button is toggled or not.
  * @returns {ReactElement} The VideoContainerToggleButton component.
  */
-const VideoContainerToggleButton = forwardRef(function VideoContainerToggleButton(
-  props: VideoContainerButtonProps,
-  ref: ForwardedRef<HTMLButtonElement>
-): ReactElement {
-  const { icon: Icon, sx = {}, isEnabled, ...rest } = props;
-  return (
-    <IconButton
-      {...rest}
-      ref={ref}
-      sx={{
-        height: '100%',
-        width: '100%',
-        ...sx,
-      }}
-    >
-      {Icon}
-    </IconButton>
-  );
-});
+const VideoContainerToggleButton = forwardRef(
+  function VideoContainerToggleButton(
+    props: VideoContainerButtonProps,
+    ref: ForwardedRef<HTMLButtonElement>,
+  ): ReactElement {
+    const { icon: Icon, sx = {}, isEnabled, ...rest } = props;
+    return (
+      <IconButton
+        {...rest}
+        ref={ref}
+        sx={{
+          height: "100%",
+          width: "100%",
+          ...sx,
+        }}
+      >
+        {Icon}
+      </IconButton>
+    );
+  },
+);
 
 export default VideoContainerToggleButton;

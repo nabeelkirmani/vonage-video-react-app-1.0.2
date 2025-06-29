@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement } from "react";
 
 /**
  * UnsupportedBrowserMessage Component
@@ -7,8 +7,8 @@ import { ReactElement } from 'react';
  * @returns {ReactElement} The UnsupportedBrowserMessage component.
  */
 const UnsupportedBrowserMessage = (): ReactElement => {
-  const header = 'Your browser is unsupported';
-  const message = 'Please use one of our supported browsers.';
+  const header = "Your browser is unsupported";
+  const message = "Please use one of our supported browsers.";
 
   return (
     <div className="ps-12 py-4 h-auto shrink w-[400px] text-left">

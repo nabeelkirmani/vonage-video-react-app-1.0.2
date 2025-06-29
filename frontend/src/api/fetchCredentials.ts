@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { API_URL } from '../utils/constants';
+import axios from "axios";
+import { API_URL } from "../utils/constants";
 
 /**
  * @typedef CredentialsType
@@ -20,7 +20,7 @@ export default async (roomName: string) => {
     const response = await axios.get(`${API_URL}/session/${roomName}`);
     return response.data;
   } catch (error) {
-    console.error('Error fetching credentials:', error);
+    console.error("Error fetching credentials:", error);
     throw error;
   }
 };

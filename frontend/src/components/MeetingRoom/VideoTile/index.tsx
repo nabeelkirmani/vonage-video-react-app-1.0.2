@@ -1,3 +1,3 @@
-import VideoTile from './VideoTile';
+import VideoTile from "./VideoTile";
 
 export default VideoTile;

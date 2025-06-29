@@ -1,3 +1,3 @@
-import ParticipantListToggleButton from './ParticipantListToggleButton';
+import ParticipantListToggleButton from "./ParticipantListToggleButton";
 
 export default ParticipantListToggleButton;

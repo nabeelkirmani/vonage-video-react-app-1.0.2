@@ -1,24 +1,24 @@
-import { describe, it, expect } from 'vitest';
-import { Device } from '@vonage/client-sdk-video';
-import isVideoInputDevice from './isVideoInputDevice';
+import { describe, it, expect } from "vitest";
+import { Device } from "@vonage/client-sdk-video";
+import isVideoInputDevice from "./isVideoInputDevice";
 
-describe('isVideoInputDevice', () => {
-  it('when given a videoInputDevice, returns true', () => {
+describe("isVideoInputDevice", () => {
+  it("when given a videoInputDevice, returns true", () => {
     const videoInputDevice: Device = {
-      kind: 'videoInput',
-      deviceId: 'deviceId',
-      label: 'deviceLabel',
+      kind: "videoInput",
+      deviceId: "deviceId",
+      label: "deviceLabel",
     };
 
     const result = isVideoInputDevice(videoInputDevice);
     expect(result).toBe(true);
   });
 
-  it('when given an audioInput device, returns false', () => {
+  it("when given an audioInput device, returns false", () => {
     const audioInputDevice: Device = {
-      kind: 'audioInput',
-      deviceId: 'deviceId',
-      label: 'deviceLabel',
+      kind: "audioInput",
+      deviceId: "deviceId",
+      label: "deviceLabel",
     };
 
     const result = isVideoInputDevice(audioInputDevice);

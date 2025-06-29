@@ -1,7 +1,7 @@
-import isVcr from './middleware/isVcr';
-import InMemorySessionStorage from './storage/inMemorySessionStorage';
-import { SessionStorage } from './storage/sessionStorage';
-import VcrSessionStorage from './storage/vcrSessionStorage';
+import isVcr from "./middleware/isVcr";
+import InMemorySessionStorage from "./storage/inMemorySessionStorage";
+import { SessionStorage } from "./storage/sessionStorage";
+import VcrSessionStorage from "./storage/vcrSessionStorage";
 
 // Session storage strategy based on whether you use Vonage Cloud Runtime for hosting or run the app locally
 

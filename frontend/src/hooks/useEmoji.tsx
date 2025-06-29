@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Connection } from '@vonage/client-sdk-video';
-import { throttle } from 'lodash';
-import useSessionContext from './useSessionContext';
-import { EMOJI_DISPLAY_DURATION } from '../utils/constants';
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { Connection } from "@vonage/client-sdk-video";
+import { throttle } from "lodash";
+import useSessionContext from "./useSessionContext";
+import { EMOJI_DISPLAY_DURATION } from "../utils/constants";
 
 type SignalEventType = {
   type?: string;
@@ -34,10 +34,10 @@ const useEmoji = () => {
     const throttledFunc = throttle(
       (emoji: string) => {
         const data = JSON.stringify({ emoji, time: new Date().getTime() });
-        session?.signal({ type: 'emoji', data }, () => {});
+        session?.signal({ type: "emoji", data }, () => {});
       },
       500,
-      { leading: true, trailing: false }
+      { leading: true, trailing: false },
     );
     return throttledFunc;
   }, [session]);
@@ -53,7 +53,7 @@ const useEmoji = () => {
 
       return sendingConnection.connectionId === yourConnection?.connectionId;
     },
-    [session?.connection]
+    [session?.connection],
   );
 
   /**
@@ -65,17 +65,17 @@ const useEmoji = () => {
     (sendingConnection: Connection): string | undefined => {
       const isYou = getIsYourConnection(sendingConnection);
       if (isYou) {
-        return 'You';
+        return "You";
       }
 
       const sendingSubscriberWrapper = subscriberWrappers.find(
         (subscriberWrapper) =>
           subscriberWrapper.subscriber.stream?.connection.connectionId ===
-            sendingConnection?.connectionId && !subscriberWrapper.isScreenshare
+            sendingConnection?.connectionId && !subscriberWrapper.isScreenshare,
       );
       return sendingSubscriberWrapper?.subscriber.stream?.name;
     },
-    [getIsYourConnection, subscriberWrappers]
+    [getIsYourConnection, subscriberWrappers],
   );
 
   /**
@@ -85,11 +85,11 @@ const useEmoji = () => {
    */
   const emojiHandler = useCallback(
     ({ type, data, from: sendingConnection }: SignalEventType) => {
-      if (type !== 'signal:emoji') {
+      if (type !== "signal:emoji") {
         return;
       }
       if (data && sendingConnection) {
-        const senderName = getSenderName(sendingConnection) ?? '';
+        const senderName = getSenderName(sendingConnection) ?? "";
         const { emoji, time }: EmojiDataType = JSON.parse(data);
 
         const emojiWrapper: EmojiWrapper = {
@@ -97,21 +97,24 @@ const useEmoji = () => {
           emoji,
           time,
         };
-        setEmojiQueue((previousEmojiQueue) => [...previousEmojiQueue, emojiWrapper]);
+        setEmojiQueue((previousEmojiQueue) => [
+          ...previousEmojiQueue,
+          emojiWrapper,
+        ]);
 
         setTimeout(() => {
           setEmojiQueue((previousEmojiQueue) => previousEmojiQueue.slice(1));
         }, EMOJI_DISPLAY_DURATION);
       }
     },
-    [getSenderName]
+    [getSenderName],
   );
 
   useEffect(() => {
-    session?.on('signal', emojiHandler);
+    session?.on("signal", emojiHandler);
 
     return () => {
-      session?.off('signal', emojiHandler);
+      session?.off("signal", emojiHandler);
     };
   }, [emojiHandler, session]);
 

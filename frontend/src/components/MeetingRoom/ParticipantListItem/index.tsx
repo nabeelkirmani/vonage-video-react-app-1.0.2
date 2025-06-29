@@ -1,3 +1,3 @@
-import ParticipantListItem from './ParticipantListItem';
+import ParticipantListItem from "./ParticipantListItem";
 
 export default ParticipantListItem;

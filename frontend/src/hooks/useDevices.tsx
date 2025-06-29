@@ -1,15 +1,15 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 import {
   getDevices,
   getAudioOutputDevices,
   Device,
   OTError,
   AudioOutputDevice,
-} from '@vonage/client-sdk-video';
-import { AllMediaDevices } from '../types';
-import isAudioInputDevice from '../utils/isAudioInputDevice';
-import isVideoInputDevice from '../utils/isVideoInputDevice';
-import renameDefaultAudioOutputDevice from '../utils/renameDefaultAudioOutputDevice';
+} from "@vonage/client-sdk-video";
+import { AllMediaDevices } from "../types";
+import isAudioInputDevice from "../utils/isAudioInputDevice";
+import isVideoInputDevice from "../utils/isVideoInputDevice";
+import renameDefaultAudioOutputDevice from "../utils/renameDefaultAudioOutputDevice";
 
 /**
  * React hook that retrieves and maintains the available audio/video input/output devices from the user's device.
@@ -33,7 +33,7 @@ const useDevices = () => {
    */
   const getAllMediaDevices = useCallback(() => {
     if (!mediaDevices.enumerateDevices) {
-      console.warn('enumerateDevices() not supported.');
+      console.warn("enumerateDevices() not supported.");
       return;
     }
     // eslint-disable-next-line consistent-return
@@ -46,9 +46,12 @@ const useDevices = () => {
         }
 
         // Vonage Video API's getAudioOutputDevices retrieves all audio output devices (speakers)
-        let audioOutputDevices: AudioOutputDevice[] = await getAudioOutputDevices();
+        let audioOutputDevices: AudioOutputDevice[] =
+          await getAudioOutputDevices();
         // Rename the label of the default audio output to "System Default"
-        audioOutputDevices = audioOutputDevices.map(renameDefaultAudioOutputDevice);
+        audioOutputDevices = audioOutputDevices.map(
+          renameDefaultAudioOutputDevice,
+        );
 
         // Filter audio input devices from the list retrieved by Vonage Video API's getDevices
         const audioInputDevices = devices?.filter(isAudioInputDevice) || [];
@@ -72,14 +75,14 @@ const useDevices = () => {
    */
   useEffect(() => {
     // Add an event listener to update device list when the list changes (such as plugging or unplugging a device)
-    mediaDevices.addEventListener('devicechange', getAllMediaDevices);
+    mediaDevices.addEventListener("devicechange", getAllMediaDevices);
 
     // Fetch the initial list of the devices when the component mounts
     getAllMediaDevices();
 
     return () => {
       // Remove the event listener when component unmounts
-      mediaDevices.removeEventListener('devicechange', getAllMediaDevices);
+      mediaDevices.removeEventListener("devicechange", getAllMediaDevices);
     };
   }, [getAllMediaDevices, mediaDevices]);
 

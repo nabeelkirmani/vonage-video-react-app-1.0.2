@@ -1,4 +1,4 @@
-import { EventEmitter } from 'events';
+import { EventEmitter } from "events";
 
 export type SpeakingDetectorOptions = {
   selectedMicrophoneId: string | undefined;
@@ -41,7 +41,7 @@ class SpeakingDetector extends EventEmitter {
       this.turnMuteIndicationOffTimer = undefined;
     }
     this.isSpeakingWhileMuted = false;
-    this.emit('isSpeakingWhileMutedOff');
+    this.emit("isSpeakingWhileMutedOff");
   };
 
   /**
@@ -55,7 +55,9 @@ class SpeakingDetector extends EventEmitter {
       this.source.disconnect();
     }
     if (this.stream) {
-      this.stream.getTracks().forEach((track: MediaStreamTrack) => track.stop());
+      this.stream
+        .getTracks()
+        .forEach((track: MediaStreamTrack) => track.stop());
     }
     if (this.audioContext) {
       this.audioContext.close();
@@ -97,7 +99,7 @@ class SpeakingDetector extends EventEmitter {
         if (!this.analyser) {
           return;
         }
-        if (document.visibilityState === 'visible') {
+        if (document.visibilityState === "visible") {
           this.analyser.getByteTimeDomainData(timeDomainData);
 
           let max = 0;
@@ -108,9 +110,12 @@ class SpeakingDetector extends EventEmitter {
           if (loudness > 0.2 && !this.indicationShownRecently) {
             // If the calculated loudness exceeds a threshold (0.2 in this case) and no indication has been shown recently
             //  it indicates that the user might be speaking.
-            if (!this.isSpeakingWhileMuted && this.turnMuteIndicationOffTimer === undefined) {
+            if (
+              !this.isSpeakingWhileMuted &&
+              this.turnMuteIndicationOffTimer === undefined
+            ) {
               this.isSpeakingWhileMuted = true;
-              this.emit('isSpeakingWhileMuted');
+              this.emit("isSpeakingWhileMuted");
               // we turn off the notification after the auto hide period
               this.turnMuteIndicationOffTimer = window.setTimeout(() => {
                 this.turnMuteIndicationOff();

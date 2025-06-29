@@ -1,10 +1,10 @@
-import ScreenOff from '@mui/icons-material/StopScreenShare';
-import ScreenShare from '@mui/icons-material/ScreenShare';
-import Tooltip from '@mui/material/Tooltip';
-import { ReactElement, useState } from 'react';
-import displayOnDesktop from '../../utils/displayOnDesktop/displayOnDesktop';
-import ToolbarButton from '../MeetingRoom/ToolbarButton';
-import PopupDialog, { DialogTexts } from '../MeetingRoom/PopupDialog';
+import ScreenOff from "@mui/icons-material/StopScreenShare";
+import ScreenShare from "@mui/icons-material/ScreenShare";
+import Tooltip from "@mui/material/Tooltip";
+import { ReactElement, useState } from "react";
+import displayOnDesktop from "../../utils/displayOnDesktop/displayOnDesktop";
+import ToolbarButton from "../MeetingRoom/ToolbarButton";
+import PopupDialog, { DialogTexts } from "../MeetingRoom/PopupDialog";
 
 export type ScreenShareButtonProps = {
   toggleScreenShare: () => void;
@@ -27,22 +27,24 @@ const ScreenSharingButton = ({
   isSharingScreen,
   isViewingScreenShare,
 }: ScreenShareButtonProps): ReactElement => {
-  const title = isSharingScreen ? 'Stop screen share' : 'Start screen share';
+  const title = isSharingScreen ? "Stop screen share" : "Start screen share";
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const handleButtonClick = () =>
-    isViewingScreenShare ? setIsModalOpen((prev) => !prev) : toggleScreenShare();
+    isViewingScreenShare
+      ? setIsModalOpen((prev) => !prev)
+      : toggleScreenShare();
 
   const handleClose = () => {
     setIsModalOpen(false);
   };
 
   const actionText: DialogTexts = {
-    title: 'Do you want to share your screen?',
+    title: "Do you want to share your screen?",
     contents:
-      'Looks like there is someone else sharing their screen. If you continue, their screen is no longer going to be shared.',
-    primaryActionText: 'Start sharing your screen',
-    secondaryActionText: 'Cancel',
+      "Looks like there is someone else sharing their screen. If you continue, their screen is no longer going to be shared.",
+    primaryActionText: "Start sharing your screen",
+    secondaryActionText: "Cancel",
   };
 
   const handleActionClick = () => {

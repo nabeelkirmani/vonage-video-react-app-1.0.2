@@ -9,7 +9,10 @@ type PromiseMap = {
  */
 const blockCallsForArgs = <T>(fn: (key: string, ...args: unknown[]) => T) => {
   const callsInProgress: PromiseMap = {};
-  return async (key: string, ...args: unknown[]): Promise<ReturnType<typeof fn>> => {
+  return async (
+    key: string,
+    ...args: unknown[]
+  ): Promise<ReturnType<typeof fn>> => {
     if (callsInProgress[key]) {
       await callsInProgress[key].promise;
     } else {

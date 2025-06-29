@@ -1,5 +1,5 @@
-import { ReactElement } from 'react';
-import Separator from '../Separator';
+import { ReactElement } from "react";
+import Separator from "../Separator";
 
 /**
  * JoinContainerSeparator Component

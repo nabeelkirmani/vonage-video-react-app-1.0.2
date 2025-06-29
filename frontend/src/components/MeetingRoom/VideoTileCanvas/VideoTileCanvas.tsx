@@ -1,19 +1,19 @@
-import { ReactElement, useRef } from 'react';
-import { Publisher as OTPublisher } from '@vonage/client-sdk-video';
-import { CircularProgress } from '@mui/material';
-import useLayoutManager from '../../../hooks/useLayoutManager';
-import usePublisherContext from '../../../hooks/usePublisherContext';
-import useSessionContext from '../../../hooks/useSessionContext';
-import Publisher from '../../Publisher';
-import ScreenSharePublisher from '../ScreenSharePublisher';
-import Subscriber from '../../Subscriber';
-import HiddenParticipantsTile from '../../HiddenParticipantsTile/HiddenParticipantsTile';
-import useElementDimensions from '../../../hooks/useElementDimensions';
-import getSubscribersToDisplay from '../../../utils/helpers/getSubscribersToDisplay/getSubscribersToDisplay';
-import useSubscribersInDisplayOrder from '../../../hooks/useSubscribersInDisplayOrder';
-import getLayoutBoxes from '../../../utils/helpers/getLayoutBoxes';
-import useActiveSpeaker from '../../../hooks/useActiveSpeaker';
-import useIsSmallViewport from '../../../hooks/useIsSmallViewport';
+import { ReactElement, useRef } from "react";
+import { Publisher as OTPublisher } from "@vonage/client-sdk-video";
+import { CircularProgress } from "@mui/material";
+import useLayoutManager from "../../../hooks/useLayoutManager";
+import usePublisherContext from "../../../hooks/usePublisherContext";
+import useSessionContext from "../../../hooks/useSessionContext";
+import Publisher from "../../Publisher";
+import ScreenSharePublisher from "../ScreenSharePublisher";
+import Subscriber from "../../Subscriber";
+import HiddenParticipantsTile from "../../HiddenParticipantsTile/HiddenParticipantsTile";
+import useElementDimensions from "../../../hooks/useElementDimensions";
+import getSubscribersToDisplay from "../../../utils/helpers/getSubscribersToDisplay/getSubscribersToDisplay";
+import useSubscribersInDisplayOrder from "../../../hooks/useSubscribersInDisplayOrder";
+import getLayoutBoxes from "../../../utils/helpers/getLayoutBoxes";
+import useActiveSpeaker from "../../../hooks/useActiveSpeaker";
+import useIsSmallViewport from "../../../hooks/useIsSmallViewport";
 
 export type VideoTileCanvasProps = {
   isSharingScreen: boolean;
@@ -47,18 +47,22 @@ const VideoTileCanvas = ({
   const { connected, subscriberWrappers, layoutMode } = useSessionContext();
 
   // Determine if we will display a large video tile based on current layout mode and screenshare presence
-  const isViewingScreenshare = subscriberWrappers.some((subWrapper) => subWrapper.isScreenshare);
+  const isViewingScreenshare = subscriberWrappers.some(
+    (subWrapper) => subWrapper.isScreenshare,
+  );
   const sessionHasScreenshare = isViewingScreenshare || isSharingScreen;
-  const isViewingLargeTile = sessionHasScreenshare || layoutMode === 'active-speaker';
+  const isViewingLargeTile =
+    sessionHasScreenshare || layoutMode === "active-speaker";
 
   // Check which subscribers we will display, in large calls we will hide some subscribers
   const { hiddenSubscribers, subscribersOnScreen } = getSubscribersToDisplay(
     subscriberWrappers,
-    isViewingLargeTile
+    isViewingLargeTile,
   );
 
   // We keep track of the current position of subscribers so we can maintain position to avoid subscribers jumping around the screen
-  const subscribersInDisplayOrder = useSubscribersInDisplayOrder(subscribersOnScreen);
+  const subscribersInDisplayOrder =
+    useSubscribersInDisplayOrder(subscribersOnScreen);
 
   // Get the layout Boxes which specify exact position, height, and width for all video tiles
   const layoutBoxes = getLayoutBoxes({
@@ -79,17 +83,25 @@ const VideoTileCanvas = ({
 
   // Height is 100dvh - toolbar height (80px) and header height (80px) - 24px wrapper margin on small viewport device
   // Height is 100dvh - toolbar height (80px) - 24px wrapper margin on desktop
-  const heightClass = isSmallViewPort ? 'h-[calc(100dvh_-_184px)]' : 'h-[calc(100dvh_-_104px)]';
+  const heightClass = isSmallViewPort
+    ? "h-[calc(100dvh_-_184px)]"
+    : "h-[calc(100dvh_-_104px)]";
 
   // Width is 100vw - 360px panel width - 24px panel right margin - 24px wrapper margin
-  const widthClass = isRightPanelOpen ? 'w-[calc(100vw_-_392px)]' : 'w-[calc(100vw_-_24px)]';
+  const widthClass = isRightPanelOpen
+    ? "w-[calc(100vw_-_392px)]"
+    : "w-[calc(100vw_-_24px)]";
   return (
-    <div ref={wrapRef} id="wrapper" className={`m-3 ${widthClass} ${heightClass} aspect-video`}>
+    <div
+      ref={wrapRef}
+      id="wrapper"
+      className={`m-3 ${widthClass} ${heightClass} aspect-video`}
+    >
       <div id="video-container" className="relative w-full h-full">
         {!connected ? (
           <CircularProgress
             data-testid="progress-spinner"
-            sx={{ position: 'absolute', top: '50%' }}
+            sx={{ position: "absolute", top: "50%" }}
           />
         ) : (
           <>
@@ -110,19 +122,22 @@ const VideoTileCanvas = ({
                 <Subscriber
                   key={subscriberWrapper.id}
                   subscriberWrapper={subscriberWrapper}
-                  isHidden={!subscribersInDisplayOrder.includes(subscriberWrapper)}
+                  isHidden={
+                    !subscribersInDisplayOrder.includes(subscriberWrapper)
+                  }
                   box={layoutBoxes.subscriberBoxes?.[index]}
                   isActiveSpeaker={activeSpeakerId === subscriberWrapper.id}
                 />
-              )
+              ),
             )}
-            {!!hiddenSubscribers.length && layoutBoxes.hiddenParticipantsBox && (
-              <HiddenParticipantsTile
-                hiddenSubscribers={hiddenSubscribers}
-                box={layoutBoxes.hiddenParticipantsBox}
-                handleClick={toggleParticipantList}
-              />
-            )}
+            {!!hiddenSubscribers.length &&
+              layoutBoxes.hiddenParticipantsBox && (
+                <HiddenParticipantsTile
+                  hiddenSubscribers={hiddenSubscribers}
+                  box={layoutBoxes.hiddenParticipantsBox}
+                  handleClick={toggleParticipantList}
+                />
+              )}
           </>
         )}
       </div>

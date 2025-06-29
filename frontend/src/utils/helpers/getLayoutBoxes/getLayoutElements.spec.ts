@@ -1,8 +1,8 @@
-import { Dimensions, Publisher } from '@vonage/client-sdk-video';
-import { beforeEach, describe, expect, it } from 'vitest';
-import getLayoutElementArray from './getLayoutElements';
-import { LayoutMode } from '../../../Context/SessionProvider/session';
-import { SubscriberWrapper } from '../../../types/session';
+import { Dimensions, Publisher } from "@vonage/client-sdk-video";
+import { beforeEach, describe, expect, it } from "vitest";
+import getLayoutElementArray from "./getLayoutElements";
+import { LayoutMode } from "../../../Context/SessionProvider/session";
+import { SubscriberWrapper } from "../../../types/session";
 
 // Define unique values for width and height so we can identify layout elements
 const publisherWidth = 101;
@@ -49,7 +49,11 @@ const screenPublisher = {
   },
 } as unknown as Publisher;
 
-const createSubscriberWrapper = (id: string, dimensions: Dimensions, isScreenshare = false) => {
+const createSubscriberWrapper = (
+  id: string,
+  dimensions: Dimensions,
+  isScreenshare = false,
+) => {
   return {
     id,
     subscriber: {
@@ -64,20 +68,20 @@ const createSubscriberWrapper = (id: string, dimensions: Dimensions, isScreensha
   } as unknown as SubscriberWrapper;
 };
 
-const subscriber1 = createSubscriberWrapper('sub1', {
+const subscriber1 = createSubscriberWrapper("sub1", {
   width: subscriber1Width,
   height: subscriber1Height,
 });
 
-const subscriber2 = createSubscriberWrapper('sub2', {
+const subscriber2 = createSubscriberWrapper("sub2", {
   width: subscriber2Width,
   height: subscriber2Height,
 });
-const subscriber3 = createSubscriberWrapper('sub3', {
+const subscriber3 = createSubscriberWrapper("sub3", {
   width: subscriber3Width,
   height: subscriber3Height,
 });
-const subscriber4 = createSubscriberWrapper('sub4', {
+const subscriber4 = createSubscriberWrapper("sub4", {
   width: subscriber4Width,
   height: subscriber4Height,
 });
@@ -107,7 +111,7 @@ const hiddenParticipantTileLayoutElement = {
   fixedRatio: false,
 };
 
-describe('getLayoutElementArray', () => {
+describe("getLayoutElementArray", () => {
   let activeSpeakerId: string;
   let hiddenSubscribers: SubscriberWrapper[];
   let isSharingScreen: boolean;
@@ -117,17 +121,17 @@ describe('getLayoutElementArray', () => {
   let sessionHasScreenshare: boolean;
   let subscribersInDisplayOrder: SubscriberWrapper[];
   beforeEach(() => {
-    activeSpeakerId = 'sub2';
+    activeSpeakerId = "sub2";
     hiddenSubscribers = [subscriber4];
     isSharingScreen = true;
-    layoutMode = 'active-speaker';
+    layoutMode = "active-speaker";
     publisher = cameraPublisher;
     screensharingPublisher = screenPublisher;
     sessionHasScreenshare = true;
     subscribersInDisplayOrder = [subscriber1, subscriber2, subscriber3];
   });
 
-  it('returns elements in correct order', () => {
+  it("returns elements in correct order", () => {
     const layoutElements = getLayoutElementArray({
       activeSpeakerId,
       hiddenSubscribers,
@@ -149,9 +153,9 @@ describe('getLayoutElementArray', () => {
     ]);
   });
 
-  it('makes active speaker element big if screenshare is not present', () => {
+  it("makes active speaker element big if screenshare is not present", () => {
     const layoutElements = getLayoutElementArray({
-      activeSpeakerId: 'sub1',
+      activeSpeakerId: "sub1",
       hiddenSubscribers: [],
       isSharingScreen: false,
       layoutMode,
@@ -169,12 +173,12 @@ describe('getLayoutElementArray', () => {
     ]);
   });
 
-  it('does not make active speaker element big if layout-mode is grid', () => {
+  it("does not make active speaker element big if layout-mode is grid", () => {
     const layoutElements = getLayoutElementArray({
-      activeSpeakerId: 'sub1',
+      activeSpeakerId: "sub1",
       hiddenSubscribers,
       isSharingScreen: false,
-      layoutMode: 'grid',
+      layoutMode: "grid",
       publisher,
       screensharingPublisher: null,
       sessionHasScreenshare: false,
@@ -190,9 +194,9 @@ describe('getLayoutElementArray', () => {
     ]);
   });
 
-  it('makes screenshare big and fixedRatio, and active-speaker is small', () => {
+  it("makes screenshare big and fixedRatio, and active-speaker is small", () => {
     const layoutElements = getLayoutElementArray({
-      activeSpeakerId: 'sub1',
+      activeSpeakerId: "sub1",
       hiddenSubscribers: [],
       isSharingScreen: false,
       layoutMode,

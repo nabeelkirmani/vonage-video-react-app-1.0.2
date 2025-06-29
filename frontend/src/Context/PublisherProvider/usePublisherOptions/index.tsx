@@ -1,3 +1,3 @@
-import usePublisherOptions from './usePublisherOptions';
+import usePublisherOptions from "./usePublisherOptions";
 
 export default usePublisherOptions;

@@ -1,17 +1,17 @@
-import { useRef, useState, useEffect, ReactElement } from 'react';
-import { Stack } from '@mui/material';
-import MicToggleButton from '../MicToggleButton';
-import CameraToggleButton from '../CameraToggleButton';
-import BlurToggleButton from '../BlurToggleButton';
-import VideoLoading from '../VideoLoading';
-import waitUntilPlaying from '../../../utils/waitUntilPlaying';
-import useUserContext from '../../../hooks/useUserContext';
-import usePreviewPublisherContext from '../../../hooks/usePreviewPublisherContext';
-import getInitials from '../../../utils/getInitials';
-import PreviewAvatar from '../PreviewAvatar';
-import VoiceIndicatorIcon from '../../MeetingRoom/VoiceIndicator/VoiceIndicator';
-import useIsSmallViewport from '../../../hooks/useIsSmallViewport';
-import VignetteEffect from '../VignetteEffect';
+import { useRef, useState, useEffect, ReactElement } from "react";
+import { Stack } from "@mui/material";
+import MicToggleButton from "../MicToggleButton";
+import CameraToggleButton from "../CameraToggleButton";
+import BlurToggleButton from "../BlurToggleButton";
+import VideoLoading from "../VideoLoading";
+import waitUntilPlaying from "../../../utils/waitUntilPlaying";
+import useUserContext from "../../../hooks/useUserContext";
+import usePreviewPublisherContext from "../../../hooks/usePreviewPublisherContext";
+import getInitials from "../../../utils/getInitials";
+import PreviewAvatar from "../PreviewAvatar";
+import VoiceIndicatorIcon from "../../MeetingRoom/VoiceIndicator/VoiceIndicator";
+import useIsSmallViewport from "../../../hooks/useIsSmallViewport";
+import VignetteEffect from "../VignetteEffect";
 
 export type VideoContainerProps = {
   username: string;
@@ -39,18 +39,18 @@ const VideoContainer = ({ username }: VideoContainerProps): ReactElement => {
     if (publisherVideoElement && containerRef.current) {
       containerRef.current.appendChild(publisherVideoElement);
       const myVideoElement = publisherVideoElement as HTMLElement;
-      myVideoElement.classList.add('video__element');
-      myVideoElement.title = 'publisher-preview';
-      myVideoElement.style.borderRadius = isSmallViewport ? '0px' : '12px';
-      myVideoElement.style.height = isSmallViewport ? '' : '328px';
-      myVideoElement.style.width = isSmallViewport ? '100dvw' : '584px';
-      myVideoElement.style.marginLeft = 'auto';
-      myVideoElement.style.marginRight = 'auto';
-      myVideoElement.style.transform = 'scaleX(-1)';
-      myVideoElement.style.objectFit = 'contain';
-      myVideoElement.style.aspectRatio = '16 / 9';
+      myVideoElement.classList.add("video__element");
+      myVideoElement.title = "publisher-preview";
+      myVideoElement.style.borderRadius = isSmallViewport ? "0px" : "12px";
+      myVideoElement.style.height = isSmallViewport ? "" : "328px";
+      myVideoElement.style.width = isSmallViewport ? "100dvw" : "584px";
+      myVideoElement.style.marginLeft = "auto";
+      myVideoElement.style.marginRight = "auto";
+      myVideoElement.style.transform = "scaleX(-1)";
+      myVideoElement.style.objectFit = "contain";
+      myVideoElement.style.aspectRatio = "16 / 9";
       myVideoElement.style.boxShadow =
-        '0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15)';
+        "0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15)";
 
       waitUntilPlaying(publisherVideoElement).then(() => {
         setVideoLoading(false);

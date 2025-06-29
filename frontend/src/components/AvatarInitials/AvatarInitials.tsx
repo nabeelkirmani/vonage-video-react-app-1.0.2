@@ -1,6 +1,6 @@
-import { Avatar, SxProps } from '@mui/material';
-import { ReactElement } from 'react';
-import getParticipantColor from '../../utils/getParticipantColor';
+import { Avatar, SxProps } from "@mui/material";
+import { ReactElement } from "react";
+import getParticipantColor from "../../utils/getParticipantColor";
 
 export type InitialsProps = {
   initials?: string;
@@ -23,8 +23,8 @@ export type InitialsProps = {
  * @returns {ReactElement} The avatar initials component.
  */
 const AvatarInitials = ({
-  initials = '',
-  username = '',
+  initials = "",
+  username = "",
   sx = {},
   height = 80,
   width = 80,
@@ -38,8 +38,8 @@ const AvatarInitials = ({
         width: `${diameter}px`,
         height: `${diameter}px`,
         fontSize: `${diameter / 3}pt`,
-        position: 'absolute',
-        margin: 'auto',
+        position: "absolute",
+        margin: "auto",
         ...sx,
       }}
     >

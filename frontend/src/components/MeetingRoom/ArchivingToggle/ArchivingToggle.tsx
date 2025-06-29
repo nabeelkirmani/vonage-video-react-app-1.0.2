@@ -1,12 +1,12 @@
-import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
-import { Tooltip } from '@mui/material';
-import { ReactElement, useState } from 'react';
-import useRoomName from '../../../hooks/useRoomName';
-import ToolbarButton from '../ToolbarButton';
-import displayOnDesktop from '../../../utils/displayOnDesktop';
-import PopupDialog, { DialogTexts } from '../PopupDialog';
-import { startArchiving, stopArchiving } from '../../../api/archiving';
-import useSessionContext from '../../../hooks/useSessionContext';
+import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
+import { Tooltip } from "@mui/material";
+import { ReactElement, useState } from "react";
+import useRoomName from "../../../hooks/useRoomName";
+import ToolbarButton from "../ToolbarButton";
+import displayOnDesktop from "../../../utils/displayOnDesktop";
+import PopupDialog, { DialogTexts } from "../PopupDialog";
+import { startArchiving, stopArchiving } from "../../../api/archiving";
+import useSessionContext from "../../../hooks/useSessionContext";
 
 /**
  * ArchivingToggle Component
@@ -21,24 +21,25 @@ const ArchivingToggle = (): ReactElement => {
   const { archiveId } = useSessionContext();
   const isRecording = !!archiveId;
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const title = isRecording ? 'Stop recording' : 'Start recording';
+  const title = isRecording ? "Stop recording" : "Start recording";
   const handleButtonClick = () => {
     setIsModalOpen((prev) => !prev);
   };
 
   const startRecordingText: DialogTexts = {
-    title: 'Start Recording?',
+    title: "Start Recording?",
     contents:
       'Make sure everyone is ready! You can download the recording from the "Goodbye" page after you leave the room.',
-    primaryActionText: 'Start Recording',
-    secondaryActionText: 'Cancel',
+    primaryActionText: "Start Recording",
+    secondaryActionText: "Cancel",
   };
 
   const stopRecordingText: DialogTexts = {
-    title: 'Stop Recording?',
-    contents: 'You can download the recording from the "Goodbye" page after you leave the room.',
-    primaryActionText: 'Stop Recording',
-    secondaryActionText: 'Cancel',
+    title: "Stop Recording?",
+    contents:
+      'You can download the recording from the "Goodbye" page after you leave the room.',
+    primaryActionText: "Stop Recording",
+    secondaryActionText: "Cancel",
   };
 
   const [actionText, setActionText] = useState<DialogTexts>(startRecordingText);
@@ -47,8 +48,8 @@ const ArchivingToggle = (): ReactElement => {
     setIsModalOpen(false);
   };
 
-  const handleDialogClick = async (action: 'start' | 'stop') => {
-    if (action === 'start') {
+  const handleDialogClick = async (action: "start" | "stop") => {
+    if (action === "start") {
       if (!archiveId && roomName) {
         try {
           setActionText(stopRecordingText);
@@ -65,7 +66,7 @@ const ArchivingToggle = (): ReactElement => {
 
   const handleActionClick = () => {
     handleClose();
-    handleDialogClick(isRecording ? 'stop' : 'start');
+    handleDialogClick(isRecording ? "stop" : "start");
   };
 
   return (
@@ -75,7 +76,7 @@ const ArchivingToggle = (): ReactElement => {
           onClick={handleButtonClick}
           icon={
             <RadioButtonCheckedIcon
-              style={{ color: `${isRecording ? 'rgb(239 68 68)' : 'white'}` }}
+              style={{ color: `${isRecording ? "rgb(239 68 68)" : "white"}` }}
             />
           }
         />

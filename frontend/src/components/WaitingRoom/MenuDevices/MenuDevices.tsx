@@ -1,9 +1,9 @@
-import { Menu, MenuItem } from '@mui/material';
-import { Speaker } from '@mui/icons-material';
-import { AudioOutputDevice, Device } from '@vonage/client-sdk-video';
-import { ReactElement } from 'react';
-import { isGetActiveAudioOutputDeviceSupported } from '../../../utils/util';
-import SoundTest from '../../SoundTest';
+import { Menu, MenuItem } from "@mui/material";
+import { Speaker } from "@mui/icons-material";
+import { AudioOutputDevice, Device } from "@vonage/client-sdk-video";
+import { ReactElement } from "react";
+import { isGetActiveAudioOutputDeviceSupported } from "../../../utils/util";
+import SoundTest from "../../SoundTest";
 
 export type MenuDevicesWaitingRoomProps = {
   onClose: () => void;
@@ -50,10 +50,11 @@ const MenuDevices = ({
       anchorEl={anchorEl}
       open={open}
       onClose={onClose}
-      MenuListProps={{ 'aria-labelledby': 'basic-button' }}
+      MenuListProps={{ "aria-labelledby": "basic-button" }}
       data-testid={`${deviceType}-menu`}
     >
-      {(deviceType !== 'audioOutput' || isGetActiveAudioOutputDeviceSupported()) &&
+      {(deviceType !== "audioOutput" ||
+        isGetActiveAudioOutputDeviceSupported()) &&
         devices.map((device) => (
           <MenuItem
             onClick={() => {
@@ -66,20 +67,21 @@ const MenuDevices = ({
             selected={device.deviceId === localSource}
             sx={{
               pl: 4,
-              backgroundColor: device.deviceId === localSource ? 'rgba(26,115,232,.9)' : '',
+              backgroundColor:
+                device.deviceId === localSource ? "rgba(26,115,232,.9)" : "",
             }}
           >
             {device.label}
           </MenuItem>
         ))}
-      {deviceType === 'audioOutput' && (
+      {deviceType === "audioOutput" && (
         <SoundTest>
           <Speaker
             sx={{
               fontSize: 24,
               mr: 1,
               ml: 1.5,
-              color: 'rgb(95, 99, 104)',
+              color: "rgb(95, 99, 104)",
             }}
           />
         </SoundTest>

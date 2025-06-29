@@ -1,5 +1,5 @@
-import { ReactElement } from 'react';
-import { TEXT_SHADOW } from '../../../utils/constants';
+import { ReactElement } from "react";
+import { TEXT_SHADOW } from "../../../utils/constants";
 
 export type NameDisplayProps = {
   containerWidth: number;
@@ -15,7 +15,10 @@ export type NameDisplayProps = {
  *  @property {string} name - the name to be displayed.
  * @returns {ReactElement} The NameDisplay component.
  */
-const NameDisplay = ({ name, containerWidth }: NameDisplayProps): ReactElement => {
+const NameDisplay = ({
+  name,
+  containerWidth,
+}: NameDisplayProps): ReactElement => {
   return (
     <div
       className={`absolute text-sm truncate text-white bottom-[10px] left-[10px] ${TEXT_SHADOW}`}

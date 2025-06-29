@@ -1,8 +1,14 @@
 /* eslint-disable no-underscore-dangle */
-import { Auth } from '@vonage/auth';
-import { LayoutType, MediaMode, Resolution, SingleArchiveResponse, Video } from '@vonage/video';
-import { VideoService } from './videoServiceInterface';
-import { VonageConfig } from '../types/config';
+import { Auth } from "@vonage/auth";
+import {
+  LayoutType,
+  MediaMode,
+  Resolution,
+  SingleArchiveResponse,
+  Video,
+} from "@vonage/video";
+import { VideoService } from "./videoServiceInterface";
+import { VonageConfig } from "../types/config";
 
 class VonageVideoService implements VideoService {
   private readonly credentials: Auth;
@@ -21,11 +27,13 @@ class VonageVideoService implements VideoService {
     // We set token role to Moderator in order to allow force muting of another participant
     // In a real world application you may use roles based on the user type in your application
     // See documentation for more information: https://developer.vonage.com/en/video/guides/create-token
-    return 'moderator';
+    return "moderator";
   }
 
   async createSession(): Promise<string> {
-    const { sessionId } = await this.vonageVideo.createSession({ mediaMode: MediaMode.ROUTED });
+    const { sessionId } = await this.vonageVideo.createSession({
+      mediaMode: MediaMode.ROUTED,
+    });
     return sessionId;
   }
 
@@ -41,7 +49,10 @@ class VonageVideoService implements VideoService {
     return { token, apiKey: this.config.applicationId };
   }
 
-  async startArchive(roomName: string, sessionId: string): Promise<SingleArchiveResponse> {
+  async startArchive(
+    roomName: string,
+    sessionId: string,
+  ): Promise<SingleArchiveResponse> {
     return this.vonageVideo.startArchive(sessionId, {
       name: roomName,
       resolution: Resolution.FHD_LANDSCAPE,
@@ -50,14 +61,14 @@ class VonageVideoService implements VideoService {
         // we select 'horizontalPresentation' so the screenshare stream is displayed prominently along with other streams.
         // See: https://developer.vonage.com/en/video/guides/archive-broadcast-layout#layout-types-for-screen-sharing
         type: LayoutType.BEST_FIT,
-        screenshareType: 'horizontalPresentation',
+        screenshareType: "horizontalPresentation",
       },
     });
   }
 
   async stopArchive(archiveId: string): Promise<string> {
     await this.vonageVideo.stopArchive(archiveId);
-    return 'Archive stopped successfully';
+    return "Archive stopped successfully";
   }
 }
 

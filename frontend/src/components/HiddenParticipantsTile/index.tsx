@@ -1,3 +1,3 @@
-import HiddenParticipantsTile from './HiddenParticipantsTile';
+import HiddenParticipantsTile from "./HiddenParticipantsTile";
 
 export default HiddenParticipantsTile;

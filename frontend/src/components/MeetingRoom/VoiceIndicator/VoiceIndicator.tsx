@@ -1,5 +1,5 @@
-import { Box, SxProps } from '@mui/material';
-import { ReactElement } from 'react';
+import { Box, SxProps } from "@mui/material";
+import { ReactElement } from "react";
 
 export type VoiceIndicatorProps = {
   publisherAudioLevel: number;
@@ -37,14 +37,21 @@ const VoiceIndicatorIcon = ({
   const barHeights = calculateBarHeights(publisherAudioLevel);
 
   return (
-    <Box sx={{ ...sx }} key={20} display="flex" flexDirection="column" gap={2} alignItems="center">
+    <Box
+      sx={{ ...sx }}
+      key={20}
+      display="flex"
+      flexDirection="column"
+      gap={2}
+      alignItems="center"
+    >
       <div
         className="flex gap-[8%] items-center justify-center"
         style={{
           height: size,
           width: size,
-          borderRadius: '50%',
-          backgroundColor: 'rgba(26,115,232,.9)',
+          borderRadius: "50%",
+          backgroundColor: "rgba(26,115,232,.9)",
         }}
       >
         {barHeights.map((height, i) => (
@@ -55,19 +62,21 @@ const VoiceIndicatorIcon = ({
             className="flex items-center"
             style={{
               height: height / 4,
-              minHeight: '10%',
-              width: '10%',
-              backgroundColor: 'white',
+              minHeight: "10%",
+              width: "10%",
+              backgroundColor: "white",
             }}
           >
             <div
               className="bg-primary-dark w-full h-2/3 rounded"
               style={{
                 height: `${height - 20}%`,
-                width: '80%',
+                width: "80%",
                 // smooth out the animation with a CSS effect
                 animation:
-                  publisherAudioLevel < 5 ? 'none' : 'speech 250ms ease-in-out infinite alternate',
+                  publisherAudioLevel < 5
+                    ? "none"
+                    : "speech 250ms ease-in-out infinite alternate",
               }}
             />
           </div>

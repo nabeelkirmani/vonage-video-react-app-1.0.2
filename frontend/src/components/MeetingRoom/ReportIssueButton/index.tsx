@@ -1,3 +1,3 @@
-import ReportIssueButton from './ReportIssueButton';
+import ReportIssueButton from "./ReportIssueButton";
 
 export default ReportIssueButton;

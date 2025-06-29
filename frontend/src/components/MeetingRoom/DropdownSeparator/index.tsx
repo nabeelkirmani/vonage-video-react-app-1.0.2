@@ -1,3 +1,3 @@
-import DropdownSeparator from './DropdownSeparator';
+import DropdownSeparator from "./DropdownSeparator";
 
 export default DropdownSeparator;

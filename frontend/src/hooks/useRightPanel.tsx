@@ -1,6 +1,10 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState } from "react";
 
-export type RightPanelActiveTab = 'chat' | 'participant-list' | 'closed' | 'issues';
+export type RightPanelActiveTab =
+  | "chat"
+  | "participant-list"
+  | "closed"
+  | "issues";
 
 export type RightPanelState = {
   activeTab: RightPanelActiveTab;
@@ -22,7 +26,7 @@ export type UseRightPanel = {
  */
 const useRightPanel = (): UseRightPanel => {
   const [rightPanelState, setRightPanelState] = useState<RightPanelState>({
-    activeTab: 'closed',
+    activeTab: "closed",
     unreadCount: 0,
   });
 
@@ -31,10 +35,10 @@ const useRightPanel = (): UseRightPanel => {
    */
   const toggleParticipantList = useCallback(() => {
     setRightPanelState((prev) => {
-      if (prev.activeTab === 'participant-list') {
-        return { ...prev, activeTab: 'closed' };
+      if (prev.activeTab === "participant-list") {
+        return { ...prev, activeTab: "closed" };
       }
-      return { ...prev, activeTab: 'participant-list' };
+      return { ...prev, activeTab: "participant-list" };
     });
   }, []);
 
@@ -44,7 +48,7 @@ const useRightPanel = (): UseRightPanel => {
   const closeRightPanel = useCallback(() => {
     setRightPanelState((prev) => ({
       ...prev,
-      activeTab: 'closed',
+      activeTab: "closed",
     }));
   }, []);
 
@@ -54,25 +58,25 @@ const useRightPanel = (): UseRightPanel => {
    */
   const toggleChat = useCallback(() => {
     setRightPanelState((prev) => {
-      if (prev.activeTab === 'chat') {
+      if (prev.activeTab === "chat") {
         return {
-          activeTab: 'closed',
+          activeTab: "closed",
           unreadCount: 0,
         };
       }
-      return { unreadCount: 0, activeTab: 'chat' };
+      return { unreadCount: 0, activeTab: "chat" };
     });
   }, []);
 
   const toggleReportIssue = useCallback(() => {
     setRightPanelState((prev) => {
-      if (prev.activeTab === 'issues') {
+      if (prev.activeTab === "issues") {
         return {
           ...prev,
-          activeTab: 'closed',
+          activeTab: "closed",
         };
       }
-      return { ...prev, activeTab: 'issues' };
+      return { ...prev, activeTab: "issues" };
     });
   }, []);
 
@@ -82,7 +86,7 @@ const useRightPanel = (): UseRightPanel => {
    */
   const incrementUnreadCount = useCallback(() => {
     setRightPanelState((prev) => {
-      if (prev.activeTab !== 'chat') {
+      if (prev.activeTab !== "chat") {
         return {
           ...prev,
           unreadCount: prev.unreadCount + 1,

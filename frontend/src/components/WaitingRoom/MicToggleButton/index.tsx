@@ -1,3 +1,3 @@
-import MicToggleButton from './MicToggleButton';
+import MicToggleButton from "./MicToggleButton";
 
 export default MicToggleButton;

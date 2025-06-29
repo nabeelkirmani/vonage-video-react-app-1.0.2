@@ -1,16 +1,16 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './App.css';
-import Room from './pages/MeetingRoom';
-import GoodBye from './pages/GoodBye';
-import './index.css';
-import WaitingRoom from './pages/WaitingRoom';
-import SessionProvider from './Context/SessionProvider/session';
-import { PreviewPublisherProvider } from './Context/PreviewPublisherProvider';
-import LandingPage from './pages/LandingPage';
-import { PublisherProvider } from './Context/PublisherProvider';
-import RedirectToWaitingRoom from './components/RedirectToWaitingRoom';
-import UnsupportedBrowserPage from './pages/UnsupportedBrowserPage';
-import RoomContext from './Context/RoomContext';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Room from "./pages/MeetingRoom";
+import GoodBye from "./pages/GoodBye";
+import "./index.css";
+import WaitingRoom from "./pages/WaitingRoom";
+import SessionProvider from "./Context/SessionProvider/session";
+import { PreviewPublisherProvider } from "./Context/PreviewPublisherProvider";
+import LandingPage from "./pages/LandingPage";
+import { PublisherProvider } from "./Context/PublisherProvider";
+import RedirectToWaitingRoom from "./components/RedirectToWaitingRoom";
+import UnsupportedBrowserPage from "./pages/UnsupportedBrowserPage";
+import RoomContext from "./Context/RoomContext";
 
 const App = () => {
   return (
@@ -40,7 +40,10 @@ const App = () => {
         </Route>
         <Route path="/goodbye" element={<GoodBye />} />
         <Route path="*" element={<LandingPage />} />
-        <Route path="/unsupported-browser" element={<UnsupportedBrowserPage />} />
+        <Route
+          path="/unsupported-browser"
+          element={<UnsupportedBrowserPage />}
+        />
       </Routes>
     </Router>
   );

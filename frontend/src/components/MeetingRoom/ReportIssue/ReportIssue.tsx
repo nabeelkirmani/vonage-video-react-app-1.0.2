@@ -1,23 +1,23 @@
-import { ChangeEvent, ReactElement, useState, FormEvent } from 'react';
-import { AxiosError } from 'axios';
-import RightPanelTitle from '../RightPanel/RightPanelTitle';
-import useCollectBrowserInformation from '../../../hooks/useCollectBrowserInformation';
-import FormSubmitted from './FormSubmitted';
-import FeedbackForm from './FeedbackForm';
-import reportIssue from '../../../api/reportFeedback';
+import { ChangeEvent, ReactElement, useState, FormEvent } from "react";
+import { AxiosError } from "axios";
+import RightPanelTitle from "../RightPanel/RightPanelTitle";
+import useCollectBrowserInformation from "../../../hooks/useCollectBrowserInformation";
+import FormSubmitted from "./FormSubmitted";
+import FeedbackForm from "./FeedbackForm";
+import reportIssue from "../../../api/reportFeedback";
 import {
   REPORT_TITLE_LIMIT,
   REPORT_NAME_LIMIT,
   REPORT_DESCRIPTION_LIMIT,
-} from '../../../utils/constants';
-import { ErrorFormType } from './FeedbackForm/FeedbackForm';
+} from "../../../utils/constants";
+import { ErrorFormType } from "./FeedbackForm/FeedbackForm";
 
 export type ReportIssueProps = {
   handleClose: () => void;
   isOpen: boolean;
 };
 
-type FormField = 'title' | 'name' | 'issue';
+type FormField = "title" | "name" | "issue";
 
 export type FormType = {
   title: string;
@@ -40,17 +40,20 @@ type ResponseType = {
  *  @property {boolean} isOpen - indicates whether the report issue component is open or closed.
  * @returns {ReactElement} The report issue component.
  */
-const ReportIssue = ({ handleClose, isOpen }: ReportIssueProps): ReactElement | false => {
+const ReportIssue = ({
+  handleClose,
+  isOpen,
+}: ReportIssueProps): ReactElement | false => {
   const [formData, setFormData] = useState<FormType>({
-    title: '',
-    name: '',
-    issue: '',
-    attachment: '',
+    title: "",
+    name: "",
+    issue: "",
+    attachment: "",
   });
 
   const [ticketResponse, setTicketResponse] = useState<ResponseType>({
-    message: '',
-    ticketUrl: '',
+    message: "",
+    ticketUrl: "",
   });
   const [isFormVisible, setIsFormVisible] = useState<boolean>(true);
 
@@ -90,16 +93,16 @@ const ReportIssue = ({ handleClose, isOpen }: ReportIssueProps): ReactElement | 
     // we have to remove the data:image/png;base64, part
     // because while it provides information about the file type
     // it is not part of the actual binary content of the image
-    const data = attachment.replace(/^data:image\/\w+;base64,/, '');
+    const data = attachment.replace(/^data:image\/\w+;base64,/, "");
     setFormData((prev) => ({ ...prev, attachment: data }));
   };
 
   const handleCloseFormSubmitted = () => {
     setFormData({
-      title: '',
-      name: '',
-      issue: '',
-      attachment: '',
+      title: "",
+      name: "",
+      issue: "",
+      attachment: "",
     });
     // this is needed to make the form available the next time it is opened
     setIsFormVisible(true);
@@ -108,9 +111,9 @@ const ReportIssue = ({ handleClose, isOpen }: ReportIssueProps): ReactElement | 
 
   const validateForm = () => {
     const newErrors = {
-      title: formData.title === '',
-      name: formData.name === '',
-      issue: formData.issue === '',
+      title: formData.title === "",
+      name: formData.name === "",
+      issue: formData.issue === "",
     };
     setErrors(newErrors);
     return !newErrors.issue && !newErrors.title && !newErrors.name;
@@ -138,7 +141,7 @@ const ReportIssue = ({ handleClose, isOpen }: ReportIssueProps): ReactElement | 
         const axiosError = error as AxiosError;
         const errorResponse = {
           message: axiosError.message,
-          ticketUrl: '',
+          ticketUrl: "",
         };
         setTicketResponse(errorResponse);
         setIsFormVisible(false);
@@ -150,7 +153,10 @@ const ReportIssue = ({ handleClose, isOpen }: ReportIssueProps): ReactElement | 
   return (
     isOpen && (
       <>
-        <RightPanelTitle title="Report Issue" handleClose={handleCloseFormSubmitted} />
+        <RightPanelTitle
+          title="Report Issue"
+          handleClose={handleCloseFormSubmitted}
+        />
         {isFormVisible ? (
           <FeedbackForm
             handleSubmit={handleSubmit}

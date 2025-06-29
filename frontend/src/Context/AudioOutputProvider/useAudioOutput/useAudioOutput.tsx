@@ -1,8 +1,8 @@
 import {
   getActiveAudioOutputDevice as getVonageActiveAudioOutputDevice,
   setAudioOutputDevice as setVonageAudioOutputDevice,
-} from '@vonage/client-sdk-video';
-import { useCallback, useEffect, useState } from 'react';
+} from "@vonage/client-sdk-video";
+import { useCallback, useEffect, useState } from "react";
 
 export type AudioDeviceId = string | null | undefined;
 
@@ -18,7 +18,8 @@ export type AudioOutputContextType = {
  * @returns {AudioOutputContextType} audioOutput context
  */
 const useAudioOutput = (): AudioOutputContextType => {
-  const [currentAudioOutputDevice, setCurrentAudioOutputDevice] = useState<AudioDeviceId>();
+  const [currentAudioOutputDevice, setCurrentAudioOutputDevice] =
+    useState<AudioDeviceId>();
   const { mediaDevices } = window.navigator;
 
   const updateCurrentAudioOutputDevice = useCallback(() => {
@@ -35,11 +36,17 @@ const useAudioOutput = (): AudioOutputContextType => {
 
   useEffect(() => {
     // Add an event listener to update device list when the list changes (such as plugging or unplugging a device)
-    mediaDevices.addEventListener('devicechange', updateCurrentAudioOutputDevice);
+    mediaDevices.addEventListener(
+      "devicechange",
+      updateCurrentAudioOutputDevice,
+    );
 
     return () => {
       // Remove the event listener when component unmounts
-      mediaDevices.removeEventListener('devicechange', updateCurrentAudioOutputDevice);
+      mediaDevices.removeEventListener(
+        "devicechange",
+        updateCurrentAudioOutputDevice,
+      );
     };
   }, [mediaDevices, updateCurrentAudioOutputDevice]);
 

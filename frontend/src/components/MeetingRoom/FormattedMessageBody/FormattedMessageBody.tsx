@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
-import { ReactElement } from 'react';
-import { Link } from '@mui/material';
-import linkGroupsParser from '../../../utils/linkGroupsParser';
+import { ReactElement } from "react";
+import { Link } from "@mui/material";
+import linkGroupsParser from "../../../utils/linkGroupsParser";
 
 export type FormattedMessageBodyProps = {
   message: string;
@@ -15,14 +15,16 @@ export type FormattedMessageBodyProps = {
  *  @property {string} message - The message to be transformed
  * @returns {ReactElement} The formatted message
  */
-const FormattedMessageBody = ({ message }: FormattedMessageBodyProps): ReactElement => {
+const FormattedMessageBody = ({
+  message,
+}: FormattedMessageBodyProps): ReactElement => {
   const transformedMessage = linkGroupsParser(message);
   const messageFragments = transformedMessage.map((messageGroup) => {
     const isTextOnlyMessage = messageGroup.length === 1;
     const isLinkOnlyMessage = messageGroup.length === 2;
 
     if (isTextOnlyMessage) {
-      const messageText = [...messageGroup].join('');
+      const messageText = [...messageGroup].join("");
       return <span key={messageText}>{messageText}</span>;
     }
 

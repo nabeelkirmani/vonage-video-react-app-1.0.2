@@ -1,4 +1,4 @@
-import { SubscriberWrapper } from '../../types/session';
+import { SubscriberWrapper } from "../../types/session";
 
 /**
  * Sorts screensharing subscribers and active speakers as high display priority.
@@ -7,8 +7,11 @@ import { SubscriberWrapper } from '../../types/session';
  */
 const sortByDisplayPriority =
   (
-    activeSpeakerId: string | undefined
-  ): ((wrapperA: SubscriberWrapper, wrapperB: SubscriberWrapper) => 1 | -1 | 0) =>
+    activeSpeakerId: string | undefined,
+  ): ((
+    wrapperA: SubscriberWrapper,
+    wrapperB: SubscriberWrapper,
+  ) => 1 | -1 | 0) =>
   (wrapperA: SubscriberWrapper, wrapperB: SubscriberWrapper) => {
     // We want the screenshare subscribers to be prioritized, first.
     if (wrapperA.isScreenshare) {

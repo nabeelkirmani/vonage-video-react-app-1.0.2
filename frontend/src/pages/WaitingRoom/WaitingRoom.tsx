@@ -1,12 +1,19 @@
-import { useState, useEffect, MouseEvent, ReactElement, TouchEvent, useCallback } from 'react';
-import usePreviewPublisherContext from '../../hooks/usePreviewPublisherContext';
-import ControlPanel from '../../components/WaitingRoom/ControlPanel';
-import VideoContainer from '../../components/WaitingRoom/VideoContainer';
-import UsernameInput from '../../components/WaitingRoom/UserNameInput';
-import { DEVICE_ACCESS_STATUS } from '../../utils/constants';
-import DeviceAccessAlert from '../../components/DeviceAccessAlert';
-import Banner from '../../components/Banner';
-import useIsSmallViewport from '../../hooks/useIsSmallViewport';
+import {
+  useState,
+  useEffect,
+  MouseEvent,
+  ReactElement,
+  TouchEvent,
+  useCallback,
+} from "react";
+import usePreviewPublisherContext from "../../hooks/usePreviewPublisherContext";
+import ControlPanel from "../../components/WaitingRoom/ControlPanel";
+import VideoContainer from "../../components/WaitingRoom/VideoContainer";
+import UsernameInput from "../../components/WaitingRoom/UserNameInput";
+import { DEVICE_ACCESS_STATUS } from "../../utils/constants";
+import DeviceAccessAlert from "../../components/DeviceAccessAlert";
+import Banner from "../../components/Banner";
+import useIsSmallViewport from "../../hooks/useIsSmallViewport";
 
 /**
  * WaitingRoom Component
@@ -29,7 +36,9 @@ const WaitingRoom = (): ReactElement => {
   const [openAudioInput, setOpenAudioInput] = useState<boolean>(false);
   const [openVideoInput, setOpenVideoInput] = useState<boolean>(false);
   const [openAudioOutput, setOpenAudioOutput] = useState<boolean>(false);
-  const [username, setUsername] = useState(window.localStorage.getItem('username') ?? '');
+  const [username, setUsername] = useState(
+    window.localStorage.getItem("username") ?? "",
+  );
   const isSmallViewport = useIsSmallViewport();
 
   useEffect(() => {
@@ -57,7 +66,7 @@ const WaitingRoom = (): ReactElement => {
       setAnchorEl(event.currentTarget);
       setOpenAudioInput(true);
     },
-    []
+    [],
   );
 
   const handleVideoInputOpen = useCallback(
@@ -65,7 +74,7 @@ const WaitingRoom = (): ReactElement => {
       setAnchorEl(event.currentTarget);
       setOpenVideoInput(true);
     },
-    []
+    [],
   );
 
   const handleAudioOutputOpen = useCallback(
@@ -73,7 +82,7 @@ const WaitingRoom = (): ReactElement => {
       setAnchorEl(event.currentTarget);
       setOpenAudioOutput(true);
     },
-    []
+    [],
   );
 
   const handleClose = useCallback(() => {
@@ -84,13 +93,16 @@ const WaitingRoom = (): ReactElement => {
   }, []);
 
   return (
-    <div className="h-full w-full bg-white flex flex-col" data-testid="waitingRoom">
+    <div
+      className="h-full w-full bg-white flex flex-col"
+      data-testid="waitingRoom"
+    >
       <Banner />
       <div className="flex w-full">
         <div className="w-full flex justify-center mb-8">
           <div className="sm:min-h-[90vh] flex flex-col md:flex-row items-center justify-center w-full">
             <div
-              className={`flex-col max-w-full ${isSmallViewport ? '' : 'h-[394px]'} sm: inline-flex`}
+              className={`flex-col max-w-full ${isSmallViewport ? "" : "h-[394px]"} sm: inline-flex`}
             >
               <VideoContainer username={username} />
               {accessStatus === DEVICE_ACCESS_STATUS.ACCEPTED && (

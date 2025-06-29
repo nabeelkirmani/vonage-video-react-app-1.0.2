@@ -1,10 +1,16 @@
-import React, { Dispatch, MouseEvent, ReactElement, SetStateAction, useState } from 'react';
-import { PersonOutline } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
-import useUserContext from '../../../hooks/useUserContext';
-import { UserType } from '../../../Context/user';
-import useRoomName from '../../../hooks/useRoomName';
-import isValidRoomName from '../../../utils/isValidRoomName';
+import React, {
+  Dispatch,
+  MouseEvent,
+  ReactElement,
+  SetStateAction,
+  useState,
+} from "react";
+import { PersonOutline } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import useUserContext from "../../../hooks/useUserContext";
+import { UserType } from "../../../Context/user";
+import useRoomName from "../../../hooks/useRoomName";
+import isValidRoomName from "../../../utils/isValidRoomName";
 
 export type UserNameInputProps = {
   username: string;
@@ -20,7 +26,10 @@ export type UserNameInputProps = {
  *  @property {Dispatch<SetStateAction<string>>} setUsername - Function to update the user's username.
  * @returns {ReactElement} The UsernameInput component.
  */
-const UsernameInput = ({ username, setUsername }: UserNameInputProps): ReactElement => {
+const UsernameInput = ({
+  username,
+  setUsername,
+}: UserNameInputProps): ReactElement => {
   const { setUser } = useUserContext();
   const navigate = useNavigate();
   const roomName = useRoomName();
@@ -28,9 +37,9 @@ const UsernameInput = ({ username, setUsername }: UserNameInputProps): ReactElem
 
   const onChangeParticipantName = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputUserName = e.target.value;
-    if (inputUserName === '' || inputUserName.trim() === '') {
+    if (inputUserName === "" || inputUserName.trim() === "") {
       // Space detected
-      setUsername('');
+      setUsername("");
       return;
     }
     setIsUserNameInvalid(false);
@@ -38,7 +47,7 @@ const UsernameInput = ({ username, setUsername }: UserNameInputProps): ReactElem
   };
 
   const validateForm = () => {
-    if (username === '') {
+    if (username === "") {
       setIsUserNameInvalid(true);
       return false;
     }
@@ -58,7 +67,7 @@ const UsernameInput = ({ username, setUsername }: UserNameInputProps): ReactElem
           name: username,
         },
       }));
-      window.localStorage.setItem('username', username);
+      window.localStorage.setItem("username", username);
       // This takes the user to the meeting room and allows them to enter it
       // Otherwise if they entered the room directly, they are going to be redirected back to the waiting room
       // Setting hasAccess is required so that we are not redirected back to the waiting room
@@ -73,11 +82,15 @@ const UsernameInput = ({ username, setUsername }: UserNameInputProps): ReactElem
   return (
     <form className="flex flex-col justify-center items-left md:max-w-[480px] w-full px-6 md:relative md:top-[-48px]">
       <div className="flex items-center flex-col justify-end mt-4">
-        <div className="leading-8 mb-2 font-sans text-[28px]">Prepare to join:</div>
+        <div className="leading-8 mb-2 font-sans text-[28px]">
+          Prepare to join:
+        </div>
         <div className="flex py-2 decoration-solid text-l flex-col content-end md:max-w-[480px] w-full">
           <p className="truncate">{roomName}</p>
         </div>
-        <div className="leading-8 mt-6 font-sans text-[24px]">What is your name?</div>
+        <div className="leading-8 mt-6 font-sans text-[24px]">
+          What is your name?
+        </div>
         <div className="w-full flex flex-wrap items-center justify-center mb-5">
           <div className="relative w-full max-w-xs">
             <label htmlFor="user-name">
@@ -97,7 +110,9 @@ const UsernameInput = ({ username, setUsername }: UserNameInputProps): ReactElem
               />
             </label>
             {isUserNameInvalid && (
-              <p className="mt-2 text-sm text-red-600">Please enter your name.</p>
+              <p className="mt-2 text-sm text-red-600">
+                Please enter your name.
+              </p>
             )}
           </div>
         </div>

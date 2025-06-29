@@ -1,24 +1,29 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from "react";
 import OT, {
   Publisher,
   Event,
   Stream,
   initPublisher,
   ExceptionEvent,
-} from '@vonage/client-sdk-video';
-import usePublisherQuality, { NetworkQuality } from '../usePublisherQuality/usePublisherQuality';
-import usePublisherOptions from '../usePublisherOptions';
-import useSessionContext from '../../../hooks/useSessionContext';
-import { PUBLISHING_BLOCKED_CAPTION } from '../../../utils/constants';
+} from "@vonage/client-sdk-video";
+import usePublisherQuality, {
+  NetworkQuality,
+} from "../usePublisherQuality/usePublisherQuality";
+import usePublisherOptions from "../usePublisherOptions";
+import useSessionContext from "../../../hooks/useSessionContext";
+import { PUBLISHING_BLOCKED_CAPTION } from "../../../utils/constants";
 import getAccessDeniedError, {
   PublishingErrorType,
-} from '../../../utils/getAccessDeniedError/getAccessDeniedError';
+} from "../../../utils/getAccessDeniedError/getAccessDeniedError";
 
-type PublisherStreamCreatedEvent = Event<'streamCreated', Publisher> & {
+type PublisherStreamCreatedEvent = Event<"streamCreated", Publisher> & {
   stream: Stream;
 };
 
-type PublisherVideoElementCreatedEvent = Event<'videoElementCreated', Publisher> & {
+type PublisherVideoElementCreatedEvent = Event<
+  "videoElementCreated",
+  Publisher
+> & {
   element: HTMLVideoElement | HTMLObjectElement;
 };
 
@@ -27,7 +32,7 @@ type DeviceAccessStatus = {
   camera: boolean | undefined;
 };
 
-export type AccessDeniedEvent = Event<'accessDenied', Publisher> & {
+export type AccessDeniedEvent = Event<"accessDenied", Publisher> & {
   message?: string;
 };
 
@@ -76,11 +81,16 @@ const usePublisher = (): PublisherContextType => {
   const [isPublishing, setIsPublishing] = useState(false);
   const publisherOptions = usePublisherOptions();
   const [isForceMuted, setIsForceMuted] = useState<boolean>(false);
-  const [isVideoEnabled, setIsVideoEnabled] = useState(!!publisherOptions.publishVideo);
-  const [isAudioEnabled, setIsAudioEnabled] = useState(!!publisherOptions.publishAudio);
+  const [isVideoEnabled, setIsVideoEnabled] = useState(
+    !!publisherOptions.publishVideo,
+  );
+  const [isAudioEnabled, setIsAudioEnabled] = useState(
+    !!publisherOptions.publishAudio,
+  );
   const [stream, setStream] = useState<Stream | null>();
   const [isPublishingToSession, setIsPublishingToSession] = useState(false);
-  const [publishingError, setPublishingError] = useState<PublishingErrorType>(null);
+  const [publishingError, setPublishingError] =
+    useState<PublishingErrorType>(null);
   const mSession = useSessionContext();
   const [deviceAccess, setDeviceAccess] = useState<DeviceAccessStatus>({
     microphone: undefined,
@@ -91,7 +101,7 @@ const usePublisher = (): PublisherContextType => {
   // If we do not have audio input or video input access, we cannot publish.
   useEffect(() => {
     if (deviceAccess?.microphone === false || deviceAccess?.camera === false) {
-      const device = deviceAccess.camera ? 'Microphone' : 'Camera';
+      const device = deviceAccess.camera ? "Microphone" : "Camera";
       const accessDeniedError = getAccessDeniedError(device);
       setPublishingError(accessDeniedError);
     }
@@ -124,7 +134,9 @@ const usePublisher = (): PublisherContextType => {
 
   const handleAccessDenied = (event: AccessDeniedEvent) => {
     // We check the first word of the message to see if the microphone or camera was denied access.
-    const deviceDeniedAccess = event.message?.startsWith('Microphone') ? 'microphone' : 'camera';
+    const deviceDeniedAccess = event.message?.startsWith("Microphone")
+      ? "microphone"
+      : "camera";
     setDeviceAccess((prev) => ({
       ...prev,
       [deviceDeniedAccess]: false,
@@ -147,7 +159,9 @@ const usePublisher = (): PublisherContextType => {
     }
   };
 
-  const handleVideoElementCreated = (event: PublisherVideoElementCreatedEvent) => {
+  const handleVideoElementCreated = (
+    event: PublisherVideoElementCreatedEvent,
+  ) => {
     setPublisherVideoElement(event.element);
     setIsPublishing(true);
   };
@@ -163,13 +177,13 @@ const usePublisher = (): PublisherContextType => {
   };
 
   const addPublisherListeners = (publisher: Publisher) => {
-    publisher.on('destroyed', handleDestroyed);
-    publisher.on('streamCreated', handleStreamCreated);
-    publisher.on('streamDestroyed', handleStreamDestroyed);
-    publisher.on('accessDenied', handleAccessDenied);
-    publisher.on('videoElementCreated', handleVideoElementCreated);
-    publisher.on('muteForced', handleMuteForced);
-    publisher.on('accessAllowed', handleAccessAllowed);
+    publisher.on("destroyed", handleDestroyed);
+    publisher.on("streamCreated", handleStreamCreated);
+    publisher.on("streamDestroyed", handleStreamDestroyed);
+    publisher.on("accessDenied", handleAccessDenied);
+    publisher.on("videoElementCreated", handleVideoElementCreated);
+    publisher.on("muteForced", handleMuteForced);
+    publisher.on("accessAllowed", handleAccessAllowed);
   };
 
   /**
@@ -198,7 +212,7 @@ const usePublisher = (): PublisherContextType => {
 
     if (publishAttempt === 3) {
       const publishingBlocked: PublishingErrorType = {
-        header: 'Difficulties joining room',
+        header: "Difficulties joining room",
         caption: PUBLISHING_BLOCKED_CAPTION,
       };
       setPublishingError(publishingBlocked);
@@ -215,10 +229,10 @@ const usePublisher = (): PublisherContextType => {
   const publish = async (): Promise<void> => {
     try {
       if (!mSession.session) {
-        throw new Error('You are not connected to session');
+        throw new Error("You are not connected to session");
       }
       if (!publisherRef.current) {
-        throw new Error('Publisher is not initialized');
+        throw new Error("Publisher is not initialized");
       }
       if (isPublishingToSession) {
         return;
@@ -280,10 +294,10 @@ const usePublisher = (): PublisherContextType => {
     };
     // If a user is `Unable to Publish` to a session and an error is thrown, we attempt to re-publish.
     // This error would not be captured in the Session.publish callback, we have to listen for it separately.
-    OT.on('exception', exceptionHandler);
+    OT.on("exception", exceptionHandler);
 
     return () => {
-      OT.off('exception', exceptionHandler);
+      OT.off("exception", exceptionHandler);
     };
   });
 

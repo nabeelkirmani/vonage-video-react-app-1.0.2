@@ -1,3 +1,3 @@
-import PreviewAvatar from './PreviewAvatar';
+import PreviewAvatar from "./PreviewAvatar";
 
 export default PreviewAvatar;

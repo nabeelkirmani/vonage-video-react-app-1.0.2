@@ -1,3 +1,3 @@
-import ReduceNoiseTestSpeakers from './ReduceNoiseTestSpeakers';
+import ReduceNoiseTestSpeakers from "./ReduceNoiseTestSpeakers";
 
 export default ReduceNoiseTestSpeakers;

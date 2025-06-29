@@ -1,11 +1,11 @@
-import { ReactElement } from 'react';
-import { List } from '@mui/material';
-import getInitials from '../../../utils/getInitials';
-import getParticipantColor from '../../../utils/getParticipantColor';
-import ChatMessage from '../ChatMessage';
-import ChatInput from '../ChatInput';
-import useSessionContext from '../../../hooks/useSessionContext';
-import RightPanelTitle from '../RightPanel/RightPanelTitle';
+import { ReactElement } from "react";
+import { List } from "@mui/material";
+import getInitials from "../../../utils/getInitials";
+import getParticipantColor from "../../../utils/getParticipantColor";
+import ChatMessage from "../ChatMessage";
+import ChatInput from "../ChatInput";
+import useSessionContext from "../../../hooks/useSessionContext";
+import RightPanelTitle from "../RightPanel/RightPanelTitle";
 
 export type ChatProps = {
   handleClose: () => void;
@@ -22,7 +22,7 @@ export type ChatProps = {
  */
 const Chat = ({ handleClose, isOpen }: ChatProps): ReactElement | false => {
   const { messages } = useSessionContext();
-  const heightClass = '@apply h-[calc(100vh_-_240px)]';
+  const heightClass = "@apply h-[calc(100vh_-_240px)]";
 
   return (
     isOpen && (

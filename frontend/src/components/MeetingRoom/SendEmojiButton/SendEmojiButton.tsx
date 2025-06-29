@@ -1,6 +1,6 @@
-import { Button, Grid } from '@mui/material';
-import { ReactElement } from 'react';
-import useEmoji from '../../../hooks/useEmoji';
+import { Button, Grid } from "@mui/material";
+import { ReactElement } from "react";
+import useEmoji from "../../../hooks/useEmoji";
 
 export type SendEmojiButtonProps = {
   emoji: string;
@@ -22,11 +22,11 @@ const SendEmojiButton = ({ emoji }: SendEmojiButtonProps): ReactElement => {
         size="large"
         onClick={() => sendEmoji(emoji)}
         sx={{
-          '&:hover': {
-            backgroundColor: 'rgba(25, 118, 210, 0.12)',
+          "&:hover": {
+            backgroundColor: "rgba(25, 118, 210, 0.12)",
           },
-          padding: '0.25rem',
-          fontSize: '1.5rem',
+          padding: "0.25rem",
+          fontSize: "1.5rem",
         }}
       >
         {emoji}

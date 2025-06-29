@@ -1,3 +1,3 @@
-import getSubscribersInDisplayOrder from './getSubscribersInDisplayOrder';
+import getSubscribersInDisplayOrder from "./getSubscribersInDisplayOrder";
 
 export default getSubscribersInDisplayOrder;

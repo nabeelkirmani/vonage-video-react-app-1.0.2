@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import SpeakingDetector from '../utils/SpeakingDetector';
+import { useState, useEffect, useRef } from "react";
+import SpeakingDetector from "../utils/SpeakingDetector";
 
 export type UseSpeakingDetectorOptions = {
   selectedMicrophoneId: string | undefined;
@@ -39,15 +39,21 @@ const useSpeakingDetector = ({
     const speakingDetector = speakingDetectorRef.current;
 
     // Subscribe to events
-    speakingDetector.on('isSpeakingWhileMuted', handleSpeakingWhileMuted);
-    speakingDetector.on('isSpeakingWhileMutedOff', handleMuteIndicationOff);
+    speakingDetector.on("isSpeakingWhileMuted", handleSpeakingWhileMuted);
+    speakingDetector.on("isSpeakingWhileMutedOff", handleMuteIndicationOff);
 
     return () => {
       // Cleanup and unsubscribe from events
       if (speakingDetectorRef.current) {
         speakingDetectorRef.current.cleanup();
-        speakingDetectorRef.current.off('isSpeakingWhileMuted', handleSpeakingWhileMuted);
-        speakingDetectorRef.current.off('isSpeakingWhileMutedOff', handleMuteIndicationOff);
+        speakingDetectorRef.current.off(
+          "isSpeakingWhileMuted",
+          handleSpeakingWhileMuted,
+        );
+        speakingDetectorRef.current.off(
+          "isSpeakingWhileMutedOff",
+          handleMuteIndicationOff,
+        );
         speakingDetectorRef.current = null;
         setIsSpeakingWhileMuted(false);
       }

@@ -1,3 +1,3 @@
-import AudioIndicator from './AudioIndicator';
+import AudioIndicator from "./AudioIndicator";
 
 export default AudioIndicator;

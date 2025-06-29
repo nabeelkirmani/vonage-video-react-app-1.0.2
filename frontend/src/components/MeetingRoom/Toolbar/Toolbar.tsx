@@ -1,17 +1,17 @@
-import { ReactElement, useCallback } from 'react';
-import AudioControlButton from '../AudioControlButton';
-import VideoControlButton from '../VideoControlButton';
-import ScreenSharingButton from '../../ScreenSharingButton';
-import TimeRoomNameMeetingRoom from '../TimeRoomName';
-import ExitButton from '../ExitButton';
-import useSessionContext from '../../../hooks/useSessionContext';
-import LayoutToggleButton from '../LayoutToggleButton';
-import ParticipantListToggleButton from '../ParticipantListToggleButton';
-import ArchivingToggle from '../ArchivingToggle';
-import EmojiGrid from '../EmojiGrid';
-import ChatToggleButton from '../ChatToggleButton';
-import { RightPanelActiveTab } from '../../../hooks/useRightPanel';
-import ReportIssueButton from '../ReportIssueButton';
+import { ReactElement, useCallback } from "react";
+import AudioControlButton from "../AudioControlButton";
+import VideoControlButton from "../VideoControlButton";
+import ScreenSharingButton from "../../ScreenSharingButton";
+import TimeRoomNameMeetingRoom from "../TimeRoomName";
+import ExitButton from "../ExitButton";
+import useSessionContext from "../../../hooks/useSessionContext";
+import LayoutToggleButton from "../LayoutToggleButton";
+import ParticipantListToggleButton from "../ParticipantListToggleButton";
+import ArchivingToggle from "../ArchivingToggle";
+import EmojiGrid from "../EmojiGrid";
+import ChatToggleButton from "../ChatToggleButton";
+import { RightPanelActiveTab } from "../../../hooks/useRightPanel";
+import ReportIssueButton from "../ReportIssueButton";
 
 export type ToolbarProps = {
   toggleShareScreen: () => void;
@@ -54,8 +54,11 @@ const Toolbar = ({
   participantCount,
 }: ToolbarProps): ReactElement => {
   const { disconnect, unreadCount, subscriberWrappers } = useSessionContext();
-  const isReportIssueEnabled = import.meta.env.VITE_ENABLE_REPORT_ISSUE === 'true';
-  const isViewingScreenShare = subscriberWrappers.some((subWrapper) => subWrapper.isScreenshare);
+  const isReportIssueEnabled =
+    import.meta.env.VITE_ENABLE_REPORT_ISSUE === "true";
+  const isViewingScreenShare = subscriberWrappers.some(
+    (subWrapper) => subWrapper.isScreenshare,
+  );
   const isScreenSharePresent = isViewingScreenShare || isSharingScreen;
   const handleLeave = useCallback(() => {
     if (!disconnect) {
@@ -86,17 +89,17 @@ const Toolbar = ({
       <div className="hidden md:flex flex-1 justify-end">
         {isReportIssueEnabled && (
           <ReportIssueButton
-            isOpen={rightPanelActiveTab === 'issues'}
+            isOpen={rightPanelActiveTab === "issues"}
             handleClick={toggleReportIssue}
           />
         )}
         <ParticipantListToggleButton
-          isOpen={rightPanelActiveTab === 'participant-list'}
+          isOpen={rightPanelActiveTab === "participant-list"}
           handleClick={toggleParticipantList}
           participantCount={participantCount}
         />
         <ChatToggleButton
-          isOpen={rightPanelActiveTab === 'chat'}
+          isOpen={rightPanelActiveTab === "chat"}
           handleClick={toggleChat}
           unreadCount={unreadCount}
         />

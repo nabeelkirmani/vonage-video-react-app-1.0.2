@@ -1,3 +1,3 @@
-import BlurToggleButton from './BlurToggleButton';
+import BlurToggleButton from "./BlurToggleButton";
 
 export default BlurToggleButton;

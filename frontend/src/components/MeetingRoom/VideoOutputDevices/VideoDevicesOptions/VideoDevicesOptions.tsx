@@ -1,10 +1,10 @@
-import { Typography, IconButton, MenuList, MenuItem } from '@mui/material';
-import BlurOnIcon from '@mui/icons-material/BlurOn';
-import { useState, useEffect, ReactElement } from 'react';
-import Grow from '@mui/material/Grow';
-import ToggleOffIcon from '@mui/icons-material/ToggleOff';
-import ToggleOnIcon from '@mui/icons-material/ToggleOn';
-import usePublisherContext from '../../../../hooks/usePublisherContext';
+import { Typography, IconButton, MenuList, MenuItem } from "@mui/material";
+import BlurOnIcon from "@mui/icons-material/BlurOn";
+import { useState, useEffect, ReactElement } from "react";
+import Grow from "@mui/material/Grow";
+import ToggleOffIcon from "@mui/icons-material/ToggleOff";
+import ToggleOnIcon from "@mui/icons-material/ToggleOn";
+import usePublisherContext from "../../../../hooks/usePublisherContext";
 
 export type VideoDevicesOptionsProps = {
   customLightBlueColor: string;
@@ -18,18 +18,20 @@ export type VideoDevicesOptionsProps = {
  *  @property {string} customLightBlueColor - the custom color used for the toggled icon.
  * @returns {ReactElement} The video devices options component.
  */
-const VideoDevicesOptions = ({ customLightBlueColor }: VideoDevicesOptionsProps): ReactElement => {
+const VideoDevicesOptions = ({
+  customLightBlueColor,
+}: VideoDevicesOptionsProps): ReactElement => {
   const { publisher } = usePublisherContext();
   const [isToggled, setIsToggled] = useState(false);
 
   const handleToggle = async () => {
     const newState = !isToggled;
     setIsToggled(newState);
-    window.localStorage.setItem('backgroundBlur', JSON.stringify(newState));
+    window.localStorage.setItem("backgroundBlur", JSON.stringify(newState));
     if (newState) {
       await publisher?.applyVideoFilter({
-        type: 'backgroundBlur',
-        blurStrength: 'high',
+        type: "backgroundBlur",
+        blurStrength: "high",
       });
     } else {
       await publisher?.clearVideoFilter();
@@ -44,17 +46,17 @@ const VideoDevicesOptions = ({ customLightBlueColor }: VideoDevicesOptionsProps)
   return (
     <MenuList
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
+        display: "flex",
+        flexDirection: "column",
         mt: 1,
       }}
     >
       <MenuItem
         onClick={handleToggle}
         sx={{
-          backgroundColor: 'transparent',
-          '&:hover': {
-            backgroundColor: 'rgba(25, 118, 210, 0.12)',
+          backgroundColor: "transparent",
+          "&:hover": {
+            backgroundColor: "rgba(25, 118, 210, 0.12)",
           },
         }}
       >
@@ -67,14 +69,14 @@ const VideoDevicesOptions = ({ customLightBlueColor }: VideoDevicesOptionsProps)
             <ToggleOffIcon
               data-testid="toggle-off-icon"
               fontSize="large"
-              sx={{ position: 'absolute', color: 'white' }}
+              sx={{ position: "absolute", color: "white" }}
             />
           </Grow>
           <Grow in={isToggled} timeout={300}>
             <ToggleOnIcon
               data-testid="toggle-on-icon"
               fontSize="large"
-              sx={{ position: 'absolute', color: customLightBlueColor }}
+              sx={{ position: "absolute", color: customLightBlueColor }}
             />
           </Grow>
         </IconButton>

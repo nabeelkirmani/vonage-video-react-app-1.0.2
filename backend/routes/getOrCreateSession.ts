@@ -1,6 +1,6 @@
-import blockCallsForArgs from '../helpers/blockCallsForArgs';
-import { SessionStorage } from '../storage/sessionStorage';
-import { VideoService } from '../videoService/videoServiceInterface';
+import blockCallsForArgs from "../helpers/blockCallsForArgs";
+import { SessionStorage } from "../storage/sessionStorage";
+import { VideoService } from "../videoService/videoServiceInterface";
 
 type CreateGetOrCreateSessionDependencies = {
   sessionService: SessionStorage;

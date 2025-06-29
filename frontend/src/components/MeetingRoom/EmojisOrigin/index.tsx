@@ -1,3 +1,3 @@
-import EmojisOrigin from './EmojisOrigin';
+import EmojisOrigin from "./EmojisOrigin";
 
 export default EmojisOrigin;

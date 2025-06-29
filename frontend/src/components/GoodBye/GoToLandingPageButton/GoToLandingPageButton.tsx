@@ -1,8 +1,10 @@
-import { Button } from '@mui/material';
-import { MouseEvent, ReactElement, TouchEvent } from 'react';
+import { Button } from "@mui/material";
+import { MouseEvent, ReactElement, TouchEvent } from "react";
 
 export type GoToLandingPageButtonProps = {
-  handleLanding: (event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>) => void;
+  handleLanding: (
+    event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>,
+  ) => void;
 };
 
 /**
@@ -13,7 +15,9 @@ export type GoToLandingPageButtonProps = {
  *  @property {Function} handleLanding - the function that handles the action of going back to the landing page.
  * @returns {ReactElement} - the button to go back to the landing page.
  */
-const GoToLandingPageButton = ({ handleLanding }: GoToLandingPageButtonProps): ReactElement => {
+const GoToLandingPageButton = ({
+  handleLanding,
+}: GoToLandingPageButtonProps): ReactElement => {
   return (
     <Button
       variant="contained"

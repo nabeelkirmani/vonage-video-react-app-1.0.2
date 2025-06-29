@@ -1,12 +1,12 @@
-import { ReactElement, useEffect, useRef } from 'react';
-import { Box } from 'opentok-layout-js';
-import { SubscriberWrapper } from '../../types/session';
-import AudioIndicator from '../MeetingRoom/AudioIndicator';
-import useSubscriberTalking from '../../hooks/useSubscriberTalking';
-import AvatarInitials from '../AvatarInitials';
-import ScreenShareNameDisplay from '../ScreenShareNameDisplay';
-import NameDisplay from '../MeetingRoom/NameDisplay';
-import VideoTile from '../MeetingRoom/VideoTile';
+import { ReactElement, useEffect, useRef } from "react";
+import { Box } from "opentok-layout-js";
+import { SubscriberWrapper } from "../../types/session";
+import AudioIndicator from "../MeetingRoom/AudioIndicator";
+import useSubscriberTalking from "../../hooks/useSubscriberTalking";
+import AvatarInitials from "../AvatarInitials";
+import ScreenShareNameDisplay from "../ScreenShareNameDisplay";
+import NameDisplay from "../MeetingRoom/NameDisplay";
+import VideoTile from "../MeetingRoom/VideoTile";
 
 export type SubscriberProps = {
   subscriberWrapper: SubscriberWrapper;
@@ -34,7 +34,7 @@ const Subscriber = ({
   isActiveSpeaker,
 }: SubscriberProps): ReactElement => {
   const { subscriber } = subscriberWrapper;
-  const isScreenShare = subscriber?.stream?.videoType === 'screen';
+  const isScreenShare = subscriber?.stream?.videoType === "screen";
   const subRef = useRef<HTMLDivElement>(null);
   const isTalking = useSubscriberTalking({ subscriber, isActiveSpeaker });
 
@@ -48,14 +48,14 @@ const Subscriber = ({
     if (subscriberWrapper && subRef.current) {
       const { element } = subscriberWrapper;
       element.id = subscriberWrapper.id;
-      const objectFit = isScreenShare ? 'object-contain' : 'object-cover';
+      const objectFit = isScreenShare ? "object-contain" : "object-cover";
       element.classList.add(
-        'video__element',
-        'w-full',
-        'h-full',
-        'absolute',
-        'rounded-xl',
-        objectFit
+        "video__element",
+        "w-full",
+        "h-full",
+        "absolute",
+        "rounded-xl",
+        objectFit,
       );
       subRef.current.appendChild(element);
     }
@@ -63,15 +63,15 @@ const Subscriber = ({
 
   const hasVideo = subscriberWrapper.subscriber?.stream?.hasVideo;
   const initials = subscriberWrapper.subscriber?.stream?.initials;
-  const username = subscriberWrapper.subscriber?.stream?.name ?? '';
+  const username = subscriberWrapper.subscriber?.stream?.name ?? "";
   const hasAudio = subscriberWrapper.subscriber.stream?.hasAudio;
   const audioIndicatorStyle =
-    'rounded-xl absolute top-3 right-3 bg-darkGray-55 h-6 w-6 items-center justify-center flex m-auto';
+    "rounded-xl absolute top-3 right-3 bg-darkGray-55 h-6 w-6 items-center justify-center flex m-auto";
 
   return (
     <VideoTile
       id={`${subscriberWrapper.id}`}
-      className={isScreenShare ? 'screen-subscriber' : 'subscriber'}
+      className={isScreenShare ? "screen-subscriber" : "subscriber"}
       data-testid={`subscriber-container-${subscriberWrapper.id}`}
       isHidden={isHidden}
       box={box}

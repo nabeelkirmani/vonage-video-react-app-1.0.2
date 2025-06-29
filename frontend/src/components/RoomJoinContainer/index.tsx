@@ -1,3 +1,3 @@
-import RoomJoinContainer from './RoomJoinContainer';
+import RoomJoinContainer from "./RoomJoinContainer";
 
 export default RoomJoinContainer;

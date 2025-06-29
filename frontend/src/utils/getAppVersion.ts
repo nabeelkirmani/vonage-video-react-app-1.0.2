@@ -1,4 +1,4 @@
-import packageInfo from '../../package.json';
+import packageInfo from "../../package.json";
 
 /**
  * Gets the current application version specified in the `package.json`.

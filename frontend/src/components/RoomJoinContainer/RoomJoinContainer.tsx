@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom';
-import { ReactElement } from 'react';
-import generateRoomName from '../../utils/generateRoomName';
-import NewRoomButton from '../NewRoomButton';
-import JoinContainerSeparator from '../JoinContainerSeparator';
-import JoinExistingRoom from '../JoinExistingRoom';
+import { useNavigate } from "react-router-dom";
+import { ReactElement } from "react";
+import generateRoomName from "../../utils/generateRoomName";
+import NewRoomButton from "../NewRoomButton";
+import JoinContainerSeparator from "../JoinContainerSeparator";
+import JoinExistingRoom from "../JoinExistingRoom";
 
 /**
  * RoomJoinContainer Component

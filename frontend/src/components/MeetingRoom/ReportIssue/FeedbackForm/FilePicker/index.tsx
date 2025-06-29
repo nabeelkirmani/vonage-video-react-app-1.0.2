@@ -1,3 +1,3 @@
-import FilePicker from './FilePicker';
+import FilePicker from "./FilePicker";
 
 export default FilePicker;

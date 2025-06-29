@@ -1,24 +1,24 @@
-import { Button, SxProps } from '@mui/material';
-import { ReactElement, MouseEvent, TouchEvent } from 'react';
-import MicNone from '@mui/icons-material/MicNone';
-import VideoCall from '@mui/icons-material/VideoCall';
-import Speaker from '@mui/icons-material/Speaker';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import MenuDevicesWaitingRoom from '../MenuDevices';
-import usePreviewPublisherContext from '../../../hooks/usePreviewPublisherContext';
-import useDevices from '../../../hooks/useDevices';
-import useIsSmallViewport from '../../../hooks/useIsSmallViewport';
-import useAudioOutputContext from '../../../hooks/useAudioOutputContext';
+import { Button, SxProps } from "@mui/material";
+import { ReactElement, MouseEvent, TouchEvent } from "react";
+import MicNone from "@mui/icons-material/MicNone";
+import VideoCall from "@mui/icons-material/VideoCall";
+import Speaker from "@mui/icons-material/Speaker";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import MenuDevicesWaitingRoom from "../MenuDevices";
+import usePreviewPublisherContext from "../../../hooks/usePreviewPublisherContext";
+import useDevices from "../../../hooks/useDevices";
+import useIsSmallViewport from "../../../hooks/useIsSmallViewport";
+import useAudioOutputContext from "../../../hooks/useAudioOutputContext";
 
 export type ControlPanelProps = {
   handleAudioInputOpen: (
-    event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>
+    event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>,
   ) => void;
   handleVideoInputOpen: (
-    event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>
+    event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>,
   ) => void;
   handleAudioOutputOpen: (
-    event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>
+    event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>,
   ) => void;
   handleClose: () => void;
   openVideoInput: boolean;
@@ -54,19 +54,24 @@ const ControlPanel = ({
 }: ControlPanelProps): ReactElement => {
   const isSmallViewport = useIsSmallViewport();
   const { allMediaDevices } = useDevices();
-  const { localAudioSource, localVideoSource, changeAudioSource, changeVideoSource } =
-    usePreviewPublisherContext();
-  const { currentAudioOutputDevice, setAudioOutputDevice } = useAudioOutputContext();
+  const {
+    localAudioSource,
+    localVideoSource,
+    changeAudioSource,
+    changeVideoSource,
+  } = usePreviewPublisherContext();
+  const { currentAudioOutputDevice, setAudioOutputDevice } =
+    useAudioOutputContext();
 
   const buttonSx: SxProps = {
-    borderRadius: '10px',
-    color: 'rgb(95, 99, 104)',
-    textTransform: 'none', // ensures that the text is not upper case
-    border: 'none',
-    boxShadow: 'none',
-    '&:hover': {
-      border: 'none',
-      boxShadow: 'none',
+    borderRadius: "10px",
+    color: "rgb(95, 99, 104)",
+    textTransform: "none", // ensures that the text is not upper case
+    border: "none",
+    boxShadow: "none",
+    "&:hover": {
+      border: "none",
+      boxShadow: "none",
     },
   };
 
@@ -78,12 +83,12 @@ const ControlPanel = ({
           endIcon={<KeyboardArrowDownIcon />}
           variant="outlined"
           startIcon={<MicNone />}
-          aria-controls={openVideoInput ? 'basic-menu' : undefined}
+          aria-controls={openVideoInput ? "basic-menu" : undefined}
           aria-haspopup="true"
-          aria-expanded={openVideoInput ? 'true' : undefined}
+          aria-expanded={openVideoInput ? "true" : undefined}
           onClick={handleAudioInputOpen}
         >
-          {isSmallViewport ? 'Mic' : 'Microphone'}
+          {isSmallViewport ? "Mic" : "Microphone"}
         </Button>
         <MenuDevicesWaitingRoom
           devices={allMediaDevices.audioInputDevices}

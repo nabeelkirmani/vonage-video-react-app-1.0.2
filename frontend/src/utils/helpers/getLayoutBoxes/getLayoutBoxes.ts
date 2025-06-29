@@ -1,10 +1,10 @@
-import { MutableRefObject } from 'react';
-import { Dimensions } from '@vonage/client-sdk-video';
+import { MutableRefObject } from "react";
+import { Dimensions } from "@vonage/client-sdk-video";
 import getLayoutElementArray, {
   GetLayoutElementArrayProps,
   LayoutBoxes,
-} from './getLayoutElements';
-import { GetLayout } from '../../../hooks/useLayoutManager';
+} from "./getLayoutElements";
+import { GetLayout } from "../../../hooks/useLayoutManager";
 
 export type GetLayoutBoxesProps = {
   getLayout: GetLayout;
@@ -35,8 +35,12 @@ const getLayoutBoxes = ({
   // remaining indices between 1 and n after popping screenshare - subscriber boxes in display order
   const boxes = getLayout(wrapDimensions, getLayoutElementArray(layoutProps));
   const publisherBox = boxes.shift();
-  const hiddenParticipantsBox = layoutProps.hiddenSubscribers.length ? boxes.pop() : undefined;
-  const localScreenshareBox = layoutProps.isSharingScreen ? boxes.pop() : undefined;
+  const hiddenParticipantsBox = layoutProps.hiddenSubscribers.length
+    ? boxes.pop()
+    : undefined;
+  const localScreenshareBox = layoutProps.isSharingScreen
+    ? boxes.pop()
+    : undefined;
   return {
     publisherBox,
     hiddenParticipantsBox,

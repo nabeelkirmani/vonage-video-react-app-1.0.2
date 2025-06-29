@@ -1,4 +1,4 @@
-import useRoomName from './useRoomName';
+import useRoomName from "./useRoomName";
 /**
  * Creates a shareable link to the waiting room for the current meeting room.
  * @returns {string} - The shareable link.

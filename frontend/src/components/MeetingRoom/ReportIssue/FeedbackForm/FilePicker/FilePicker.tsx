@@ -1,7 +1,7 @@
-import { ChangeEvent, useRef, useState, ReactElement } from 'react';
-import { Button, IconButton, Tooltip, Typography } from '@mui/material';
-import { Delete } from '@mui/icons-material';
-import captureScreenshot from '../../../../../utils/captureScreenshot';
+import { ChangeEvent, useRef, useState, ReactElement } from "react";
+import { Button, IconButton, Tooltip, Typography } from "@mui/material";
+import { Delete } from "@mui/icons-material";
+import captureScreenshot from "../../../../../utils/captureScreenshot";
 
 // Setting the maximum file size to 20MB
 const maxFileSize = 2e7;
@@ -19,7 +19,7 @@ const FilePicker = ({
 }: {
   onFileSelect: (fileData: string) => void;
 }): ReactElement => {
-  const [imageSrc, setImageSrc] = useState<string>('');
+  const [imageSrc, setImageSrc] = useState<string>("");
   const imageRef = useRef<HTMLImageElement | null>(null);
   const [maximumSizeError, setMaximumSizeError] = useState<boolean>(false);
 
@@ -35,7 +35,7 @@ const FilePicker = ({
    * Clears the uploaded image preview by setting `imageSrc` to `null`.
    */
   const handleDeleteFile = () => {
-    setImageSrc('');
+    setImageSrc("");
   };
 
   /**
@@ -71,8 +71,8 @@ const FilePicker = ({
       {imageSrc && (
         <Typography
           sx={{
-            marginBottom: '24px',
-            textAlign: 'left',
+            marginBottom: "24px",
+            textAlign: "left",
           }}
         >
           Attached screenshot
@@ -83,8 +83,8 @@ const FilePicker = ({
           <Typography
             color="error"
             sx={{
-              marginBottom: '6px',
-              textAlign: 'left',
+              marginBottom: "6px",
+              textAlign: "left",
             }}
           >
             The maximum upload size is 20MB. Please upload another file.
@@ -93,7 +93,7 @@ const FilePicker = ({
         {!imageSrc ? (
           <>
             <Button
-              sx={{ width: '100%', textTransform: 'none', mb: 1 }}
+              sx={{ width: "100%", textTransform: "none", mb: 1 }}
               variant="outlined"
               component="label"
               onClick={processScreenshot}
@@ -101,7 +101,7 @@ const FilePicker = ({
               Capture screenshot
             </Button>
             <Button
-              sx={{ width: '100%', textTransform: 'none' }}
+              sx={{ width: "100%", textTransform: "none" }}
               variant="outlined"
               component="label"
             >
@@ -133,18 +133,18 @@ const FilePicker = ({
                   data-testid="delete-screenshot"
                   onClick={handleDeleteFile}
                   sx={{
-                    position: 'absolute',
+                    position: "absolute",
                     top: 0,
                     right: 0,
-                    transform: 'translate(50%, -50%)',
-                    borderRadius: '50%',
-                    backgroundColor: 'rgb(69,71,70)',
-                    '&:hover': {
-                      backgroundColor: 'rgb(99,99,99)',
+                    transform: "translate(50%, -50%)",
+                    borderRadius: "50%",
+                    backgroundColor: "rgb(69,71,70)",
+                    "&:hover": {
+                      backgroundColor: "rgb(99,99,99)",
                     },
                   }}
                 >
-                  <Delete sx={{ color: 'rgb(233,186,183)' }} />
+                  <Delete sx={{ color: "rgb(233,186,183)" }} />
                 </IconButton>
               </Tooltip>
             </div>

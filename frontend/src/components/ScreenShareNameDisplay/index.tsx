@@ -1,3 +1,3 @@
-import ScreenShareNameDisplay from './ScreenShareNameDisplay';
+import ScreenShareNameDisplay from "./ScreenShareNameDisplay";
 
 export default ScreenShareNameDisplay;

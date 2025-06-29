@@ -1,3 +1,3 @@
-import getInitials from './getInitials';
+import getInitials from "./getInitials";
 
 export default getInitials;

@@ -1,3 +1,3 @@
-import UnsupportedBrowserPage from './UnsupportedBrowserPage';
+import UnsupportedBrowserPage from "./UnsupportedBrowserPage";
 
 export default UnsupportedBrowserPage;

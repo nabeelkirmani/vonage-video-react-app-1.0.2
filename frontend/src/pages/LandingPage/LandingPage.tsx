@@ -1,7 +1,7 @@
-import { ReactElement } from 'react';
-import Banner from '../../components/Banner';
-import LandingPageWelcome from '../../components/LandingPageWelcome';
-import RoomJoinContainer from '../../components/RoomJoinContainer';
+import { ReactElement } from "react";
+import Banner from "../../components/Banner";
+import LandingPageWelcome from "../../components/LandingPageWelcome";
+import RoomJoinContainer from "../../components/RoomJoinContainer";
 
 /**
  * LandingPage Component

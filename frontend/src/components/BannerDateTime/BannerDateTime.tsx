@@ -1,5 +1,5 @@
-import { ReactElement } from 'react';
-import useDateTime from '../../hooks/useDateTime';
+import { ReactElement } from "react";
+import useDateTime from "../../hooks/useDateTime";
 
 /**
  * BannerDateTime Component

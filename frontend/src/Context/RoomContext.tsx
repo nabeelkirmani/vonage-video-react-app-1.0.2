@@ -1,8 +1,8 @@
-import { Outlet } from 'react-router-dom';
-import { ReactElement } from 'react';
-import RedirectToUnsupportedBrowserPage from '../components/RedirectToUnsupportedBrowserPage';
-import { AudioOutputProvider } from './AudioOutputProvider';
-import UserProvider from './user';
+import { Outlet } from "react-router-dom";
+import { ReactElement } from "react";
+import RedirectToUnsupportedBrowserPage from "../components/RedirectToUnsupportedBrowserPage";
+import { AudioOutputProvider } from "./AudioOutputProvider";
+import UserProvider from "./user";
 
 /**
  * Wrapper for all of the contexts used by the waiting room and the meeting room.

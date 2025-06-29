@@ -1,3 +1,3 @@
-import sortByDisplayPriority from './sortByDisplayPriority';
+import sortByDisplayPriority from "./sortByDisplayPriority";
 
 export default sortByDisplayPriority;

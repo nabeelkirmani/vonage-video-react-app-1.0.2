@@ -1,3 +1,3 @@
-import Blur from './Blur';
+import Blur from "./Blur";
 
 export default Blur;

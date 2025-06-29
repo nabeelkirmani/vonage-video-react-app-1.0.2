@@ -1,3 +1,3 @@
-import SendEmojiButton from './SendEmojiButton';
+import SendEmojiButton from "./SendEmojiButton";
 
 export default SendEmojiButton;

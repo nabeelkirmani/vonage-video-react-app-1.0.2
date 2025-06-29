@@ -1,13 +1,13 @@
-import { ClickAwayListener } from '@mui/material';
-import Grow from '@mui/material/Grow';
-import Paper from '@mui/material/Paper';
-import Popper from '@mui/material/Popper';
-import { useTheme } from '@mui/material/styles';
-import { ReactElement, RefObject } from 'react';
-import { PopperChildrenProps } from '@mui/base';
-import InputDevices from './InputDevices';
-import OutputDevices from './OutputDevices';
-import ReduceNoiseTestSpeakers from './ReduceNoiseTestSpeakers';
+import { ClickAwayListener } from "@mui/material";
+import Grow from "@mui/material/Grow";
+import Paper from "@mui/material/Paper";
+import Popper from "@mui/material/Popper";
+import { useTheme } from "@mui/material/styles";
+import { ReactElement, RefObject } from "react";
+import { PopperChildrenProps } from "@mui/base";
+import InputDevices from "./InputDevices";
+import OutputDevices from "./OutputDevices";
+import ReduceNoiseTestSpeakers from "./ReduceNoiseTestSpeakers";
 
 export type AudioInputOutputDevicesProps = {
   handleToggle: () => void;
@@ -35,7 +35,7 @@ const AudioInputOutputDevices = ({
   handleClose,
 }: AudioInputOutputDevicesProps): ReactElement => {
   const theme = useTheme();
-  const customLightBlueColor = 'rgb(138, 180, 248)';
+  const customLightBlueColor = "rgb(138, 180, 248)";
 
   return (
     <Popper
@@ -49,28 +49,29 @@ const AudioInputOutputDevices = ({
         <Grow
           {...TransitionProps}
           style={{
-            transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
+            transformOrigin:
+              placement === "bottom" ? "center top" : "center bottom",
           }}
         >
           <div className="font-normal text-left">
             <ClickAwayListener onClickAway={handleClose}>
               <Paper
                 sx={{
-                  backgroundColor: 'rgb(32, 33, 36)',
-                  color: '#fff',
+                  backgroundColor: "rgb(32, 33, 36)",
+                  color: "#fff",
                   padding: { xs: 1, sm: 2 }, // responsive padding
                   borderRadius: 2,
                   zIndex: 1,
-                  transform: 'translateY(-2%) translateX(5%)', // default transform
+                  transform: "translateY(-2%) translateX(5%)", // default transform
                   [theme.breakpoints.down(741)]: {
-                    transform: 'translateY(-2%) translateX(-10%)',
+                    transform: "translateY(-2%) translateX(-10%)",
                   },
                   [theme.breakpoints.down(450)]: {
-                    transform: 'translateY(-2%) translateX(-5%)',
+                    transform: "translateY(-2%) translateX(-5%)",
                   },
-                  width: { xs: '90vw', sm: '100%' }, // responsive width
+                  width: { xs: "90vw", sm: "100%" }, // responsive width
                   maxWidth: 400, // max width for larger screens
-                  position: 'relative', // ensures the transform is applied correctly
+                  position: "relative", // ensures the transform is applied correctly
                 }}
               >
                 <InputDevices
@@ -81,7 +82,9 @@ const AudioInputOutputDevices = ({
                   handleToggle={handleToggle}
                   customLightBlueColor={customLightBlueColor}
                 />
-                <ReduceNoiseTestSpeakers customLightBlueColor={customLightBlueColor} />
+                <ReduceNoiseTestSpeakers
+                  customLightBlueColor={customLightBlueColor}
+                />
               </Paper>
             </ClickAwayListener>
           </div>

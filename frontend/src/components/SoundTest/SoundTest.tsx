@@ -1,6 +1,6 @@
-import { MenuItem, Typography } from '@mui/material';
-import { ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
-import useAudioOutputContext from '../../hooks/useAudioOutputContext';
+import { MenuItem, Typography } from "@mui/material";
+import { ReactElement, useCallback, useEffect, useMemo, useState } from "react";
+import useAudioOutputContext from "../../hooks/useAudioOutputContext";
 
 export type SoundTestProps = {
   children: ReactElement;
@@ -16,7 +16,7 @@ export type SoundTestProps = {
  */
 const SoundTest = ({ children }: SoundTestProps): ReactElement => {
   const [audioIsPlaying, setAudioIsPlaying] = useState(false);
-  const audioElement = useMemo(() => new Audio('/sound.mp3'), []);
+  const audioElement = useMemo(() => new Audio("/sound.mp3"), []);
   const { currentAudioOutputDevice } = useAudioOutputContext();
 
   useEffect(() => {
@@ -40,7 +40,9 @@ const SoundTest = ({ children }: SoundTestProps): ReactElement => {
   return (
     <MenuItem onClick={handlePlayAudio} data-testid="soundTest">
       {children}
-      <Typography noWrap>{!audioIsPlaying ? 'Test speakers' : 'Stop testing'}</Typography>
+      <Typography noWrap>
+        {!audioIsPlaying ? "Test speakers" : "Stop testing"}
+      </Typography>
     </MenuItem>
   );
 };

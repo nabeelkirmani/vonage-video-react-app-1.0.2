@@ -1,14 +1,14 @@
-import { Typography, MenuItem, IconButton, MenuList } from '@mui/material';
-import { useState, useEffect, ReactElement } from 'react';
-import Grow from '@mui/material/Grow';
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import { hasMediaProcessorSupport } from '@vonage/client-sdk-video';
-import HeadsetIcon from '@mui/icons-material/Headset';
-import ToggleOffIcon from '@mui/icons-material/ToggleOff';
-import ToggleOnIcon from '@mui/icons-material/ToggleOn';
-import usePublisherContext from '../../../../hooks/usePublisherContext';
-import DropdownSeparator from '../../DropdownSeparator';
-import SoundTest from '../../../SoundTest';
+import { Typography, MenuItem, IconButton, MenuList } from "@mui/material";
+import { useState, useEffect, ReactElement } from "react";
+import Grow from "@mui/material/Grow";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import { hasMediaProcessorSupport } from "@vonage/client-sdk-video";
+import HeadsetIcon from "@mui/icons-material/Headset";
+import ToggleOffIcon from "@mui/icons-material/ToggleOff";
+import ToggleOnIcon from "@mui/icons-material/ToggleOn";
+import usePublisherContext from "../../../../hooks/usePublisherContext";
+import DropdownSeparator from "../../DropdownSeparator";
+import SoundTest from "../../../SoundTest";
 
 export type ReduceNoiseTestSpeakersProps = {
   customLightBlueColor: string;
@@ -32,9 +32,9 @@ const ReduceNoiseTestSpeakers = ({
   const handleToggle = async () => {
     const newState = !isToggled;
     setIsToggled(newState);
-    window.localStorage.setItem('noiseSuppression', JSON.stringify(newState));
+    window.localStorage.setItem("noiseSuppression", JSON.stringify(newState));
     if (newState) {
-      await publisher?.applyAudioFilter({ type: 'advancedNoiseSuppression' });
+      await publisher?.applyAudioFilter({ type: "advancedNoiseSuppression" });
     } else {
       await publisher?.clearAudioFilter();
     }
@@ -52,8 +52,8 @@ const ReduceNoiseTestSpeakers = ({
       <DropdownSeparator />
       <MenuList
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
+          display: "flex",
+          flexDirection: "column",
           mt: 1,
         }}
       >
@@ -61,9 +61,9 @@ const ReduceNoiseTestSpeakers = ({
           <MenuItem
             onClick={handleToggle}
             sx={{
-              backgroundColor: 'transparent',
-              '&:hover': {
-                backgroundColor: 'rgba(25, 118, 210, 0.12)',
+              backgroundColor: "transparent",
+              "&:hover": {
+                backgroundColor: "rgba(25, 118, 210, 0.12)",
               },
             }}
           >
@@ -73,12 +73,15 @@ const ReduceNoiseTestSpeakers = ({
             </Typography>
             <IconButton disableRipple>
               <Grow in={!isToggled} timeout={300}>
-                <ToggleOffIcon fontSize="large" sx={{ position: 'absolute', color: 'white' }} />
+                <ToggleOffIcon
+                  fontSize="large"
+                  sx={{ position: "absolute", color: "white" }}
+                />
               </Grow>
               <Grow in={isToggled} timeout={300}>
                 <ToggleOnIcon
                   fontSize="large"
-                  sx={{ position: 'absolute', color: customLightBlueColor }}
+                  sx={{ position: "absolute", color: customLightBlueColor }}
                 />
               </Grow>
             </IconButton>

@@ -1,3 +1,3 @@
-import VideoContainerToggleButton from './VideoContainerToggleButton';
+import VideoContainerToggleButton from "./VideoContainerToggleButton";
 
 export default VideoContainerToggleButton;

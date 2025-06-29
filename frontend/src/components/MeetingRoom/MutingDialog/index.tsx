@@ -1,3 +1,3 @@
-import MutingDialog from './MutingDialog';
+import MutingDialog from "./MutingDialog";
 
 export default MutingDialog;

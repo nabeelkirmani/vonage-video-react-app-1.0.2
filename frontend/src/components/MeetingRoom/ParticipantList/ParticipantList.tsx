@@ -1,18 +1,21 @@
-import { Fade, IconButton, List, Tooltip } from '@mui/material';
-import { ContentCopy } from '@mui/icons-material';
-import CheckIcon from '@mui/icons-material/Check';
-import { ReactElement, useState } from 'react';
-import useSessionContext from '../../../hooks/useSessionContext';
-import useUserContext from '../../../hooks/useUserContext';
-import useAudioLevels from '../../../hooks/useAudioLevels';
-import ParticipantListItem from '../ParticipantListItem';
-import getInitials from '../../../utils/getInitials';
-import { SubscriberWrapper } from '../../../types/session';
-import getParticipantColor from '../../../utils/getParticipantColor';
-import useRoomShareUrl from '../../../hooks/useRoomShareUrl';
-import RightPanelTitle from '../RightPanel/RightPanelTitle';
+import { Fade, IconButton, List, Tooltip } from "@mui/material";
+import { ContentCopy } from "@mui/icons-material";
+import CheckIcon from "@mui/icons-material/Check";
+import { ReactElement, useState } from "react";
+import useSessionContext from "../../../hooks/useSessionContext";
+import useUserContext from "../../../hooks/useUserContext";
+import useAudioLevels from "../../../hooks/useAudioLevels";
+import ParticipantListItem from "../ParticipantListItem";
+import getInitials from "../../../utils/getInitials";
+import { SubscriberWrapper } from "../../../types/session";
+import getParticipantColor from "../../../utils/getParticipantColor";
+import useRoomShareUrl from "../../../hooks/useRoomShareUrl";
+import RightPanelTitle from "../RightPanel/RightPanelTitle";
 
-const compareNameAlphabetically = (a: SubscriberWrapper, b: SubscriberWrapper) => {
+const compareNameAlphabetically = (
+  a: SubscriberWrapper,
+  b: SubscriberWrapper,
+) => {
   const nameA = a.subscriber?.stream?.name;
   const nameB = b.subscriber?.stream?.name;
   if (!nameA) {
@@ -39,7 +42,10 @@ export type ParticipantListProps = {
  *  @property {boolean} isOpen - a variable that shows whether the participant list should be displayed.
  * @returns {ReactElement} The participant list component.
  */
-const ParticipantList = ({ handleClose, isOpen }: ParticipantListProps): ReactElement | false => {
+const ParticipantList = ({
+  handleClose,
+  isOpen,
+}: ParticipantListProps): ReactElement | false => {
   const { subscriberWrappers } = useSessionContext();
   const publisherAudio = useAudioLevels();
   const [isCopied, setIsCopied] = useState<boolean>(false);
@@ -67,7 +73,7 @@ const ParticipantList = ({ handleClose, isOpen }: ParticipantListProps): ReactEl
           <div className="text-left">
             <span className="font-bold text-sm text-darkGray tracking-normal font-bold">
               Meeting URL:
-            </span>{' '}
+            </span>{" "}
             <br />
             <span className="block max-w-64	font-normal text-sm text-darkGray tracking-normal truncate">
               {window.location.href}
@@ -75,20 +81,24 @@ const ParticipantList = ({ handleClose, isOpen }: ParticipantListProps): ReactEl
           </div>
           <IconButton
             size="large"
-            sx={{ color: 'rgb(95, 99, 104)' }}
+            sx={{ color: "rgb(95, 99, 104)" }}
             onClick={copyUrl}
             disabled={isCopied}
           >
             <Tooltip
-              title={isCopied ? 'Copied' : 'Copy to clipboard'}
+              title={isCopied ? "Copied" : "Copy to clipboard"}
               TransitionComponent={Fade}
               TransitionProps={{ timeout: 500 }}
             >
-              {isCopied ? <CheckIcon sx={{ color: 'rgba(26,115,232,.9)' }} /> : <ContentCopy />}
+              {isCopied ? (
+                <CheckIcon sx={{ color: "rgba(26,115,232,.9)" }} />
+              ) : (
+                <ContentCopy />
+              )}
             </Tooltip>
           </IconButton>
         </div>
-        <List sx={{ overflowX: 'auto', height: 'calc(100vh - 240px)' }}>
+        <List sx={{ overflowX: "auto", height: "calc(100vh - 240px)" }}>
           <ParticipantListItem
             key="you"
             dataTestId="participant-list-item-you"
@@ -102,7 +112,7 @@ const ParticipantList = ({ handleClose, isOpen }: ParticipantListProps): ReactEl
             .sort(compareNameAlphabetically)
             .map(({ id, subscriber }) => {
               const hasAudio = !!subscriber.stream?.hasAudio;
-              const participantName = subscriber?.stream?.name ?? '';
+              const participantName = subscriber?.stream?.name ?? "";
               const participantStream = subscriber?.stream;
               return (
                 <ParticipantListItem

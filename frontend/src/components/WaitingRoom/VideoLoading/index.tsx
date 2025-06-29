@@ -1,3 +1,3 @@
-import VideoLoading from './VideoLoading';
+import VideoLoading from "./VideoLoading";
 
 export default VideoLoading;

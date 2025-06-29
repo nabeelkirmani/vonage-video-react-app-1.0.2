@@ -1,9 +1,9 @@
-import PeopleIcon from '@mui/icons-material/People';
-import Tooltip from '@mui/material/Tooltip';
-import { blue } from '@mui/material/colors';
-import { Badge } from '@mui/material';
-import { ReactElement } from 'react';
-import ToolbarButton from '../ToolbarButton';
+import PeopleIcon from "@mui/icons-material/People";
+import Tooltip from "@mui/material/Tooltip";
+import { blue } from "@mui/material/colors";
+import { Badge } from "@mui/material";
+import { ReactElement } from "react";
+import ToolbarButton from "../ToolbarButton";
 
 export type ParticipantListButtonProps = {
   handleClick: () => void;
@@ -29,26 +29,26 @@ const ParticipantListToggleButton = ({
   return (
     <div className="pr-3">
       <Tooltip
-        title={isOpen ? 'Close participant list' : 'Open participant list'}
+        title={isOpen ? "Close participant list" : "Open participant list"}
         aria-label="toggle participant list"
       >
         <Badge
           badgeContent={participantCount}
           sx={{
-            '& .MuiBadge-badge': {
-              color: 'white',
-              backgroundColor: 'rgb(95, 99, 104)',
+            "& .MuiBadge-badge": {
+              color: "white",
+              backgroundColor: "rgb(95, 99, 104)",
             },
           }}
           overlap="circular"
         >
           <ToolbarButton
             sx={{
-              marginTop: '0px',
-              marginRight: '0px',
+              marginTop: "0px",
+              marginRight: "0px",
             }}
             onClick={handleClick}
-            icon={<PeopleIcon sx={{ color: isOpen ? blue.A100 : 'white' }} />}
+            icon={<PeopleIcon sx={{ color: isOpen ? blue.A100 : "white" }} />}
           />
         </Badge>
       </Tooltip>

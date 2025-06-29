@@ -1,17 +1,31 @@
-import { beforeEach, describe, it, expect, vi, Mock, afterAll, Mocked } from 'vitest';
-import { act, renderHook } from '@testing-library/react';
-import { initPublisher, Publisher, Session, Stream } from '@vonage/client-sdk-video';
-import EventEmitter from 'events';
-import usePublisher from './usePublisher';
-import useUserContext from '../../../hooks/useUserContext';
-import { UserContextType } from '../../user';
-import useSessionContext from '../../../hooks/useSessionContext';
-import { SessionContextType } from '../../SessionProvider/session';
-import { PUBLISHING_BLOCKED_CAPTION } from '../../../utils/constants';
+import {
+  beforeEach,
+  describe,
+  it,
+  expect,
+  vi,
+  Mock,
+  afterAll,
+  Mocked,
+} from "vitest";
+import { act, renderHook } from "@testing-library/react";
+import {
+  initPublisher,
+  Publisher,
+  Session,
+  Stream,
+} from "@vonage/client-sdk-video";
+import EventEmitter from "events";
+import usePublisher from "./usePublisher";
+import useUserContext from "../../../hooks/useUserContext";
+import { UserContextType } from "../../user";
+import useSessionContext from "../../../hooks/useSessionContext";
+import { SessionContextType } from "../../SessionProvider/session";
+import { PUBLISHING_BLOCKED_CAPTION } from "../../../utils/constants";
 
-vi.mock('@vonage/client-sdk-video');
-vi.mock('../../../hooks/useUserContext.tsx');
-vi.mock('../../../hooks/useSessionContext.tsx');
+vi.mock("@vonage/client-sdk-video");
+vi.mock("../../../hooks/useUserContext.tsx");
+vi.mock("../../../hooks/useSessionContext.tsx");
 
 const mockUseUserContext = useUserContext as Mock<[], UserContextType>;
 const mockUseSessionContext = useSessionContext as Mock<[], SessionContextType>;
@@ -19,7 +33,7 @@ const mockUseSessionContext = useSessionContext as Mock<[], SessionContextType>;
 const defaultSettings = {
   publishAudio: false,
   publishVideo: false,
-  name: '',
+  name: "",
   blur: false,
   noiseSuppression: true,
 };
@@ -29,11 +43,11 @@ const mockUserContextWithDefaultSettings = {
   },
 } as UserContextType;
 const mockStream = {
-  streamId: 'stream-id',
-  name: 'Jane Doe',
+  streamId: "stream-id",
+  name: "Jane Doe",
 } as unknown as Stream;
 
-describe('usePublisher', () => {
+describe("usePublisher", () => {
   const destroySpy = vi.fn();
   const mockPublisher = Object.assign(new EventEmitter(), {
     destroy: destroySpy,
@@ -43,12 +57,14 @@ describe('usePublisher', () => {
   const mockedInitPublisher = vi.fn();
   const mockedSessionPublish = vi.fn();
   const mockedSessionUnpublish = vi.fn();
-  const consoleWarnSpy = vi.spyOn(console, 'warn');
+  const consoleWarnSpy = vi.spyOn(console, "warn");
 
   beforeEach(() => {
     vi.resetAllMocks();
 
-    mockUseUserContext.mockImplementation(() => mockUserContextWithDefaultSettings);
+    mockUseUserContext.mockImplementation(
+      () => mockUserContextWithDefaultSettings,
+    );
 
     (initPublisher as Mock).mockImplementation(mockedInitPublisher);
 
@@ -59,15 +75,17 @@ describe('usePublisher', () => {
     sessionContext = {
       session: sessionMock,
     } as unknown as SessionContextType;
-    mockUseSessionContext.mockReturnValue(sessionContext as unknown as SessionContextType);
+    mockUseSessionContext.mockReturnValue(
+      sessionContext as unknown as SessionContextType,
+    );
   });
 
   afterAll(() => {
     vi.restoreAllMocks();
   });
 
-  describe('initializeLocalPublisher', () => {
-    it('should call initPublisher', () => {
+  describe("initializeLocalPublisher", () => {
+    it("should call initPublisher", () => {
       const { result } = renderHook(() => usePublisher());
       act(() => {
         result.current.initializeLocalPublisher();
@@ -76,9 +94,9 @@ describe('usePublisher', () => {
       expect(mockedInitPublisher).toHaveBeenCalled();
     });
 
-    it('should log errors', () => {
+    it("should log errors", () => {
       (initPublisher as Mock).mockImplementation(() => {
-        throw new Error('The second mouse gets the cheese.');
+        throw new Error("The second mouse gets the cheese.");
       });
 
       const { result } = renderHook(() => usePublisher());
@@ -90,8 +108,8 @@ describe('usePublisher', () => {
     });
   });
 
-  describe('unpublish', () => {
-    it('should unpublish when requested', async () => {
+  describe("unpublish", () => {
+    it("should unpublish when requested", async () => {
       (initPublisher as Mock).mockImplementation(() => mockPublisher);
 
       const { result, rerender } = renderHook(() => usePublisher());
@@ -105,8 +123,8 @@ describe('usePublisher', () => {
     });
   });
 
-  describe('publish', () => {
-    it('should publish to the session', async () => {
+  describe("publish", () => {
+    it("should publish to the session", async () => {
       (initPublisher as Mock).mockImplementation(() => mockPublisher);
 
       const { result } = renderHook(() => usePublisher());
@@ -122,10 +140,10 @@ describe('usePublisher', () => {
       expect(mockedSessionPublish).toHaveBeenCalled();
     });
 
-    it('should log errors', async () => {
+    it("should log errors", async () => {
       sessionMock = {
         publish: vi.fn(() => {
-          throw new Error('There is an error.');
+          throw new Error("There is an error.");
         }),
       } as unknown as Mocked<Session>;
 
@@ -136,7 +154,7 @@ describe('usePublisher', () => {
       expect(consoleWarnSpy).toHaveBeenCalled();
     });
 
-    it('should only publish to session once', async () => {
+    it("should only publish to session once", async () => {
       (initPublisher as Mock).mockImplementation(() => mockPublisher);
       mockedSessionPublish.mockImplementation((_, callback) => {
         callback();
@@ -147,7 +165,7 @@ describe('usePublisher', () => {
       act(() => {
         result.current.initializeLocalPublisher();
         // @ts-expect-error We simulate the publisher stream being created.
-        mockPublisher.emit('streamCreated', { stream: mockStream });
+        mockPublisher.emit("streamCreated", { stream: mockStream });
       });
       expect(initPublisher).toHaveBeenCalledOnce();
 
@@ -164,10 +182,10 @@ describe('usePublisher', () => {
       expect(mockedSessionPublish).toHaveBeenCalledOnce();
     });
 
-    it('should attempt to publish only twice before failing', async () => {
+    it("should attempt to publish only twice before failing", async () => {
       (initPublisher as Mock).mockImplementation(() => mockPublisher);
       mockedSessionPublish.mockImplementation((_, callback) => {
-        callback(new Error('Mocked error'));
+        callback(new Error("Mocked error"));
       });
       const { result } = renderHook(() => usePublisher());
 
@@ -180,7 +198,7 @@ describe('usePublisher', () => {
       });
 
       const publishingBlockedError = {
-        header: 'Difficulties joining room',
+        header: "Difficulties joining room",
         caption: PUBLISHING_BLOCKED_CAPTION,
       };
       expect(result.current.publishingError).toEqual(publishingBlockedError);
@@ -188,7 +206,7 @@ describe('usePublisher', () => {
     });
   });
 
-  it('should set publishingError and destroy publisher when receiving an accessDenied event', () => {
+  it("should set publishingError and destroy publisher when receiving an accessDenied event", () => {
     (initPublisher as Mock).mockImplementation(() => mockPublisher);
     const { result } = renderHook(() => usePublisher());
 
@@ -200,13 +218,13 @@ describe('usePublisher', () => {
 
     act(() => {
       // @ts-expect-error We simulate user denying microphone permissions in a browser.
-      mockPublisher.emit('accessDenied', {
-        message: 'microphone permission denied during the call',
+      mockPublisher.emit("accessDenied", {
+        message: "microphone permission denied during the call",
       });
     });
 
     expect(result.current.publishingError).toEqual({
-      header: 'Camera access is denied',
+      header: "Camera access is denied",
       caption:
         "It seems your browser is blocked from accessing your camera. Reset the permission state through your browser's UI.",
     });
@@ -214,7 +232,7 @@ describe('usePublisher', () => {
     expect(result.current.publisher).toBeNull();
   });
 
-  it('should not set publishingError when receiving an accessAllowed event', () => {
+  it("should not set publishingError when receiving an accessAllowed event", () => {
     (initPublisher as Mock).mockImplementation(() => mockPublisher);
     const { result } = renderHook(() => usePublisher());
 
@@ -222,7 +240,7 @@ describe('usePublisher', () => {
       result.current.initializeLocalPublisher();
 
       // @ts-expect-error We simulate allowing camera and microphone permissions in a browser.
-      mockPublisher.emit('accessAllowed');
+      mockPublisher.emit("accessAllowed");
     });
 
     expect(result.current.publishingError).toBeNull();

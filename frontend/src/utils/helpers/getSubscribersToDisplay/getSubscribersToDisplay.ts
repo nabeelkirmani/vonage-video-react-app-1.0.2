@@ -1,5 +1,5 @@
-import { SubscriberWrapper } from '../../../types/session';
-import { isMobile } from '../../util';
+import { SubscriberWrapper } from "../../../types/session";
+import { isMobile } from "../../util";
 
 /**
  * Util to get the maximum number of subscribers we should show on screen based on layout mode and device type
@@ -27,10 +27,12 @@ export type SubscribersToDisplayAndHide = {
  */
 const getSubscribersToDisplay = (
   subscriberWrappers: SubscriberWrapper[],
-  isViewingLargeTile: boolean
+  isViewingLargeTile: boolean,
 ): SubscribersToDisplayAndHide => {
-  const maxSubscribersOnScreenCount = getMaxSubscriberOnScreenCount(isViewingLargeTile);
-  const shouldHideSubscribers = subscriberWrappers.length > maxSubscribersOnScreenCount;
+  const maxSubscribersOnScreenCount =
+    getMaxSubscriberOnScreenCount(isViewingLargeTile);
+  const shouldHideSubscribers =
+    subscriberWrappers.length > maxSubscribersOnScreenCount;
 
   // If hiding subscribers we slice at max - 1 to make room for hidden participant tile.
   // E.g we either show 3 subs or 2 and a hidden participants tile, hence visible subscriber array length is
@@ -40,7 +42,10 @@ const getSubscribersToDisplay = (
     : subscriberWrappers;
 
   const hiddenSubscribers = shouldHideSubscribers
-    ? subscriberWrappers.slice(maxSubscribersOnScreenCount - 1, subscriberWrappers.length)
+    ? subscriberWrappers.slice(
+        maxSubscribersOnScreenCount - 1,
+        subscriberWrappers.length,
+      )
     : [];
   return { subscribersOnScreen, hiddenSubscribers };
 };

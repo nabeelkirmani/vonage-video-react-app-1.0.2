@@ -9,8 +9,8 @@ import {
   SetStateAction,
   useEffect,
   ReactElement,
-} from 'react';
-import { v4 as uuid } from 'uuid';
+} from "react";
+import { v4 as uuid } from "uuid";
 import {
   Connection,
   Dimensions,
@@ -21,29 +21,29 @@ import {
   initSession,
   Event,
   OTError,
-} from '@vonage/client-sdk-video';
-import fetchCredentials from '../../api/fetchCredentials';
-import createMovingAvgAudioLevelTracker from '../../utils/movingAverageAudioLevelTracker';
-import useUserContext from '../../hooks/useUserContext';
-import ActiveSpeakerTracker from '../../utils/ActiveSpeakerTracker';
-import useRightPanel, { RightPanelActiveTab } from '../../hooks/useRightPanel';
-import logOnConnect from '../../utils/logOnConnect';
-import useChat from '../../hooks/useChat';
-import { SubscriberWrapper } from '../../types/session';
-import sortByDisplayPriority from '../../utils/sortByDisplayPriority';
-import { ChatMessageType } from '../../types/chat';
+} from "@vonage/client-sdk-video";
+import fetchCredentials from "../../api/fetchCredentials";
+import createMovingAvgAudioLevelTracker from "../../utils/movingAverageAudioLevelTracker";
+import useUserContext from "../../hooks/useUserContext";
+import ActiveSpeakerTracker from "../../utils/ActiveSpeakerTracker";
+import useRightPanel, { RightPanelActiveTab } from "../../hooks/useRightPanel";
+import logOnConnect from "../../utils/logOnConnect";
+import useChat from "../../hooks/useChat";
+import { SubscriberWrapper } from "../../types/session";
+import sortByDisplayPriority from "../../utils/sortByDisplayPriority";
+import { ChatMessageType } from "../../types/chat";
 
-export type { ChatMessageType } from '../../types/chat';
+export type { ChatMessageType } from "../../types/chat";
 
 export type ChangedStreamType = {
   stream: Stream;
-  changedProperty: 'hasVideo' | 'hasAudio' | 'videoDimensions';
+  changedProperty: "hasVideo" | "hasAudio" | "videoDimensions";
   newValue: boolean | Dimensions;
   oldValue: boolean | Dimensions;
   token?: string;
 };
 
-export type LayoutMode = 'grid' | 'active-speaker';
+export type LayoutMode = "grid" | "active-speaker";
 
 export type SessionContextType = {
   session: null | Session;
@@ -88,10 +88,10 @@ export const SessionContext = createContext<SessionContextType>({
   reconnecting: null,
   subscriberWrappers: [],
   activeSpeakerId: undefined,
-  layoutMode: 'grid',
+  layoutMode: "grid",
   setLayoutMode: () => {},
   archiveId: null,
-  rightPanelActiveTab: 'closed',
+  rightPanelActiveTab: "closed",
   toggleParticipantList: () => {},
   toggleChat: () => {},
   closeRightPanel: () => {},
@@ -114,7 +114,7 @@ export type Credential = {
   sessionId: string;
   token: string;
 };
-export type StreamCreatedEvent = Event<'streamCreated', Session> & {
+export type StreamCreatedEvent = Event<"streamCreated", Session> & {
   stream: Stream;
 };
 
@@ -137,13 +137,19 @@ export type SessionProviderProps = {
 const SessionProvider = ({ children }: SessionProviderProps): ReactElement => {
   const session = useRef<Session | null>(null);
   const [reconnecting, setReconnecting] = useState(false);
-  const [subscriberWrappers, setSubscriberWrappers] = useState<SubscriberWrapper[]>([]);
-  const [layoutMode, setLayoutMode] = useState<LayoutMode>('active-speaker');
+  const [subscriberWrappers, setSubscriberWrappers] = useState<
+    SubscriberWrapper[]
+  >([]);
+  const [layoutMode, setLayoutMode] = useState<LayoutMode>("active-speaker");
   const [archiveId, setArchiveId] = useState<string | null>(null);
-  const activeSpeakerTracker = useRef<ActiveSpeakerTracker>(new ActiveSpeakerTracker());
+  const activeSpeakerTracker = useRef<ActiveSpeakerTracker>(
+    new ActiveSpeakerTracker(),
+  );
   const [activeSpeakerId, setActiveSpeakerId] = useState<string | undefined>();
   const activeSpeakerIdRef = useRef<string | undefined>(undefined);
-  const { messages, onChatMessage, sendChatMessage } = useChat({ sessionRef: session });
+  const { messages, onChatMessage, sendChatMessage } = useChat({
+    sessionRef: session,
+  });
   const {
     closeRightPanel,
     toggleParticipantList,
@@ -173,7 +179,7 @@ const SessionProvider = ({ children }: SessionProviderProps): ReactElement => {
   const moveSubscriberToTopOfDisplayOrder = useCallback((id: string) => {
     setSubscriberWrappers((prevSubscriberWrappers) => {
       const activeSpeakerWrapper = prevSubscriberWrappers.find(
-        ({ id: streamId }) => streamId === id
+        ({ id: streamId }) => streamId === id,
       );
       if (activeSpeakerWrapper) {
         // We use a ref to access the value for activeSpeakerId, because it is not updated in the context of this state and shows up as its initial state, undefined.
@@ -188,17 +194,22 @@ const SessionProvider = ({ children }: SessionProviderProps): ReactElement => {
 
   // hook to keep track of the active speaker during the call and move it to the top of the display order
   useEffect(() => {
-    activeSpeakerTracker.current.on('activeSpeakerChanged', ({ newActiveSpeaker }) => {
-      const { subscriberId } = newActiveSpeaker;
-      setActiveSpeakerIdAndRef(subscriberId);
-      if (subscriberId) {
-        moveSubscriberToTopOfDisplayOrder(subscriberId);
-      }
-    });
+    activeSpeakerTracker.current.on(
+      "activeSpeakerChanged",
+      ({ newActiveSpeaker }) => {
+        const { subscriberId } = newActiveSpeaker;
+        setActiveSpeakerIdAndRef(subscriberId);
+        if (subscriberId) {
+          moveSubscriberToTopOfDisplayOrder(subscriberId);
+        }
+      },
+    );
   }, [moveSubscriberToTopOfDisplayOrder, setActiveSpeakerIdAndRef]);
 
   const { user } = useUserContext();
-  const [changedStream, setChangedStream] = useState<ChangedStreamType | null>(null);
+  const [changedStream, setChangedStream] = useState<ChangedStreamType | null>(
+    null,
+  );
   const [connections, setConnections] = useState<Connection[]>([]);
   const [connected, setConnected] = useState(false);
 
@@ -212,7 +223,13 @@ const SessionProvider = ({ children }: SessionProviderProps): ReactElement => {
     newValue,
     oldValue,
   }: ChangedStreamType) => {
-    setChangedStream({ stream, changedProperty, newValue, oldValue, token: uuid() });
+    setChangedStream({
+      stream,
+      changedProperty,
+      newValue,
+      oldValue,
+      token: uuid(),
+    });
   };
 
   /**
@@ -230,8 +247,8 @@ const SessionProvider = ({ children }: SessionProviderProps): ReactElement => {
   const handleConnectionDestroyed = (e: ConnectionEventType) => {
     setConnections((prevConnections) =>
       [...prevConnections].filter(
-        (connection) => connection.connectionId !== e.connection.connectionId
-      )
+        (connection) => connection.connectionId !== e.connection.connectionId,
+      ),
     );
   };
 
@@ -242,7 +259,7 @@ const SessionProvider = ({ children }: SessionProviderProps): ReactElement => {
     setConnected(false);
   };
 
-  type VideoElementCreatedEvent = Event<'videoElementCreated', Subscriber> & {
+  type VideoElementCreatedEvent = Event<"videoElementCreated", Subscriber> & {
     element: HTMLVideoElement | HTMLObjectElement;
   };
 
@@ -257,52 +274,64 @@ const SessionProvider = ({ children }: SessionProviderProps): ReactElement => {
    * @returns {Promise<void>} A promise that resolves when the subscription is set up.
    */
   const subscribe = useCallback(
-    async (stream: Stream, localSession: Session, options: SubscriberProperties = {}) => {
+    async (
+      stream: Stream,
+      localSession: Session,
+      options: SubscriberProperties = {},
+    ) => {
       const { streamId } = stream;
       if (localSession) {
         const finalOptions: SubscriberProperties = {
           ...options,
-          insertMode: 'append',
-          width: '100%',
-          height: '100%',
-          preferredResolution: 'auto',
+          insertMode: "append",
+          width: "100%",
+          height: "100%",
+          preferredResolution: "auto",
           style: {
-            buttonDisplayMode: 'off',
-            nameDisplayMode: 'on',
+            buttonDisplayMode: "off",
+            nameDisplayMode: "on",
           },
           insertDefaultUI: false,
         };
-        const isScreenshare = stream.videoType === 'screen';
-        const subscriber = localSession.subscribe(stream, undefined, finalOptions);
-        subscriber.on('videoElementCreated', (event: VideoElementCreatedEvent) => {
-          const { element } = event;
-          const subscriberWrapper: SubscriberWrapper = {
-            element,
-            subscriber,
-            isScreenshare,
-            // subscriber.id is refers to the targetElement id and will be undefined when insertDefaultUI is false so we use streamId to track our subscriber
-            id: streamId,
-          };
-          // prepend new subscriber to beginning of array so that is is visible on joining
-          setSubscriberWrappers((previousSubscriberWrappers) =>
-            [subscriberWrapper, ...previousSubscriberWrappers].sort(
-              sortByDisplayPriority(activeSpeakerIdRef.current)
-            )
-          );
-        });
+        const isScreenshare = stream.videoType === "screen";
+        const subscriber = localSession.subscribe(
+          stream,
+          undefined,
+          finalOptions,
+        );
+        subscriber.on(
+          "videoElementCreated",
+          (event: VideoElementCreatedEvent) => {
+            const { element } = event;
+            const subscriberWrapper: SubscriberWrapper = {
+              element,
+              subscriber,
+              isScreenshare,
+              // subscriber.id is refers to the targetElement id and will be undefined when insertDefaultUI is false so we use streamId to track our subscriber
+              id: streamId,
+            };
+            // prepend new subscriber to beginning of array so that is is visible on joining
+            setSubscriberWrappers((previousSubscriberWrappers) =>
+              [subscriberWrapper, ...previousSubscriberWrappers].sort(
+                sortByDisplayPriority(activeSpeakerIdRef.current),
+              ),
+            );
+          },
+        );
 
-        subscriber.on('destroyed', () => {
+        subscriber.on("destroyed", () => {
           activeSpeakerTracker.current.onSubscriberDestroyed(streamId);
-          const isNotDestroyedStreamId = ({ id }: { id: string }) => streamId !== id;
+          const isNotDestroyedStreamId = ({ id }: { id: string }) =>
+            streamId !== id;
           setSubscriberWrappers((prevSubscriberWrappers) =>
-            prevSubscriberWrappers.filter(isNotDestroyedStreamId)
+            prevSubscriberWrappers.filter(isNotDestroyedStreamId),
           );
         });
 
         // Create moving average tracker and add handler for subscriber audioLevelUpdated event emitted periodically with subscriber audio volume
         // See for reference: https://developer.vonage.com/en/video/guides/ui-customization/general-customization#adjusting-user-interface-based-on-audio-levels
         const getMovingAverageAudioLevel = createMovingAvgAudioLevelTracker();
-        subscriber.on('audioLevelUpdated', ({ audioLevel }) => {
+        subscriber.on("audioLevelUpdated", ({ audioLevel }) => {
           const { logMovingAvg } = getMovingAverageAudioLevel(audioLevel);
           activeSpeakerTracker.current.onSubscriberAudioLevelUpdated({
             subscriberId: streamId,
@@ -311,7 +340,7 @@ const SessionProvider = ({ children }: SessionProviderProps): ReactElement => {
         });
       }
     },
-    []
+    [],
   );
 
   // handle the subscription (Receiving media from remote parties)
@@ -355,17 +384,17 @@ const SessionProvider = ({ children }: SessionProviderProps): ReactElement => {
       // https://vonage.github.io/conversation-docs/video-js-reference/latest/Session.html#events for unified environment
       session.current = initSession(apiKey, sessionId);
 
-      session.current.on('streamPropertyChanged', handleStreamPropertyChanged);
-      session.current.on('streamCreated', handleStreamCreated);
-      session.current.on('sessionReconnecting', handleReconnecting);
-      session.current.on('sessionReconnected', handleReconnected);
-      session.current.on('sessionDisconnected', handleSessionDisconnected);
-      session.current.on('connectionCreated', handleConnectionCreated);
-      session.current.on('connectionDestroyed', handleConnectionDestroyed);
-      session.current.on('archiveStarted', handleArchiveStarted);
-      session.current.on('archiveStopped', handleArchiveStopped);
+      session.current.on("streamPropertyChanged", handleStreamPropertyChanged);
+      session.current.on("streamCreated", handleStreamCreated);
+      session.current.on("sessionReconnecting", handleReconnecting);
+      session.current.on("sessionReconnected", handleReconnected);
+      session.current.on("sessionDisconnected", handleSessionDisconnected);
+      session.current.on("connectionCreated", handleConnectionCreated);
+      session.current.on("connectionDestroyed", handleConnectionDestroyed);
+      session.current.on("archiveStarted", handleArchiveStarted);
+      session.current.on("archiveStopped", handleArchiveStopped);
       // @ts-expect-error signal:<type> is not ts compliant
-      session.current.on('signal:chat', handleChatSignal);
+      session.current.on("signal:chat", handleChatSignal);
 
       await new Promise<string | undefined>((resolve, reject) => {
         session.current?.connect(token, (err?: OTError) => {
@@ -374,7 +403,11 @@ const SessionProvider = ({ children }: SessionProviderProps): ReactElement => {
             reject(err); // NOSONAR
           } else {
             setConnected(true);
-            logOnConnect(apiKey, sessionId, session.current?.connection?.connectionId);
+            logOnConnect(
+              apiKey,
+              sessionId,
+              session.current?.connection?.connectionId,
+            );
             resolve(session.current?.sessionId);
           }
         });
@@ -469,9 +502,11 @@ const SessionProvider = ({ children }: SessionProviderProps): ReactElement => {
       toggleChat,
       closeRightPanel,
       toggleReportIssue,
-    ]
+    ],
   );
 
-  return <SessionContext.Provider value={value}>{children}</SessionContext.Provider>;
+  return (
+    <SessionContext.Provider value={value}>{children}</SessionContext.Provider>
+  );
 };
 export default SessionProvider;

@@ -1,5 +1,5 @@
-import { Device } from '@vonage/client-sdk-video';
-import { UAParser } from 'ua-parser-js';
+import { Device } from "@vonage/client-sdk-video";
+import { UAParser } from "ua-parser-js";
 
 /**
  * Returns a CSS background style based on the audio level input received.
@@ -20,12 +20,13 @@ export const getBackgroundGradient = (level: number) => {
  */
 export const getAudioSourceDeviceId = (
   audioInputDevices: Device[],
-  currentAudioSource: MediaStreamTrack
+  currentAudioSource: MediaStreamTrack,
 ): string => {
   const isCurrentAudioSource = (audioInputDevice: Device) =>
     audioInputDevice.label === currentAudioSource?.label;
-  const currentDeviceId = audioInputDevices.find(isCurrentAudioSource)?.deviceId;
-  return currentDeviceId ?? '';
+  const currentDeviceId =
+    audioInputDevices.find(isCurrentAudioSource)?.deviceId;
+  return currentDeviceId ?? "";
 };
 
 /**
@@ -34,7 +35,7 @@ export const getAudioSourceDeviceId = (
  */
 export const isWebKit = () => {
   const userAgent = navigator.userAgent.toLowerCase();
-  return userAgent.includes('safari') && !userAgent.includes('chrome');
+  return userAgent.includes("safari") && !userAgent.includes("chrome");
 };
 
 /**
@@ -44,9 +45,9 @@ export const isWebKit = () => {
 export const isGetActiveAudioOutputDeviceSupported = () => {
   const userAgent = navigator.userAgent.toLowerCase();
 
-  const isFirefox = userAgent.includes('firefox');
+  const isFirefox = userAgent.includes("firefox");
 
-  const isAndroid = userAgent.includes('android');
+  const isAndroid = userAgent.includes("android");
 
   return !isFirefox && !isWebKit() && !isAndroid;
 };
@@ -60,5 +61,5 @@ export const isMobile = (): boolean => {
   const parser = new UAParser(userAgent);
   const device = parser.getDevice();
 
-  return device.type === 'mobile';
+  return device.type === "mobile";
 };

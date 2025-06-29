@@ -1,20 +1,23 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
-import { cleanup, render, screen } from '@testing-library/react';
-import { Subscriber as OTSubscriber } from '@vonage/client-sdk-video';
-import { Box } from 'opentok-layout-js';
-import { SubscriberWrapper } from '../../types/session';
-import Subscriber from './Subscriber';
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { cleanup, render, screen } from "@testing-library/react";
+import { Subscriber as OTSubscriber } from "@vonage/client-sdk-video";
+import { Box } from "opentok-layout-js";
+import { SubscriberWrapper } from "../../types/session";
+import Subscriber from "./Subscriber";
 
-describe('Subscriber', () => {
+describe("Subscriber", () => {
   afterEach(() => {
     cleanup();
   });
 
-  const createSubscriberWrapper = (id: string, isScreenshare: boolean): SubscriberWrapper => {
-    const videoType = isScreenshare ? 'screen' : 'camera';
+  const createSubscriberWrapper = (
+    id: string,
+    isScreenshare: boolean,
+  ): SubscriberWrapper => {
+    const videoType = isScreenshare ? "screen" : "camera";
     return {
       id,
-      element: document.createElement('video'),
+      element: document.createElement("video"),
       isScreenshare,
       subscriber: {
         on: vi.fn(),
@@ -30,7 +33,12 @@ describe('Subscriber', () => {
     };
   };
 
-  const createMockBox = (height: number, left: number, top: number, width: number): Box => {
+  const createMockBox = (
+    height: number,
+    left: number,
+    top: number,
+    width: number,
+  ): Box => {
     return {
       height,
       left,
@@ -39,9 +47,12 @@ describe('Subscriber', () => {
     };
   };
 
-  it('should contain an audio indicator component if it is not a screenshare', () => {
-    const mockedSubscriberId = '123';
-    const subscriberWrapper = createSubscriberWrapper(mockedSubscriberId, false);
+  it("should contain an audio indicator component if it is not a screenshare", () => {
+    const mockedSubscriberId = "123";
+    const subscriberWrapper = createSubscriberWrapper(
+      mockedSubscriberId,
+      false,
+    );
     const mockedBox = createMockBox(10, 10, 10, 10);
 
     render(
@@ -50,15 +61,17 @@ describe('Subscriber', () => {
         isHidden={false}
         box={mockedBox}
         isActiveSpeaker={false}
-      />
+      />,
     );
 
-    expect(screen.getByTestId(`subscriber-container-${mockedSubscriberId}`)).toBeVisible();
-    expect(screen.getByTestId('audio-indicator')).toBeVisible();
+    expect(
+      screen.getByTestId(`subscriber-container-${mockedSubscriberId}`),
+    ).toBeVisible();
+    expect(screen.getByTestId("audio-indicator")).toBeVisible();
   });
 
-  it('should not contain an audio indicator component if it is a screenshare', () => {
-    const mockedSubscriberId = '456';
+  it("should not contain an audio indicator component if it is a screenshare", () => {
+    const mockedSubscriberId = "456";
     const subscriberWrapper = createSubscriberWrapper(mockedSubscriberId, true);
     const mockedBox = createMockBox(10, 10, 10, 10);
 
@@ -68,10 +81,12 @@ describe('Subscriber', () => {
         isHidden={false}
         box={mockedBox}
         isActiveSpeaker={false}
-      />
+      />,
     );
 
-    expect(screen.getByTestId(`subscriber-container-${mockedSubscriberId}`)).toBeVisible();
-    expect(screen.queryByTestId('audio-indicator')).not.toBeInTheDocument();
+    expect(
+      screen.getByTestId(`subscriber-container-${mockedSubscriberId}`),
+    ).toBeVisible();
+    expect(screen.queryByTestId("audio-indicator")).not.toBeInTheDocument();
   });
 });

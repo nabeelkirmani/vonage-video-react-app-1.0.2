@@ -1,7 +1,7 @@
-import { Avatar, ListItem, Typography } from '@mui/material';
-import { ReactElement } from 'react';
-import { Stream } from '@vonage/client-sdk-video';
-import AudioIndicator from '../AudioIndicator';
+import { Avatar, ListItem, Typography } from "@mui/material";
+import { ReactElement } from "react";
+import { Stream } from "@vonage/client-sdk-video";
+import AudioIndicator from "../AudioIndicator";
 
 export type ParticipantListItemProps = {
   stream?: Stream;
@@ -37,7 +37,7 @@ const ParticipantListItem = ({
 }: ParticipantListItemProps): ReactElement => {
   return (
     <ListItem
-      sx={{ height: '56px' }}
+      sx={{ height: "56px" }}
       data-testid={dataTestId}
       secondaryAction={
         <AudioIndicator
@@ -52,9 +52,9 @@ const ParticipantListItem = ({
       <Avatar
         sx={{
           bgcolor: avatarColor,
-          width: '32px',
-          height: '32px',
-          fontSize: '14px',
+          width: "32px",
+          height: "32px",
+          fontSize: "14px",
         }}
       >
         {initials}
@@ -63,7 +63,7 @@ const ParticipantListItem = ({
         data-testid="participant-list-name"
         variant="inherit"
         noWrap
-        sx={{ marginLeft: '12px' }}
+        sx={{ marginLeft: "12px" }}
       >
         {name}
       </Typography>

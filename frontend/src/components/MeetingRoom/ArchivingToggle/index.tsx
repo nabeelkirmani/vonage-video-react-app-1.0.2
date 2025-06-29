@@ -1,3 +1,3 @@
-import ArchivingToggle from './ArchivingToggle';
+import ArchivingToggle from "./ArchivingToggle";
 
 export default ArchivingToggle;

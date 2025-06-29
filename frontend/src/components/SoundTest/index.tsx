@@ -1,3 +1,3 @@
-import SoundTest from './SoundTest';
+import SoundTest from "./SoundTest";
 
 export default SoundTest;

@@ -1,3 +1,3 @@
-import ScreenSharePublisher from './ScreenSharePublisher';
+import ScreenSharePublisher from "./ScreenSharePublisher";
 
 export default ScreenSharePublisher;

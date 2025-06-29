@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useState } from 'react';
-import { Publisher } from '@vonage/client-sdk-video';
-import useUserContext from '../../../hooks/useUserContext';
+import { useCallback, useEffect, useState } from "react";
+import { Publisher } from "@vonage/client-sdk-video";
+import useUserContext from "../../../hooks/useUserContext";
 
-export type NetworkQuality = 'good' | 'poor' | 'bad';
+export type NetworkQuality = "good" | "poor" | "bad";
 
 /**
  * React hook to return react state string of current publisher network quality.
@@ -14,31 +14,31 @@ export type NetworkQuality = 'good' | 'poor' | 'bad';
  */
 const usePublisherQuality = (publisher: Publisher | null): NetworkQuality => {
   const { user } = useUserContext();
-  const [quality, setQuality] = useState<NetworkQuality>('good');
+  const [quality, setQuality] = useState<NetworkQuality>("good");
 
   const handleVideoDisabled = useCallback(() => {
-    setQuality('bad');
+    setQuality("bad");
     user.issues.audioFallbacks += 1;
   }, [user]);
 
   const handleVideoEnabled = useCallback(() => {
-    setQuality('good');
+    setQuality("good");
   }, []);
 
   const handleVideoWarning = useCallback(() => {
-    setQuality('poor');
+    setQuality("poor");
   }, []);
 
   const handleVideoWarningLifted = useCallback(() => {
-    setQuality('good');
+    setQuality("good");
   }, []);
 
   useEffect(() => {
     if (publisher) {
-      publisher.on('videoDisabled', handleVideoDisabled);
-      publisher.on('videoEnabled', handleVideoEnabled);
-      publisher.on('videoDisableWarning', handleVideoWarning);
-      publisher.on('videoDisableWarningLifted', handleVideoWarningLifted);
+      publisher.on("videoDisabled", handleVideoDisabled);
+      publisher.on("videoEnabled", handleVideoEnabled);
+      publisher.on("videoDisableWarning", handleVideoWarning);
+      publisher.on("videoDisableWarningLifted", handleVideoWarningLifted);
     }
   }, [
     handleVideoDisabled,

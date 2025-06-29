@@ -1,6 +1,6 @@
-import { ReactElement } from 'react';
-import useEmoji from '../../../hooks/useEmoji';
-import Emoji from '../Emoji/Emoji';
+import { ReactElement } from "react";
+import useEmoji from "../../../hooks/useEmoji";
+import Emoji from "../Emoji/Emoji";
 
 /**
  * EmojisOrigin Component

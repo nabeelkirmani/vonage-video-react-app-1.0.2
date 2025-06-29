@@ -1,5 +1,5 @@
-import { ReactNode, createContext, useMemo } from 'react';
-import useAudioOutput from './useAudioOutput';
+import { ReactNode, createContext, useMemo } from "react";
+import useAudioOutput from "./useAudioOutput";
 
 export type AudioOutputContextType = ReturnType<typeof useAudioOutput>;
 export const AudioOutputContext = createContext({} as AudioOutputContextType);
@@ -18,5 +18,9 @@ export const AudioOutputProvider = ({ children }: { children: ReactNode }) => {
   const audioOutputContext = useAudioOutput();
   const value = useMemo(() => audioOutputContext, [audioOutputContext]);
 
-  return <AudioOutputContext.Provider value={value}>{children}</AudioOutputContext.Provider>;
+  return (
+    <AudioOutputContext.Provider value={value}>
+      {children}
+    </AudioOutputContext.Provider>
+  );
 };

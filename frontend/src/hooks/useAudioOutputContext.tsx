@@ -1,5 +1,8 @@
-import { useContext } from 'react';
-import { AudioOutputContext, AudioOutputContextType } from '../Context/AudioOutputProvider';
+import { useContext } from "react";
+import {
+  AudioOutputContext,
+  AudioOutputContextType,
+} from "../Context/AudioOutputProvider";
 
 /**
  * React hook to access the audio output context containing audio output options.

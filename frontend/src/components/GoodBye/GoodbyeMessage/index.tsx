@@ -1,3 +1,3 @@
-import GoodByeMessage from './GoodbyeMessage';
+import GoodByeMessage from "./GoodbyeMessage";
 
 export default GoodByeMessage;

@@ -1,5 +1,5 @@
-import { Archive, createArchiveFromServer, hasPending } from './model';
-import { listArchives, startArchiving, stopArchiving } from './routes';
+import { Archive, createArchiveFromServer, hasPending } from "./model";
+import { listArchives, startArchiving, stopArchiving } from "./routes";
 
 export type ArchiveResponse = {
   archives: Archive[];
@@ -16,7 +16,7 @@ const getArchives = async (roomName: string): Promise<ArchiveResponse> => {
   const archivesFromServer = response?.data?.archives;
   if (archivesFromServer instanceof Array) {
     const archives = archivesFromServer.map((archiveFromServer) =>
-      createArchiveFromServer(archiveFromServer)
+      createArchiveFromServer(archiveFromServer),
     );
     return {
       archives,

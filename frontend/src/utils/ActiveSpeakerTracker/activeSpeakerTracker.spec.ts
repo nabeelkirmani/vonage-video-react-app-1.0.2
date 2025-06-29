@@ -1,31 +1,31 @@
-import throttle from 'lodash/throttle';
-import { DebouncedFunc } from 'lodash';
-import { afterAll, beforeAll, describe, expect, test, vi } from 'vitest';
-import ActiveSpeakerTracker from './activeSpeakerTracker';
-import { waitForEvent } from '../async';
+import throttle from "lodash/throttle";
+import { DebouncedFunc } from "lodash";
+import { afterAll, beforeAll, describe, expect, test, vi } from "vitest";
+import ActiveSpeakerTracker from "./activeSpeakerTracker";
+import { waitForEvent } from "../async";
 
-vi.mock('lodash/throttle');
+vi.mock("lodash/throttle");
 const mockedThrottle = vi.mocked(throttle);
 
-describe('ActiveSpeakerTracker', () => {
+describe("ActiveSpeakerTracker", () => {
   beforeAll(() => {
     mockedThrottle.mockImplementation((fn) => fn as DebouncedFunc<typeof fn>);
   });
 
   afterAll(() => {
-    vi.doUnmock('lodash/throttle');
+    vi.doUnmock("lodash/throttle");
   });
 
-  test('activeSpeakerChanged fired when participant audio level updated', async () => {
+  test("activeSpeakerChanged fired when participant audio level updated", async () => {
     const activeSpeakerTracker = new ActiveSpeakerTracker();
     const activeSpeakerChangedSpy = vi.fn();
     const waitForActiveSpeakerChanged = waitForEvent(
       activeSpeakerTracker,
-      'activeSpeakerChanged',
-      activeSpeakerChangedSpy
+      "activeSpeakerChanged",
+      activeSpeakerChangedSpy,
     );
     activeSpeakerTracker.onSubscriberAudioLevelUpdated({
-      subscriberId: 'sub1subscriberId',
+      subscriberId: "sub1subscriberId",
       movingAvg: 0.5,
     });
 
@@ -37,25 +37,25 @@ describe('ActiveSpeakerTracker', () => {
         participant: undefined,
       },
       newActiveSpeaker: {
-        subscriberId: 'sub1subscriberId',
+        subscriberId: "sub1subscriberId",
         movingAvg: 0.5,
       },
     });
   });
 
-  test('activeSpeakerChanged fired when participant audio level is higher than previous', async () => {
+  test("activeSpeakerChanged fired when participant audio level is higher than previous", async () => {
     const activeSpeakerTracker = new ActiveSpeakerTracker();
 
     const activeSpeakerChangedSpy = vi.fn();
 
     let waitForActiveSpeakerChanged = waitForEvent(
       activeSpeakerTracker,
-      'activeSpeakerChanged',
-      activeSpeakerChangedSpy
+      "activeSpeakerChanged",
+      activeSpeakerChangedSpy,
     );
 
     activeSpeakerTracker.onSubscriberAudioLevelUpdated({
-      subscriberId: 'participant1subscriberId',
+      subscriberId: "participant1subscriberId",
       movingAvg: 0.5,
     });
     await waitForActiveSpeakerChanged;
@@ -66,7 +66,7 @@ describe('ActiveSpeakerTracker', () => {
         movingAvg: 0,
       },
       newActiveSpeaker: {
-        subscriberId: 'participant1subscriberId',
+        subscriberId: "participant1subscriberId",
         movingAvg: 0.5,
       },
     });
@@ -75,41 +75,41 @@ describe('ActiveSpeakerTracker', () => {
 
     waitForActiveSpeakerChanged = waitForEvent(
       activeSpeakerTracker,
-      'activeSpeakerChanged',
-      activeSpeakerChangedSpy
+      "activeSpeakerChanged",
+      activeSpeakerChangedSpy,
     );
 
     activeSpeakerTracker.onSubscriberAudioLevelUpdated({
-      subscriberId: 'participant2subscriberId',
+      subscriberId: "participant2subscriberId",
       movingAvg: 0.6,
     });
     await waitForActiveSpeakerChanged;
 
     expect(activeSpeakerChangedSpy).toHaveBeenCalledWith({
       previousActiveSpeaker: {
-        subscriberId: 'participant1subscriberId',
+        subscriberId: "participant1subscriberId",
         movingAvg: 0.5,
       },
       newActiveSpeaker: {
-        subscriberId: 'participant2subscriberId',
+        subscriberId: "participant2subscriberId",
         movingAvg: 0.6,
       },
     });
   });
 
-  test('activeSpeakerChanged fired when current active speaker leaves', async () => {
+  test("activeSpeakerChanged fired when current active speaker leaves", async () => {
     const activeSpeakerTracker = new ActiveSpeakerTracker();
 
     const activeSpeakerChangedSpy = vi.fn();
 
     let waitForActiveSpeakerChanged = waitForEvent(
       activeSpeakerTracker,
-      'activeSpeakerChanged',
-      activeSpeakerChangedSpy
+      "activeSpeakerChanged",
+      activeSpeakerChangedSpy,
     );
 
     activeSpeakerTracker.onSubscriberAudioLevelUpdated({
-      subscriberId: 'participant1subscriberId',
+      subscriberId: "participant1subscriberId",
       movingAvg: 0.5,
     });
     await waitForActiveSpeakerChanged;
@@ -120,7 +120,7 @@ describe('ActiveSpeakerTracker', () => {
         movingAvg: 0,
       },
       newActiveSpeaker: {
-        subscriberId: 'participant1subscriberId',
+        subscriberId: "participant1subscriberId",
         movingAvg: 0.5,
       },
     });
@@ -129,23 +129,23 @@ describe('ActiveSpeakerTracker', () => {
 
     waitForActiveSpeakerChanged = waitForEvent(
       activeSpeakerTracker,
-      'activeSpeakerChanged',
-      activeSpeakerChangedSpy
+      "activeSpeakerChanged",
+      activeSpeakerChangedSpy,
     );
 
     activeSpeakerTracker.onSubscriberAudioLevelUpdated({
-      subscriberId: 'participant2subscriberId',
+      subscriberId: "participant2subscriberId",
       movingAvg: 0.6,
     });
     await waitForActiveSpeakerChanged;
 
     expect(activeSpeakerChangedSpy).toHaveBeenCalledWith({
       previousActiveSpeaker: {
-        subscriberId: 'participant1subscriberId',
+        subscriberId: "participant1subscriberId",
         movingAvg: 0.5,
       },
       newActiveSpeaker: {
-        subscriberId: 'participant2subscriberId',
+        subscriberId: "participant2subscriberId",
         movingAvg: 0.6,
       },
     });
@@ -154,16 +154,16 @@ describe('ActiveSpeakerTracker', () => {
 
     waitForActiveSpeakerChanged = waitForEvent(
       activeSpeakerTracker,
-      'activeSpeakerChanged',
-      activeSpeakerChangedSpy
+      "activeSpeakerChanged",
+      activeSpeakerChangedSpy,
     );
 
-    activeSpeakerTracker.onSubscriberDestroyed('participant2subscriberId');
+    activeSpeakerTracker.onSubscriberDestroyed("participant2subscriberId");
 
     await waitForActiveSpeakerChanged;
     expect(activeSpeakerChangedSpy).toHaveBeenCalledWith({
       newActiveSpeaker: {
-        subscriberId: 'participant1subscriberId',
+        subscriberId: "participant1subscriberId",
         movingAvg: 0.5,
       },
       previousActiveSpeaker: {

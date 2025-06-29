@@ -1,5 +1,5 @@
-import axios, { AxiosResponse } from 'axios';
-import { API_URL } from '../utils/constants';
+import axios, { AxiosResponse } from "axios";
+import { API_URL } from "../utils/constants";
 
 export type SubmissionData = {
   title: string;
@@ -13,8 +13,9 @@ export type SubmissionData = {
  * @param {SubmissionData} submissionData - The feedback information from the user.
  * @returns {Promise<AxiosResponse<any, any>>} The response from the server.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const reportIssue = async (submissionData: SubmissionData): Promise<AxiosResponse<any, any>> => {
+const reportIssue = async (
+  submissionData: SubmissionData,
+): Promise<AxiosResponse<unknown, unknown>> => {
   return axios.post(`${API_URL}/feedback/report`, submissionData);
 };
 

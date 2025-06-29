@@ -1,6 +1,6 @@
-import { ReactElement } from 'react';
-import { Navigate } from 'react-router-dom';
-import { checkSystemRequirements } from '@vonage/client-sdk-video';
+import { ReactElement } from "react";
+import { Navigate } from "react-router-dom";
+import { checkSystemRequirements } from "@vonage/client-sdk-video";
 
 export type RedirectToUnsupportedBrowserPageProps = {
   children: ReactElement;
@@ -22,7 +22,7 @@ const RedirectToUnsupportedBrowserPage = ({
   ) : (
     <Navigate
       to={{
-        pathname: '/unsupported-browser',
+        pathname: "/unsupported-browser",
       }}
     />
   );

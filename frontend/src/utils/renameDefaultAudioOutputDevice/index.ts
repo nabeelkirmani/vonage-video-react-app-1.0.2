@@ -1,3 +1,3 @@
-import renameDefaultAudioOutputDevice from './renameDefaultAudioOutputDevice';
+import renameDefaultAudioOutputDevice from "./renameDefaultAudioOutputDevice";
 
 export default renameDefaultAudioOutputDevice;

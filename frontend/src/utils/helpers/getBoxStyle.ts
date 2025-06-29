@@ -1,5 +1,5 @@
-import { Box } from 'opentok-layout-js';
-import { CSSProperties } from 'react';
+import { Box } from "opentok-layout-js";
+import { CSSProperties } from "react";
 
 // VideoTile have a 4px margin each side. This offset is the sum of the margin for each side
 // Needed to offset height and width to account for this margin

@@ -1,6 +1,6 @@
-import { SetStateAction, Dispatch, ReactElement, ChangeEvent } from 'react';
-import { Keyboard } from '@mui/icons-material';
-import isValidRoomName from '../../utils/isValidRoomName';
+import { SetStateAction, Dispatch, ReactElement, ChangeEvent } from "react";
+import { Keyboard } from "@mui/icons-material";
+import isValidRoomName from "../../utils/isValidRoomName";
 
 export type RoomNameInputProps = {
   setRoomName: Dispatch<SetStateAction<string>>;
@@ -29,9 +29,9 @@ const RoomNameInput = ({
   const handleChange = (textChangeEvent: ChangeEvent<HTMLInputElement>) => {
     const newValue = textChangeEvent.target.value.toLowerCase();
 
-    if (newValue === '') {
+    if (newValue === "") {
       // If the input is empty, reset the room name and clear the error
-      setRoomName('');
+      setRoomName("");
       setHasError(false);
       return;
     }
@@ -61,7 +61,9 @@ const RoomNameInput = ({
         />
       </label>
       {hasError && (
-        <p className="mt-2 text-sm text-red-600">No spaces or special characters allowed</p>
+        <p className="mt-2 text-sm text-red-600">
+          No spaces or special characters allowed
+        </p>
       )}
     </div>
   );

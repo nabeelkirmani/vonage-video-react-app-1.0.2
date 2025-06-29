@@ -1,5 +1,5 @@
-import { Typography, Button } from '@mui/material';
-import { ReactElement } from 'react';
+import { Typography, Button } from "@mui/material";
+import { ReactElement } from "react";
 
 export type TicketResponseType = {
   message: string;
@@ -35,17 +35,17 @@ const FormSubmitted = ({
             ml: 2,
             mr: 2,
             mb: 2,
-            textAlign: 'center',
-            width: '100%',
-            display: 'block',
+            textAlign: "center",
+            width: "100%",
+            display: "block",
           }}
         >
           {ticketResponse.ticketUrl ? (
             <>
               <b data-testid="thank-you-text">Thank you for your feedback!</b>
               <br />
-              We greatly appreciate your input, as it helps us improve the app and address any
-              issues.
+              We greatly appreciate your input, as it helps us improve the app
+              and address any issues.
               <br />
               {ticketResponse.message} <br />
               <a
@@ -53,8 +53,8 @@ const FormSubmitted = ({
                 href={ticketResponse.ticketUrl}
                 target="_blank"
                 style={{
-                  color: '#0B57D0',
-                  fontWeight: 'bold',
+                  color: "#0B57D0",
+                  fontWeight: "bold",
                 }}
                 rel="noreferrer"
               >
@@ -76,8 +76,8 @@ const FormSubmitted = ({
           fullWidth
           onClick={handleCloseFormSubmitted}
           sx={{
-            textTransform: 'none',
-            fontSize: '1rem',
+            textTransform: "none",
+            fontSize: "1rem",
             ml: 4,
             mr: 4,
             mb: 3,

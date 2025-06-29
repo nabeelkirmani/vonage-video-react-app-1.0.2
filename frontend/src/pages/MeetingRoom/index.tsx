@@ -1,3 +1,3 @@
-import MeetingRoom from './MeetingRoom';
+import MeetingRoom from "./MeetingRoom";
 
 export default MeetingRoom;

@@ -1,15 +1,15 @@
-import { describe, expect, it, vi, beforeEach, Mock } from 'vitest';
-import { act, render, waitFor } from '@testing-library/react';
-import EventEmitter from 'events';
-import useSessionContext from '../../hooks/useSessionContext';
-import SessionProvider from './session';
-import ActiveSpeakerTracker from '../../utils/ActiveSpeakerTracker';
-import useUserContext from '../../hooks/useUserContext';
+import { describe, expect, it, vi, beforeEach, Mock } from "vitest";
+import { act, render, waitFor } from "@testing-library/react";
+import EventEmitter from "events";
+import useSessionContext from "../../hooks/useSessionContext";
+import SessionProvider from "./session";
+import ActiveSpeakerTracker from "../../utils/ActiveSpeakerTracker";
+import useUserContext from "../../hooks/useUserContext";
 
-vi.mock('../../utils/ActiveSpeakerTracker');
-vi.mock('../../hooks/useUserContext');
+vi.mock("../../utils/ActiveSpeakerTracker");
+vi.mock("../../hooks/useUserContext");
 
-describe('SessionProvider', () => {
+describe("SessionProvider", () => {
   let activeSpeakerTracker: ActiveSpeakerTracker;
   let mockUserContext: { user: { defaultSettings: { name: string } } };
   const TestComponent = () => {
@@ -21,7 +21,7 @@ describe('SessionProvider', () => {
       onSubscriberDestroyed: vi.fn(),
       onSubscriberAudioLevelUpdated: vi.fn(),
     }) as unknown as ActiveSpeakerTracker;
-    mockUserContext = { user: { defaultSettings: { name: 'TestUser' } } };
+    mockUserContext = { user: { defaultSettings: { name: "TestUser" } } };
     (useUserContext as Mock).mockReturnValue(mockUserContext);
     const mockedActiveSpeakerTracker = vi.mocked(ActiveSpeakerTracker);
     mockedActiveSpeakerTracker.mockImplementation(() => {
@@ -29,26 +29,30 @@ describe('SessionProvider', () => {
     });
   });
 
-  it('should update activeSpeaker state when activeSpeakerTracker emits event', async () => {
+  it("should update activeSpeaker state when activeSpeakerTracker emits event", async () => {
     const { getByTestId } = render(
       <SessionProvider>
         <TestComponent />
-      </SessionProvider>
+      </SessionProvider>,
     );
 
     act(() =>
-      activeSpeakerTracker.emit('activeSpeakerChanged', {
+      activeSpeakerTracker.emit("activeSpeakerChanged", {
         previousActiveSpeaker: { subscriberId: undefined, movingAvg: 0 },
-        newActiveSpeaker: { subscriberId: 'sub1', movingAvg: 0.3 },
-      })
+        newActiveSpeaker: { subscriberId: "sub1", movingAvg: 0.3 },
+      }),
     );
-    await waitFor(() => expect(getByTestId('activeSpeaker')).toHaveTextContent('sub1'));
+    await waitFor(() =>
+      expect(getByTestId("activeSpeaker")).toHaveTextContent("sub1"),
+    );
     act(() =>
-      activeSpeakerTracker.emit('activeSpeakerChanged', {
-        previousActiveSpeaker: { subscriberId: 'sub1', movingAvg: 0 },
-        newActiveSpeaker: { subscriberId: 'sub2', movingAvg: 0.4 },
-      })
+      activeSpeakerTracker.emit("activeSpeakerChanged", {
+        previousActiveSpeaker: { subscriberId: "sub1", movingAvg: 0 },
+        newActiveSpeaker: { subscriberId: "sub2", movingAvg: 0.4 },
+      }),
     );
-    await waitFor(() => expect(getByTestId('activeSpeaker')).toHaveTextContent('sub2'));
+    await waitFor(() =>
+      expect(getByTestId("activeSpeaker")).toHaveTextContent("sub2"),
+    );
   });
 });

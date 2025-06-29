@@ -1,9 +1,9 @@
-import CallEndIcon from '@mui/icons-material/CallEnd';
-import Tooltip from '@mui/material/Tooltip';
-import { useNavigate } from 'react-router-dom';
-import { ReactElement } from 'react';
-import ToolbarButton from '../ToolbarButton';
-import useRoomName from '../../../hooks/useRoomName';
+import CallEndIcon from "@mui/icons-material/CallEnd";
+import Tooltip from "@mui/material/Tooltip";
+import { useNavigate } from "react-router-dom";
+import { ReactElement } from "react";
+import ToolbarButton from "../ToolbarButton";
+import useRoomName from "../../../hooks/useRoomName";
 
 export type ExitButtonProps = {
   handleLeave: () => void;
@@ -23,7 +23,7 @@ const ExitButton = ({ handleLeave }: ExitButtonProps): ReactElement => {
 
   const handleExit = () => {
     handleLeave();
-    navigate('/goodbye', { state: { roomName } });
+    navigate("/goodbye", { state: { roomName } });
   };
 
   return (
@@ -31,11 +31,11 @@ const ExitButton = ({ handleLeave }: ExitButtonProps): ReactElement => {
       <ToolbarButton
         onClick={handleExit}
         sx={{
-          backgroundColor: 'rgb(239 68 68)',
-          '&:hover': {
-            backgroundColor: 'rgba(234, 67, 53, 0.8)',
+          backgroundColor: "rgb(239 68 68)",
+          "&:hover": {
+            backgroundColor: "rgba(234, 67, 53, 0.8)",
           },
-          marginRight: '0px',
+          marginRight: "0px",
         }}
         icon={<CallEndIcon className="text-white" />}
       />

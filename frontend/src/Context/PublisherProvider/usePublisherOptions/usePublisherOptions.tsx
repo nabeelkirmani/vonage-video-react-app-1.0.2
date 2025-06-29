@@ -1,12 +1,12 @@
-import { useMemo } from 'react';
+import { useMemo } from "react";
 import {
   PublisherProperties,
   VideoFilter,
   AudioFilter,
   hasMediaProcessorSupport,
-} from '@vonage/client-sdk-video';
-import useUserContext from '../../../hooks/useUserContext';
-import getInitials from '../../../utils/getInitials';
+} from "@vonage/client-sdk-video";
+import useUserContext from "../../../hooks/useUserContext";
+import getInitials from "../../../utils/getInitials";
 
 /**
  * React hook to get PublisherProperties combining default options and options set in UserContext
@@ -23,7 +23,7 @@ const usePublisherOptions = (): PublisherProperties => {
     const audioFilter: AudioFilter | undefined =
       user.defaultSettings.noiseSuppression && hasMediaProcessorSupport()
         ? {
-            type: 'advancedNoiseSuppression',
+            type: "advancedNoiseSuppression",
           }
         : undefined;
 
@@ -31,8 +31,8 @@ const usePublisherOptions = (): PublisherProperties => {
     const videoFilter: VideoFilter | undefined =
       user.defaultSettings.blur && hasMediaProcessorSupport()
         ? {
-            type: 'backgroundBlur',
-            blurStrength: 'high',
+            type: "backgroundBlur",
+            blurStrength: "high",
           }
         : undefined;
     return {
@@ -45,7 +45,7 @@ const usePublisherOptions = (): PublisherProperties => {
       name,
       publishAudio: !!user.defaultSettings.publishAudio,
       publishVideo: !!user.defaultSettings.publishVideo,
-      resolution: '1280x720',
+      resolution: "1280x720",
       audioFilter,
       videoFilter,
       videoSource: user.defaultSettings.videoSource,

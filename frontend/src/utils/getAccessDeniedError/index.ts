@@ -1,3 +1,3 @@
-import getAccessDeniedError from './getAccessDeniedError';
+import getAccessDeniedError from "./getAccessDeniedError";
 
 export default getAccessDeniedError;

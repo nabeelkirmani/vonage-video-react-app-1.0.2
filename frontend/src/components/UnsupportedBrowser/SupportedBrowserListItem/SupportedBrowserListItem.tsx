@@ -1,6 +1,13 @@
-import { IconButton, Link, ListItem, ListItemIcon, ListItemText, Tooltip } from '@mui/material';
-import { ReactElement } from 'react';
-import OpenInNewOutlinedIcon from '@mui/icons-material/OpenInNewOutlined';
+import {
+  IconButton,
+  Link,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Tooltip,
+} from "@mui/material";
+import { ReactElement } from "react";
+import OpenInNewOutlinedIcon from "@mui/icons-material/OpenInNewOutlined";
 
 export type SupportedBrowserListItemProps = {
   url: string;

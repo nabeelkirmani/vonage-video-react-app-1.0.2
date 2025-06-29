@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement } from "react";
 
 /**
  * LandingPageWelcome Component
@@ -11,7 +11,9 @@ const LandingPageWelcome = (): ReactElement => {
       <h2 className="text-5xl font-bold text-black pb-5 w-9/12">
         Welcome to the Onasi Telemedicine Demo App
       </h2>
-      <h3 className="text-large text-slate-500">Create a new room or join an existing one.</h3>
+      <h3 className="text-large text-slate-500">
+        Create a new room or join an existing one.
+      </h3>
     </div>
   );
 };

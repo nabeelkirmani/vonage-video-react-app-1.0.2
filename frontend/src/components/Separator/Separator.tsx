@@ -1,7 +1,7 @@
-import { ReactElement } from 'react';
+import { ReactElement } from "react";
 
 export type SeparatorProps = {
-  orientation?: 'left' | 'right';
+  orientation?: "left" | "right";
 };
 
 /**
@@ -12,10 +12,10 @@ export type SeparatorProps = {
  *  @property {'left' | 'right'} orientation - whether the separator is oriented to the left or right
  * @returns {ReactElement} The separator component.
  */
-const Separator = ({ orientation = 'left' }: SeparatorProps): ReactElement => {
+const Separator = ({ orientation = "left" }: SeparatorProps): ReactElement => {
   return (
     <div
-      className={`border-slate-200 border-b-2 border-solid w-6/12 ${orientation === 'left' ? 'mr-4' : 'ml-4'}`}
+      className={`border-slate-200 border-b-2 border-solid w-6/12 ${orientation === "left" ? "mr-4" : "ml-4"}`}
     />
   );
 };

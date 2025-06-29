@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { DEVICE_ACCESS_STATUS } from '../utils/constants';
+import { useEffect, useState } from "react";
+import { DEVICE_ACCESS_STATUS } from "../utils/constants";
 
 export type PermissionsHookType = {
   accessStatus: string | null;
@@ -16,16 +16,18 @@ const usePermissions = (): PermissionsHookType => {
 
   useEffect(() => {
     const permissionsToQuery: PermissionName[] = [
-      'microphone',
-      'camera',
+      "microphone",
+      "camera",
     ] as unknown as PermissionName[];
 
-    const queryPromises = permissionsToQuery.map((name) => navigator.permissions.query({ name }));
+    const queryPromises = permissionsToQuery.map((name) =>
+      navigator.permissions.query({ name }),
+    );
 
     Promise.all(queryPromises)
       .then((statuses) => {
         statuses.forEach((status) => {
-          if (status.state === 'prompt') {
+          if (status.state === "prompt") {
             // Handle pending state
             setAccessStatus(DEVICE_ACCESS_STATUS.PENDING);
           }
@@ -34,13 +36,13 @@ const usePermissions = (): PermissionsHookType => {
       .catch((error) => {
         if (
           error?.message?.includes(
-            "value of 'name' member of PermissionDescriptor) is not a valid value for enumeration PermissionName."
+            "value of 'name' member of PermissionDescriptor) is not a valid value for enumeration PermissionName.",
           )
         ) {
           // Ignore Firefox error
           return;
         }
-        console.error('Error querying permissions:', error);
+        console.error("Error querying permissions:", error);
       });
   }, []);
 

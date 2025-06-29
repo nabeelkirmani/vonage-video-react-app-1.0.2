@@ -1,7 +1,7 @@
-import { Avatar, ListItem, ListItemText, Typography } from '@mui/material';
-import { ReactElement } from 'react';
-import { getFormattedTime } from '../../../utils/dateTime';
-import FormattedMessageBody from '../FormattedMessageBody';
+import { Avatar, ListItem, ListItemText, Typography } from "@mui/material";
+import { ReactElement } from "react";
+import { getFormattedTime } from "../../../utils/dateTime";
+import FormattedMessageBody from "../FormattedMessageBody";
 
 export type ChatMessageProps = {
   avatarColor: string;
@@ -35,22 +35,22 @@ const ChatMessage = ({
       <Avatar
         sx={{
           bgcolor: avatarColor,
-          marginTop: '4px',
-          width: '32px',
-          height: '32px',
-          fontSize: '14px',
+          marginTop: "4px",
+          width: "32px",
+          height: "32px",
+          fontSize: "14px",
         }}
       >
         {initials}
       </Avatar>
       <ListItemText
-        sx={{ marginLeft: '12px', marginTop: 0 }}
+        sx={{ marginLeft: "12px", marginTop: 0 }}
         primary={
           <>
             <Typography
               component="span"
               variant="body2"
-              sx={{ color: 'text.primary', display: 'inline' }}
+              sx={{ color: "text.primary", display: "inline" }}
               data-testid="chat-msg-participant-name"
             >
               {name}
@@ -58,7 +58,11 @@ const ChatMessage = ({
             <Typography
               component="span"
               variant="body2"
-              sx={{ paddingLeft: '8px', color: 'text.secondary', display: 'inline' }}
+              sx={{
+                paddingLeft: "8px",
+                color: "text.secondary",
+                display: "inline",
+              }}
               data-testid="chat-msg-timestamp"
             >
               {getFormattedTime(timestamp)}
@@ -66,7 +70,10 @@ const ChatMessage = ({
           </>
         }
         secondary={
-          <Typography variant="body2" sx={{ color: 'text.secondary', overflowWrap: 'break-word' }}>
+          <Typography
+            variant="body2"
+            sx={{ color: "text.secondary", overflowWrap: "break-word" }}
+          >
             <FormattedMessageBody message={message} />
           </Typography>
         }

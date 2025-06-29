@@ -1,3 +1,3 @@
-import SpeakingDetector from './speakingDetector';
+import SpeakingDetector from "./speakingDetector";
 
 export default SpeakingDetector;

@@ -1,9 +1,9 @@
-import ChatIcon from '@mui/icons-material/Chat';
-import Tooltip from '@mui/material/Tooltip';
-import { blue } from '@mui/material/colors';
-import { Badge } from '@mui/material';
-import { ReactElement } from 'react';
-import ToolbarButton from '../ToolbarButton';
+import ChatIcon from "@mui/icons-material/Chat";
+import Tooltip from "@mui/material/Tooltip";
+import { blue } from "@mui/material/colors";
+import { Badge } from "@mui/material";
+import { ReactElement } from "react";
+import ToolbarButton from "../ToolbarButton";
 
 export type ChatToggleButtonProps = {
   handleClick: () => void;
@@ -28,26 +28,29 @@ const ChatToggleButton = ({
   unreadCount,
 }: ChatToggleButtonProps): ReactElement => {
   return (
-    <Tooltip title={isOpen ? 'Close chat' : 'Open chat'} aria-label="toggle chat">
+    <Tooltip
+      title={isOpen ? "Close chat" : "Open chat"}
+      aria-label="toggle chat"
+    >
       <Badge
         badgeContent={unreadCount}
         data-testid="chat-toggle-unread-count"
         invisible={unreadCount === 0}
         sx={{
-          '& .MuiBadge-badge': {
-            color: 'white',
-            backgroundColor: '#FA7B17',
+          "& .MuiBadge-badge": {
+            color: "white",
+            backgroundColor: "#FA7B17",
           },
         }}
         overlap="circular"
       >
         <ToolbarButton
           sx={{
-            marginTop: '0px',
-            marginRight: '0px',
+            marginTop: "0px",
+            marginRight: "0px",
           }}
           onClick={handleClick}
-          icon={<ChatIcon sx={{ color: isOpen ? blue.A100 : 'white' }} />}
+          icon={<ChatIcon sx={{ color: isOpen ? blue.A100 : "white" }} />}
         />
       </Badge>
     </Tooltip>

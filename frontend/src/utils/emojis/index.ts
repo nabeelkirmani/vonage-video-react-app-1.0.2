@@ -1,3 +1,3 @@
-import emojiMap from './emojis';
+import emojiMap from "./emojis";
 
 export default emojiMap;

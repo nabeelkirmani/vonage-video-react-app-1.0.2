@@ -1,19 +1,19 @@
-import { Mock, beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
-import { renderHook, act } from '@testing-library/react';
-import { Publisher, Session, initPublisher } from '@vonage/client-sdk-video';
-import useScreenShare from '../useScreenShare';
-import useSessionContext from '../useSessionContext';
-import useUserContext from '../useUserContext';
+import { Mock, beforeEach, afterEach, describe, expect, it, vi } from "vitest";
+import { renderHook, act } from "@testing-library/react";
+import { Publisher, Session, initPublisher } from "@vonage/client-sdk-video";
+import useScreenShare from "../useScreenShare";
+import useSessionContext from "../useSessionContext";
+import useUserContext from "../useUserContext";
 
 // Mocking dependencies
-vi.mock('@vonage/client-sdk-video', () => ({
+vi.mock("@vonage/client-sdk-video", () => ({
   initPublisher: vi.fn(),
 }));
 
-vi.mock('../useSessionContext');
-vi.mock('../useUserContext');
+vi.mock("../useSessionContext");
+vi.mock("../useUserContext");
 
-describe('useScreenSharing', () => {
+describe("useScreenSharing", () => {
   let mockSession: Partial<Session>;
   let mockPublisher: Partial<Publisher>;
   let mockUserContext: { user: { defaultSettings: { name: string } } };
@@ -30,9 +30,11 @@ describe('useScreenSharing', () => {
       destroy: vi.fn(),
     };
 
-    mockUserContext = { user: { defaultSettings: { name: 'TestUser' } } };
+    mockUserContext = { user: { defaultSettings: { name: "TestUser" } } };
 
-    (useSessionContext as Mock).mockReturnValue({ session: mockSession as Session });
+    (useSessionContext as Mock).mockReturnValue({
+      session: mockSession as Session,
+    });
     (useUserContext as Mock).mockReturnValue(mockUserContext);
     (initPublisher as Mock).mockReturnValue(mockPublisher as Publisher);
   });
@@ -41,7 +43,7 @@ describe('useScreenSharing', () => {
     vi.clearAllMocks();
   });
 
-  it('initializes screen sharing publisher and publishes', async () => {
+  it("initializes screen sharing publisher and publishes", async () => {
     const { result } = renderHook(() => useScreenShare());
 
     await act(async () => {
@@ -52,19 +54,28 @@ describe('useScreenSharing', () => {
     expect(initPublisher).toHaveBeenCalledWith(
       undefined,
       {
-        videoSource: 'screen',
+        videoSource: "screen",
         insertDefaultUI: false,
-        videoContentHint: 'detail',
+        videoContentHint: "detail",
         name: "TestUser's screen",
       },
-      expect.any(Function)
+      expect.any(Function),
     );
-    expect(mockPublisher.on).toHaveBeenCalledWith('streamCreated', expect.any(Function));
-    expect(mockPublisher.on).toHaveBeenCalledWith('streamDestroyed', expect.any(Function));
-    expect(mockPublisher.on).toHaveBeenCalledWith('mediaStopped', expect.any(Function));
+    expect(mockPublisher.on).toHaveBeenCalledWith(
+      "streamCreated",
+      expect.any(Function),
+    );
+    expect(mockPublisher.on).toHaveBeenCalledWith(
+      "streamDestroyed",
+      expect.any(Function),
+    );
+    expect(mockPublisher.on).toHaveBeenCalledWith(
+      "mediaStopped",
+      expect.any(Function),
+    );
   });
 
-  it('unpublishes screen sharing when already sharing', async () => {
+  it("unpublishes screen sharing when already sharing", async () => {
     const { result } = renderHook(() => useScreenShare());
 
     await act(async () => {
@@ -77,7 +88,7 @@ describe('useScreenSharing', () => {
     expect(result.current.isSharingScreen).toBe(false);
   });
 
-  it('does not initialize publisher if session is null', async () => {
+  it("does not initialize publisher if session is null", async () => {
     (useSessionContext as Mock).mockReturnValue({ session: null });
 
     const { result } = renderHook(() => useScreenShare());

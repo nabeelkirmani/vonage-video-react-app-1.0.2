@@ -1,3 +1,3 @@
-import generateRoomName from './generateRoomName';
+import generateRoomName from "./generateRoomName";
 
 export default generateRoomName;

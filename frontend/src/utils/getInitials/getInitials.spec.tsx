@@ -1,12 +1,12 @@
-import { describe, expect, it } from 'vitest';
-import getInitials from './getInitials';
+import { describe, expect, it } from "vitest";
+import getInitials from "./getInitials";
 
-describe('getInitials', () => {
-  it('does not throw when the name is empty', () => {
+describe("getInitials", () => {
+  it("does not throw when the name is empty", () => {
     let caughtError;
     let initials;
 
-    const username = '';
+    const username = "";
 
     try {
       initials = getInitials(username);
@@ -15,56 +15,56 @@ describe('getInitials', () => {
     }
 
     expect(caughtError).toBeUndefined();
-    expect(initials).toBe('');
+    expect(initials).toBe("");
   });
-  it('returns capitalized initials for a lowercase username', () => {
-    const lowercaseUsername = 'dvsn';
+  it("returns capitalized initials for a lowercase username", () => {
+    const lowercaseUsername = "dvsn";
 
     const initials = getInitials(lowercaseUsername);
 
-    expect(initials).toBe('D');
+    expect(initials).toBe("D");
   });
 
-  it('returns one character for one name', () => {
-    const username = 'Lorde';
+  it("returns one character for one name", () => {
+    const username = "Lorde";
 
     const initials = getInitials(username);
 
-    expect(initials).toBe('L');
+    expect(initials).toBe("L");
   });
 
-  it('returns two characters for two names', () => {
-    const username = 'Julien Baker';
+  it("returns two characters for two names", () => {
+    const username = "Julien Baker";
 
     const initials = getInitials(username);
 
-    expect(initials).toBe('JB');
+    expect(initials).toBe("JB");
   });
 
   it("returns first and third names' first character for three names", () => {
-    const username = 'Carly Rae Jepsen';
+    const username = "Carly Rae Jepsen";
 
     const initials = getInitials(username);
 
-    expect(initials).toBe('CJ');
+    expect(initials).toBe("CJ");
   });
 
-  it('returns the first name in a hyphenated last name', () => {
-    const username = 'BenJarvus Green-Ellis';
+  it("returns the first name in a hyphenated last name", () => {
+    const username = "BenJarvus Green-Ellis";
 
     const initials = getInitials(username);
 
-    expect(initials).toBe('BG');
+    expect(initials).toBe("BG");
   });
 
   it("returns first and last names' first character for n names", () => {
     const usernameArray = [
-      'Daniel Michael Blake Day-Lewis',
-      'Orlando Jonathan Blanchard Copeland Bloom',
-      'Lionardo di ser Piero da Vinci',
-      'Pablo Diego José Francisco de Paula Juan Nepomuceno Crispín Crispiniano María de los Remedios de la Santísima Trinidad Ruiz Picasso',
+      "Daniel Michael Blake Day-Lewis",
+      "Orlando Jonathan Blanchard Copeland Bloom",
+      "Lionardo di ser Piero da Vinci",
+      "Pablo Diego José Francisco de Paula Juan Nepomuceno Crispín Crispiniano María de los Remedios de la Santísima Trinidad Ruiz Picasso",
     ];
-    const initialsArray = ['DD', 'OB', 'LV', 'PP'];
+    const initialsArray = ["DD", "OB", "LV", "PP"];
 
     usernameArray.forEach((username, index) => {
       const generatedInitials = getInitials(username);
@@ -74,27 +74,27 @@ describe('getInitials', () => {
     });
   });
 
-  it('returns initials for a simgle character first name', () => {
-    const username = 'l';
+  it("returns initials for a simgle character first name", () => {
+    const username = "l";
 
     const initials = getInitials(username);
 
-    expect(initials).toBe('L');
+    expect(initials).toBe("L");
   });
 
-  it('returns initials for a simgle character last name', () => {
-    const username = 'Daniel Michael B';
+  it("returns initials for a simgle character last name", () => {
+    const username = "Daniel Michael B";
 
     const initials = getInitials(username);
 
-    expect(initials).toBe('DB');
+    expect(initials).toBe("DB");
   });
 
-  it('returns initials for a simgle character first and last name', () => {
-    const username = 's d';
+  it("returns initials for a simgle character first and last name", () => {
+    const username = "s d";
 
     const initials = getInitials(username);
 
-    expect(initials).toBe('SD');
+    expect(initials).toBe("SD");
   });
 });

@@ -1,3 +1,3 @@
-import SupportedBrowserListItem from './SupportedBrowserListItem';
+import SupportedBrowserListItem from "./SupportedBrowserListItem";
 
 export default SupportedBrowserListItem;

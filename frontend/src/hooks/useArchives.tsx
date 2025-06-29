@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
-import { ArchiveResponse, getArchives } from '../api/archiving';
-import { Archive } from '../api/archiving/model';
+import { useEffect, useRef, useState } from "react";
+import { ArchiveResponse, getArchives } from "../api/archiving";
+import { Archive } from "../api/archiving/model";
 
 export type UseArchivesProps = {
   roomName: string;
@@ -11,9 +11,11 @@ export type UseArchivesProps = {
  * @param { UseArchivesProps} props - The props for the hook.
  * @returns {Archive[] | 'error'} An array of Archives, or the text, `error`.
  */
-const useArchives = ({ roomName }: UseArchivesProps): Archive[] | 'error' => {
-  const [archives, setArchives] = useState<Archive[] | 'error'>([]);
-  const pollingIntervalRef = useRef<ReturnType<typeof setInterval> | undefined>();
+const useArchives = ({ roomName }: UseArchivesProps): Archive[] | "error" => {
+  const [archives, setArchives] = useState<Archive[] | "error">([]);
+  const pollingIntervalRef = useRef<
+    ReturnType<typeof setInterval> | undefined
+  >();
 
   useEffect(() => {
     const fetchArchives = async () => {
@@ -22,15 +24,21 @@ const useArchives = ({ roomName }: UseArchivesProps): Archive[] | 'error' => {
         try {
           archiveData = await getArchives(roomName);
         } catch (err) {
-          setArchives('error');
+          setArchives("error");
           return;
         }
         // If we have archives not yet available for download we poll the API every 5s to see if its' available.
-        if (archiveData.hasPending && pollingIntervalRef.current === undefined) {
+        if (
+          archiveData.hasPending &&
+          pollingIntervalRef.current === undefined
+        ) {
           pollingIntervalRef.current = setInterval(() => {
             fetchArchives();
           }, 5000);
-        } else if (!archiveData.hasPending && pollingIntervalRef.current !== undefined) {
+        } else if (
+          !archiveData.hasPending &&
+          pollingIntervalRef.current !== undefined
+        ) {
           clearInterval(pollingIntervalRef.current);
           pollingIntervalRef.current = undefined;
         }

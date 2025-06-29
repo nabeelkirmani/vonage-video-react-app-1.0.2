@@ -1,7 +1,7 @@
-import { Publisher } from '@vonage/client-sdk-video';
-import { RefObject } from 'react';
-import { getAudioSourceDeviceId } from './util';
-import { AllMediaDevices } from '../types/room';
+import { Publisher } from "@vonage/client-sdk-video";
+import { RefObject } from "react";
+import { getAudioSourceDeviceId } from "./util";
+import { AllMediaDevices } from "../types/room";
 
 /**
  * Helper to update the media devices state with the current media devices of a given publisher.
@@ -15,7 +15,7 @@ const setMediaDevices = (
   publisherRef: RefObject<Publisher | null>,
   allMediaDevices: AllMediaDevices,
   setLocalAudioSource: (deviceId: string) => void,
-  setLocalVideoSource: (deviceId: string) => void
+  setLocalVideoSource: (deviceId: string) => void,
 ): void => {
   if (!publisherRef.current || !allMediaDevices) {
     return;
@@ -25,13 +25,13 @@ const setMediaDevices = (
   const currentAudioDevice = publisherRef.current.getAudioSource();
   const audioSourceId = getAudioSourceDeviceId(
     allMediaDevices.audioInputDevices,
-    currentAudioDevice
+    currentAudioDevice,
   );
   if (!audioSourceId || !currentVideoDevice.deviceId) {
     return;
   }
   setLocalAudioSource(audioSourceId);
-  if (typeof currentVideoDevice?.deviceId === 'string') {
+  if (typeof currentVideoDevice?.deviceId === "string") {
     setLocalVideoSource(currentVideoDevice.deviceId);
   }
 };

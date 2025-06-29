@@ -1,3 +1,3 @@
-import ConnectionAlert from './ConnectionAlert';
+import ConnectionAlert from "./ConnectionAlert";
 
 export default ConnectionAlert;

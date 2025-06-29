@@ -1,5 +1,5 @@
-import { difference } from 'lodash';
-import { SubscriberWrapper } from '../../../types/session';
+import { difference } from "lodash";
+import { SubscriberWrapper } from "../../../types/session";
 
 /* Subscriber Display Order
 
@@ -81,7 +81,7 @@ import { SubscriberWrapper } from '../../../types/session';
 
 const getSubscribersIdsInDisplayOrder = (
   subscribersToDisplay: string[],
-  previousDisplayOrder: string[]
+  previousDisplayOrder: string[],
 ): string[] => {
   const newIds = difference(subscribersToDisplay, previousDisplayOrder);
   const removedIds = difference(previousDisplayOrder, subscribersToDisplay);
@@ -107,9 +107,12 @@ const getSubscribersIdsInDisplayOrder = (
 
 const toId = ({ id }: SubscriberWrapper) => id;
 
-const toSubscriberWrapper = (subscriberWrappers: SubscriberWrapper[]) => (subId: string) => {
-  return subscriberWrappers.find(({ id }) => id === subId) as SubscriberWrapper;
-};
+const toSubscriberWrapper =
+  (subscriberWrappers: SubscriberWrapper[]) => (subId: string) => {
+    return subscriberWrappers.find(
+      ({ id }) => id === subId,
+    ) as SubscriberWrapper;
+  };
 
 /**
  * A helper function to determine subscriber display order based on previous order.
@@ -121,14 +124,14 @@ const toSubscriberWrapper = (subscriberWrappers: SubscriberWrapper[]) => (subId:
  */
 const getSubscribersInDisplayOrder = (
   subscribersToDisplay: SubscriberWrapper[],
-  previousDisplayOrder: SubscriberWrapper[]
+  previousDisplayOrder: SubscriberWrapper[],
 ): SubscriberWrapper[] => {
   // Map everything to ids so it's easier to manipulate the arrays
   const subscribersToDisplayIds = subscribersToDisplay.map(toId);
   const previousDisplayOrderIds = previousDisplayOrder.map(toId);
   const orderedIds = getSubscribersIdsInDisplayOrder(
     subscribersToDisplayIds,
-    previousDisplayOrderIds
+    previousDisplayOrderIds,
   );
   // Map everything back from ids to SubscriberWrappers before returning
   return orderedIds.map(toSubscriberWrapper(subscribersToDisplay));

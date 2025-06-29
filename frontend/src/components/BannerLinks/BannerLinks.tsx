@@ -1,5 +1,5 @@
-import { ReactElement } from 'react';
-import GHRepoButton from '../GHRepoButton';
+import { ReactElement } from "react";
+import GHRepoButton from "../GHRepoButton";
 
 /**
  * BannerLinks Component

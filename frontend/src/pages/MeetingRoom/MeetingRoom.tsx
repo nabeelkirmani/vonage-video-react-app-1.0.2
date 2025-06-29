@@ -1,17 +1,17 @@
-import { useEffect, ReactElement } from 'react';
-import { useNavigate } from 'react-router-dom';
-import usePublisherContext from '../../hooks/usePublisherContext';
-import ConnectionAlert from '../../components/MeetingRoom/ConnectionAlert';
-import Toolbar from '../../components/MeetingRoom/Toolbar';
-import useSessionContext from '../../hooks/useSessionContext';
-import useScreenShare from '../../hooks/useScreenShare';
-import VideoTileCanvas from '../../components/MeetingRoom/VideoTileCanvas';
-import SmallViewportHeader from '../../components/MeetingRoom/SmallViewportHeader';
-import EmojisOrigin from '../../components/MeetingRoom/EmojisOrigin';
-import RightPanel from '../../components/MeetingRoom/RightPanel';
-import useRoomName from '../../hooks/useRoomName';
-import isValidRoomName from '../../utils/isValidRoomName';
-import useIsSmallViewport from '../../hooks/useIsSmallViewport';
+import { useEffect, ReactElement } from "react";
+import { useNavigate } from "react-router-dom";
+import usePublisherContext from "../../hooks/usePublisherContext";
+import ConnectionAlert from "../../components/MeetingRoom/ConnectionAlert";
+import Toolbar from "../../components/MeetingRoom/Toolbar";
+import useSessionContext from "../../hooks/useSessionContext";
+import useScreenShare from "../../hooks/useScreenShare";
+import VideoTileCanvas from "../../components/MeetingRoom/VideoTileCanvas";
+import SmallViewportHeader from "../../components/MeetingRoom/SmallViewportHeader";
+import EmojisOrigin from "../../components/MeetingRoom/EmojisOrigin";
+import RightPanel from "../../components/MeetingRoom/RightPanel";
+import useRoomName from "../../hooks/useRoomName";
+import isValidRoomName from "../../utils/isValidRoomName";
+import useIsSmallViewport from "../../hooks/useIsSmallViewport";
 
 /**
  * MeetingRoom Component
@@ -24,8 +24,14 @@ import useIsSmallViewport from '../../hooks/useIsSmallViewport';
  */
 const MeetingRoom = (): ReactElement => {
   const roomName = useRoomName();
-  const { publisher, publish, quality, initializeLocalPublisher, publishingError, isVideoEnabled } =
-    usePublisherContext();
+  const {
+    publisher,
+    publish,
+    quality,
+    initializeLocalPublisher,
+    publishingError,
+    isVideoEnabled,
+  } = usePublisherContext();
   const {
     joinRoom,
     subscriberWrappers,
@@ -38,8 +44,12 @@ const MeetingRoom = (): ReactElement => {
     closeRightPanel,
     toggleReportIssue,
   } = useSessionContext();
-  const { isSharingScreen, screensharingPublisher, screenshareVideoElement, toggleShareScreen } =
-    useScreenShare();
+  const {
+    isSharingScreen,
+    screensharingPublisher,
+    screenshareVideoElement,
+    toggleShareScreen,
+  } = useScreenShare();
   const navigate = useNavigate();
   const isSmallViewPort = useIsSmallViewport();
 
@@ -71,7 +81,7 @@ const MeetingRoom = (): ReactElement => {
   useEffect(() => {
     if (publishingError) {
       const { header, caption } = publishingError;
-      navigate('/goodbye', {
+      navigate("/goodbye", {
         state: {
           header,
           caption,
@@ -92,12 +102,15 @@ const MeetingRoom = (): ReactElement => {
           isSharingScreen={isSharingScreen}
           screensharingPublisher={screensharingPublisher}
           screenshareVideoElement={screenshareVideoElement}
-          isRightPanelOpen={rightPanelActiveTab !== 'closed'}
+          isRightPanelOpen={rightPanelActiveTab !== "closed"}
           toggleParticipantList={toggleParticipantList}
         />
       </div>
       <div className="md:col-span-3">
-        <RightPanel activeTab={rightPanelActiveTab} handleClose={closeRightPanel} />
+        <RightPanel
+          activeTab={rightPanelActiveTab}
+          handleClose={closeRightPanel}
+        />
       </div>
       <EmojisOrigin />
       <Toolbar
@@ -108,7 +121,8 @@ const MeetingRoom = (): ReactElement => {
         toggleChat={toggleChat}
         toggleReportIssue={toggleReportIssue}
         participantCount={
-          subscriberWrappers.filter(({ isScreenshare }) => !isScreenshare).length + 1
+          subscriberWrappers.filter(({ isScreenshare }) => !isScreenshare)
+            .length + 1
         }
       />
       {reconnecting && (
@@ -118,7 +132,7 @@ const MeetingRoom = (): ReactElement => {
           severity="error"
         />
       )}
-      {!reconnecting && quality !== 'good' && isVideoEnabled && (
+      {!reconnecting && quality !== "good" && isVideoEnabled && (
         <ConnectionAlert
           closable
           title="Video quality problem"

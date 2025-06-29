@@ -9,12 +9,12 @@ export type FeedbackConfig = {
 };
 
 export type VonageConfig = {
-  provider: 'vonage';
+  provider: "vonage";
   applicationId: string;
   privateKey: string;
 };
 export type OpentokConfig = {
-  provider: 'opentok';
+  provider: "opentok";
   apiKey: string;
   apiSecret: string;
 };

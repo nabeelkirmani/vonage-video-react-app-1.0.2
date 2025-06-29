@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
-import { getFormattedDate, getFormattedTime } from '../utils/dateTime';
+import { useCallback, useEffect, useState } from "react";
+import { getFormattedDate, getFormattedTime } from "../utils/dateTime";
 
 /**
  * @typedef {object} UseDateTimeType
@@ -12,8 +12,8 @@ import { getFormattedDate, getFormattedTime } from '../utils/dateTime';
  * @returns {UseDateTimeType} the date and time
  */
 const useDateTime = () => {
-  const [date, setDate] = useState('Wed, Jun 26');
-  const [time, setTime] = useState('5:01 PM');
+  const [date, setDate] = useState("Wed, Jun 26");
+  const [time, setTime] = useState("5:01 PM");
 
   /**
    * Gets the current time and sets it in the format of "6:29 PM".

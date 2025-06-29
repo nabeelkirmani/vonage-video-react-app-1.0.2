@@ -1,12 +1,18 @@
-import { TextField, Button, Typography, Box, CircularProgress } from '@mui/material';
-import { FormEvent, ChangeEvent, ReactElement } from 'react';
-import FilePicker from './FilePicker';
+import {
+  TextField,
+  Button,
+  Typography,
+  Box,
+  CircularProgress,
+} from "@mui/material";
+import { FormEvent, ChangeEvent, ReactElement } from "react";
+import FilePicker from "./FilePicker";
 import {
   REPORT_TITLE_LIMIT,
   REPORT_DESCRIPTION_LIMIT,
   REPORT_NAME_LIMIT,
-} from '../../../../utils/constants';
-import HelperText from './HelperText';
+} from "../../../../utils/constants";
+import HelperText from "./HelperText";
 
 export type FormType = {
   title: string;
@@ -31,8 +37,8 @@ export type FeedbackFormType = {
 
 const getStyleTypography = () => {
   return {
-    marginBottom: '5px',
-    textAlign: 'left',
+    marginBottom: "5px",
+    textAlign: "left",
   };
 };
 
@@ -58,21 +64,28 @@ const FeedbackForm = ({
   loading,
   onFileSelect,
 }: FeedbackFormType): ReactElement => {
-  const heightClass = '@apply h-[calc(100vh_-_240px)]';
+  const heightClass = "@apply h-[calc(100vh_-_240px)]";
 
   const getColorStyle = (value: string, maxLength: number) => {
-    return value.length >= maxLength || value.length === 0 ? 'red' : 'inherit';
+    return value.length >= maxLength || value.length === 0 ? "red" : "inherit";
   };
 
   return loading ? (
     <Box
-      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+      }}
     >
       <CircularProgress />
     </Box>
   ) : (
     <form onSubmit={handleSubmit}>
-      <div className={`flex overflow-y-auto overflow-x-hidden flex-col ${heightClass}`}>
+      <div
+        className={`flex overflow-y-auto overflow-x-hidden flex-col ${heightClass}`}
+      >
         <Box ml="23px" mr="27px">
           <Typography
             variant="body2"
@@ -100,7 +113,7 @@ const FeedbackForm = ({
               />
             }
             sx={{
-              mb: '22px',
+              mb: "22px",
             }}
             inputProps={{ maxLength: REPORT_TITLE_LIMIT }}
           />
@@ -156,7 +169,10 @@ const FeedbackForm = ({
             error={errors.issue}
             helperText={
               <HelperText
-                colorStyle={getColorStyle(formData.issue, REPORT_DESCRIPTION_LIMIT)}
+                colorStyle={getColorStyle(
+                  formData.issue,
+                  REPORT_DESCRIPTION_LIMIT,
+                )}
                 errorType="Description"
                 textLimit={REPORT_DESCRIPTION_LIMIT}
                 isError={errors.issue}
@@ -176,8 +192,8 @@ const FeedbackForm = ({
             color="textSecondary"
             sx={{
               ...getStyleTypography(),
-              fontSize: '0.8rem',
-              textAlign: 'left',
+              fontSize: "0.8rem",
+              textAlign: "left",
             }}
           >
             Please do not include any sensitive information.
@@ -187,8 +203,8 @@ const FeedbackForm = ({
             color="textPrimary"
             sx={{
               ...getStyleTypography(),
-              fontSize: '0.8rem',
-              textAlign: 'left',
+              fontSize: "0.8rem",
+              textAlign: "left",
             }}
           >
             A screenshot will help us better understand the issue. (optional)
@@ -202,9 +218,9 @@ const FeedbackForm = ({
           variant="contained"
           fullWidth
           sx={{
-            textTransform: 'none',
-            fontSize: '1rem',
-            width: '18rem',
+            textTransform: "none",
+            fontSize: "1rem",
+            width: "18rem",
           }}
         >
           Send

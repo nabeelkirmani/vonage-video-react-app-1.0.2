@@ -1,6 +1,6 @@
-import { Chip } from '@mui/material';
-import { Box } from 'opentok-layout-js';
-import { ReactElement } from 'react';
+import { Chip } from "@mui/material";
+import { Box } from "opentok-layout-js";
+import { ReactElement } from "react";
 
 export type ScreenShareNameDisplayProps = {
   name: string;
@@ -14,14 +14,17 @@ export type ScreenShareNameDisplayProps = {
  * @param {ScreenShareNameDisplayProps} props - The props for the component.
  * @returns {ReactElement} The ScreenShareNameDisplay component.
  */
-const ScreenShareNameDisplay = ({ name, box }: ScreenShareNameDisplayProps): ReactElement => {
+const ScreenShareNameDisplay = ({
+  name,
+  box,
+}: ScreenShareNameDisplayProps): ReactElement => {
   return (
     <Chip
       label={name}
       size="small"
       sx={{
-        color: 'white',
-        backgroundColor: 'rgba(60, 64, 67, 0.55)',
+        color: "white",
+        backgroundColor: "rgba(60, 64, 67, 0.55)",
         maxWidth: box.width - 32,
       }}
       className="absolute text-sm md:text-lg truncate bottom-[10px] left-[10px]"

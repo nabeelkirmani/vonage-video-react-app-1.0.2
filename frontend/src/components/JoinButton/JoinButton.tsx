@@ -1,6 +1,6 @@
-import { Button } from '@mui/material';
-import { MouseEvent, ReactElement } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Button } from "@mui/material";
+import { MouseEvent, ReactElement } from "react";
+import { useNavigate } from "react-router-dom";
 
 export type JoinButtonProps = {
   roomName: string;
@@ -15,7 +15,10 @@ export type JoinButtonProps = {
  *  @property {string} roomName - the name of the room to join.
  * @returns {ReactElement} - the join room button.
  */
-const JoinButton = ({ roomName, isDisabled }: JoinButtonProps): ReactElement => {
+const JoinButton = ({
+  roomName,
+  isDisabled,
+}: JoinButtonProps): ReactElement => {
   const navigate = useNavigate();
 
   const handleJoin = (event: MouseEvent) => {
@@ -25,7 +28,7 @@ const JoinButton = ({ roomName, isDisabled }: JoinButtonProps): ReactElement => 
 
   return (
     <Button
-      disabled={roomName === '' || isDisabled}
+      disabled={roomName === "" || isDisabled}
       className="h-14 normal-case ml-2 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition"
       onClick={handleJoin}
     >

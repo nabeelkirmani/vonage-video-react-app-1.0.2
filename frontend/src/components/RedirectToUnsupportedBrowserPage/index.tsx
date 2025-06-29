@@ -1,3 +1,3 @@
-import RedirectToUnsupportedBrowserPage from './RedirectToUnsupportedBrowserPage';
+import RedirectToUnsupportedBrowserPage from "./RedirectToUnsupportedBrowserPage";
 
 export default RedirectToUnsupportedBrowserPage;

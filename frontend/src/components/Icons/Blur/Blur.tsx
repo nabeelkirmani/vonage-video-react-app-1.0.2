@@ -1,5 +1,5 @@
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactElement } from 'react';
+import { SvgIcon, SvgIconProps } from "@mui/material";
+import { ReactElement } from "react";
 
 /**
  * BlurIcon Component

@@ -1,17 +1,17 @@
-import { afterEach, beforeEach, describe, expect, it, Mock, vi } from 'vitest';
-import { cleanup, screen, render } from '@testing-library/react';
-import ControlPanel from '.';
-import useDevices from '../../../hooks/useDevices';
-import { AllMediaDevices } from '../../../types';
-import { allMediaDevices } from '../../../utils/mockData/device';
+import { afterEach, beforeEach, describe, expect, it, Mock, vi } from "vitest";
+import { cleanup, screen, render } from "@testing-library/react";
+import ControlPanel from ".";
+import useDevices from "../../../hooks/useDevices";
+import { AllMediaDevices } from "../../../types";
+import { allMediaDevices } from "../../../utils/mockData/device";
 
-vi.mock('../../../hooks/useDevices.tsx');
+vi.mock("../../../hooks/useDevices.tsx");
 const mockUseDevices = useDevices as Mock<
   [],
   { allMediaDevices: AllMediaDevices; getAllMediaDevices: () => void }
 >;
 
-describe('ControlPanel', () => {
+describe("ControlPanel", () => {
   beforeEach(() => {
     mockUseDevices.mockReturnValue({
       getAllMediaDevices: vi.fn(),
@@ -24,7 +24,7 @@ describe('ControlPanel', () => {
     vi.resetAllMocks();
   });
 
-  it('should render', () => {
+  it("should render", () => {
     render(
       <ControlPanel
         handleAudioInputOpen={() => {}}
@@ -35,13 +35,13 @@ describe('ControlPanel', () => {
         openVideoInput={false}
         openAudioOutput={false}
         anchorEl={null}
-      />
+      />,
     );
 
-    expect(screen.getByTestId('ControlPanel')).toBeVisible();
+    expect(screen.getByTestId("ControlPanel")).toBeVisible();
   });
 
-  it('should display open audio input devices menu', () => {
+  it("should display open audio input devices menu", () => {
     const { rerender } = render(
       <ControlPanel
         handleAudioInputOpen={() => {}}
@@ -52,10 +52,10 @@ describe('ControlPanel', () => {
         openVideoInput={false}
         openAudioOutput={false}
         anchorEl={null}
-      />
+      />,
     );
 
-    expect(screen.queryByTestId('audioInput-menu')).not.toBeInTheDocument();
+    expect(screen.queryByTestId("audioInput-menu")).not.toBeInTheDocument();
     rerender(
       <ControlPanel
         handleAudioInputOpen={() => {}}
@@ -66,12 +66,12 @@ describe('ControlPanel', () => {
         openVideoInput={false}
         openAudioOutput={false}
         anchorEl={null}
-      />
+      />,
     );
-    expect(screen.getByTestId('audioInput-menu')).toBeVisible();
+    expect(screen.getByTestId("audioInput-menu")).toBeVisible();
   });
 
-  it('should open video input devices menu', () => {
+  it("should open video input devices menu", () => {
     const { rerender } = render(
       <ControlPanel
         handleAudioInputOpen={() => {}}
@@ -82,10 +82,10 @@ describe('ControlPanel', () => {
         openVideoInput={false}
         openAudioOutput={false}
         anchorEl={null}
-      />
+      />,
     );
 
-    expect(screen.queryByTestId('videoInput-menu')).not.toBeInTheDocument();
+    expect(screen.queryByTestId("videoInput-menu")).not.toBeInTheDocument();
     rerender(
       <ControlPanel
         handleAudioInputOpen={() => {}}
@@ -96,12 +96,12 @@ describe('ControlPanel', () => {
         openVideoInput
         openAudioOutput={false}
         anchorEl={null}
-      />
+      />,
     );
-    expect(screen.getByTestId('videoInput-menu')).toBeVisible();
+    expect(screen.getByTestId("videoInput-menu")).toBeVisible();
   });
 
-  it('should open audio output devices menu', () => {
+  it("should open audio output devices menu", () => {
     const { rerender } = render(
       <ControlPanel
         handleAudioInputOpen={() => {}}
@@ -112,10 +112,10 @@ describe('ControlPanel', () => {
         openVideoInput={false}
         openAudioOutput={false}
         anchorEl={null}
-      />
+      />,
     );
 
-    expect(screen.queryByTestId('audioOutput-menu')).not.toBeInTheDocument();
+    expect(screen.queryByTestId("audioOutput-menu")).not.toBeInTheDocument();
     rerender(
       <ControlPanel
         handleAudioInputOpen={() => {}}
@@ -126,8 +126,8 @@ describe('ControlPanel', () => {
         openVideoInput={false}
         openAudioOutput
         anchorEl={null}
-      />
+      />,
     );
-    expect(screen.getByTestId('audioOutput-menu')).toBeVisible();
+    expect(screen.getByTestId("audioOutput-menu")).toBeVisible();
   });
 });

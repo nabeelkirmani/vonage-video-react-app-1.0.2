@@ -1,3 +1,3 @@
-import VideoOutputDevices from './VideoOutputDevices';
+import VideoOutputDevices from "./VideoOutputDevices";
 
 export default VideoOutputDevices;

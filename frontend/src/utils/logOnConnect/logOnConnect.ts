@@ -1,8 +1,8 @@
-import OTKAnalytics from 'opentok-solutions-logging';
-import getAppVersion from '../getAppVersion';
+import OTKAnalytics from "opentok-solutions-logging";
+import getAppVersion from "../getAppVersion";
 
 const logAction = {
-  enterMeeting: 'EnterMeeting',
+  enterMeeting: "EnterMeeting",
 };
 
 type OTKAnalyticsProps = {
@@ -10,8 +10,8 @@ type OTKAnalyticsProps = {
   partnerId?: string;
   clientVersion: string;
   source: string;
-  componentId: 'vera';
-  name: 'vera';
+  componentId: "vera";
+  name: "vera";
 };
 type OTKAnalyticsSessionInfo = {
   sessionId: string;
@@ -26,15 +26,19 @@ type OTKAnalyticsSessionInfo = {
  * @param {string} [connectionId] - The connectionId for the user.
  * @returns {void}
  */
-export default (apiKey: string, sessionId: string, connectionId?: string): void => {
+export default (
+  apiKey: string,
+  sessionId: string,
+  connectionId?: string,
+): void => {
   if (!(apiKey && sessionId && connectionId)) {
     return;
   }
   const clientVersion = getAppVersion();
 
   const otkAnalyticsProps: OTKAnalyticsProps = {
-    name: 'vera',
-    componentId: 'vera',
+    name: "vera",
+    componentId: "vera",
     source: window.location.origin,
     clientVersion,
     partnerId: apiKey,

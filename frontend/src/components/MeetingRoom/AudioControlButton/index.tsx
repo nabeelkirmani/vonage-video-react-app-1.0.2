@@ -1,3 +1,3 @@
-import AudioControlButton from './AudioControlButton';
+import AudioControlButton from "./AudioControlButton";
 
 export default AudioControlButton;

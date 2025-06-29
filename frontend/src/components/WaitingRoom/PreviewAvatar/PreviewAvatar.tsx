@@ -1,6 +1,6 @@
-import { Avatar } from '@mui/material';
-import { ReactElement } from 'react';
-import AvatarInitials from '../../AvatarInitials';
+import { Avatar } from "@mui/material";
+import { ReactElement } from "react";
+import AvatarInitials from "../../AvatarInitials";
 
 export type PreviewAvatarProps = {
   username: string;
@@ -34,7 +34,7 @@ const PreviewAvatar = ({
     <AvatarInitials
       initials={initials}
       sx={{
-        position: 'absolute',
+        position: "absolute",
         zIndex: isVideoEnabled ? 0 : 1,
       }}
       username={username}
@@ -44,12 +44,12 @@ const PreviewAvatar = ({
   ) : (
     <Avatar
       sx={{
-        bgcolor: '#4caf50',
-        position: 'absolute',
-        margin: 'auto',
-        width: '174px',
-        height: '174px',
-        fontSize: '58pt',
+        bgcolor: "#4caf50",
+        position: "absolute",
+        margin: "auto",
+        width: "174px",
+        height: "174px",
+        fontSize: "58pt",
       }}
     />
   );

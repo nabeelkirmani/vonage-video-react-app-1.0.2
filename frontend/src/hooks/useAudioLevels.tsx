@@ -1,14 +1,16 @@
-import { useState, useEffect, useMemo, Dispatch, SetStateAction } from 'react';
-import { throttle } from 'lodash';
-import usePublisherContext from './usePublisherContext';
-import createMovingAvgAudioLevelTracker from '../utils/movingAverageAudioLevelTracker'; // Adjust import as needed
+import { useState, useEffect, useMemo, Dispatch, SetStateAction } from "react";
+import { throttle } from "lodash";
+import usePublisherContext from "./usePublisherContext";
+import createMovingAvgAudioLevelTracker from "../utils/movingAverageAudioLevelTracker"; // Adjust import as needed
 
 /**
  * Creates a function to handle audio level updates using a moving average tracker.
  * @param {Dispatch<SetStateAction<number>>} setAudioLevel - Function to update the audio level state.
  * @returns {(params: { audioLevel: number }) => void} A handler function that processes and sets the audio level.
  */
-const createOnHandleAudioLevelUpdated = (setAudioLevel: Dispatch<SetStateAction<number>>) => {
+const createOnHandleAudioLevelUpdated = (
+  setAudioLevel: Dispatch<SetStateAction<number>>,
+) => {
   // Initialize moving average audio level tracker
   const getMovingAverageAudioLevel = createMovingAvgAudioLevelTracker();
 
@@ -19,7 +21,7 @@ const createOnHandleAudioLevelUpdated = (setAudioLevel: Dispatch<SetStateAction<
       setAudioLevel(logMovingAvg * 100); // Set the audio level state
     },
     100,
-    { leading: true, trailing: true }
+    { leading: true, trailing: true },
   );
 
   /**
@@ -48,16 +50,16 @@ const useAudioLevels = () => {
 
   const audioLevelUpdateHandler = useMemo(
     () => createOnHandleAudioLevelUpdated(setAudioLevel),
-    [setAudioLevel]
+    [setAudioLevel],
   );
 
   useEffect(() => {
     if (isPublishing && publisher) {
-      publisher.on('audioLevelUpdated', audioLevelUpdateHandler);
+      publisher.on("audioLevelUpdated", audioLevelUpdateHandler);
     }
     return () => {
       if (isPublishing && publisher) {
-        publisher.off('audioLevelUpdated', audioLevelUpdateHandler);
+        publisher.off("audioLevelUpdated", audioLevelUpdateHandler);
       }
     };
   }, [isPublishing, publisher, audioLevelUpdateHandler]);

@@ -1,8 +1,12 @@
-import { ReactNode, createContext, useMemo } from 'react';
-import usePreviewPublisher from './usePreviewPublisher';
+import { ReactNode, createContext, useMemo } from "react";
+import usePreviewPublisher from "./usePreviewPublisher";
 
-export type PreviewPublisherContextType = ReturnType<typeof usePreviewPublisher>;
-export const PreviewPublisherContext = createContext({} as PreviewPublisherContextType);
+export type PreviewPublisherContextType = ReturnType<
+  typeof usePreviewPublisher
+>;
+export const PreviewPublisherContext = createContext(
+  {} as PreviewPublisherContextType,
+);
 
 export type PreviewPublisherProviderProps = {
   children: ReactNode;
@@ -18,10 +22,19 @@ export type PreviewPublisherProviderProps = {
  *  @property {ReactNode} children - The content to be rendered
  * @returns {PreviewPublisherContext} a context provider for a publisher preview
  */
-export const PreviewPublisherProvider = ({ children }: { children: ReactNode }) => {
+export const PreviewPublisherProvider = ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
   const previewPublisherContext = usePreviewPublisher();
-  const value = useMemo(() => previewPublisherContext, [previewPublisherContext]);
+  const value = useMemo(
+    () => previewPublisherContext,
+    [previewPublisherContext],
+  );
   return (
-    <PreviewPublisherContext.Provider value={value}>{children}</PreviewPublisherContext.Provider>
+    <PreviewPublisherContext.Provider value={value}>
+      {children}
+    </PreviewPublisherContext.Provider>
   );
 };

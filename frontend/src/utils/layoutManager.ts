@@ -1,5 +1,9 @@
 // @flow
-import OpenTokLayoutManager, { Box, Element, LayoutContainer } from 'opentok-layout-js';
+import OpenTokLayoutManager, {
+  Box,
+  Element,
+  LayoutContainer,
+} from "opentok-layout-js";
 
 // Opentok element methods videoHeight() and videoWidth() can return undefined so
 // this util type helps keep an array of Elements with those fields possible undefined
@@ -20,12 +24,12 @@ class LayoutManager {
     // Layout options see: https://github.com/aullman/opentok-layout-js?tab=readme-ov-file#usage
     this.manager = OpenTokLayoutManager({
       fixedRatio: false,
-      alignItems: 'center',
+      alignItems: "center",
       bigPercentage: 0.8,
       bigFixedRatio: false,
-      bigAlignItems: 'center',
+      bigAlignItems: "center",
       bigScaleLastRow: false,
-      smallAlignItems: 'center',
+      smallAlignItems: "center",
       scaleLastRow: true,
       maxRatio: 9 / 16,
       maxWidth: Infinity,
@@ -41,7 +45,10 @@ class LayoutManager {
       containerHeight: containerDimensions.height,
     });
   }
-  getLayout(containerDimensions: { height: number; width: number }, boxes: Element[]): Box[] {
+  getLayout(
+    containerDimensions: { height: number; width: number },
+    boxes: Element[],
+  ): Box[] {
     // Currently the layout manager doesn't support updating dimensions on the fly so we must re-create the manager every time
     // https://github.com/aullman/opentok-layout-js/issues/141
     this.init(containerDimensions);

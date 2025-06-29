@@ -1,3 +1,3 @@
-import AvatarInitials from './AvatarInitials';
+import AvatarInitials from "./AvatarInitials";
 
 export default AvatarInitials;

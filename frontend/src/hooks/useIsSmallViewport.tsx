@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 /**
  * Determines whether a viewport is small. If the window is resized, determines if the new size is small.
@@ -7,15 +7,17 @@ import { useEffect, useState } from 'react';
  */
 const useIsSmallViewport = (target?: number): boolean => {
   const smallViewport = target ?? 768;
-  const [isSmallViewport, setIsSmallViewport] = useState(window.innerWidth <= smallViewport);
+  const [isSmallViewport, setIsSmallViewport] = useState(
+    window.innerWidth <= smallViewport,
+  );
 
   useEffect(() => {
     const handleResize = () => {
       setIsSmallViewport(window.innerWidth <= smallViewport);
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [smallViewport]);
 
   return isSmallViewport;

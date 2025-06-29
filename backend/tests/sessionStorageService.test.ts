@@ -1,18 +1,20 @@
-import { afterEach, describe, expect, it, jest } from '@jest/globals';
-import { SessionStorage } from '../storage/sessionStorage';
-import VcrSessionStorage from '../storage/vcrSessionStorage';
+import { afterEach, describe, expect, it, jest } from "@jest/globals";
+import { SessionStorage } from "../storage/sessionStorage";
+import VcrSessionStorage from "../storage/vcrSessionStorage";
 
-describe('getSessionStorageService', () => {
+describe("getSessionStorageService", () => {
   afterEach(() => {
     jest.resetModules(); // Clear module cache between tests
     delete process.env.VCR_PORT; // Clean up the environment variable after each test
   });
 
-  it('should return VcrSessionStorage when isVcr is true', async () => {
+  it("should return VcrSessionStorage when isVcr is true", async () => {
     // Mock the environment variable to simulate VCR environment
-    process.env.VCR_PORT = '1234';
+    process.env.VCR_PORT = "1234";
 
-    const { default: getSessionStorageService } = await import('../sessionStorageService');
+    const { default: getSessionStorageService } = await import(
+      "../sessionStorageService"
+    );
 
     // Call the function to test
     const sessionStorage: SessionStorage = getSessionStorageService();

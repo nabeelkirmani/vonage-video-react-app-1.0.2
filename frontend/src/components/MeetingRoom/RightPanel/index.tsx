@@ -1,3 +1,3 @@
-import RightPanel from './RightPanel';
+import RightPanel from "./RightPanel";
 
 export default RightPanel;

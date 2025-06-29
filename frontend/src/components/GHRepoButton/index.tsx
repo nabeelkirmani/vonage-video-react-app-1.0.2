@@ -1,3 +1,3 @@
-import GHRepoButton from './GHRepoButton';
+import GHRepoButton from "./GHRepoButton";
 
 export default GHRepoButton;

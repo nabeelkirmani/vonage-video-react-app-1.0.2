@@ -1,8 +1,8 @@
-import { Box } from '@mui/material';
-import { ReactElement } from 'react';
+import { Box } from "@mui/material";
+import { ReactElement } from "react";
 
-export type ErrorType = 'Title' | 'Your name' | 'Description';
-export type ColorStyle = 'inherit' | 'red';
+export type ErrorType = "Title" | "Your name" | "Description";
+export type ColorStyle = "inherit" | "red";
 
 export type HelperTextProps = {
   isError: boolean;
@@ -47,7 +47,7 @@ const HelperText = ({
           color: colorStyle,
         }}
       >
-        {isError ? errorName(errorType, textLimit) : ''}
+        {isError ? errorName(errorType, textLimit) : ""}
       </span>
       <span
         style={{
@@ -56,7 +56,7 @@ const HelperText = ({
           }),
         }}
       >
-        {!isError ? `${formText.length}/${textLimit}` : ''}
+        {!isError ? `${formText.length}/${textLimit}` : ""}
       </span>
     </Box>
   );

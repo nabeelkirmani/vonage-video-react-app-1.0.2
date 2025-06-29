@@ -1,3 +1,3 @@
-import waitUntilPlaying from './waitUntilPlaying';
+import waitUntilPlaying from "./waitUntilPlaying";
 
 export default waitUntilPlaying;

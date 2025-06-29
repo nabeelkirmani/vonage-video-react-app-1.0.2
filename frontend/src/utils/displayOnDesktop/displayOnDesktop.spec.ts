@@ -1,10 +1,10 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { isMobile } from '../util';
-import displayOnDesktop from '.';
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { isMobile } from "../util";
+import displayOnDesktop from ".";
 
-vi.mock('../util');
+vi.mock("../util");
 
-describe('displayOnDesktop', () => {
+describe("displayOnDesktop", () => {
   const mockedIsMobile = vi.mocked(isMobile);
 
   beforeEach(() => {
@@ -15,16 +15,16 @@ describe('displayOnDesktop', () => {
     vi.resetAllMocks();
   });
 
-  it('is not shown when on mobile device', () => {
+  it("is not shown when on mobile device", () => {
     mockedIsMobile.mockImplementation(() => true);
     const results = displayOnDesktop();
 
-    expect(results).toEqual('');
+    expect(results).toEqual("");
   });
 
-  it('is shown when on a non-mobile device', () => {
+  it("is shown when on a non-mobile device", () => {
     const results = displayOnDesktop();
 
-    expect(results).toEqual('md:inline');
+    expect(results).toEqual("md:inline");
   });
 });

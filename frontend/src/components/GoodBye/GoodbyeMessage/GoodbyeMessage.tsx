@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router-dom';
-import { ReactElement } from 'react';
-import GoToLandingPageButton from '../GoToLandingPageButton';
-import ReenterRoomButton from '../ReenterRoomButton';
+import { useNavigate } from "react-router-dom";
+import { ReactElement } from "react";
+import GoToLandingPageButton from "../GoToLandingPageButton";
+import ReenterRoomButton from "../ReenterRoomButton";
 
 export type GoodByeMessageProps = {
   header: string;
@@ -15,10 +15,14 @@ export type GoodByeMessageProps = {
  * @param {GoodByeMessageProps} props - The props for the component.
  * @returns {ReactElement} The GoodByeMessage component.
  */
-const GoodByeMessage = ({ header, message, roomName }: GoodByeMessageProps): ReactElement => {
+const GoodByeMessage = ({
+  header,
+  message,
+  roomName,
+}: GoodByeMessageProps): ReactElement => {
   const navigate = useNavigate();
   const handleLanding = () => {
-    navigate('/');
+    navigate("/");
   };
 
   const handleReenter = () => {

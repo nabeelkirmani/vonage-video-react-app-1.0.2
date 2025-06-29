@@ -1,4 +1,4 @@
-import useSessionContext from './useSessionContext';
+import useSessionContext from "./useSessionContext";
 
 /**
  * Returns the subscriber ID for the current active speaker, or undefined if no participant is actively speaking.

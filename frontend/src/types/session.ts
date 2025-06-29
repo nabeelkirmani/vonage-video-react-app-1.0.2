@@ -1,4 +1,4 @@
-import { Subscriber } from '@vonage/client-sdk-video';
+import { Subscriber } from "@vonage/client-sdk-video";
 
 /**
  * Wrapper for a subscriber, including the DOM element, the subscriber object, and its screen sharing status.

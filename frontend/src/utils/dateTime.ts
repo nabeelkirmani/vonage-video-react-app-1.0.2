@@ -7,7 +7,7 @@ export const getFormattedTime = (timestamp?: number) => {
   const dateTime = timestamp ? new Date(timestamp) : new Date();
 
   let hours = dateTime.getHours();
-  const amOrPm = hours >= 12 ? 'PM' : 'AM';
+  const amOrPm = hours >= 12 ? "PM" : "AM";
   hours %= 12; // Converts from 24h format to 12h
   hours = hours || 12; // If midnight, it's really 12 not 0
 
@@ -16,20 +16,20 @@ export const getFormattedTime = (timestamp?: number) => {
   return `${hours}:${minutes} ${amOrPm}`;
 };
 
-const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const monthsOfYear = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
 /**

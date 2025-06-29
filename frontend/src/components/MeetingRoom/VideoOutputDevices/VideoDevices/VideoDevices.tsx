@@ -1,10 +1,10 @@
-import { useState, useEffect, MouseEvent, ReactElement } from 'react';
-import { Box, MenuItem, MenuList, Typography } from '@mui/material';
-import CheckIcon from '@mui/icons-material/Check';
-import VideocamIcon from '@mui/icons-material/Videocam';
-import { Device } from '@vonage/client-sdk-video';
-import useDevices from '../../../../hooks/useDevices';
-import usePublisherContext from '../../../../hooks/usePublisherContext';
+import { useState, useEffect, MouseEvent, ReactElement } from "react";
+import { Box, MenuItem, MenuList, Typography } from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
+import VideocamIcon from "@mui/icons-material/Videocam";
+import { Device } from "@vonage/client-sdk-video";
+import useDevices from "../../../../hooks/useDevices";
+import usePublisherContext from "../../../../hooks/usePublisherContext";
 
 export type VideoDevicesProps = {
   handleToggle: () => void;
@@ -20,11 +20,16 @@ export type VideoDevicesProps = {
  *  @property {string} customLightBlueColor - the custom color used for the toggled icon.
  * @returns {ReactElement} - the video output devices component.
  */
-const VideoDevices = ({ handleToggle, customLightBlueColor }: VideoDevicesProps): ReactElement => {
+const VideoDevices = ({
+  handleToggle,
+  customLightBlueColor,
+}: VideoDevicesProps): ReactElement => {
   const { isPublishing, publisher } = usePublisherContext();
   const { allMediaDevices } = useDevices();
   const [devicesAvailable, setDevicesAvailable] = useState<Device[]>([]);
-  const [options, setOptions] = useState<{ deviceId: string; label: string }[]>([]);
+  const [options, setOptions] = useState<{ deviceId: string; label: string }[]>(
+    [],
+  );
 
   const changeVideoSource = (videoDeviceId: string) => {
     publisher?.setVideoSource(videoDeviceId);
@@ -36,10 +41,12 @@ const VideoDevices = ({ handleToggle, customLightBlueColor }: VideoDevicesProps)
 
   useEffect(() => {
     if (devicesAvailable) {
-      const videoDevicesAvailable = devicesAvailable.map((availableDevice: Device) => ({
-        deviceId: availableDevice.deviceId,
-        label: availableDevice.label,
-      }));
+      const videoDevicesAvailable = devicesAvailable.map(
+        (availableDevice: Device) => ({
+          deviceId: availableDevice.deviceId,
+          label: availableDevice.label,
+        }),
+      );
       setOptions(videoDevicesAvailable);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,7 +55,9 @@ const VideoDevices = ({ handleToggle, customLightBlueColor }: VideoDevicesProps)
   const handleChangeVideoSource = (event: MouseEvent<HTMLLIElement>) => {
     const menuItem = event.target as HTMLLIElement;
     handleToggle();
-    const selectedDevice = options.find((device) => device.label === menuItem.textContent);
+    const selectedDevice = options.find(
+      (device) => device.label === menuItem.textContent,
+    );
     if (selectedDevice) {
       changeVideoSource(selectedDevice.deviceId);
     }
@@ -58,7 +67,7 @@ const VideoDevices = ({ handleToggle, customLightBlueColor }: VideoDevicesProps)
     <>
       <Box
         sx={{
-          display: 'flex',
+          display: "flex",
           ml: 2,
           mt: 1,
           mb: 0.5,
@@ -69,32 +78,35 @@ const VideoDevices = ({ handleToggle, customLightBlueColor }: VideoDevicesProps)
       </Box>
       <MenuList id="split-button-menu">
         {options.map((option) => {
-          const isSelected = option.deviceId === publisher?.getVideoSource().deviceId;
+          const isSelected =
+            option.deviceId === publisher?.getVideoSource().deviceId;
           return (
             <MenuItem
               key={option.deviceId}
               selected={isSelected}
               onClick={(event) => handleChangeVideoSource(event)}
               sx={{
-                backgroundColor: 'transparent',
-                '&.Mui-selected': {
-                  backgroundColor: 'transparent',
+                backgroundColor: "transparent",
+                "&.Mui-selected": {
+                  backgroundColor: "transparent",
                   color: customLightBlueColor,
                 },
-                '&:hover': {
-                  backgroundColor: 'rgba(25, 118, 210, 0.12)',
+                "&:hover": {
+                  backgroundColor: "rgba(25, 118, 210, 0.12)",
                 },
               }}
             >
               <Box
                 sx={{
-                  display: 'flex',
+                  display: "flex",
                   mb: 0.5,
-                  overflow: 'hidden',
+                  overflow: "hidden",
                 }}
               >
                 {isSelected ? (
-                  <CheckIcon sx={{ color: customLightBlueColor, fontSize: 24, mr: 2 }} />
+                  <CheckIcon
+                    sx={{ color: customLightBlueColor, fontSize: 24, mr: 2 }}
+                  />
                 ) : (
                   <Box sx={{ width: 40 }} /> // Placeholder when CheckIcon is not displayed
                 )}

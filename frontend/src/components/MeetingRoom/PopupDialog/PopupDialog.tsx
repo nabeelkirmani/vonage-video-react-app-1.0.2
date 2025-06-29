@@ -1,10 +1,10 @@
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import { ReactElement } from 'react';
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import { ReactElement } from "react";
 
 export type DialogTexts = {
   title?: string;
@@ -47,7 +47,9 @@ const PopupDialog = ({
     >
       <DialogTitle id="alert-dialog-title">{actionText.title}</DialogTitle>
       <DialogContent>
-        <DialogContentText id="alert-dialog-description">{actionText.contents}</DialogContentText>
+        <DialogContentText id="alert-dialog-description">
+          {actionText.contents}
+        </DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>{actionText.secondaryActionText}</Button>

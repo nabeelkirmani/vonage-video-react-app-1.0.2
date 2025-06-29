@@ -1,3 +1,3 @@
-import GoToLandingPageButton from './GoToLandingPageButton';
+import GoToLandingPageButton from "./GoToLandingPageButton";
 
 export default GoToLandingPageButton;

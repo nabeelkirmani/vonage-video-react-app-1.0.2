@@ -1,10 +1,12 @@
-import { Publisher, Subscriber } from '@vonage/client-sdk-video';
-import { Box, Element } from 'opentok-layout-js';
-import { MaybeElement } from '../../layoutManager';
-import { LayoutMode } from '../../../Context/SessionProvider/session';
-import { SubscriberWrapper } from '../../../types/session';
+import { Publisher, Subscriber } from "@vonage/client-sdk-video";
+import { Box, Element } from "opentok-layout-js";
+import { MaybeElement } from "../../layoutManager";
+import { LayoutMode } from "../../../Context/SessionProvider/session";
+import { SubscriberWrapper } from "../../../types/session";
 
-const isLayoutElement = (element: Element | MaybeElement): element is Element => {
+const isLayoutElement = (
+  element: Element | MaybeElement,
+): element is Element => {
   return element.width !== undefined && element.height !== undefined;
 };
 
@@ -15,10 +17,16 @@ const isLayoutElement = (element: Element | MaybeElement): element is Element =>
  * @param {number} index - subscriber index
  * @returns {boolean} True if the ID is the current active speaker, false if not
  */
-const isActiveSpeaker = (activeSpeakerId: string | undefined, id: string, index: number) => {
+const isActiveSpeaker = (
+  activeSpeakerId: string | undefined,
+  id: string,
+  index: number,
+) => {
   // We display a subscriber as active speaker if it is the matching ID
   // also if there is no current active speaker we display the first subscriber as active speaker
-  return activeSpeakerId === id || (activeSpeakerId === undefined && index === 0);
+  return (
+    activeSpeakerId === id || (activeSpeakerId === undefined && index === 0)
+  );
 };
 
 /**
@@ -60,14 +68,14 @@ const shouldDisplayBig = (
   sessionHasScreenshare: boolean,
   layoutMode: LayoutMode,
   activeSpeakerId: string | undefined,
-  index: number
+  index: number,
 ) => {
   // We display subscriber as large if it is screenshare or active speaker given that layout mode is active speaker and
   // screenshare is not being displayed
   return (
     subWrapper.isScreenshare ||
     (!sessionHasScreenshare &&
-      layoutMode === 'active-speaker' &&
+      layoutMode === "active-speaker" &&
       isActiveSpeaker(activeSpeakerId, subWrapper.id, index))
   );
 };
@@ -87,12 +95,18 @@ const getSubscriberLayoutElements = (
   subscribersInDisplayOrder: SubscriberWrapper[],
   sessionHasScreenshare: boolean,
   layoutMode: LayoutMode,
-  activeSpeakerId: string | undefined
+  activeSpeakerId: string | undefined,
 ) => {
   return subscribersInDisplayOrder.map((subWrapper, index) => {
     return {
       ...getVideoDimensions(subWrapper.subscriber),
-      big: shouldDisplayBig(subWrapper, sessionHasScreenshare, layoutMode, activeSpeakerId, index),
+      big: shouldDisplayBig(
+        subWrapper,
+        sessionHasScreenshare,
+        layoutMode,
+        activeSpeakerId,
+        index,
+      ),
       fixedRatio: subWrapper.isScreenshare,
     };
   });
@@ -104,7 +118,9 @@ const getSubscriberLayoutElements = (
  * @param {Publisher | null} screensharingPublisher - the Publisher object
  * @returns {Element} element - the Element object
  */
-const getScreenShareLayoutElement = (screensharingPublisher: Publisher | null) => {
+const getScreenShareLayoutElement = (
+  screensharingPublisher: Publisher | null,
+) => {
   return {
     width: screensharingPublisher?.videoWidth(),
     height: screensharingPublisher?.videoHeight(),
@@ -157,7 +173,7 @@ const getLayoutElementArray = ({
       subscribersInDisplayOrder,
       sessionHasScreenshare,
       layoutMode,
-      activeSpeakerId
+      activeSpeakerId,
     ),
   ];
 
@@ -167,7 +183,9 @@ const getLayoutElementArray = ({
   if (hiddenSubscribers.length) {
     elements.push(hiddenParticipantTileLayoutElement);
   }
-  return elements.filter((element): element is Element => isLayoutElement(element));
+  return elements.filter((element): element is Element =>
+    isLayoutElement(element),
+  );
 };
 
 export type LayoutBoxes = {

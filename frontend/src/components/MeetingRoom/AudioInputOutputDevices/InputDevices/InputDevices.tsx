@@ -1,10 +1,10 @@
-import { Box, MenuItem, MenuList, Typography } from '@mui/material';
-import CheckIcon from '@mui/icons-material/Check';
-import { Device } from '@vonage/client-sdk-video';
-import MicNoneIcon from '@mui/icons-material/MicNone';
-import { MouseEvent as ReactMouseEvent, ReactElement } from 'react';
-import useDevices from '../../../../hooks/useDevices';
-import usePublisherContext from '../../../../hooks/usePublisherContext';
+import { Box, MenuItem, MenuList, Typography } from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
+import { Device } from "@vonage/client-sdk-video";
+import MicNoneIcon from "@mui/icons-material/MicNone";
+import { MouseEvent as ReactMouseEvent, ReactElement } from "react";
+import useDevices from "../../../../hooks/useDevices";
+import usePublisherContext from "../../../../hooks/usePublisherContext";
 
 export type InputDevicesProps = {
   handleToggle: () => void;
@@ -20,7 +20,10 @@ export type InputDevicesProps = {
  *  @property {string} customLightBlueColor - The custom color used for the toggled icon.
  * @returns {ReactElement} - The InputDevices component.
  */
-const InputDevices = ({ handleToggle, customLightBlueColor }: InputDevicesProps): ReactElement => {
+const InputDevices = ({
+  handleToggle,
+  customLightBlueColor,
+}: InputDevicesProps): ReactElement => {
   const { publisher } = usePublisherContext();
   const {
     allMediaDevices: { audioInputDevices },
@@ -44,7 +47,7 @@ const InputDevices = ({ handleToggle, customLightBlueColor }: InputDevicesProps)
     <>
       <Box
         sx={{
-          display: 'flex',
+          display: "flex",
           ml: 2,
           mt: 1,
           mb: 0.5,
@@ -62,25 +65,27 @@ const InputDevices = ({ handleToggle, customLightBlueColor }: InputDevicesProps)
               selected={isSelected}
               onClick={(event) => handleChangeAudioSource(event)}
               sx={{
-                backgroundColor: 'transparent',
-                '&.Mui-selected': {
-                  backgroundColor: 'transparent',
+                backgroundColor: "transparent",
+                "&.Mui-selected": {
+                  backgroundColor: "transparent",
                   color: customLightBlueColor,
                 },
-                '&:hover': {
-                  backgroundColor: 'rgba(25, 118, 210, 0.12)',
+                "&:hover": {
+                  backgroundColor: "rgba(25, 118, 210, 0.12)",
                 },
               }}
             >
               <Box
                 sx={{
-                  display: 'flex',
+                  display: "flex",
                   mb: 0.5,
-                  overflow: 'hidden',
+                  overflow: "hidden",
                 }}
               >
                 {isSelected ? (
-                  <CheckIcon sx={{ color: customLightBlueColor, fontSize: 24, mr: 2 }} />
+                  <CheckIcon
+                    sx={{ color: customLightBlueColor, fontSize: 24, mr: 2 }}
+                  />
                 ) : (
                   <Box sx={{ width: 40 }} /> // Placeholder when CheckIcon is not displayed
                 )}

@@ -1,14 +1,14 @@
-import { Box, MenuItem, MenuList, Typography } from '@mui/material';
-import CheckIcon from '@mui/icons-material/Check';
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import { MouseEvent, ReactElement } from 'react';
-import type { AudioOutputDevice } from '@vonage/client-sdk-video';
-import useDevices from '../../../../hooks/useDevices';
-import DropdownSeparator from '../../DropdownSeparator';
-import useAudioOutputContext from '../../../../hooks/useAudioOutputContext';
-import { isGetActiveAudioOutputDeviceSupported } from '../../../../utils/util';
+import { Box, MenuItem, MenuList, Typography } from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import { MouseEvent, ReactElement } from "react";
+import type { AudioOutputDevice } from "@vonage/client-sdk-video";
+import useDevices from "../../../../hooks/useDevices";
+import DropdownSeparator from "../../DropdownSeparator";
+import useAudioOutputContext from "../../../../hooks/useAudioOutputContext";
+import { isGetActiveAudioOutputDeviceSupported } from "../../../../utils/util";
 
-const defaultOutputDevices = [{ deviceId: 'default', label: 'System Default' }];
+const defaultOutputDevices = [{ deviceId: "default", label: "System Default" }];
 
 export type OutputDevicesProps = {
   handleToggle: () => void;
@@ -28,14 +28,17 @@ const OutputDevices = ({
   handleToggle,
   customLightBlueColor,
 }: OutputDevicesProps): ReactElement => {
-  const { currentAudioOutputDevice, setAudioOutputDevice } = useAudioOutputContext();
+  const { currentAudioOutputDevice, setAudioOutputDevice } =
+    useAudioOutputContext();
   const {
     allMediaDevices: { audioOutputDevices },
   } = useDevices();
 
   const isAudioOutputSupported = isGetActiveAudioOutputDeviceSupported();
 
-  const availableDevices = isAudioOutputSupported ? audioOutputDevices : defaultOutputDevices;
+  const availableDevices = isAudioOutputSupported
+    ? audioOutputDevices
+    : defaultOutputDevices;
 
   const handleChangeAudioOutput = async (event: MouseEvent<HTMLLIElement>) => {
     const menuItem = event.target as HTMLLIElement;
@@ -57,7 +60,7 @@ const OutputDevices = ({
       <DropdownSeparator />
       <Box
         sx={{
-          display: 'flex',
+          display: "flex",
           ml: 2,
           mt: 2,
           mb: 0.5,
@@ -70,32 +73,35 @@ const OutputDevices = ({
         {availableDevices?.map((device: AudioOutputDevice) => {
           // If audio output device selection is not supported we show the default device as selected
           const isSelected =
-            device.deviceId === currentAudioOutputDevice || availableDevices.length === 1;
+            device.deviceId === currentAudioOutputDevice ||
+            availableDevices.length === 1;
           return (
             <MenuItem
               key={device.deviceId}
               selected={isSelected}
               onClick={handleChangeAudioOutput}
               sx={{
-                backgroundColor: 'transparent',
-                '&.Mui-selected': {
-                  backgroundColor: 'transparent',
+                backgroundColor: "transparent",
+                "&.Mui-selected": {
+                  backgroundColor: "transparent",
                   color: customLightBlueColor,
                 },
-                '&:hover': {
-                  backgroundColor: 'rgba(25, 118, 210, 0.12)',
+                "&:hover": {
+                  backgroundColor: "rgba(25, 118, 210, 0.12)",
                 },
               }}
             >
               <Box
                 sx={{
-                  display: 'flex',
+                  display: "flex",
                   mb: 0.5,
-                  overflow: 'hidden',
+                  overflow: "hidden",
                 }}
               >
                 {isSelected ? (
-                  <CheckIcon sx={{ color: 'rgb(138, 180, 248)', fontSize: 24, mr: 2 }} />
+                  <CheckIcon
+                    sx={{ color: "rgb(138, 180, 248)", fontSize: 24, mr: 2 }}
+                  />
                 ) : (
                   <Box sx={{ width: 40 }} /> // Placeholder when CheckIcon is not displayed
                 )}

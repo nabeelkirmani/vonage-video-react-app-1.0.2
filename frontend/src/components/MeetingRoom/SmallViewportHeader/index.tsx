@@ -1,3 +1,3 @@
-import SmallViewportHeader from './SmallViewportHeader';
+import SmallViewportHeader from "./SmallViewportHeader";
 
 export default SmallViewportHeader;

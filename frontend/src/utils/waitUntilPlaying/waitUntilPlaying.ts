@@ -7,22 +7,22 @@
  */
 const waitUntilPlaying = (
   video: HTMLVideoElement | HTMLObjectElement,
-  timeoutMs: number = 2000
+  timeoutMs: number = 2000,
 ): Promise<void> => {
   return new Promise<void>((resolve) => {
     video.addEventListener(
-      'timeupdate',
+      "timeupdate",
       () => {
         resolve();
       },
-      { once: true }
+      { once: true },
     );
     video.addEventListener(
-      'loadedmetadata',
+      "loadedmetadata",
       () => {
         resolve();
       },
-      { once: true }
+      { once: true },
     );
     setTimeout(() => {
       resolve();

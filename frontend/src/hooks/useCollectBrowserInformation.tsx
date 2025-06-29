@@ -1,4 +1,4 @@
-import useSessionContext from './useSessionContext';
+import useSessionContext from "./useSessionContext";
 
 export type BrowserInformationType = {
   sessionId?: string;
@@ -27,7 +27,7 @@ const useCollectBrowserInformation = (): BrowserInformationType => {
     sessionId: session?.sessionId,
     browser: navigator.userAgent,
     screenResolution: `${window.screen.width}x${window.screen.height}`,
-    referrer: document.referrer || 'No referrer',
+    referrer: document.referrer || "No referrer",
     currentUrl: window.location.href,
     language: navigator.language,
     isOnline: navigator.onLine,

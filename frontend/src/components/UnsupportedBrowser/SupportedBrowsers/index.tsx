@@ -1,3 +1,3 @@
-import SupportedBrowsers from './SupportedBrowsers';
+import SupportedBrowsers from "./SupportedBrowsers";
 
 export default SupportedBrowsers;

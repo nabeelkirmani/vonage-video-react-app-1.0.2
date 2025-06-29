@@ -1,3 +1,3 @@
-import isValidRoomName from './isValidRoomName';
+import isValidRoomName from "./isValidRoomName";
 
 export default isValidRoomName;

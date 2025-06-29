@@ -1,5 +1,5 @@
-import { ReactElement } from 'react';
-import { Link } from 'react-router-dom';
+import { ReactElement } from "react";
+import { Link } from "react-router-dom";
 
 /**
  * BannerLogo Component

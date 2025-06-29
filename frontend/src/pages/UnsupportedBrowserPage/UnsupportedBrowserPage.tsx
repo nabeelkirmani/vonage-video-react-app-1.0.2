@@ -1,7 +1,7 @@
-import { ReactElement } from 'react';
-import Banner from '../../components/Banner';
-import SupportedBrowsers from '../../components/UnsupportedBrowser/SupportedBrowsers';
-import UnsupportedBrowserMessage from '../../components/UnsupportedBrowser/UnsupportedBrowserMessage';
+import { ReactElement } from "react";
+import Banner from "../../components/Banner";
+import SupportedBrowsers from "../../components/UnsupportedBrowser/SupportedBrowsers";
+import UnsupportedBrowserMessage from "../../components/UnsupportedBrowser/UnsupportedBrowserMessage";
 
 /**
  * UnsupportedBrowserPage

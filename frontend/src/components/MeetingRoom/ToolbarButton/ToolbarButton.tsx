@@ -1,10 +1,18 @@
-import { IconButton, SxProps } from '@mui/material';
-import { ForwardedRef, forwardRef, ReactElement, MouseEvent, TouchEvent } from 'react';
+import { IconButton, SxProps } from "@mui/material";
+import {
+  ForwardedRef,
+  forwardRef,
+  ReactElement,
+  MouseEvent,
+  TouchEvent,
+} from "react";
 
 export type ToolbarButtonProps = {
   onClick:
     | (() => void)
-    | ((event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>) => void);
+    | ((
+        event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>,
+      ) => void);
   icon: ReactElement;
   sx?: SxProps;
 };
@@ -20,7 +28,7 @@ export type ToolbarButtonProps = {
  */
 const ToolbarButton = forwardRef(function ToolbarButton(
   props: ToolbarButtonProps,
-  ref: ForwardedRef<HTMLButtonElement>
+  ref: ForwardedRef<HTMLButtonElement>,
 ) {
   const { icon: Icon, sx = {}, ...rest } = props;
 
@@ -31,14 +39,14 @@ const ToolbarButton = forwardRef(function ToolbarButton(
       size="small"
       ref={ref}
       sx={{
-        marginLeft: '0px',
-        marginTop: '4px',
-        marginRight: '12px',
-        width: '48px',
-        height: '48px',
-        backgroundColor: 'rgba(60, 64, 67, 0.55)',
-        '&:hover': {
-          backgroundColor: 'rgba(60, 64, 67, 0.42)',
+        marginLeft: "0px",
+        marginTop: "4px",
+        marginRight: "12px",
+        width: "48px",
+        height: "48px",
+        backgroundColor: "rgba(60, 64, 67, 0.55)",
+        "&:hover": {
+          backgroundColor: "rgba(60, 64, 67, 0.42)",
         },
         ...sx,
       }}

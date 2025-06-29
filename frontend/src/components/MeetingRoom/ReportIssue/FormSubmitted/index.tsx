@@ -1,3 +1,3 @@
-import FormSubmitted from './FormSubmitted';
+import FormSubmitted from "./FormSubmitted";
 
 export default FormSubmitted;

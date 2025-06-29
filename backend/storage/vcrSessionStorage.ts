@@ -1,10 +1,12 @@
-import { vcr } from '@vonage/vcr-sdk';
-import { SessionStorage } from './sessionStorage';
+import { vcr } from "@vonage/vcr-sdk";
+import { SessionStorage } from "./sessionStorage";
 
 class VcrSessionStorage implements SessionStorage {
   dbState = vcr.getInstanceState();
   async getSession(roomName: string): Promise<string | null> {
-    const session: string | null = await this.dbState.get(`sessions:${roomName}`);
+    const session: string | null = await this.dbState.get(
+      `sessions:${roomName}`,
+    );
     if (!session) {
       return null;
     }

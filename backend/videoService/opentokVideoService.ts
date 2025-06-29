@@ -1,6 +1,6 @@
-import OpenTok, { Archive, Role } from 'opentok';
-import { VideoService } from './videoServiceInterface';
-import { OpentokConfig } from '../types/config';
+import OpenTok, { Archive, Role } from "opentok";
+import { VideoService } from "./videoServiceInterface";
+import { OpentokConfig } from "../types/config";
 
 class OpenTokVideoService implements VideoService {
   private readonly opentok: OpenTok;
@@ -14,14 +14,16 @@ class OpenTokVideoService implements VideoService {
     // We set token role to Moderator in order to allow force muting of another participant
     // In a real world application you may use roles based on the user type in your application
     // See documentation for more information: https://tokbox.com/developer/guides/create-token/
-    return 'moderator';
+    return "moderator";
   }
 
   createSession(): Promise<string> {
     return new Promise((resolve, reject) => {
-      this.opentok.createSession({ mediaMode: 'routed' }, (error, session) => {
+      this.opentok.createSession({ mediaMode: "routed" }, (error, session) => {
         if (error || !session) {
-          reject(error ?? new Error('Unknown error occurred, no session created.'));
+          reject(
+            error ?? new Error("Unknown error occurred, no session created."),
+          );
         } else {
           const { sessionId } = session;
           resolve(sessionId);
@@ -43,22 +45,25 @@ class OpenTokVideoService implements VideoService {
         sessionId,
         {
           name: roomName,
-          resolution: '1920x1080',
+          resolution: "1920x1080",
           layout: {
             // In multiparty archives, we use the 'bestFit' layout to scale based on the number of streams. For screen-sharing archives,
             // we select 'horizontalPresentation' so the screenshare stream is displayed prominently along with other streams.
             // See: https://developer.vonage.com/en/video/guides/archive-broadcast-layout#layout-types-for-screen-sharing
-            type: 'bestFit',
-            screenshareType: 'horizontalPresentation',
+            type: "bestFit",
+            screenshareType: "horizontalPresentation",
           },
         },
         (error, archive) => {
           if (archive) {
             resolve(archive);
           } else {
-            reject(error ?? new Error('Unknown error occurred when starting archive.'));
+            reject(
+              error ??
+                new Error("Unknown error occurred when starting archive."),
+            );
           }
-        }
+        },
       );
     });
   }

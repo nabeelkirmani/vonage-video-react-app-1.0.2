@@ -1,4 +1,4 @@
-import { AudioOutputDevice, Device } from '@vonage/client-sdk-video';
+import { AudioOutputDevice, Device } from "@vonage/client-sdk-video";
 
 export type AllMediaDevices = {
   audioInputDevices: Device[];

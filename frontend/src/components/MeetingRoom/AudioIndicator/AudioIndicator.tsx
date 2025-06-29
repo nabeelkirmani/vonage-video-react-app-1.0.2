@@ -1,11 +1,11 @@
-import { MicOff, Mic } from '@mui/icons-material';
-import { ReactElement, useState } from 'react';
-import { Stream } from '@vonage/client-sdk-video';
-import Tooltip from '@mui/material/Tooltip';
-import { IconButton } from '@mui/material';
-import PopupDialog, { DialogTexts } from '../PopupDialog';
-import VoiceIndicatorIcon from '../VoiceIndicator/VoiceIndicator';
-import useSessionContext from '../../../hooks/useSessionContext';
+import { MicOff, Mic } from "@mui/icons-material";
+import { ReactElement, useState } from "react";
+import { Stream } from "@vonage/client-sdk-video";
+import Tooltip from "@mui/material/Tooltip";
+import { IconButton } from "@mui/material";
+import PopupDialog, { DialogTexts } from "../PopupDialog";
+import VoiceIndicatorIcon from "../VoiceIndicator/VoiceIndicator";
+import useSessionContext from "../../../hooks/useSessionContext";
 
 export type AudioIndicatorProps = {
   hasAudio: boolean | undefined;
@@ -41,8 +41,8 @@ const AudioIndicator = ({
 
   const muteParticipantText: DialogTexts = {
     contents: `Mute ${participantName} for everyone in the call? Only ${participantName} can unmute themselves.`,
-    primaryActionText: 'Mute',
-    secondaryActionText: 'Cancel',
+    primaryActionText: "Mute",
+    secondaryActionText: "Cancel",
   };
   const handleClick = () => {
     setIsModalOpen(true);
@@ -60,9 +60,9 @@ const AudioIndicator = ({
   };
 
   const sxProperties = {
-    fontSize: '18px',
+    fontSize: "18px",
     color: indicatorColor,
-    cursor: hasAudio ? 'pointer' : 'default',
+    cursor: hasAudio ? "pointer" : "default",
   };
 
   if (audioLevel !== undefined) {
@@ -71,15 +71,15 @@ const AudioIndicator = ({
 
   return (
     <div className={indicatorStyle} data-testid="audio-indicator">
-      <Tooltip title={hasAudio ? `Mute ${participantName}'s microphone` : ''}>
+      <Tooltip title={hasAudio ? `Mute ${participantName}'s microphone` : ""}>
         <IconButton
           disableRipple={!hasAudio}
           disableFocusRipple={!hasAudio}
           sx={{
             height: 24,
             width: 24,
-            borderRadius: '50%',
-            cursor: hasAudio ? 'pointer' : 'default',
+            borderRadius: "50%",
+            cursor: hasAudio ? "pointer" : "default",
           }}
           onClick={hasAudio ? handleClick : undefined}
         >

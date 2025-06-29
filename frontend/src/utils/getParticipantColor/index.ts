@@ -1,3 +1,3 @@
-import getParticipantColor from './getParticipantColor';
+import getParticipantColor from "./getParticipantColor";
 
 export default getParticipantColor;

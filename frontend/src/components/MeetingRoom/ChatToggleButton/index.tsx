@@ -1,3 +1,3 @@
-import ChatToggleButton from './ChatToggleButton';
+import ChatToggleButton from "./ChatToggleButton";
 
 export default ChatToggleButton;

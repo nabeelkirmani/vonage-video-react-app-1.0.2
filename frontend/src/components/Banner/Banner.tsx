@@ -1,7 +1,7 @@
-import { ReactElement } from 'react';
-import BannerDateTime from '../BannerDateTime';
-import BannerLinks from '../BannerLinks';
-import BannerLogo from '../BannerLogo';
+import { ReactElement } from "react";
+import BannerDateTime from "../BannerDateTime";
+import BannerLinks from "../BannerLinks";
+import BannerLogo from "../BannerLogo";
 
 /**
  * Banner Component

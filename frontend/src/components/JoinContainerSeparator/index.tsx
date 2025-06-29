@@ -1,3 +1,3 @@
-import JoinContainerSeparator from './JoinContainerSeparator';
+import JoinContainerSeparator from "./JoinContainerSeparator";
 
 export default JoinContainerSeparator;

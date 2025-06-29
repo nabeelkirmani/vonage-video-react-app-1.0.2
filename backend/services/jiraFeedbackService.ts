@@ -1,9 +1,9 @@
-import axios from 'axios';
-import FormData from 'form-data';
-import { FeedbackService } from './feedbackService';
-import loadConfig from '../helpers/config';
-import { Config } from '../types/config';
-import { FeedbackData, ReportIssueReturn } from '../types/feedback';
+import axios from "axios";
+import FormData from "form-data";
+import { FeedbackService } from "./feedbackService";
+import loadConfig from "../helpers/config";
+import { Config } from "../types/config";
+import { FeedbackData, ReportIssueReturn } from "../types/feedback";
 
 class JiraFeedbackService implements FeedbackService {
   jiraApiUrl: string;
@@ -35,7 +35,7 @@ class JiraFeedbackService implements FeedbackService {
         summary: data.title,
         description: `Reported by: ${data.name}\n\n Issue description:\n${data.issue}`,
         issuetype: {
-          name: 'Bug',
+          name: "Bug",
         },
         components: [
           {
@@ -49,22 +49,26 @@ class JiraFeedbackService implements FeedbackService {
     try {
       const response = await axios.post(this.jiraApiUrl, feedbackIssueData, {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `Basic ${this.jiraToken}`,
         },
       });
 
       const ticketData: ReportIssueReturn = {
-        message: 'Your Jira ticket has been created.',
+        message: "Your Jira ticket has been created.",
         ticketUrl: `${this.jiraUrl}browse/${response.data.key}`,
       };
 
       if (!data.attachment) {
         return ticketData;
       }
-      return await this.addAttachment(data.attachment, ticketData, response.data.key);
+      return await this.addAttachment(
+        data.attachment,
+        ticketData,
+        response.data.key,
+      );
     } catch (error) {
-      console.log('Response Error:', error);
+      console.log("Response Error:", error);
       return null;
     }
   }
@@ -72,20 +76,20 @@ class JiraFeedbackService implements FeedbackService {
   private async addAttachment(
     attachment: string,
     ticketData: ReportIssueReturn,
-    key: string
+    key: string,
   ): Promise<ReportIssueReturn> {
-    const fileBuffer = Buffer.from(attachment, 'base64');
+    const fileBuffer = Buffer.from(attachment, "base64");
     const formData = new FormData();
-    formData.append('file', fileBuffer, {
-      filename: 'screenshot.png',
-      contentType: 'image/png',
+    formData.append("file", fileBuffer, {
+      filename: "screenshot.png",
+      contentType: "image/png",
     });
 
     await axios.post(`${this.jiraApiUrl}${key}/attachments`, formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        "Content-Type": "multipart/form-data",
         Authorization: `Basic ${this.jiraToken}`,
-        'X-Atlassian-Token': 'no-check', // required for Jira attachments
+        "X-Atlassian-Token": "no-check", // required for Jira attachments
         ...formData.getHeaders(),
       },
     });

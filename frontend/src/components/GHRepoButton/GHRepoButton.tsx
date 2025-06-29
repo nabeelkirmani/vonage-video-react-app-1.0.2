@@ -1,6 +1,6 @@
-import { IconButton, Link, Tooltip } from '@mui/material';
-import { MonitorHeart as MonitorHeartIcon } from '@mui/icons-material';
-import { ReactElement } from 'react';
+import { IconButton, Link, Tooltip } from "@mui/material";
+import { MonitorHeart as MonitorHeartIcon } from "@mui/icons-material";
+import { ReactElement } from "react";
 
 /**
  * GHRepoButton Component

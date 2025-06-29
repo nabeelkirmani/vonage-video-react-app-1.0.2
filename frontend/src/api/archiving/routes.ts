@@ -1,5 +1,5 @@
-import axios, { AxiosResponse } from 'axios';
-import { API_URL } from '../../utils/constants';
+import axios, { AxiosResponse } from "axios";
+import { API_URL } from "../../utils/constants";
 
 /**
  * Send a request to start archiving.
@@ -8,7 +8,9 @@ import { API_URL } from '../../utils/constants';
  * @returns {Promise<AxiosResponse<any, any>>} The response from the archiving session.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const startArchiving = async (roomName: string): Promise<AxiosResponse<any, any>> => {
+export const startArchiving = async (
+  roomName: string,
+): Promise<AxiosResponse<any, any>> => {
   return axios.post(`${API_URL}/session/${roomName}/startArchive`);
 };
 
@@ -21,7 +23,7 @@ export const startArchiving = async (roomName: string): Promise<AxiosResponse<an
  */
 export const stopArchiving = async (
   roomName: string,
-  archiveId: string
+  archiveId: string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<AxiosResponse<any, any>> => {
   return axios.post(`${API_URL}/session/${roomName}/${archiveId}/stopArchive`);
@@ -34,5 +36,7 @@ export const stopArchiving = async (
  * @returns {Promise<AxiosResponse<any, any>>} The response from the archiving session.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const listArchives = (roomName: string): Promise<AxiosResponse<any, any>> =>
+export const listArchives = (
+  roomName: string,
+): Promise<AxiosResponse<any, any>> =>
   axios.get(`${API_URL}/session/${roomName}/archives`);

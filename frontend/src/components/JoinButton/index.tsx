@@ -1,3 +1,3 @@
-import JoinButton from './JoinButton';
+import JoinButton from "./JoinButton";
 
 export default JoinButton;

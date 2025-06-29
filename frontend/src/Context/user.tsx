@@ -6,7 +6,7 @@ import {
   SetStateAction,
   Dispatch,
   ReactElement,
-} from 'react';
+} from "react";
 
 // Define the shape of the User context
 export type UserContextType = {
@@ -46,9 +46,10 @@ export type UserProviderProps = {
  */
 const UserProvider = ({ children }: UserProviderProps): ReactElement => {
   // Load initial settings from local storage
-  const noiseSuppression = window.localStorage.getItem('noiseSuppression') === 'true';
-  const blur = window.localStorage.getItem('backgroundBlur') === 'true';
-  const name = window.localStorage.getItem('username') ?? '';
+  const noiseSuppression =
+    window.localStorage.getItem("noiseSuppression") === "true";
+  const blur = window.localStorage.getItem("backgroundBlur") === "true";
+  const name = window.localStorage.getItem("username") ?? "";
 
   const [user, setUser] = useState<UserType>({
     defaultSettings: {
@@ -71,7 +72,7 @@ const UserProvider = ({ children }: UserProviderProps): ReactElement => {
       user,
       setUser,
     }),
-    [user]
+    [user],
   );
 
   // Provide the User context to child components

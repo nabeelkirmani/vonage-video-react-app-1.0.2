@@ -1,5 +1,5 @@
-import { Subscriber } from '@vonage/client-sdk-video';
-import { useState, useEffect, useMemo, Dispatch, SetStateAction } from 'react';
+import { Subscriber } from "@vonage/client-sdk-video";
+import { useState, useEffect, useMemo, Dispatch, SetStateAction } from "react";
 
 const speakingTimeThreshold = 100;
 const notSpeakingTimeThreshold = 800;
@@ -10,7 +10,9 @@ export type SubscriberTalkingProps = {
   isActiveSpeaker: boolean;
 };
 
-const createOnHandleAudioLevelUpdated = (setIsTalking: Dispatch<SetStateAction<boolean>>) => {
+const createOnHandleAudioLevelUpdated = (
+  setIsTalking: Dispatch<SetStateAction<boolean>>,
+) => {
   let isTalking = false;
   let timestamp = Date.now();
 
@@ -31,7 +33,8 @@ const createOnHandleAudioLevelUpdated = (setIsTalking: Dispatch<SetStateAction<b
     }
   };
 
-  return ({ audioLevel }: { audioLevel: number }) => handleAudioLevel(audioLevel);
+  return ({ audioLevel }: { audioLevel: number }) =>
+    handleAudioLevel(audioLevel);
 };
 
 /**
@@ -39,21 +42,24 @@ const createOnHandleAudioLevelUpdated = (setIsTalking: Dispatch<SetStateAction<b
  * @param {SubscriberTalkingProps} props - The props for the hook.
  * @returns {boolean} Whether the Subscriber is talking or not.
  */
-const useSubscriberTalking = ({ subscriber, isActiveSpeaker }: SubscriberTalkingProps): boolean => {
+const useSubscriberTalking = ({
+  subscriber,
+  isActiveSpeaker,
+}: SubscriberTalkingProps): boolean => {
   const [isTalking, setIsTalking] = useState<boolean>(false);
   const audioLevelUpdateHandler = useMemo(
     () => createOnHandleAudioLevelUpdated(setIsTalking),
-    [setIsTalking]
+    [setIsTalking],
   );
 
   useEffect(() => {
     if (subscriber && isActiveSpeaker) {
-      subscriber.on('audioLevelUpdated', audioLevelUpdateHandler);
+      subscriber.on("audioLevelUpdated", audioLevelUpdateHandler);
     }
 
     return () => {
       if (subscriber) {
-        subscriber.off('audioLevelUpdated', audioLevelUpdateHandler);
+        subscriber.off("audioLevelUpdated", audioLevelUpdateHandler);
       }
       if (isTalking) {
         setIsTalking(false);

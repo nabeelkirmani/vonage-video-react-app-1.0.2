@@ -1,3 +1,3 @@
-import MutedAlert from './MutedAlert';
+import MutedAlert from "./MutedAlert";
 
 export default MutedAlert;

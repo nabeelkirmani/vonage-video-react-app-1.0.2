@@ -1,12 +1,12 @@
-import { ReactElement, useEffect, useRef } from 'react';
-import { Box } from 'opentok-layout-js';
-import usePublisherContext from '../../hooks/usePublisherContext';
-import VoiceIndicatorIcon from '../MeetingRoom/VoiceIndicator';
-import useAudioLevels from '../../hooks/useAudioLevels';
-import AvatarInitials from '../AvatarInitials';
-import NameDisplay from '../MeetingRoom/NameDisplay';
-import AudioIndicator from '../MeetingRoom/AudioIndicator';
-import VideoTile from '../MeetingRoom/VideoTile';
+import { ReactElement, useEffect, useRef } from "react";
+import { Box } from "opentok-layout-js";
+import usePublisherContext from "../../hooks/usePublisherContext";
+import VoiceIndicatorIcon from "../MeetingRoom/VoiceIndicator";
+import useAudioLevels from "../../hooks/useAudioLevels";
+import AvatarInitials from "../AvatarInitials";
+import NameDisplay from "../MeetingRoom/NameDisplay";
+import AudioIndicator from "../MeetingRoom/AudioIndicator";
+import VideoTile from "../MeetingRoom/VideoTile";
 
 export type PublisherProps = {
   box: Box;
@@ -34,23 +34,23 @@ const Publisher = ({ box }: PublisherProps): ReactElement => {
   useEffect(() => {
     if (element && pubContainerRef.current) {
       element.classList.add(
-        'video__element',
-        'w-full',
-        'h-full',
-        'absolute',
-        'rounded-xl',
-        'object-cover',
-        'origin-[50%_50%]', // since we have disabled default UI, we need to mirror the publisher
-        '-scale-x-100'
+        "video__element",
+        "w-full",
+        "h-full",
+        "absolute",
+        "rounded-xl",
+        "object-cover",
+        "origin-[50%_50%]", // since we have disabled default UI, we need to mirror the publisher
+        "-scale-x-100",
       );
       pubContainerRef.current.appendChild(element);
     }
   }, [element]);
 
   const initials = publisher?.stream?.initials;
-  const username = publisher?.stream?.name ?? '';
+  const username = publisher?.stream?.name ?? "";
   const audioIndicatorStyle =
-    'rounded-xl absolute top-3 right-3 bg-darkGray-55 h-6 w-6 items-center justify-center flex m-auto';
+    "rounded-xl absolute top-3 right-3 bg-darkGray-55 h-6 w-6 items-center justify-center flex m-auto";
 
   return (
     <VideoTile
@@ -72,7 +72,7 @@ const Publisher = ({ box }: PublisherProps): ReactElement => {
       {isAudioEnabled ? (
         <VoiceIndicatorIcon
           publisherAudioLevel={audioLevel}
-          sx={{ position: 'absolute', top: '10px', right: '10px' }}
+          sx={{ position: "absolute", top: "10px", right: "10px" }}
           size={24}
         />
       ) : (

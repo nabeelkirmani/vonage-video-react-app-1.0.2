@@ -1,3 +1,3 @@
-import VoiceIndicator from './VoiceIndicator';
+import VoiceIndicator from "./VoiceIndicator";
 
 export default VoiceIndicator;

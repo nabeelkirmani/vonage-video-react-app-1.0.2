@@ -1,3 +1,3 @@
-import GoodBye from './GoodBye';
+import GoodBye from "./GoodBye";
 
 export default GoodBye;

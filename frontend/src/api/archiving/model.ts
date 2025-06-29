@@ -1,14 +1,14 @@
-import { getFormattedDate, getFormattedTime } from '../../utils/dateTime';
+import { getFormattedDate, getFormattedTime } from "../../utils/dateTime";
 
-export type ArchiveStatus = 'available' | 'pending' | 'failed';
+export type ArchiveStatus = "available" | "pending" | "failed";
 export type ServerArchiveStatus =
-  | 'available'
-  | 'expired'
-  | 'failed'
-  | 'paused'
-  | 'started'
-  | 'stopped'
-  | 'uploaded';
+  | "available"
+  | "expired"
+  | "failed"
+  | "paused"
+  | "started"
+  | "stopped"
+  | "uploaded";
 
 export interface ServerArchive {
   id: string;
@@ -33,15 +33,15 @@ const getDateString = (timestamp: number) => {
 
 const getArchiveStatus = (status: ServerArchiveStatus): ArchiveStatus => {
   switch (status) {
-    case 'available':
-      return 'available';
-    case 'started':
-    case 'stopped':
-    case 'uploaded':
-    case 'paused':
-      return 'pending';
+    case "available":
+      return "available";
+    case "started":
+    case "stopped":
+    case "uploaded":
+    case "paused":
+      return "pending";
     default:
-      return 'failed';
+      return "failed";
   }
 };
 
@@ -50,7 +50,9 @@ const getArchiveStatus = (status: ServerArchiveStatus): ArchiveStatus => {
  * @param {ServerArchive} serverArchive - The archive to be modified.
  * @returns {Archive} The modified archive.
  */
-export const createArchiveFromServer = (serverArchive: ServerArchive): Archive => {
+export const createArchiveFromServer = (
+  serverArchive: ServerArchive,
+): Archive => {
   return {
     id: serverArchive.id,
     url: serverArchive.url,
@@ -66,4 +68,4 @@ export const createArchiveFromServer = (serverArchive: ServerArchive): Archive =
  * @returns {boolean} Returns `true` if any archives are pending, else returns `false`.
  */
 export const hasPending = (archives: Archive[]): boolean =>
-  archives.some((archive) => archive.status === 'pending');
+  archives.some((archive) => archive.status === "pending");

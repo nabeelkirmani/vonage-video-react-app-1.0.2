@@ -1,21 +1,24 @@
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { afterEach, beforeEach, describe, expect, it, Mock, vi } from 'vitest';
-import RoomContext from '../RoomContext';
-import useUserContext from '../../hooks/useUserContext';
-import { UserContextType } from '../user';
-import useAudioOutputContext from '../../hooks/useAudioOutputContext';
-import { AudioOutputContextType } from '../AudioOutputProvider';
-import { nativeDevices } from '../../utils/mockData/device';
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { afterEach, beforeEach, describe, expect, it, Mock, vi } from "vitest";
+import RoomContext from "../RoomContext";
+import useUserContext from "../../hooks/useUserContext";
+import { UserContextType } from "../user";
+import useAudioOutputContext from "../../hooks/useAudioOutputContext";
+import { AudioOutputContextType } from "../AudioOutputProvider";
+import { nativeDevices } from "../../utils/mockData/device";
 
-vi.mock('../../hooks/useUserContext');
-vi.mock('../../hooks/useAudioOutputContext');
+vi.mock("../../hooks/useUserContext");
+vi.mock("../../hooks/useAudioOutputContext");
 
 const mockUseUserContext = useUserContext as Mock<[], UserContextType>;
-const mockUseAudioOutputContext = useAudioOutputContext as Mock<[], AudioOutputContextType>;
+const mockUseAudioOutputContext = useAudioOutputContext as Mock<
+  [],
+  AudioOutputContextType
+>;
 
-const fakeName = 'Tommy Traddles';
-const fakeAudioOutput = 'their-device-id';
+const fakeName = "Tommy Traddles";
+const fakeAudioOutput = "their-device-id";
 
 const mockUserContextWithDefaultSettings = {
   user: {
@@ -29,19 +32,21 @@ const mockUseAudioOutputContextValues = {
 } as AudioOutputContextType;
 
 mockUseUserContext.mockImplementation(() => mockUserContextWithDefaultSettings);
-mockUseAudioOutputContext.mockImplementation(() => mockUseAudioOutputContextValues);
+mockUseAudioOutputContext.mockImplementation(
+  () => mockUseAudioOutputContextValues,
+);
 
-describe('RoomContext', () => {
+describe("RoomContext", () => {
   const nativeMediaDevices = global.navigator.mediaDevices;
   beforeEach(() => {
-    Object.defineProperty(global.navigator, 'mediaDevices', {
+    Object.defineProperty(global.navigator, "mediaDevices", {
       writable: true,
       value: {
         enumerateDevices: vi.fn(
           () =>
             new Promise<MediaDeviceInfo[]>((res) => {
               res(nativeDevices as MediaDeviceInfo[]);
-            })
+            }),
         ),
         addEventListener: vi.fn(() => []),
         removeEventListener: vi.fn(() => []),
@@ -50,29 +55,31 @@ describe('RoomContext', () => {
   });
 
   afterEach(() => {
-    Object.defineProperty(global.navigator, 'mediaDevices', {
+    Object.defineProperty(global.navigator, "mediaDevices", {
       writable: true,
       value: nativeMediaDevices,
     });
   });
 
-  it('renders content', () => {
-    const TestComponent = () => <div data-testid="test-component">Test Component</div>;
+  it("renders content", () => {
+    const TestComponent = () => (
+      <div data-testid="test-component">Test Component</div>
+    );
 
     render(
-      <MemoryRouter initialEntries={['/test']}>
+      <MemoryRouter initialEntries={["/test"]}>
         <Routes>
           <Route path="/test" element={<RoomContext />}>
             <Route index element={<TestComponent />} />
           </Route>
         </Routes>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
-    expect(screen.getByTestId('test-component')).toBeInTheDocument();
+    expect(screen.getByTestId("test-component")).toBeInTheDocument();
   });
 
-  it('provides context values to child components', () => {
+  it("provides context values to child components", () => {
     const TestComponent = () => {
       const { user } = useUserContext();
       const { currentAudioOutputDevice } = useAudioOutputContext();
@@ -86,16 +93,18 @@ describe('RoomContext', () => {
     };
 
     render(
-      <MemoryRouter initialEntries={['/test']}>
+      <MemoryRouter initialEntries={["/test"]}>
         <Routes>
           <Route path="/test" element={<RoomContext />}>
             <Route index element={<TestComponent />} />
           </Route>
         </Routes>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
-    expect(screen.getByTestId('user-name').textContent).toBe(fakeName);
-    expect(screen.getByTestId('audio-output').textContent).toBe(fakeAudioOutput);
+    expect(screen.getByTestId("user-name").textContent).toBe(fakeName);
+    expect(screen.getByTestId("audio-output").textContent).toBe(
+      fakeAudioOutput,
+    );
   });
 });

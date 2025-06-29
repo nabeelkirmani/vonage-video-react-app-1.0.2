@@ -1,3 +1,3 @@
-import NameDisplay from './NameDisplay';
+import NameDisplay from "./NameDisplay";
 
 export default NameDisplay;

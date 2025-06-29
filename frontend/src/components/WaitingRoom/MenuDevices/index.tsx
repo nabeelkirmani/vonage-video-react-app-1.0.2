@@ -1,3 +1,3 @@
-import MenuDevices from './MenuDevices';
+import MenuDevices from "./MenuDevices";
 
 export default MenuDevices;

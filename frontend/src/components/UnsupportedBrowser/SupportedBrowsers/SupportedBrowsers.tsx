@@ -1,7 +1,7 @@
-import { ReactElement } from 'react';
-import { List } from '@mui/material';
-import { SUPPORTED_BROWSERS } from '../../../utils/constants';
-import SupportedBrowserListItem from '../SupportedBrowserListItem';
+import { ReactElement } from "react";
+import { List } from "@mui/material";
+import { SUPPORTED_BROWSERS } from "../../../utils/constants";
+import SupportedBrowserListItem from "../SupportedBrowserListItem";
 
 /**
  * SupportedBrowsers Component
@@ -15,9 +15,15 @@ const SupportedBrowsers = (): ReactElement => {
       <h3 className="text-4xl text-black pb-5 w-full">Supported browsers:</h3>
 
       <div className="md:max-h-[480px] md:overflow-y-auto ">
-        <List sx={{ overflowX: 'auto' }}>
+        <List sx={{ overflowX: "auto" }}>
           {SUPPORTED_BROWSERS.map(({ browser, link }) => {
-            return <SupportedBrowserListItem key={browser} url={link} browser={browser} />;
+            return (
+              <SupportedBrowserListItem
+                key={browser}
+                url={link}
+                browser={browser}
+              />
+            );
           })}
         </List>
       </div>

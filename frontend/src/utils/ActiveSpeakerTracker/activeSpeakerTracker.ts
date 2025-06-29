@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-declaration-merging */
 /* eslint-disable no-underscore-dangle */
-import { EventEmitter } from 'events';
-import throttle from 'lodash/throttle';
+import { EventEmitter } from "events";
+import throttle from "lodash/throttle";
 
 export type SubscriberAudioLevels = Record<string, number>;
 
@@ -16,8 +16,14 @@ export type ActiveSpeakerChangedPayload = {
 };
 
 declare interface ActiveSpeakerTracker {
-  emit(event: 'activeSpeakerChanged', payload: ActiveSpeakerChangedPayload): boolean;
-  on(event: 'activeSpeakerChanged', listener: (payload: ActiveSpeakerChangedPayload) => void): this;
+  emit(
+    event: "activeSpeakerChanged",
+    payload: ActiveSpeakerChangedPayload,
+  ): boolean;
+  on(
+    event: "activeSpeakerChanged",
+    listener: (payload: ActiveSpeakerChangedPayload) => void,
+  ): this;
 }
 
 const CALCULATE_ACTIVE_SPEAKER_THROTTLE_TIME = 1500;
@@ -52,7 +58,7 @@ class ActiveSpeakerTracker extends EventEmitter {
         // So we don't send events after subscriber is destroyed
         leading: true,
         trailing: false,
-      }
+      },
     );
   }
   onSubscriberDestroyed = (subscriberId: string) => {
@@ -79,23 +85,24 @@ class ActiveSpeakerTracker extends EventEmitter {
 
   _calculateActiveSpeaker = () => {
     const subscriberIdAudioLevelKeyValuePair = Object.entries(
-      this._subscriberAudioLevelsBySubscriberId
+      this._subscriberAudioLevelsBySubscriberId,
     );
-    const activeSpeaker = subscriberIdAudioLevelKeyValuePair.reduce<ActiveSpeakerInfo>(
-      (acc, [subscriberId, movingAvg]) => {
-        if (movingAvg > acc.movingAvg) {
-          return {
-            subscriberId,
-            movingAvg,
-          };
-        }
-        return acc;
-      },
-      {
-        subscriberId: undefined,
-        movingAvg: 0,
-      }
-    );
+    const activeSpeaker =
+      subscriberIdAudioLevelKeyValuePair.reduce<ActiveSpeakerInfo>(
+        (acc, [subscriberId, movingAvg]) => {
+          if (movingAvg > acc.movingAvg) {
+            return {
+              subscriberId,
+              movingAvg,
+            };
+          }
+          return acc;
+        },
+        {
+          subscriberId: undefined,
+          movingAvg: 0,
+        },
+      );
 
     if (
       activeSpeaker.subscriberId !== this.activeSpeaker.subscriberId &&
@@ -103,7 +110,7 @@ class ActiveSpeakerTracker extends EventEmitter {
     ) {
       const previousActiveSpeaker = { ...this.activeSpeaker };
       this.activeSpeaker = activeSpeaker;
-      this.emit('activeSpeakerChanged', {
+      this.emit("activeSpeakerChanged", {
         newActiveSpeaker: activeSpeaker,
         previousActiveSpeaker,
       });

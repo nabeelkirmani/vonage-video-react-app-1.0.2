@@ -1,6 +1,6 @@
-import { ReactElement, useState } from 'react';
-import JoinButton from '../JoinButton';
-import RoomNameInput from '../RoomNameInput';
+import { ReactElement, useState } from "react";
+import JoinButton from "../JoinButton";
+import RoomNameInput from "../RoomNameInput";
 
 /**
  * JoinExistingRoom Component
@@ -9,7 +9,7 @@ import RoomNameInput from '../RoomNameInput';
  * @returns {ReactElement} - The JoinExistingRoom component.
  */
 const JoinExistingRoom = (): ReactElement => {
-  const [roomName, setRoomName] = useState('');
+  const [roomName, setRoomName] = useState("");
   const [hasError, setHasError] = useState(false);
 
   return (

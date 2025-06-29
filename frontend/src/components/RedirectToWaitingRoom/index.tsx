@@ -1,3 +1,3 @@
-import RedirectToWaitingRoom from './RedirectToWaitingRoom';
+import RedirectToWaitingRoom from "./RedirectToWaitingRoom";
 
 export default RedirectToWaitingRoom;

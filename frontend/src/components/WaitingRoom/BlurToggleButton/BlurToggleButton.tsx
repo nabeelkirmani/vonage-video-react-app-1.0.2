@@ -1,10 +1,10 @@
-import { Box, Tooltip } from '@mui/material';
-import BlurOff from '@mui/icons-material/BlurOff';
-import { hasMediaProcessorSupport } from '@vonage/client-sdk-video';
-import { ReactElement } from 'react';
-import usePreviewPublisherContext from '../../../hooks/usePreviewPublisherContext';
-import BlurIcon from '../../Icons/Blur';
-import VideoContainerToggleButton from '../VideoContainerToggleButton';
+import { Box, Tooltip } from "@mui/material";
+import BlurOff from "@mui/icons-material/BlurOff";
+import { hasMediaProcessorSupport } from "@vonage/client-sdk-video";
+import { ReactElement } from "react";
+import usePreviewPublisherContext from "../../../hooks/usePreviewPublisherContext";
+import BlurIcon from "../../Icons/Blur";
+import VideoContainerToggleButton from "../VideoContainerToggleButton";
 
 /**
  * BlurToggleButton Component
@@ -14,22 +14,22 @@ import VideoContainerToggleButton from '../VideoContainerToggleButton';
  */
 const BlurToggleButton = (): ReactElement | false => {
   const { toggleBlur, hasBlur } = usePreviewPublisherContext();
-  const title = `Turn background blur ${hasBlur ? 'off' : 'on'}`;
+  const title = `Turn background blur ${hasBlur ? "off" : "on"}`;
 
   return (
     hasMediaProcessorSupport() && (
       <Box
         sx={{
-          display: 'flex',
-          position: 'relative',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '56px',
-          height: '56px',
-          borderRadius: '50%',
-          border: '1px solid white',
-          overflow: 'hidden',
-          transition: 'transform 0.2s ease-in-out',
+          display: "flex",
+          position: "relative",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "56px",
+          height: "56px",
+          borderRadius: "50%",
+          border: "1px solid white",
+          overflow: "hidden",
+          transition: "transform 0.2s ease-in-out",
         }}
       >
         <Tooltip title={title} aria-label="toggle background blur">
@@ -37,15 +37,15 @@ const BlurToggleButton = (): ReactElement | false => {
             onClick={toggleBlur}
             isEnabled={!hasBlur}
             sx={{
-              '&:hover': {
-                backgroundColor: 'rgba(255, 255, 255, 0.6)',
+              "&:hover": {
+                backgroundColor: "rgba(255, 255, 255, 0.6)",
               },
             }}
             icon={
               hasBlur ? (
-                <BlurOff sx={{ fontSize: '24px', color: 'white' }} />
+                <BlurOff sx={{ fontSize: "24px", color: "white" }} />
               ) : (
-                <BlurIcon sx={{ fontSize: '24px', color: 'white' }} />
+                <BlurIcon sx={{ fontSize: "24px", color: "white" }} />
               )
             }
           />

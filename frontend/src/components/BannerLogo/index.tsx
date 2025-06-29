@@ -1,3 +1,3 @@
-import BannerLogo from './BannerLogo';
+import BannerLogo from "./BannerLogo";
 
 export default BannerLogo;

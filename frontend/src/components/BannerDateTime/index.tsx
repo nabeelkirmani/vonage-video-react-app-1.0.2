@@ -1,3 +1,3 @@
-import BannerDateTime from './BannerDateTime';
+import BannerDateTime from "./BannerDateTime";
 
 export default BannerDateTime;

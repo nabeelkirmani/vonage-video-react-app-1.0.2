@@ -1,15 +1,21 @@
-import { describe, it, expect, beforeEach, vi, Mock, afterAll } from 'vitest';
-import { act, render, screen } from '@testing-library/react';
-import SportsFootballIcon from '@mui/icons-material/SportsFootball';
-import SoundTest from './SoundTest';
-import useAudioOutputContext from '../../hooks/useAudioOutputContext';
-import { AudioOutputContextType, AudioOutputProvider } from '../../Context/AudioOutputProvider';
-import { nativeDevices } from '../../utils/mockData/device';
+import { describe, it, expect, beforeEach, vi, Mock, afterAll } from "vitest";
+import { act, render, screen } from "@testing-library/react";
+import SportsFootballIcon from "@mui/icons-material/SportsFootball";
+import SoundTest from "./SoundTest";
+import useAudioOutputContext from "../../hooks/useAudioOutputContext";
+import {
+  AudioOutputContextType,
+  AudioOutputProvider,
+} from "../../Context/AudioOutputProvider";
+import { nativeDevices } from "../../utils/mockData/device";
 
-vi.mock('../../hooks/useAudioOutputContext');
-const mockUseAudioOutputContext = useAudioOutputContext as Mock<[], AudioOutputContextType>;
+vi.mock("../../hooks/useAudioOutputContext");
+const mockUseAudioOutputContext = useAudioOutputContext as Mock<
+  [],
+  AudioOutputContextType
+>;
 
-describe('SoundTest', () => {
+describe("SoundTest", () => {
   const nativeMediaDevices = global.navigator.mediaDevices;
   const nativeAudio = global.Audio;
   let audioOutputContext: AudioOutputContextType;
@@ -18,14 +24,14 @@ describe('SoundTest', () => {
 
   beforeEach(() => {
     vi.resetAllMocks();
-    Object.defineProperty(global.navigator, 'mediaDevices', {
+    Object.defineProperty(global.navigator, "mediaDevices", {
       writable: true,
       value: {
         enumerateDevices: vi.fn(
           () =>
             new Promise<MediaDeviceInfo[]>((res) => {
               res(nativeDevices as MediaDeviceInfo[]);
-            })
+            }),
         ),
         addEventListener: vi.fn(() => []),
         removeEventListener: vi.fn(() => []),
@@ -39,46 +45,46 @@ describe('SoundTest', () => {
     }));
 
     audioOutputContext = {
-      audioOutput: 'some-device-id',
+      audioOutput: "some-device-id",
       setAudioOutput: vi.fn(),
     } as unknown as AudioOutputContextType;
     mockUseAudioOutputContext.mockReturnValue(
-      audioOutputContext as unknown as AudioOutputContextType
+      audioOutputContext as unknown as AudioOutputContextType,
     );
   });
 
   afterAll(() => {
     global.Audio = nativeAudio;
-    Object.defineProperty(global.navigator, 'mediaDevices', {
+    Object.defineProperty(global.navigator, "mediaDevices", {
       writable: true,
       value: nativeMediaDevices,
     });
   });
 
-  it('renders', () => {
+  it("renders", () => {
     render(
       <AudioOutputProvider>
         <SoundTest>
           <SportsFootballIcon />
         </SoundTest>
-      </AudioOutputProvider>
+      </AudioOutputProvider>,
     );
 
-    const renderedSoundTest = screen.getByTestId('soundTest');
+    const renderedSoundTest = screen.getByTestId("soundTest");
 
     expect(renderedSoundTest).toBeInTheDocument();
   });
 
-  it('clicking the SoundTest toggles audio playing', () => {
+  it("clicking the SoundTest toggles audio playing", () => {
     render(
       <AudioOutputProvider>
         <SoundTest>
           <SportsFootballIcon />
         </SoundTest>
-      </AudioOutputProvider>
+      </AudioOutputProvider>,
     );
 
-    const renderedSoundTest = screen.getByTestId('soundTest');
+    const renderedSoundTest = screen.getByTestId("soundTest");
     act(() => {
       renderedSoundTest.click();
     });
@@ -98,38 +104,38 @@ describe('SoundTest', () => {
     expect(pauseMock).toHaveBeenCalledOnce();
   });
 
-  it('displays `Test speakers` when audio is not playing', () => {
+  it("displays `Test speakers` when audio is not playing", () => {
     render(
       <AudioOutputProvider>
         <SoundTest>
           <SportsFootballIcon />
         </SoundTest>
-      </AudioOutputProvider>
+      </AudioOutputProvider>,
     );
 
-    const displayedText = screen.getByText('Test speakers');
+    const displayedText = screen.getByText("Test speakers");
     expect(displayedText).toBeInTheDocument();
   });
 
-  it('displays `Stop testing` when audio is playing', () => {
+  it("displays `Stop testing` when audio is playing", () => {
     render(
       <AudioOutputProvider>
         <SoundTest>
           <SportsFootballIcon />
         </SoundTest>
-      </AudioOutputProvider>
+      </AudioOutputProvider>,
     );
 
-    const renderedSoundTest = screen.getByTestId('soundTest');
+    const renderedSoundTest = screen.getByTestId("soundTest");
     act(() => {
       renderedSoundTest.click();
     });
 
-    const displayedText = screen.getByText('Stop testing');
+    const displayedText = screen.getByText("Stop testing");
     expect(displayedText).toBeInTheDocument();
   });
 
-  it('does not throw if setSinkId is undefined', () => {
+  it("does not throw if setSinkId is undefined", () => {
     global.Audio = vi.fn().mockImplementation(() => ({
       play: playMock,
       pause: pauseMock,
@@ -141,15 +147,15 @@ describe('SoundTest', () => {
         <SoundTest>
           <SportsFootballIcon />
         </SoundTest>
-      </AudioOutputProvider>
+      </AudioOutputProvider>,
     );
 
-    const renderedSoundTest = screen.getByTestId('soundTest');
+    const renderedSoundTest = screen.getByTestId("soundTest");
     act(() => {
       renderedSoundTest.click();
     });
 
-    const displayedText = screen.getByText('Stop testing');
+    const displayedText = screen.getByText("Stop testing");
     expect(displayedText).toBeInTheDocument();
   });
 });

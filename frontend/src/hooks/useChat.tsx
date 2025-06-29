@@ -1,7 +1,7 @@
-import { Session } from '@vonage/client-sdk-video';
-import { MutableRefObject, useCallback, useState } from 'react';
-import useUserContext from './useUserContext';
-import { ChatMessageType } from '../types/chat';
+import { Session } from "@vonage/client-sdk-video";
+import { MutableRefObject, useCallback, useState } from "react";
+import useUserContext from "./useUserContext";
+import { ChatMessageType } from "../types/chat";
 
 export type UseChatProps = {
   sessionRef: MutableRefObject<Session | null>;
@@ -33,7 +33,7 @@ const useChat = ({ sessionRef }: UseChatProps): UseChat => {
     (text: string) => {
       if (sessionRef.current) {
         sessionRef.current.signal({
-          type: 'chat',
+          type: "chat",
           data: JSON.stringify({
             participantName: localParticipantName,
             text,
@@ -41,7 +41,7 @@ const useChat = ({ sessionRef }: UseChatProps): UseChat => {
         });
       }
     },
-    [localParticipantName, sessionRef]
+    [localParticipantName, sessionRef],
   );
 
   const onChatMessage = useCallback((data: string) => {
@@ -50,7 +50,7 @@ const useChat = ({ sessionRef }: UseChatProps): UseChat => {
         const { text, participantName } = JSON.parse(data);
         const message: ChatMessageType = {
           timestamp: Date.now(),
-          participantName: `${participantName || 'unknown user'}`,
+          participantName: `${participantName || "unknown user"}`,
           message: text,
         };
         setMessages((prev) => [...prev, message]);

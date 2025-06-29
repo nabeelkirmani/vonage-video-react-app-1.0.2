@@ -1,4 +1,4 @@
-import { AudioOutputDevice } from '@vonage/client-sdk-video';
+import { AudioOutputDevice } from "@vonage/client-sdk-video";
 
 /**
  * Helper function to rename a deviceId to `System Default` for any audio output devices
@@ -6,4 +6,6 @@ import { AudioOutputDevice } from '@vonage/client-sdk-video';
  * @returns {AudioOutputDevice} - The renamed device or the original device
  */
 export default (audioOutput: AudioOutputDevice): AudioOutputDevice =>
-  audioOutput.deviceId === 'default' ? { ...audioOutput, label: 'System Default' } : audioOutput;
+  audioOutput.deviceId === "default"
+    ? { ...audioOutput, label: "System Default" }
+    : audioOutput;
