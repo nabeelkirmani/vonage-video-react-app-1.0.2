@@ -12,8 +12,7 @@
   "parserOptions": {
     "project": [
       "./backend/tsconfig.json",
-      "./frontend/tsconfig.json",
-      "./integration-tests/tsconfig.json",
+      "./frontend/tsconfig.json"
     ],
   },
   "plugins": [
@@ -42,7 +41,7 @@
         "cspell": {
           "language": "en-US"
         },
-        "customWordListFile": "./customWordList.txt" 
+        "customWordListFile": "./customWordList.txt"
       }
     ]
   },

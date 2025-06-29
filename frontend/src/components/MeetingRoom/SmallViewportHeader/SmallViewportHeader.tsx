@@ -1,11 +1,11 @@
-import { ReactElement, useState } from 'react';
-import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
-import { ContentCopy } from '@mui/icons-material';
-import { IconButton, Fade } from '@mui/material';
-import CheckIcon from '@mui/icons-material/Check';
-import useSessionContext from '../../../hooks/useSessionContext';
-import useRoomName from '../../../hooks/useRoomName';
-import useRoomShareUrl from '../../../hooks/useRoomShareUrl';
+import { ReactElement, useState } from "react";
+import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
+import { ContentCopy } from "@mui/icons-material";
+import { IconButton, Fade } from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
+import useSessionContext from "../../../hooks/useSessionContext";
+import useRoomName from "../../../hooks/useRoomName";
+import useRoomShareUrl from "../../../hooks/useRoomShareUrl";
 
 /**
  * SmallViewportHeader Component
@@ -33,7 +33,7 @@ const SmallViewportHeader = (): ReactElement => {
   return (
     <div
       className="flex items-center justify-between px-4 pt-4 bg-darkGray-100 text-white"
-      data-testId="smallViewportHeader"
+      data-testid="smallViewportHeader"
     >
       <div className="flex items-center space-x-2 px-1">
         {isRecording && <RadioButtonCheckedIcon className="text-red-500" />}
@@ -43,12 +43,12 @@ const SmallViewportHeader = (): ReactElement => {
         <Fade in timeout={500}>
           <IconButton
             size="large"
-            sx={{ color: 'rgb(95, 99, 104)' }}
+            sx={{ color: "rgb(95, 99, 104)" }}
             onClick={copyUrl}
             disabled={isCopied}
           >
             {isCopied ? (
-              <CheckIcon sx={{ color: 'rgba(26,115,232,.9)' }} />
+              <CheckIcon sx={{ color: "rgba(26,115,232,.9)" }} />
             ) : (
               <ContentCopy className="text-white" />
             )}

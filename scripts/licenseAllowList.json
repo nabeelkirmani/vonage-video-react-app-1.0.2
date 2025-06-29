@@ -5,7 +5,6 @@
         "@vonage/vcr-sdk",
         "axe-core",
         "frontend",
-        "integration-tests",
         "vonage-video-react-app"
     ],
     "allowedLicenses": [

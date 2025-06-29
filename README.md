@@ -17,9 +17,6 @@
     - [Production mode](#production-mode)
 - [Deployment to Vonage Cloud Runtime](#deployment-to-vonage-cloud-runtime)
 - [Testing](#testing)
-  - [Integration Tests](#integration-tests)
-    - [Screenshot tests or Visual comparisons](#screenshot-tests-or-visual-comparisons)
-    - [Generating and Updating Screenshots](#generating-and-updating-screenshots)
   - [Running the backend and frontend test suites](#running-the-backend-and-frontend-test-suites)
   - [Backend Suite](#backend-suite)
   - [Frontend Suite](#frontend-suite)
@@ -47,61 +44,32 @@ As a commercial open-source project, you can also count on a solid information s
 
 This application provides features for common conferencing use cases, such as:
 
-- <details>
-    <summary>A landing page for users to create and join meeting rooms.</summary>
-    <img src="docs/assets/Welcome.png" alt="Screenshot of landing page">
-  </details>
-- <details>
-    <summary>A waiting room for users to preview their audio and video device settings and set their name before entering a meeting room.</summary>
-    <img src="docs/assets/WaitingRoom.png" alt="Screenshot of waiting room">
-  </details>
-- <details>
-    <summary>A post-call page to navigate users to the landing page, re-enter the left room, and display archive(s), if any.</summary>
-    <img src="docs/assets/Goodbye.png" alt="Screenshot of goodbye page">
-  </details>
+- A landing page for users to create and join meeting rooms.
+- A waiting room for users to preview their audio and video device settings and set their name before entering a meeting room.
+- A post-call page to navigate users to the landing page, re-enter the left room, and display archive(s), if any.
 - A video conferencing “room” supporting up to 25 participants and the following features:
-- <details>
-    <summary>Input and output device selectors.</summary>
-    <img src="docs/assets/DeviceSelector.png" alt="Screenshot of audio devices selector">
-  </details>
+- Input and output device selectors.
 - Background blur and noise suppression toggles.
-- <details>
-    <summary>Composed archiving capabilities to record your meetings.</summary>
-    <img src="docs/assets/Archiving.png" alt="Screenshot of archiving dialog box">
-  </details>
-- <details>
-    <summary>In-call tools such as screen sharing, group chat function, and emoji reactions.</summary>
-    <img src="docs/assets/Emojis.png" alt="Screenshot of emojis">
-  </details>
+- Composed archiving capabilities to record your meetings.
+- In-call tools such as screen sharing, group chat function, and emoji reactions.
 - Active speaker detection.
 - Layout manager with options to display active speaker, screen share, or all participants in a grid view.
 - The dynamic display adjusts to show new joiners, hide video tiles to conserve bandwidth, and show the “next” participant when someone previously speaking leaves.
-- <details>
-    <summary>Ability to mute other participants during the meeting.</summary>
-    <img src="docs/assets/MutingParticipant.png" alt="Screenshot of muting participant dialog box">
-  </details>
-- <details>
-    <summary>Call participant list with audio on/off indicator.</summary>
-    <img src="docs/assets/ParticipantList.png" alt="Screenshot of participant list">
-  </details>
+- Ability to mute other participants during the meeting.
+- Call participant list with audio on/off indicator.
 - Meeting information with an easy-to-share URL to join the meeting.
-- <details>
-    <summary>A reporting tool to enable participants to file any in-call issues.</summary>
-    <img src="docs/assets/ReportIssue.png" alt="Screenshot of report issue pane">
-  </details>
+- A reporting tool to enable participants to file any in-call issues.
 
 ## Project Architecture
 
-![Vonage Video API Reference App Architecture Diagram](./docs/assets/project-architecture.svg)
-
 ## Platforms Supported
 The Vonage Video API Reference App for React is currently supported on the latest release versions for the following browsers:
-- ![Chrome icon](/docs/assets/chrome.svg) Google Chrome
-- ![Firefox icon](/docs/assets/ff.svg) Firefox
-- ![Edge icon](/docs/assets/edge.svg) Microsoft Edge
-- ![Opera icon](/docs/assets/opera.svg) Opera
-- ![Safari icon](/docs/assets/safari.svg) Safari
-- ![Electron icon](/docs/assets/electron.svg) Electron
+- Google Chrome
+- Firefox
+- Microsoft Edge
+- Opera
+- Safari
+- Electron
 
 *Note:* Mobile web views have limited supported at the moment.
 
@@ -201,32 +169,6 @@ Note: This will deploy the project using your local code and .env files, which i
 For a more centralized deployment to VCR see our GHA workflow `.github/workflows/deploy-to-vcr.yml`.
 
 ## Testing
-
-### Integration Tests
-
-We have integration tests using [Playwright](https://playwright.dev/). We recommend using their [VSCode integration](https://playwright.dev/docs/getting-started-vscode) to run tests.
-
-To run the tests you need to run the app server separately:
-
-```console
-# In one terminal tab
-yarn start
-
-# In a separate tab. Or use vscode extension to run tests
-yarn test:integration
-```
-
-#### Screenshot tests or Visual comparisons
-
-We use [Playwright Visual Comparison](https://playwright.dev/docs/test-snapshots) for Screenshot UI tests. Since screenshot tests are part of our integration tests, running our integration tests also executes the screenshot tests.
-
-#### Generating and Updating Screenshots
-
-If we need to update the expected screenshot due to UI changes, we can delete the existing expected screenshot and then run the test. The test will fail, but a new expected screenshot will be generated. Running the test again should pass, as the expected and actual screenshots will now match.
-
-For CI tests, we require screenshots for various browsers and operating systems because they [render interfaces with subtle differences](https://github.com/microsoft/playwright/issues/18240#issuecomment-1287546463).
-
-To capture CI-specific screenshots, you can use the `update-screenshots` job. This job is triggered by creating a pull request (PR) with the `update-screenshots` label on GitHub. Once triggered, it will capture new screenshots on the virtual machine (VM) and automatically push those to the PR's branch.
 
 ### Running the backend and frontend test suites
 

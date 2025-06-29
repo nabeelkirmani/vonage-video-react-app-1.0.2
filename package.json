@@ -5,8 +5,7 @@
   "private": true,
   "workspaces": [
     "backend",
-    "frontend",
-    "integration-tests"
+    "frontend"
   ],
   "engines": {
     "node": ">=22.x",
@@ -31,9 +30,7 @@
     "test:backend:watch": "yarn workspace backend test:watch",
     "test:frontend": "yarn workspace frontend test",
     "test:frontend:watch": "yarn workspace frontend test:watch",
-    "test:integration": "yarn workspace integration-tests test",
     "ts-check": "yarn ts-check:backend && yarn ts-check:frontend",
-    "test:integrationUpdateScreenshots": "yarn workspace integration-tests updateScreenshots",
     "ts-check:backend": "yarn workspace backend ts-check",
     "ts-check:frontend": "yarn workspace frontend ts-check"
   },
